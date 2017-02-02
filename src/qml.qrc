@@ -1,0 +1,32 @@
+<RCC>
+    <qresource prefix="/">
+        <file>main.qml</file>
+        <file>icons/ic_storage_black_24dp_1x.png</file>
+        <file>icons/ic_build_black_24dp_1x.png</file>
+        <file>icons/ic_settings_black_24dp_1x.png</file>
+        <file>icons/ic_share_black_24dp_1x.png</file>
+        <file>icons/ic_store_black_24dp_1x.png</file>
+        <file>icons/ic_folder_black_48dp_2x.png</file>
+        <file>icons/ic_insert_drive_file_black_48dp_2x.png</file>
+        <file>icons/ic_arrow_back_black_24dp_2x.png</file>
+        <file>icons/ic_arrow_back_white_24dp_2x.png</file>
+        <file>LoadingPane.qml</file>
+        <file>BannerPane.qml</file>
+        <file>ControlPane.qml</file>
+        <file>ServerInfoPane.qml</file>
+        <file>OverviewPane.qml</file>
+        <file>ImportPane.qml</file>
+        <file>ServerObjectButton.qml</file>
+        <file>ServerMall.qml</file>
+        <file>ServerProductInfoPane.qml</file>
+        <file>icons/ftpPreview0.png</file>
+        <file>icons/ic_keyboard_arrow_right_white_36dp.png</file>
+        <file>icons/ic_local_airport_white_48px.png</file>
+        <file>icons/ic_timer_white_48px.png</file>
+        <file>icons/ic_check_white_48px.png</file>
+        <file>FirstTimeFinishedPane.qml</file>
+        <file>PerfMeterPane.qml</file>
+        <file>WelcomePane.qml</file>
+    </qresource>
+    <qresource prefix="/FirstTime"/>
+</RCC>
