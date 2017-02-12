@@ -20,10 +20,6 @@
         <file>SettingPane.qml</file>
         <file>SharePane.qml</file>
         <file>StartPane.qml</file>
-        <file>icon/1486483991_HDD.png</file>
-        <file>icon/battlefield_1_hd_wallpaper_by_muusedesign-da1zok9.png</file>
-        <file>icon/CPU-01.png</file>
-        <file>icon/CPU-icon.png</file>
         <file>icon/ic_arrow_back_black_24dp_1x.png</file>
         <file>icon/ic_arrow_back_white_24dp_1x.png</file>
         <file>icon/ic_build_white_24dp_1x.png</file>
@@ -48,8 +44,6 @@
         <file>icon/ic_store_white_24dp_1x.png</file>
         <file>icon/ic_timer_white_48px.png</file>
         <file>icon/orangebackground.png</file>
-        <file>icon/processor.png</file>
-        <file>icon/processor-16.ico</file>
     </qresource>
     <qresource prefix="/FirstTime"/>
 </RCC>

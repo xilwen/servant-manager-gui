@@ -1,5 +1,5 @@
 #include "mainwindow.h"
-#include "VirtualMachine.h"
+#include "VirtualMachine.hpp"
 #include <QDebug>
 #include <QDir>
 
