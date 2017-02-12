@@ -62,7 +62,7 @@ Pane {
                 height: 24
                 anchors.horizontalCenter: parent.horizontalCenter
                 anchors.verticalCenter: parent.verticalCenter
-                source: "./icons/ic_arrow_back_white_24dp_2x.png"
+                source: "icon/ic_arrow_back_white_24dp_1x.png"
             }
             onClicked: {
                 overviewPane.visible = true

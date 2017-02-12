@@ -1,202 +1,341 @@
 import QtQuick 2.7
+import QtQuick.Controls 2.0
+import QtQuick.Layouts 1.0
+import QtQuick 2.7
 import QtQuick.Window 2.0
 import QtQuick.Controls 2.0
 import QtQuick.Layouts 1.0
 import QtQuick.Controls.Material 2.0
 import QtQuick.Dialogs 1.2
+import QtQuick 2.0
+
 
 Pane {
-    id: serverProductInfoPane
-    visible: true
+    id:serverProductInfoPane
+    width: 823
+    height: 579
     anchors.rightMargin: 0
     anchors.bottomMargin: 0
     anchors.leftMargin: 0
     anchors.topMargin: 0
-    bottomPadding: 0
-    rightPadding: 0
-    leftPadding: 0
-    topPadding: 0
     anchors.fill: parent
-    Layout.columnSpan: 2
-    Layout.fillHeight: true
-    Layout.fillWidth: true
     objectName:"serverMallPane"
-    Pane {
-        id: banner
-        height: 45
-        rightPadding: 0
-        bottomPadding: 0
-        leftPadding: 0
-        topPadding: 0
-        anchors.right: parent.right
-        anchors.rightMargin: 0
-        anchors.left: parent.left
-        anchors.leftMargin: 0
-        Material.theme: Material.Dark
-        Material.elevation: 5
-
-        Label {
-            id: label
-            text: qsTr(" FTP 伺服器")
-            font.pointSize: 14
-            font.family: "Microsoft JhengHei UI"
-            anchors.left: button.right
-            anchors.leftMargin: 0
-            anchors.verticalCenter: parent.verticalCenter
-        }
-
-        Button {
-            id: button
-            width: 47
-            height: 48
-            text: qsTr("     ")
-            anchors.left: parent.left
-            anchors.leftMargin: 0
-            anchors.verticalCenter: parent.verticalCenter
-            Material.elevation: 0
-            Image{
-                width: 24
-                height: 24
-                anchors.horizontalCenter: parent.horizontalCenter
-                anchors.verticalCenter: parent.verticalCenter
-                source: "./icons/ic_arrow_back_white_24dp_2x.png"
-            }
-            onClicked:{
-                serverProductInfoPane.visible = false
-                serverMallPane.visible = true
-            }
-        }
-    }
-
-    Label {
-        id: label1
-        x: 136
-        y: 76
-        width: 141
-        height: 28
-        text: qsTr("FTP 伺服器")
-        font.family: "Microsoft JhengHei UI"
-        font.pointSize: 22
-    }
-
     Image {
-        id: image
-        x: 24
-        y: 69
+        id: ftpimage
+        y: 23
         width: 100
         height: 100
-        Material.elevation:2
-        source: "icons/ic_folder_black_48dp_2x.png"
-    }
-
-    Label {
-        id: label2
-        x: 136
-        y: 117
-        font.family: "Microsoft JhengHei UI"
-        text: qsTr("SERVANT Team\n2016 年 11 月 21 日")
+        anchors.left: parent.left
+        anchors.leftMargin: 0
+        source: "icon/ic_folder_black_48dp_2x.png"
     }
 
     Button {
-        id: button1
-        x: 400
-        width: 212
-        height: 45
+        id:download
+        y: 93
+        width: 133
+        height: 41
+        text: qsTr("安裝")
+        anchors.left: ftpimage.right
+        anchors.leftMargin: 2
         font.family: "Microsoft JhengHei UI"
-        Material.background: "#ff9800"
-        Material.elevation: 0
-        text: qsTr("下載")
-        anchors.top: parent.top
-        anchors.topMargin: 185
-        anchors.right: parent.right
-        anchors.rightMargin: 28
+        font.pointSize: 14
+        Material.background: "#F57F17"
+        Material.foreground: "#ffffff"
+        Material.elevation:0
         onClicked:{
-            button1.visible=false
+            download.visible=false
             mainWindow.startDownload()
         }
     }
 
-    Image {
-        id: image1
-        x: 24
-        y: 245
-        width: 246
-        height: 192
-        source: "icons/ftpPreview0.png"
-    }
-
     Label {
-        id: label3
-        x: 299
-        y: 275
+        id: ftplabel
+        y: 41
+        width: 115
+        height: 25
+        text: qsTr("FTP伺服器")
+        anchors.left: ftpimage.right
+        anchors.leftMargin: 1
+        verticalAlignment: Text.AlignVCenter
+        horizontalAlignment: Text.AlignLeft
         font.family: "Microsoft JhengHei UI"
-
-        text: qsTr("0.7 GB")
-        font.pointSize: 20
+        font.pointSize: 16
     }
-
-    Label {
-        id: label4
-        x: 299
-        y: 257
+    
+    Text {
+        id: introductiontext
+        x: 17
+        width: 66
+        height: 26
+        text: qsTr("簡介")
+        anchors.top: ftpimage.bottom
+        anchors.topMargin: 29
+        horizontalAlignment: Text.AlignLeft
+        verticalAlignment: Text.AlignVCenter
         font.family: "Microsoft JhengHei UI"
-        text: qsTr("需下載")
+        font.pointSize: 16
     }
-
-    Label {
-        id: label5
-        x: 299
-        y: 325
-        text: qsTr("執行時記憶體需求")
+    
+    Text {
+        id: teamtext
+        y: 67
+        width: 120
+        height: 26
+        text: qsTr("SERVANT Team")
+        anchors.left: ftpimage.right
+        anchors.leftMargin: 1
+        verticalAlignment: Text.AlignVCenter
         font.family: "Microsoft JhengHei UI"
-    }
-
-    Label {
-        id: label6
-        x: 299
-        y: 343
-        text: qsTr("384 MB")
-        font.family: "Microsoft JhengHei UI"
-        font.pointSize: 20
-    }
-
-    ProgressBar {
-        id: progressBar
-        objectName: "downloadProgress"
-        Material.accent: Material.Orange
-        y: 206
-        anchors.left: parent.left
-        anchors.leftMargin: 130
-        anchors.right: parent.right
-        anchors.rightMargin: 30
-        visible: false
-        value: 0.5
+        font.pointSize: 12
     }
 
     Button {
-        id: button2
-        x: 401
-        y: 3
-        width: 212
-        height: 45
-        text: qsTr("建立伺服器")
-        objectName: "newServerButton"
-        visible: false
-        Material.elevation: 0
-        Material.background: "#ff9800"
-        anchors.topMargin: 185
-        font.family: "Microsoft JhengHei UI"
+        id: backbutton
+        height: 58
         anchors.top: parent.top
+        anchors.topMargin: -18
+        anchors.left: parent.left
+        anchors.leftMargin: -12
         anchors.right: parent.right
-        anchors.rightMargin: 28
+        anchors.rightMargin: -12
+        Material.background: "#424242"
         onClicked: {
-            overviewPane.visible = true
-            serverInfoPane.visible = false
-            serverProductInfoPane.visible = false
-            serverMallPane.visible = false
-            mainWindow.importPackageDownloaded();
+            overviewPane.visible=false
+            serverMallPane.visible=true
+            serverProductInfoPane.visible=false
+            diagnosisPane.visible=false
+            sharePane.visible=false
+            settingPane.visible=false
+
+
+        }
+
+        Image {
+            id: backimage
+            y: 15
+            width: 31
+            height: 29
+            anchors.left: parent.left
+            anchors.leftMargin: 20
+            source: "icon/ic_arrow_back_white_24dp_1x.png"
+        }
+
+        Text {
+            id: ftptext
+            y: 15
+            width: 132
+            height: 28
+            text: qsTr("FTP伺服器")
+            anchors.left: backimage.right
+            anchors.leftMargin: 22
+            verticalAlignment: Text.AlignVCenter
+            font.family: "Microsoft JhengHei UI"
+            font.pointSize: 16
+            color: "white"
         }
     }
 
+    Text {
+        id: datetext
+        y: 67
+        width: 110
+        height: 26
+        text: qsTr("2017年1月8號")
+        anchors.left: teamtext.right
+        anchors.leftMargin: 20
+        verticalAlignment: Text.AlignVCenter
+        font.pointSize: 12
+        font.family: "Microsoft JhengHei UI"
+        color:"#616161"
+    }
 
+    Text {
+        id: systemtext
+        x: 17
+        width: 155
+        height: 26
+        text: qsTr("系統需求")
+        anchors.top: introductiontext.bottom
+        anchors.topMargin: 80
+        font.pointSize: 16
+        font.family: "Microsoft JhengHei UI"
+    }
+
+    Text {
+        id: managetext
+        x: 22
+        width: 155
+        height: 26
+        text: qsTr("管理介面")
+        anchors.top: systemtext.bottom
+        anchors.topMargin: 119
+        verticalAlignment: Text.AlignVCenter
+        font.pointSize: 16
+        font.family: "Microsoft JhengHei UI"
+    }
+
+    Text {
+        id: downloadtext
+        x: 22
+        y: 531
+        width: 155
+        height: 26
+        text: qsTr("需下載")
+        anchors.bottom: parent.bottom
+        anchors.bottomMargin: -2
+        font.pointSize: 16
+        font.family: "Microsoft JhengHei UI"
+    }
+
+    TextField {
+        id: textField
+        x: 86
+        y: 538
+        width: 91
+        height: 26
+        anchors.bottom: parent.bottom
+        anchors.bottomMargin: -9
+        renderType: Text.NativeRendering
+        font.pointSize: 16
+        font.family: "Microsoft JhengHei UI"
+        Material.accent: Material.Blue
+    }
+
+    Text {
+        id: mbtext
+        x: 174
+        y: 531
+        width: 155
+        height: 26
+        text: qsTr("MB的檔案")
+        anchors.bottom: parent.bottom
+        anchors.bottomMargin: -2
+        anchors.left: textField.right
+        anchors.leftMargin: 1
+        verticalAlignment: Text.AlignVCenter
+        font.pointSize: 16
+        font.family: "Microsoft JhengHei UI"
+    }
+
+    Image {
+        id: imagebackground1
+        y: 300
+        width: 94
+        height: 71
+        anchors.left: parent.left
+        anchors.leftMargin: 16
+        source: "icon/orangebackground.png"
+
+        Text {
+            id: cputext
+            x: 13
+            width: 71
+            height: 22
+            text: qsTr("所需處理器")
+            anchors.top: parent.top
+            anchors.topMargin: 70
+            horizontalAlignment: Text.AlignHCenter
+            verticalAlignment: Text.AlignVCenter
+            font.pointSize: 12
+            font.family: "Microsoft JhengHei UI"
+        }
+    }
+
+    Image {
+        id: imagebackground2
+        y: 300
+        width: 94
+        height: 71
+        anchors.left: imagebackground1.right
+        anchors.leftMargin: 17
+        source: "icon/orangebackground.png"
+
+        Image {
+            id: memory
+            x: 25
+            y: 13
+            width: 44
+            height: 46
+            source: "icon/ic_memory_white_24dp_2x.png"
+        }
+
+        Text {
+            id: memorytext
+            x: 6
+            width: 83
+            height: 22
+            text: qsTr("所需記憶體")
+            anchors.top: parent.top
+            anchors.topMargin: 70
+            verticalAlignment: Text.AlignVCenter
+            horizontalAlignment: Text.AlignHCenter
+            font.pointSize: 12
+            font.family: "Microsoft JhengHei UI"
+        }
+    }
+
+    Image {
+        id: imagebackground3
+        y: 300
+        width: 94
+        height: 71
+        anchors.left: imagebackground2.right
+        anchors.leftMargin: 17
+        source: "icon/orangebackground.png"
+
+        Text {
+            id: chiptext
+            x: 13
+            width: 71
+            height: 22
+            text: qsTr("所需硬碟")
+            anchors.top: parent.top
+            anchors.topMargin: 70
+            verticalAlignment: Text.AlignVCenter
+            horizontalAlignment: Text.AlignHCenter
+            font.pointSize: 12
+            font.family: "Microsoft JhengHei UI"
+        }
+    }
+    ProgressBar {
+           id: progressBar
+           objectName: "downloadProgress"
+           Material.accent: Material.Orange
+           y: 111
+           anchors.left: parent.left
+           anchors.leftMargin: 102
+           anchors.right: parent.right
+           anchors.rightMargin: 58
+           visible:false
+           value: 0.5
+       }
+    Button {
+            id: button2
+            y: 3
+            height: 41
+            text: qsTr("建立伺服器")
+            font.pointSize: 14
+            anchors.left: download.right
+            anchors.leftMargin: 323
+            objectName: "newServerButton"
+            visible: false
+            Material.elevation: 0
+            Material.background: "#F57F17"
+            Material.foreground: "#ffffff"
+            anchors.topMargin: 93
+            font.family: "Microsoft JhengHei UI"
+            anchors.top: parent.top
+            anchors.right: parent.right
+            anchors.rightMargin: 29
+            onClicked: {
+                overviewPane.visible = true
+                serverInfoPane.visible = false
+                serverProductInfoPane.visible = false
+                serverMallPane.visible = false
+                mainWindow.importPackageDownloaded();
+            }
+        }
 }
+
+

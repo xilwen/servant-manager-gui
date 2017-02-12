@@ -1,8 +1,13 @@
 import QtQuick 2.7
+import QtQuick.Controls 2.0
+import QtQuick.Layouts 1.0
+import QtQuick 2.7
 import QtQuick.Window 2.0
 import QtQuick.Controls 2.0
 import QtQuick.Layouts 1.0
 import QtQuick.Controls.Material 2.0
+import QtQuick.Dialogs 1.2
+import QtQuick 2.0
 
 Button {
     id: button
@@ -41,7 +46,7 @@ Button {
         anchors.verticalCenter: parent.verticalCenter
         anchors.left: parent.left
         anchors.leftMargin: 10
-        source: "./icons/ic_insert_drive_file_black_48dp_2x.png"
+        source: "icon/ic_folder_black_48dp_2x.png"
         sourceSize.height: 60
         sourceSize.width: 60
         fillMode: Image.Stretch

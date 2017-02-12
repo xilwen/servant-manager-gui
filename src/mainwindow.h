@@ -50,7 +50,6 @@ private:
     *welcomePane,
     *perfMeterPane,
     *firstTimeFinishedPane,
-    *deleteButton,
     *startWebControlButton
     ;
     vBoxWrapperClient *client = nullptr;
