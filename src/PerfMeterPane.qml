@@ -59,7 +59,7 @@ Pane {
         anchors.bottomMargin: 40
         z: 0
         opacity: 0.3
-        source: "icons/ic_timer_white_48px.png"
+        source: "icon/ic_timer_white_48px.png"
     }
 
     Label {

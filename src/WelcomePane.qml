@@ -59,7 +59,7 @@ Pane {
                 anchors.verticalCenter: parent.verticalCenter
                 anchors.right: parent.right
                 anchors.rightMargin: 18
-                source: "icons/ic_keyboard_arrow_right_white_36dp.png"
+                source: "icon/ic_keyboard_arrow_right_white_36dp.png"
             }
 
             onClicked: {
@@ -80,7 +80,7 @@ Pane {
         anchors.bottomMargin: 40
         z: 0
         opacity: 0.3
-        source: "icons/ic_local_airport_white_48px.png"
+        source: "icon/ic_local_airport_white_48px.png"
     }
 
     Label {

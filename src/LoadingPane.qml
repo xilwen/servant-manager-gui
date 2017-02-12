@@ -1,8 +1,14 @@
 import QtQuick 2.7
+import QtQuick.Controls 2.0
+import QtQuick.Layouts 1.0
+import QtQuick 2.7
 import QtQuick.Window 2.0
 import QtQuick.Controls 2.0
 import QtQuick.Layouts 1.0
 import QtQuick.Controls.Material 2.0
+import QtQuick.Dialogs 1.2
+import QtQuick 2.0
+
 
 Pane {
     id: loadingPane
@@ -14,7 +20,7 @@ Pane {
     anchors.fill: parent
     objectName: "pane1"
     Material.theme: Material.Dark
-    Material.accent: Material.BlueGrey
+
 
     Label {
         id: logoTitle
@@ -28,17 +34,7 @@ Pane {
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.verticalCenter: parent.verticalCenter
 
-        Label {
-            id: logoSubtitleLabel
-            x: 84
-            text: qsTr("開發版本")
-            font.pointSize: 16
-            horizontalAlignment: Text.AlignHCenter
-            font.family: "Microsoft JhengHei UI"
-            anchors.top: parent.top
-            anchors.topMargin: 53
-            anchors.horizontalCenter: parent.horizontalCenter
-        }
+
     }
     ProgressBar {
         id: loadProgressBar
@@ -49,6 +45,8 @@ Pane {
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.bottom: parent.bottom
         anchors.bottomMargin: 100
+        Material.theme: Material.Dark
+        Material.accent: Material.Blue
         indeterminate: true
         value: 0.0
 

@@ -1,15 +1,6 @@
 <RCC>
     <qresource prefix="/">
         <file>main.qml</file>
-        <file>icons/ic_storage_black_24dp_1x.png</file>
-        <file>icons/ic_build_black_24dp_1x.png</file>
-        <file>icons/ic_settings_black_24dp_1x.png</file>
-        <file>icons/ic_share_black_24dp_1x.png</file>
-        <file>icons/ic_store_black_24dp_1x.png</file>
-        <file>icons/ic_folder_black_48dp_2x.png</file>
-        <file>icons/ic_insert_drive_file_black_48dp_2x.png</file>
-        <file>icons/ic_arrow_back_black_24dp_2x.png</file>
-        <file>icons/ic_arrow_back_white_24dp_2x.png</file>
         <file>LoadingPane.qml</file>
         <file>BannerPane.qml</file>
         <file>ControlPane.qml</file>
@@ -17,16 +8,48 @@
         <file>OverviewPane.qml</file>
         <file>ImportPane.qml</file>
         <file>ServerObjectButton.qml</file>
-        <file>ServerMall.qml</file>
         <file>ServerProductInfoPane.qml</file>
-        <file>icons/ftpPreview0.png</file>
-        <file>icons/ic_keyboard_arrow_right_white_36dp.png</file>
-        <file>icons/ic_local_airport_white_48px.png</file>
-        <file>icons/ic_timer_white_48px.png</file>
-        <file>icons/ic_check_white_48px.png</file>
         <file>FirstTimeFinishedPane.qml</file>
         <file>PerfMeterPane.qml</file>
         <file>WelcomePane.qml</file>
+        <file>DiagnosisPane.qml</file>
+        <file>OpPane.qml</file>
+        <file>Page1.qml</file>
+        <file>SearchPane.qml</file>
+        <file>ServerMallPane.qml</file>
+        <file>SettingPane.qml</file>
+        <file>SharePane.qml</file>
+        <file>StartPane.qml</file>
+        <file>icon/1486483991_HDD.png</file>
+        <file>icon/battlefield_1_hd_wallpaper_by_muusedesign-da1zok9.png</file>
+        <file>icon/CPU-01.png</file>
+        <file>icon/CPU-icon.png</file>
+        <file>icon/ic_arrow_back_black_24dp_1x.png</file>
+        <file>icon/ic_arrow_back_white_24dp_1x.png</file>
+        <file>icon/ic_build_white_24dp_1x.png</file>
+        <file>icon/ic_check_white_48px.png</file>
+        <file>icon/ic_file_download_white_24dp_1x.png</file>
+        <file>icon/ic_file_download_white_24dp_2x.png</file>
+        <file>icon/ic_folder_black_48dp_2x.png</file>
+        <file>icon/ic_folder_open_white_48dp_2x.png</file>
+        <file>icon/ic_folder_white_24dp_2x.png</file>
+        <file>icon/ic_insert_drive_file_white_24dp_2x.png</file>
+        <file>icon/ic_keyboard_arrow_right_white_36dp.png</file>
+        <file>icon/ic_local_airport_white_48px.png</file>
+        <file>icon/ic_memory_white_24dp_2x.png</file>
+        <file>icon/ic_menu_black_24dp_1x.png</file>
+        <file>icon/ic_menu_black_24dp_2x.png</file>
+        <file>icon/ic_reorder_black_24dp_2x.png</file>
+        <file>icon/ic_settings_white_24dp_1x.png</file>
+        <file>icon/ic_share_white_24dp_1x.png</file>
+        <file>icon/ic_storage_black_24dp_2x.png</file>
+        <file>icon/ic_storage_white_24dp_1x.png</file>
+        <file>icon/ic_storage_white_24dp_2x.png</file>
+        <file>icon/ic_store_white_24dp_1x.png</file>
+        <file>icon/ic_timer_white_48px.png</file>
+        <file>icon/orangebackground.png</file>
+        <file>icon/processor.png</file>
+        <file>icon/processor-16.ico</file>
     </qresource>
     <qresource prefix="/FirstTime"/>
 </RCC>

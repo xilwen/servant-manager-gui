@@ -1,225 +1,332 @@
 import QtQuick 2.7
+import QtQuick.Controls 2.0
+import QtQuick.Layouts 1.0
+import QtQuick 2.7
 import QtQuick.Window 2.0
 import QtQuick.Controls 2.0
 import QtQuick.Layouts 1.0
 import QtQuick.Controls.Material 2.0
+import QtQuick.Dialogs 1.2
+import QtQuick 2.0
+
 
 Pane {
-    id: controlPane
+    id: controlpane
     width: 200
-    height: 200
+    height: 600
     rightPadding: 0
     leftPadding: 0
     Layout.minimumWidth: 50
     Layout.maximumWidth: 200
     Layout.fillHeight: true
     Layout.fillWidth: true
-    Material.background: "#eeeeee"
-
+    Material.background: "#ffffff"
     Button {
-        id: button1
-        width: 30
-        text: "我的伺服器"
-        padding: 0
-        visible: true
-        font.family: "Microsoft JhengHei UI"
-        font.pointSize: 12
-        leftPadding: -10
-        anchors.top: parent.top
-        anchors.topMargin: 20
-        anchors.right: parent.right
-        anchors.rightMargin: 0
-        anchors.left: parent.left
-        anchors.leftMargin: 0
-        Material.background: mouseArea.containsMouse? Material.Blue : "#eeeeee"
+        id: buttonserver
+        x: 57
+        y: 21
+        width: 143
+        height: 62
+        Material.background:servermouseArea.containsMouse?"#00aa00":"white"
         Material.elevation: 0
-
-        MouseArea{
-            id:mouseArea
+        Text{
+            width: 141
+            height: 25
+            anchors.centerIn: parent
+            text:qsTr("我的伺服器   ")
+            anchors.verticalCenterOffset: 0
+            anchors.horizontalCenterOffset: 6
+            font.family: "Microsoft JhengHei UI"
+            font.pointSize: 15
+            color:servermouseArea.containsMouse?"white":"black"
+        }
+        MouseArea {
+            id: servermouseArea
+            anchors.leftMargin: 0
             anchors.fill: parent
             hoverEnabled: true
             onClicked: {
-                overviewPane.visible = true
-                serverInfoPane.visible = false
-                serverProductInfoPane.visible = false
-                serverMallPane.visible = false
+                overviewPane.visible=true
+                serverMallPane.visible=false
+                serverProductInfoPane.visible=false
+                diagnosisPane.visible=false
+                sharePane.visible=false
+                settingPane.visible=false
+
+                }
+        }
+
+        Rectangle {
+            id:imagebackground1
+            y: 6
+            width: 57
+            height: 50
+            color: "#00aa00"
+            anchors.left: parent.left
+            anchors.leftMargin: -57
+
+            Image {
+                id: serverimage
+                width: 32
+                anchors.right: parent.right
+                anchors.rightMargin: 11
+                anchors.left: parent.left
+                anchors.leftMargin: 15
+                anchors.bottom: parent.bottom
+                anchors.bottomMargin: 9
+                anchors.top: parent.top
+                anchors.topMargin: 9
+                source: "icon/ic_storage_white_24dp_1x.png"
             }
         }
 
-        Image{
-            id: image1
-            width: 24
-            height: 24
-            z: 3
-            anchors.verticalCenter: parent.verticalCenter
-            anchors.left: parent.left
-            anchors.leftMargin: 15
-            source: "./icons/ic_storage_black_24dp_1x.png"
-            sourceSize.height: 24
-            sourceSize.width: 24
-            fillMode: Image.Stretch
-        }
     }
-
     Button {
-        id: button3
-        x: -6
-        y: -3
-        width: 30
-        text: qsTr("伺服器商城")
-        padding: 0
-        font.pointSize: 12
-        anchors.right: parent.right
-        leftPadding: -10
-        anchors.topMargin: 0
-        anchors.left: parent.left
-        visible: true
-        anchors.top: button1.bottom
-        anchors.rightMargin: 0
-        anchors.leftMargin: 0
-        font.family: "Microsoft JhengHei UI"
-        Material.background: mouseArea1.containsMouse? "#ff8a80" : "#eeeeee"
+        id: buttonstore
+        x: 57
+        y: 71
+        width: 143
+        height: 62
+        Material.background:storemouseArea.containsMouse?"#E91E63":"white"
         Material.elevation: 0
+        MouseArea {
+            id: storemouseArea
+            x: 0
+            y: -48
+            anchors.rightMargin: 0
+            anchors.bottomMargin: 0
+            anchors.leftMargin: 0
+            anchors.topMargin: 0
 
-        MouseArea{
-            id:mouseArea1
-            anchors.fill: parent
             hoverEnabled: true
+            anchors.fill: parent
             onClicked: {
-                overviewPane.visible = false
-                serverInfoPane.visible = false
-                serverProductInfoPane.visible = false
-                serverMallPane.visible = true
+                overviewPane.visible=false
+                serverMallPane.visible=true
+                serverProductInfoPane.visible=false
+                diagnosisPane.visible=false
+                sharePane.visible=false
+                settingPane.visible=false
+
             }
         }
-        Image{
-            id: image2
-            width: 24
-            height: 24
-            z: 3
-            anchors.verticalCenter: parent.verticalCenter
-            anchors.left: parent.left
-            anchors.leftMargin: 15
-            source: "./icons/ic_store_black_24dp_1x.png"
-            sourceSize.height: 24
-            sourceSize.width: 24
-            fillMode: Image.Stretch
-        }
-    }
 
-
-    Button {
-        id: button4
-        x: -11
-        width: 30
-        text: qsTr("診斷　　　")
-        padding: 0
-        font.pointSize: 12
-        anchors.right: parent.right
-        anchors.topMargin: 0
-        leftPadding: -10
-        anchors.left: parent.left
-        visible: true
-        anchors.top: button3.bottom
-        anchors.leftMargin: 0
-        anchors.rightMargin: 0
-        font.family: "Microsoft JhengHei UI"
-        Material.background: mouseArea2.containsMouse? "#a7ffeb" : "#eeeeee"
-        Material.elevation: 0
-        MouseArea{
-            id:mouseArea2
-            anchors.fill: parent
-            hoverEnabled: true
+        Text {
+            x: 0
+            y: 60
+            width: 141
+            height: 25
+            color: storemouseArea.containsMouse ? "white" : "black"
+            text: qsTr("伺服器商城   ")
+            anchors.verticalCenterOffset: 0
+            anchors.horizontalCenterOffset: 6
+            anchors.centerIn: parent
+            font.pointSize: 15
+            font.family: "Microsoft JhengHei UI"
         }
-        Image{
-            id: image3
-            width: 24
-            height: 24
-            z: 3
-            anchors.verticalCenter: parent.verticalCenter
+
+        Rectangle {
+            id: imagebackground2
+            y: 6
+            width: 57
+            height: 50
+            color: "#E91E63"
             anchors.left: parent.left
-            anchors.leftMargin: 15
-            source: "./icons/ic_build_black_24dp_1x.png"
-            sourceSize.height: 24
-            sourceSize.width: 24
-            fillMode: Image.Stretch
+            anchors.leftMargin: -57
+            Image {
+                id: storeimage
+                width: 32
+                anchors.right: parent.right
+                anchors.rightMargin: 11
+                anchors.left: parent.left
+                anchors.leftMargin: 15
+                anchors.bottom: parent.bottom
+                anchors.bottomMargin: 9
+                anchors.top: parent.top
+                anchors.topMargin: 9
+                source: "icon/ic_store_white_24dp_1x.png"
+            }
         }
     }
 
     Button {
-        id: button5
-        x: -5
-        width: 30
-        height: 48
-        text: qsTr("分享和備份")
-        padding: 0
-        font.pointSize: 12
-        anchors.right: parent.right
-        anchors.topMargin: 0
-        leftPadding: -10
-        anchors.left: parent.left
-        visible: true
-        anchors.top: button4.bottom
-        anchors.rightMargin: 0
-        anchors.leftMargin: 0
-        font.family: "Microsoft JhengHei UI"
-        Material.background: mouseArea3.containsMouse? "#ffd180" : "#eeeeee"
-        Material.elevation: 0
-        MouseArea{
-            id:mouseArea3
-            anchors.fill: parent
-            hoverEnabled: true
+        id: buttondiagnosis
+        x: 57
+        y: 121
+        width: 143
+        height: 62
+        Material.background:diagnosismouseArea.containsMouse?"#2196F3":"white"
+        Material.elevation:0
+        Text{
+            width: 135
+            height: 25
+            anchors.centerIn: parent
+            text:qsTr("診斷              ")
+            anchors.verticalCenterOffset: 1
+            anchors.horizontalCenterOffset: 4
+            font.family: "Microsoft JhengHei UI"
+            font.pointSize: 15
+            color: diagnosismouseArea.containsMouse ? "white" : "black"
         }
-        Image{
-            id: image4
-            width: 24
-            height: 24
-            z: 3
-            anchors.verticalCenter: parent.verticalCenter
+
+        MouseArea {
+            id: diagnosismouseArea
+            x: 0
+            y: 0
+            hoverEnabled: true
+            anchors.fill: parent
+            onClicked: {
+                overviewPane.visible=false
+                serverMallPane.visible=false
+                serverProductInfoPane.visible=false
+                diagnosisPane.visible=true
+                sharePane.visible=false
+                settingPane.visible=false
+
+            }
+        }
+
+        Rectangle {
+            id: imagebackground3
+            y: 6
+            width: 57
+            height: 50
+            color: "#2196F3"
             anchors.left: parent.left
-            anchors.leftMargin: 15
-            source: "./icons/ic_share_black_24dp_1x.png"
-            sourceSize.height: 24
-            sourceSize.width: 24
-            fillMode: Image.Stretch
+            anchors.leftMargin: -57
+            Image {
+                id: diagnosisimage
+                anchors.right: parent.right
+                anchors.rightMargin: 11
+                anchors.bottom: parent.bottom
+                anchors.bottomMargin: 9
+                anchors.left: parent.left
+                anchors.leftMargin: 15
+                anchors.top: parent.top
+                anchors.topMargin: 9
+                source: "icon/ic_build_white_24dp_1x.png"
+            }
         }
     }
 
     Button {
-        id: button6
-        x: -3
-        width: 30
-        text: qsTr("偏好設定　")
-        padding: 0
-        font.pointSize: 12
-        anchors.right: parent.right
-        anchors.topMargin: 0
-        leftPadding: -10
-        anchors.left: parent.left
-        visible: true
-        anchors.top: button5.bottom
-        anchors.leftMargin: 0
-        anchors.rightMargin: 0
-        font.family: "Microsoft JhengHei UI"
-        Material.background: mouseArea4.containsMouse? "#8c9eff" : "#eeeeee"
-        Material.elevation: 0
-        MouseArea{
-            id:mouseArea4
-            anchors.fill: parent
-            hoverEnabled: true
+        id: buttonshare
+        x: 57
+        y: 171
+        width: 143
+        height: 62
+        Material.background: sharemouseArea.containsMouse?"#3F51B5":"white"
+        Material.elevation:0
+        Text {
+            width: 141
+            height: 25
+            color: sharemouseArea.containsMouse ? "white" : "black"
+            text: qsTr("分享及備份       ")
+            anchors.verticalCenterOffset: 1
+            anchors.horizontalCenterOffset: 7
+            anchors.centerIn: parent
+            font.pointSize: 15
+            font.family: "Microsoft JhengHei UI"
         }
-        Image{
-            id: image5
-            width: 24
-            height: 24
-            z: 3
-            anchors.verticalCenter: parent.verticalCenter
+
+        MouseArea {
+            id: sharemouseArea
+            x: 0
+            y: 0
+            hoverEnabled: true
+            anchors.fill: parent
+            onClicked: {
+                overviewPane.visible=false
+                serverMallPane.visible=false
+                serverProductInfoPane.visible=false
+                diagnosisPane.visible=false
+                sharePane.visible=true
+                settingPane.visible=false
+
+            }
+        }
+
+        Rectangle {
+            id: imagebackground4
+            y: 6
+            width: 57
+            height: 50
+            color: "#3F51B5"
             anchors.left: parent.left
-            anchors.leftMargin: 15
-            source: "./icons/ic_settings_black_24dp_1x.png"
-            sourceSize.height: 24
-            sourceSize.width: 24
-            fillMode: Image.Stretch
+            anchors.leftMargin: -57
+            Image {
+                id: shareimage
+                anchors.right: parent.right
+                anchors.rightMargin: 11
+                anchors.left: parent.left
+                anchors.leftMargin: 15
+                anchors.bottom: parent.bottom
+                anchors.bottomMargin: 9
+                anchors.top: parent.top
+                anchors.topMargin: 9
+                source: "icon/ic_share_white_24dp_1x.png"
+            }
         }
     }
+
+    Button {
+        id: buttonsetting
+        x: 57
+        y: 221
+        width: 143
+        height: 62
+        Material.background: settingmouseArea.containsMouse?"#9E9E9E":"white"
+        Material.elevation:0
+        Text {
+            width: 129
+            height: 25
+            color: settingmouseArea.containsMouse ? "white" : "black"
+            text: qsTr("偏好設定        ")
+            anchors.verticalCenterOffset: 1
+            anchors.horizontalCenterOffset: 1
+            anchors.centerIn: parent
+            font.pointSize: 15
+            font.family: "Microsoft JhengHei UI"
+        }
+
+        MouseArea {
+            id: settingmouseArea
+            x: 0
+            y: 0
+            hoverEnabled: true
+            anchors.fill: parent
+            onClicked: {
+                overviewPane.visible=false
+                serverMallPane.visible=false
+                serverProductInfoPane.visible=false
+                diagnosisPane.visible=false
+                sharePane.visible=false
+                settingPane.visible=true
+
+            }
+        }
+
+        Rectangle {
+            id: imagebackground5
+            y: 6
+            width: 57
+            height: 50
+            color: "#9E9E9E"
+            anchors.left: parent.left
+            anchors.leftMargin: -57
+            Image {
+                id: settingimage
+                anchors.right: parent.right
+                anchors.rightMargin: 11
+                anchors.left: parent.left
+                anchors.leftMargin: 15
+                anchors.bottom: parent.bottom
+                anchors.bottomMargin: 9
+                anchors.top: parent.top
+                anchors.topMargin: 9
+                source: "icon/ic_settings_white_24dp_1x.png"
+            }
+        }
+    }
+
 }
