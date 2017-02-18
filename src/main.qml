@@ -22,6 +22,7 @@ ApplicationWindow {
     {
         id:loadingPane
         z: 3
+        visible:false
     }
 
     Pane {
@@ -43,7 +44,11 @@ ApplicationWindow {
             anchors.fill: parent
             spacing: 0.1
 
-            SearchPane{}
+            BannerPane{
+                id:bannerPane
+            }
+
+            //            SearchPane{}
 
             Pane {
                 id: bannerborder
@@ -80,9 +85,16 @@ ApplicationWindow {
                     Material.background:"#d3d3d3"
                 }
 
-                OpPane{
+                Pane{
                     id:opPane
-
+                    width: 823
+                    height: 579
+                    bottomPadding: 0
+                    rightPadding: 0
+                    leftPadding: 0
+                    topPadding: 0
+                    Layout.fillWidth: true
+                    Layout.fillHeight: true
                     OverviewPane{
                         id:overviewPane
                         visible:true
