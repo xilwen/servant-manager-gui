@@ -13,8 +13,6 @@
         <file>PerfMeterPane.qml</file>
         <file>WelcomePane.qml</file>
         <file>DiagnosisPane.qml</file>
-        <file>OpPane.qml</file>
-        <file>SearchPane.qml</file>
         <file>ServerMallPane.qml</file>
         <file>SettingPane.qml</file>
         <file>SharePane.qml</file>
@@ -43,6 +41,9 @@
         <file>icon/ic_store_white_24dp_1x.png</file>
         <file>icon/ic_timer_white_48px.png</file>
         <file>icon/orangebackground.png</file>
+        <file>OverviewModule_Info.qml</file>
+        <file>OverviewModule_ServerQuickAction.qml</file>
+        <file>OverviewModule_NewServerFloatingButton.qml</file>
+        <file>icon/ic_search.png</file>
     </qresource>
-    <qresource prefix="/FirstTime"/>
 </RCC>

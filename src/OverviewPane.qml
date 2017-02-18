@@ -19,368 +19,212 @@ Pane {
     anchors.leftMargin: 0
     anchors.topMargin: 0
     anchors.fill: parent
-    Label {
-        id: serverlabel
-        width: 234
-        height: 34
-        text: qsTr("已經安裝的伺服器")
-        anchors.top: parent.top
-        anchors.topMargin: 18
+    ServerObjectButton{
+        id: machinePane1
         anchors.left: parent.left
-        anchors.leftMargin: 18
-        font.family: "Microsoft JhengHei UI"
-        font.pointSize: 22
-
-        ServerObjectButton{
-            id: machinePane1
+        anchors.leftMargin: 23
+        anchors.top: parent.bottom
+        anchors.topMargin: -458
+        objectName: "machinePane1"
+        onClicked: {
+            overviewPane.visible = false
+            serverInfoPane.visible = true
+        }
+        visible:false
+    }
+    OverviewModule_Info
+    {
+        id:overviewModuleInfo
+        height: 210
+        anchors.top: parent.top
+        anchors.topMargin: 0
+        anchors.right: parent.right
+        anchors.rightMargin: 0
+        anchors.left: parent.left
+        anchors.leftMargin: 0
+        visible:false
+        //visible:true
+        Label {
+            id: label
+            width: 61
+            height: 35
+            color: "#ffffff"
+            text: qsTr("歡迎")
             anchors.left: parent.left
-            anchors.leftMargin: 0
-            anchors.top: parent.bottom
-            anchors.topMargin: 20
-            objectName: "machinePane1"
-            onClicked: {
-                overviewPane.visible = false
-                serverInfoPane.visible = true
-            }
-        }
-        FileDialog {
-            id: fileDialog
-            objectName: "fileDialog"
-            title: "選擇要匯入的VirtualBox虛擬機器包裝(*.ova)"
-            nameFilters: [ "OVA (*.ova)" ]
-            selectMultiple: false
-            selectExisting: true
-            selectFolder: false
-            folder: shortcuts.home
-            visible: false
-            onAccepted: {
-                mainWindow.importPackage()
-            }
-            onRejected: {
-                console.log("Canceled")
-            }
-        }
-        Button {
-            id: serverbutton
-            width: 345
-            height: 84
-            anchors.top: parent.bottom
-            anchors.topMargin: 32
-            anchors.left: serverlabel.left
-            anchors.leftMargin: 0
-            checkable: true
+            anchors.leftMargin: 12
+            anchors.top: parent.top
+            anchors.topMargin: 7
+            styleColor: "#ffffff"
+            verticalAlignment: Text.AlignVCenter
+            horizontalAlignment: Text.AlignHCenter
+            font.pointSize: 22
             font.family: "Microsoft JhengHei UI"
-            font.pointSize: 17
-            Material.elevation: 8
-            highlighted: true
-            Material.background: "White"
-            visible:false
-
-            Image {
-                id: serverimage1
-                width: 65
-                height: 65
-                anchors.bottom: parent.bottom
-                anchors.bottomMargin: 10
-                anchors.top: parent.top
-                anchors.topMargin: 10
-                anchors.left: serverbutton.left
-                anchors.leftMargin: 10
-                source: "icon/ic_folder_black_48dp_2x.png"
-            }
-            Text {
-                id: nametext1
-                y: 13
-                width: 152
-                height: 19
-                text: qsTr("伺服器名稱")
-                anchors.left: serverimage1.right
-                anchors.leftMargin: 10
-                verticalAlignment: Text.AlignVCenter
-                font.pointSize: 12
-                font.family:"Microsoft JhengHei UI"
-            }
-
-            Text {
-                id: typetext1
-                y: 33
-                width: 152
-                height: 19
-                text: qsTr("伺服器類型")
-                anchors.left: serverimage1.right
-                anchors.leftMargin: 10
-                verticalAlignment: Text.AlignVCenter
-                font.pointSize: 12
-                font.family:"Microsoft JhengHei UI"
-            }
-
-            Text {
-                id: statext1
-                y: 53
-                width: 152
-                height: 19
-                text: qsTr("伺服器狀態")
-                anchors.left: serverimage1.right
-                anchors.leftMargin: 10
-                font.pointSize: 12
-                font.family:"Microsoft JhengHei UI"
-            }
-
-            Image {
-                id: settingimage1
-                x: 291
-                width: 32
-                height: 32
-                anchors.right: parent.right
-                anchors.rightMargin: 22
-                anchors.top: parent.top
-                anchors.topMargin: 14
-                source: "icon/ic_menu_black_24dp_2x.png"
-
-            }
-
-
+            Material.accent:"#FFFFFF"
         }
-        Button {
-            id: serverbutton2
-            y: 66
-            width: 345
-            height: 84
-            anchors.left: serverbutton.right
-            anchors.leftMargin: 50
-            checkable: true
+
+        Label {
+            id: label1
+            x: 13
+            width: 399
+            height: 29
+            color: "#ffffff"
+            text: qsTr("從左方的「伺服器商城」下載並建立伺服器")
+            anchors.top: label.bottom
+            anchors.topMargin: 13
+            verticalAlignment: Text.AlignVCenter
+            horizontalAlignment: Text.AlignLeft
+            font.pointSize: 16
             font.family: "Microsoft JhengHei UI"
-            font.pointSize: 17
-            Material.elevation: 8
-            highlighted: true
-            Material.background: "White"
-            visible:false
-
-            Image {
-                id: serverimage2
-                width: 65
-                height: 65
-                anchors.top: parent.top
-                anchors.topMargin: 10
-                anchors.bottom: parent.bottom
-                anchors.bottomMargin: 10
-                anchors.left: parent.left
-                anchors.leftMargin: 10
-                source: "icon/ic_folder_black_48dp_2x.png"
-            }
-            Text {
-                id: nametext2
-                y: 13
-                width: 152
-                height: 19
-                text: qsTr("伺服器名稱")
-                anchors.left: serverimage2.right
-                anchors.leftMargin: 10
-                verticalAlignment: Text.AlignVCenter
-                font.pointSize: 12
-                font.family:"Microsoft JhengHei UI"
-            }
-
-            Text {
-                id: typetext2
-                y: 33
-                width: 152
-                height: 19
-                text: qsTr("伺服器類型")
-                anchors.left: serverimage2.right
-                anchors.leftMargin: 10
-                verticalAlignment: Text.AlignVCenter
-                font.pointSize: 12
-                font.family:"Microsoft JhengHei UI"
-            }
-
-            Text {
-                id: statext2
-                y: 53
-                width: 152
-                height: 19
-                text: qsTr("伺服器狀態")
-                anchors.left: serverimage2.right
-                anchors.leftMargin: 10
-                font.pointSize: 12
-                font.family:"Microsoft JhengHei UI"
-            }
-
-            Image {
-                id: settingimage2
-                x: 291
-                width: 32
-                height: 32
-                anchors.right: parent.right
-                anchors.rightMargin: 22
-                anchors.top: parent.top
-                anchors.topMargin: 14
-                source: "icon/ic_menu_black_24dp_2x.png"
-
-            }
-
-
+            Material.accent:"#FFFFFF"
         }
-        Button {
-            id: serverbutton3
-            width: 345
-            height: 84
-            anchors.top: serverbutton.bottom
-            anchors.topMargin: 40
-            checkable: true
+
+        Label {
+            id: label2
+            x: 13
+            width: 490
+            height: 31
+            color: "#ffffff"
+            text: qsTr("已經在VirtualBox上設定好伺服器?將造訪分享與備份")
+            anchors.top: label1.bottom
+            anchors.topMargin: 13
+            verticalAlignment: Text.AlignVCenter
+            horizontalAlignment: Text.AlignLeft
+            font.pointSize: 16
             font.family: "Microsoft JhengHei UI"
-            font.pointSize: 17
-            Material.elevation: 8
-            highlighted: true
-            Material.background: "White"
-            visible:false
-
-            Image {
-                id: serverimage3
-                width: 65
-                height: 65
-                anchors.bottom: parent.bottom
-                anchors.bottomMargin: 10
-                anchors.top: parent.top
-                anchors.topMargin: 10
-                anchors.left: parent.left
-                anchors.leftMargin: 10
-                source: "icon/ic_folder_black_48dp_2x.png"
-            }
-            Text {
-                id: nametext3
-                y: 13
-                width: 152
-                height: 19
-                text: qsTr("伺服器名稱")
-                anchors.left: serverimage3.right
-                anchors.leftMargin: 10
-                verticalAlignment: Text.AlignVCenter
-                font.pointSize: 12
-                font.family:"Microsoft JhengHei UI"
-            }
-
-            Text {
-                id: typetext3
-                y: 33
-                width: 152
-                height: 19
-                text: qsTr("伺服器類型")
-                anchors.left: serverimage3.right
-                anchors.leftMargin: 10
-                verticalAlignment: Text.AlignVCenter
-                font.pointSize: 12
-                font.family:"Microsoft JhengHei UI"
-            }
-
-            Text {
-                id: statext3
-                y: 53
-                width: 152
-                height: 19
-                text: qsTr("伺服器狀態")
-                anchors.left: serverimage3.right
-                anchors.leftMargin: 10
-                font.pointSize: 12
-                font.family:"Microsoft JhengHei UI"
-            }
-
-            Image {
-                id: settingimage3
-                x: 291
-                width: 32
-                height: 32
-                anchors.right: parent.right
-                anchors.rightMargin: 22
-                anchors.top: parent.top
-                anchors.topMargin: 14
-                source: "icon/ic_menu_black_24dp_2x.png"
-
-            }
-
-
+            Material.accent:"#FFFFFF"
         }
-        Button {
-            id: serverbutton4
-            y: 190
-            width: 345
-            height: 84
-            anchors.left: serverbutton3.right
-            anchors.leftMargin: 50
-            checkable: true
-            font.family: "Microsoft JhengHei UI"
-            font.pointSize: 17
-            Material.elevation: 8
-            highlighted: true
-            Material.background: "White"
-            visible:false
-            //onClicked:fileDialog.open()
-            Image {
-                id: serverimage4
-                width: 65
-                height: 65
-                anchors.top: parent.top
-                anchors.topMargin: 10
-                anchors.bottom: parent.bottom
-                anchors.bottomMargin: 10
-                anchors.left: parent.left
-                anchors.leftMargin: 10
-                source: "icon/ic_folder_black_48dp_2x.png"
-            }
-            Text {
-                id: nametext4
-                y: 13
-                width: 152
-                height: 19
-                text: qsTr("伺服器名稱")
-                anchors.left: serverimage4.right
-                anchors.leftMargin: 10
-                verticalAlignment: Text.AlignVCenter
-                font.pointSize: 12
-                font.family:"Microsoft JhengHei UI"
-            }
 
-            Text {
-                id: typetext4
-                y: 33
-                width: 152
-                height: 19
-                text: qsTr("伺服器類型")
-                anchors.left: serverimage4.right
-                anchors.leftMargin: 10
-                verticalAlignment: Text.AlignVCenter
-                font.pointSize: 12
-                font.family:"Microsoft JhengHei UI"
-            }
 
-            Text {
-                id: statext4
-                y: 53
-                width: 152
-                height: 19
-                text: qsTr("伺服器狀態")
-                anchors.left: serverimage4.right
-                anchors.leftMargin: 10
-                font.pointSize: 12
-                font.family:"Microsoft JhengHei UI"
-            }
+    }
 
-            Image {
-                id: settingimage4
-                x: 291
-                width: 32
-                height: 32
-                anchors.right: parent.right
-                anchors.rightMargin: 22
-                anchors.top: parent.top
-                anchors.topMargin: 14
-                source: "icon/ic_menu_black_24dp_2x.png"
-
-            }
+    FileDialog {
+        id: fileDialog
+        objectName: "fileDialog"
+        title: "選擇要匯入的VirtualBox虛擬機器包裝(*.ova)"
+        nameFilters: [ "OVA (*.ova)" ]
+        selectMultiple: false
+        selectExisting: true
+        selectFolder: false
+        folder: shortcuts.home
+        visible: false
+        onAccepted: {
+            mainWindow.importPackage()
+        }
+        onRejected: {
+            console.log("Canceled")
         }
     }
-}
+    OverviewModule_Info
+    {
+        id:overviewModuleInfo1
+        height: 175
+        anchors.right: parent.right
+        anchors.rightMargin: 0
+        anchors.left: parent.left
+        anchors.leftMargin: 0
+        anchors.top: parent.top
+        anchors.topMargin: 0
+        //visible:false
+        visible:true
+        Label {
+            id: label3
+            width: 115
+            height: 35
+            text: qsTr("狀態良好")
+            anchors.left: parent.left
+            anchors.leftMargin: 13
+            anchors.top: parent.top
+            anchors.topMargin: 7
+            color: "#ffffff"
+            styleColor: "#ffffff"
+            verticalAlignment: Text.AlignVCenter
+            horizontalAlignment: Text.AlignHCenter
+            font.pointSize: 22
+            font.family: "Microsoft JhengHei UI"
+            Material.accent:"#FFFFFF"
 
+        }
+
+        Label {
+            id: label4
+            x: 13
+            width: 288
+            height: 30
+            text: qsTr("目前服務都正常運作中")
+            verticalAlignment: Text.AlignVCenter
+            horizontalAlignment: Text.AlignLeft
+            anchors.top: label3.bottom
+            anchors.topMargin: 13
+            color: "#ffffff"
+            styleColor: "#ffffff"
+            font.pointSize: 16
+            font.family: "Microsoft JhengHei UI"
+            Material.accent:"#FFFFFF"
+        }
+    }
+    OverviewModule_ServerQuickAction
+    {
+        id:  overviewModuleServerQuickAction
+        x: 1
+        anchors.top: overviewModuleInfo1.bottom
+        anchors.topMargin: 40
+        //visible:false
+        visible:true
+
+        Label {
+            id: label5
+            x: 86
+            width: 96
+            height: 30
+            text: qsTr("FTPSvr_2")
+            anchors.top: parent.top
+            anchors.topMargin: 14
+            verticalAlignment: Text.AlignVCenter
+            font.pointSize: 16
+            font.family: "Microsoft JhengHei UI"
+        }
+
+        Label {
+            id: label6
+            x: 86
+            y: 41
+            width: 138
+            height: 26
+            text: qsTr("FTP伺服器")
+            anchors.bottom: parent.bottom
+            anchors.bottomMargin: 14
+            verticalAlignment: Text.AlignVCenter
+            font.pointSize: 12
+            color:"#616161"
+            font.family: "Microsoft JhengHei UI"
+        }
+    }
+
+    OverviewModule_NewServerFloatingButton{
+        id:button
+        x: 730
+        y: 499
+        anchors.bottom: parent.bottom
+        anchors.bottomMargin: 0
+        anchors.right: parent.right
+        anchors.rightMargin: 13
+        //visible:false
+        visible:true
+    }
+
+    Label {
+        id: label7
+        x: 14
+        y: 297
+        width: 154
+        height: 25
+        text: qsTr("啟動伺服器")
+        font.pointSize: 16
+        font.family: "Microsoft JhengHei UI"
+        //visible:false
+        visible:true
+    }
+}
 
 
 
