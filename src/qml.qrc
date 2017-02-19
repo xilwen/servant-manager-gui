@@ -56,5 +56,22 @@
         <file>AddingServerPane.qml</file>
         <file>ErrorHappenedPane.qml</file>
         <file>icon/ic_info_black_24dp.png</file>
+        <file>icon/ic_help_outline_2x.png</file>
+        <file>icon/ic_schedule_2x.png</file>
+        <file>icon/ic_signal_cellular_connected_no_internet_4_bar_2x.png</file>
+        <file>icon/ic_visibility_2x.png</file>
+        <file>icon/ic_camera_enhance_2x.png</file>
+        <file>icon/ic_file_upload_2x.png</file>
+        <file>icon/ic_apps_2x.png</file>
+        <file>icon/ic_shopping_basket_2x.png</file>
+        <file>icon/ic_code_2x.png</file>
+        <file>icon/ic_settings_2x.png</file>
+        <file>icon/ic_access_time_2x.png</file>
+        <file>icon/ic_insert_link_2x.png</file>
+        <file>icon/ic_location_searching_2x.png</file>
+        <file>icon/ic_search_white.png</file>
+        <file>icon/ic_update.png</file>
+        <file>icon/ic_info.png</file>
+        <file>icon/ic_update_2x.png</file>
     </qresource>
 </RCC>
