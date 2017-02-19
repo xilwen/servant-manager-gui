@@ -84,7 +84,7 @@ Pane {
             width: 490
             height: 31
             color: "#ffffff"
-            text: qsTr("已經在VirtualBox上設定好伺服器?將造訪分享與備份")
+            text: qsTr("已經在VirtualBox上設定好伺服器?請造訪分享與備份")
             anchors.top: label1.bottom
             anchors.topMargin: 13
             verticalAlignment: Text.AlignVCenter
@@ -93,8 +93,6 @@ Pane {
             font.family: "Microsoft JhengHei UI"
             Material.accent:"#FFFFFF"
         }
-
-
     }
 
     FileDialog {
@@ -142,7 +140,6 @@ Pane {
             font.pointSize: 22
             font.family: "Microsoft JhengHei UI"
             Material.accent:"#FFFFFF"
-
         }
 
         Label {
@@ -209,8 +206,6 @@ Pane {
         anchors.right: parent.right
         anchors.rightMargin: 13
         visible:false
-
-
         //visible:true
     }
 
@@ -414,7 +409,7 @@ Pane {
             id: label16
             y: 334
             height: 24
-            text: qsTr("SERVANT Watching未運作")
+            text: qsTr("SERVANT Watchdog未運作")
             anchors.bottom: parent.bottom
             anchors.bottomMargin: -2
             horizontalAlignment: Text.AlignHCenter
@@ -890,10 +885,3 @@ Pane {
                 color:"White"
             }
         }
-    }
-}
-
-
-
-
-
