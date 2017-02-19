@@ -23,52 +23,9 @@ Pane {
     Layout.fillWidth: true
     objectName:"serverInfoPane"
 
-    Pane {
-        id: banner
-        height: 45
-        rightPadding: 0
-        bottomPadding: 0
-        leftPadding: 0
-        topPadding: 0
-        anchors.right: parent.right
-        anchors.rightMargin: 0
-        anchors.left: parent.left
-        anchors.leftMargin: 0
-        Material.background: Material.BlueGrey
-        Material.foreground: "#ffffff"
-        Material.elevation: 5
+    BackButton{
+    id:backButton
 
-        Label {
-            id: label
-            text: qsTr(" 伺服器狀態")
-            font.pointSize: 14
-            font.family: "Microsoft JhengHei UI"
-            anchors.left: button.right
-            anchors.leftMargin: 0
-            anchors.verticalCenter: parent.verticalCenter
-        }
-
-        Button {
-            id: button
-            width: 47
-            height: 48
-            text: qsTr("     ")
-            anchors.left: parent.left
-            anchors.leftMargin: 0
-            anchors.verticalCenter: parent.verticalCenter
-            Material.elevation: 0
-            Image{
-                width: 24
-                height: 24
-                anchors.horizontalCenter: parent.horizontalCenter
-                anchors.verticalCenter: parent.verticalCenter
-                source: "icon/ic_arrow_back_white_24dp_1x.png"
-            }
-            onClicked: {
-                overviewPane.visible = true
-                serverInfoPane.visible = false
-            }
-        }
     }
 
     Label {

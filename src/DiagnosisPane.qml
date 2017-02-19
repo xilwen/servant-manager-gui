@@ -21,20 +21,21 @@ Pane {
     anchors.fill: parent
     Button {
         id: checkserverbutton
-        x: 18
-        width: 345
-        height: 84
+        x: 123
+        y: 162
+        width: 306
+        height: 81
         anchors.top: text2.bottom
         anchors.topMargin: 50
         Material.background: "White"
         Material.elevation: 6
         Text {
             id: text1
-            width: 236
+            width: 50
             height: 29
-            text: qsTr("檢視SERVANT紀錄")
+            text: qsTr("記錄")
             anchors.top: parent.top
-            anchors.topMargin: 17
+            anchors.topMargin: 19
             anchors.left: reorderimage.right
             anchors.leftMargin: 10
             horizontalAlignment: Text.AlignLeft
@@ -45,46 +46,28 @@ Pane {
 
         Image {
             id: reorderimage
-            width: 65
-            height: 65
-            anchors.bottom: parent.bottom
-            anchors.bottomMargin: 10
-            anchors.top: parent.top
-            anchors.topMargin: 10
+            width: 55
             anchors.left: parent.left
-            anchors.leftMargin: 10
+            anchors.leftMargin: 13
+            anchors.bottom: parent.bottom
+            anchors.bottomMargin: 13
+            anchors.top: parent.top
+            anchors.topMargin: 13
             source: "icon/ic_reorder_black_24dp_2x.png"
         }
     }
 
+    Label {
+        id: label
+        x: 20
+        y: 18
+        width: 204
+        height: 57
+        text: qsTr("SERVANT")
+        horizontalAlignment: Text.AlignHCenter
+        verticalAlignment: Text.AlignVCenter
+    }
 
-        Text {
-            id: text2
-            width: 313
-            height: 41
-            text: qsTr("Watchdog服務尚未啟動")
-            anchors.top: parent.top
-            anchors.topMargin: 18
-            anchors.left: parent.left
-            anchors.leftMargin: 18
-            verticalAlignment: Text.AlignVCenter
-            font.pointSize: 22
-            font.family: "Microsoft JhengHei UI"
-        }
-
-        Text {
-            id: text3
-            x: 18
-            width: 245
-            height: 33
-            text: qsTr("無法使用機器狀態監視功能。")
-            verticalAlignment: Text.AlignVCenter
-            anchors.top: text2.bottom
-            anchors.topMargin: -4
-            font.pointSize: 14
-            font.family: "Microsoft JhengHei UI"
-            color:"#616161"
-        }
 
 
 
