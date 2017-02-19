@@ -45,5 +45,12 @@
         <file>OverviewModule_ServerQuickAction.qml</file>
         <file>OverviewModule_NewServerFloatingButton.qml</file>
         <file>icon/ic_search.png</file>
+        <file>ServerStateChangingPane.qml</file>
+        <file>icon/ic_power_settings_new_black_48dp.png</file>
+        <file>icon/ic_create_black_24dp.png</file>
+        <file>AddServerPane.qml</file>
+        <file>AddingServerPane.qml</file>
+        <file>ErrorHappenedPane.qml</file>
+        <file>icon/ic_info_black_24dp.png</file>
     </qresource>
 </RCC>
