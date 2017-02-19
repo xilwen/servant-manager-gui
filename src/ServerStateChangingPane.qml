@@ -23,6 +23,7 @@ Pane {
     Button {
         id: backbutton
         height: 58
+        visible: false
         anchors.top: parent.top
         anchors.topMargin: -18
         anchors.left: parent.left
@@ -37,8 +38,6 @@ Pane {
             diagnosisPane.visible=false
             sharePane.visible=false
             settingPane.visible=false
-
-
         }
 
         Image {
@@ -60,7 +59,7 @@ Pane {
             anchors.left: backimage.right
             anchors.leftMargin: 22
             verticalAlignment: Text.AlignVCenter
-            font.family: "Microsoft JhengHei UI"
+            font.family: qsTr("Microsoft JhengHei UI")
             font.pointSize: 16
             color: "white"
             objectName: serverStartingText
@@ -95,6 +94,7 @@ Pane {
         anchors.topMargin: 10
         objectName: "progressBarServerStateChanging"
         indeterminate: true
+        Material.accent: Material.BlueGrey
         visible: true
         value: 0.5
     }
@@ -120,6 +120,7 @@ Pane {
         id: changingimage
         width: 60
         height: 60
+        visible: false
         anchors.right: parent.right
         anchors.rightMargin: 369
         anchors.left: parent.left
@@ -137,6 +138,7 @@ Pane {
     Label {
         id: serverChangingLabel
         text: "正在變更..."
+        visible: false
         anchors.right: parent.right
         anchors.rightMargin: 329
         anchors.left: parent.left

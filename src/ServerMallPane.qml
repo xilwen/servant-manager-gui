@@ -43,7 +43,7 @@ Pane {
               font.pointSize: 28
               anchors.leftMargin: 10
               anchors.left: parent.left
-              font.family: "Microsoft JhengHei UI"
+              font.family: qsTr("Microsoft JhengHei UI")
           }
           Label {
               id: label
@@ -53,7 +53,7 @@ Pane {
               anchors.topMargin: 10
               anchors.left: label1.left
               anchors.leftMargin: 0
-              font.family: "Microsoft JhengHei UI"
+              font.family: qsTr("Microsoft JhengHei UI")
           }
 
           Button {

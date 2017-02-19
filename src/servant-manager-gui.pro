@@ -1,4 +1,4 @@
-QT += qml quick quickcontrols2 core
+QT += quick quickcontrols2 core
 
 CONFIG += c++11
 

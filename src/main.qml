@@ -1,13 +1,9 @@
 import QtQuick 2.7
 import QtQuick.Controls 2.0
 import QtQuick.Layouts 1.0
-import QtQuick 2.7
 import QtQuick.Window 2.0
-import QtQuick.Controls 2.0
-import QtQuick.Layouts 1.0
 import QtQuick.Controls.Material 2.0
 import QtQuick.Dialogs 1.2
-import QtQuick 2.0
 
 ApplicationWindow {
     visible: true
@@ -15,9 +11,9 @@ ApplicationWindow {
     height: 640
     minimumWidth: 1024
     minimumHeight: 640
-    objectName: "win"
-    title: qsTr("SERVANT Development GUI")
+    title: qsTr("SERVANT Manager")
     Material.accent:Material.BlueGrey
+
     LoadingPane
     {
         id:loadingPane
@@ -48,8 +44,6 @@ ApplicationWindow {
                 id:bannerPane
             }
 
-            //            SearchPane{}
-
             Pane {
                 id: bannerborder
                 width: 200
@@ -73,8 +67,6 @@ ApplicationWindow {
                     id:controlPane
                 }
 
-
-
                 Pane {
                     id:  columnBorder
                     width: 200
@@ -95,9 +87,20 @@ ApplicationWindow {
                     topPadding: 0
                     Layout.fillWidth: true
                     Layout.fillHeight: true
-                    OverviewPane{
-                        id:overviewPane
+
+                    OverviewPane_Empty{
+                        id:overviewPane_Empty
+                        visible:false
+                    }
+
+                    OverviewPane_Normal{
+                        id:overviewPane_Normal
                         visible:true
+                    }
+
+                    OverviewPane_ServerControl{
+                        id: serverInfoPane
+                        visible:false
                     }
 
                     ServerMallPane{
@@ -122,10 +125,6 @@ ApplicationWindow {
                         visible:false
                     }
 
-                    ServerInfoPane{
-                        id: serverInfoPane
-                        visible:false
-                    }
 
                 }
             }
@@ -137,6 +136,7 @@ ApplicationWindow {
         z: 3
         visible:false
     }
+
     PerfMeterPane{
         id: perfMeterPane
         anchors.fill: parent
