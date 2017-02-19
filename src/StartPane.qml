@@ -33,7 +33,7 @@ Pane {
         verticalAlignment: Text.AlignVCenter
         horizontalAlignment: Text.AlignHCenter
         font.pointSize: 20
-        font.family: "Microsoft JhengHei UI"
+        font.family: qsTr("Microsoft JhengHei UI")
     }
 
     Button {

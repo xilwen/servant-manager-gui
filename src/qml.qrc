@@ -4,8 +4,8 @@
         <file>LoadingPane.qml</file>
         <file>BannerPane.qml</file>
         <file>ControlPane.qml</file>
-        <file>ServerInfoPane.qml</file>
-        <file>OverviewPane.qml</file>
+        <file>OverviewPane_ServerControl.qml</file>
+        <file>OverviewPane_Empty.qml</file>
         <file>ImportPane.qml</file>
         <file>ServerObjectButton.qml</file>
         <file>ServerProductInfoPane.qml</file>
@@ -56,5 +56,15 @@
         <file>AddingServerPane.qml</file>
         <file>ErrorHappenedPane.qml</file>
         <file>icon/ic_info_black_24dp.png</file>
+        <file>OverviewModule_ServerQuickInfo.qml</file>
+        <file>OverviewModule_ServerQuickInfoBlock.qml</file>
+        <file>OverviewModule_ServerQuickControl_ON.qml</file>
+        <file>OverviewModule_ServerQuickControlBlock.qml</file>
+        <file>OverviewPane_Normal.qml</file>
+        <file>OverviewModule_ServerQuickControl_OFF.qml</file>
+        <file>icon/ic_delete_black_48dp_2x.png</file>
+        <file>icon/ic_camera_alt_black_48dp_2x.png</file>
+        <file>icon/ic_exit_to_app_black_48dp_2x.png</file>
+        <file>icon/ic_build_black_48dp_2x.png</file>
     </qresource>
 </RCC>

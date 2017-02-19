@@ -11,7 +11,9 @@ import QtQuick 2.0
 
 Pane {
     id: backButton
+    property alias pageName: label.text
     height: 45
+    property alias button: button
     rightPadding: 0
     bottomPadding: 0
     leftPadding: 0
@@ -26,7 +28,7 @@ Pane {
 
     Label {
         id: label
-        text: qsTr(" ")
+        text: qsTr(" 頁面名稱")
         font.pointSize: 14
         font.family: "Microsoft JhengHei UI"
         anchors.left: button.right

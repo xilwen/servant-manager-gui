@@ -59,7 +59,7 @@ Pane {
         anchors.leftMargin: 1
         verticalAlignment: Text.AlignVCenter
         horizontalAlignment: Text.AlignLeft
-        font.family: "Microsoft JhengHei UI"
+        font.family: qsTr("Microsoft JhengHei UI")
         font.pointSize: 16
     }
     

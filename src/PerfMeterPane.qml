@@ -67,7 +67,7 @@ Pane {
         x: 429
         y: 113
         text: qsTr("請稍候")
-        font.family: "Microsoft JhengHei UI"
+        font.family: qsTr("Microsoft JhengHei UI")
         anchors.verticalCenterOffset: -175
         anchors.verticalCenter: parent.verticalCenter
         anchors.horizontalCenter: parent.horizontalCenter

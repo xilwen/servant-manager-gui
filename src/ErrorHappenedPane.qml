@@ -49,12 +49,12 @@ Pane {
             y: 38
             width: 380
             height: 100
-            text: "SERVANT背景服務發生異常。"
+            text: qsTr("SERVANT背景服務發生異常。")
             font.pointSize: 15
             horizontalAlignment: Text.AlignLeft
             verticalAlignment: Text.AlignTop
             objectName: errorHappenedLabel
-            font.family: "Microsoft JhengHei UI"
+            font.family: qsTr("Microsoft JhengHei UI")
 
         }
     }

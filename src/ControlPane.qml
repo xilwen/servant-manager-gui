@@ -101,7 +101,8 @@ Pane {
             hoverEnabled: true
             anchors.fill: parent
             onClicked: {
-                overviewPane.visible=false
+                overviewPane_Empty.visible=false
+                overviewPane_Normal.visible=false
                 serverMallPane.visible=true
                 serverProductInfoPane.visible=false
                 diagnosisPane.visible=false
@@ -176,7 +177,8 @@ Pane {
             hoverEnabled: true
             anchors.fill: parent
             onClicked: {
-                overviewPane.visible=false
+                overviewPane_Empty.visible=false
+                overviewPane_Normal.visible=false
                 serverMallPane.visible=false
                 serverProductInfoPane.visible=false
                 diagnosisPane.visible=true
@@ -236,7 +238,8 @@ Pane {
             hoverEnabled: true
             anchors.fill: parent
             onClicked: {
-                overviewPane.visible=false
+                overviewPane_Empty.visible=false
+                overviewPane_Normal.visible=false
                 serverMallPane.visible=false
                 serverProductInfoPane.visible=false
                 diagnosisPane.visible=false
@@ -296,7 +299,8 @@ Pane {
             hoverEnabled: true
             anchors.fill: parent
             onClicked: {
-                overviewPane.visible=false
+                overviewPane_Empty.visible=false
+                overviewPane_Normal.visible=false
                 serverMallPane.visible=false
                 serverProductInfoPane.visible=false
                 diagnosisPane.visible=false
@@ -328,5 +332,4 @@ Pane {
             }
         }
     }
-
 }
