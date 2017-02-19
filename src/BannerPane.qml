@@ -74,16 +74,21 @@ Pane {
             anchors.topMargin: -6
             anchors.right: parent.right
             anchors.rightMargin: -1
-            Material.elevation:1
+            Material.elevation:0
             Material.background: "#2196F3"
 
             Image {
                 id: image
-                x: -137
-                y: 235
-                width: 100
-                height: 100
-                source: "qrc:/qtquickplugin/images/template_image.png"
+                height: 40
+                anchors.right: parent.right
+                anchors.rightMargin: 18
+                anchors.left: parent.left
+                anchors.leftMargin: 18
+                anchors.top: parent.top
+                anchors.topMargin: 10
+                anchors.bottom: parent.bottom
+                anchors.bottomMargin: 10
+                source: "icon/ic_search_white.png"
             }
         }
     }
@@ -100,18 +105,43 @@ Pane {
         anchors.topMargin: -6
         anchors.right: button2.left
         anchors.rightMargin: 9
-        Material.elevation:1
+        Material.elevation:0
+        Material.background: "White"
+
+        Image {
+            id: image1
+            x: 0
+            y: -1
+            width: 40
+            height: 40
+            anchors.top: button1.bottom
+            anchors.topMargin: -43
+            source: "icon/ic_update_2x.png"
+        }
     }
 
     Button {
         id: button2
+        x: 960
         width: 40
-        text: qsTr("")
+        anchors.verticalCenterOffset: 0
         padding: 0
         anchors.verticalCenter: parent.verticalCenter
         anchors.right: parent.right
         anchors.rightMargin: 0
         Material.elevation:1
+        Material.background: "White"
+
+        Image {
+            id: image2
+            x: 0
+            y: -9
+            width: 40
+            height: 40
+            anchors.top: button2.bottom
+            anchors.topMargin: -44
+            source: "icon/ic_info_black_24dp.png"
+        }
     }
 
 }

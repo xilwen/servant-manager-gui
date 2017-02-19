@@ -19,122 +19,207 @@ Pane {
     anchors.leftMargin: 0
     anchors.topMargin: 0
     anchors.fill: parent
+    Label {
+        id: settingtServertMalllabel
+        width: 133
+        height: 36
+        text: qsTr("伺服器商城")
+        anchors.left: parent.left
+        anchors.leftMargin: 22
+        anchors.top: parent.top
+        anchors.topMargin: 11
+        horizontalAlignment: Text.AlignHCenter
+        verticalAlignment: Text.AlignVCenter
+        font.pointSize: 22
+        font.family: "Microsoft JhengHei UI"
+    }
+
     Button {
-        id: settingbutton
-        x: 8
+        id: servantsitebutton
+        width: 345
+        height: 84
+        anchors.top: settingtServertMalllabel.bottom
+        anchors.topMargin: 9
+        anchors.left: parent.left
+        anchors.leftMargin: 22
+        checkable: true
+        Material.elevation: 8
+        highlighted: true
+        Material.background: "White"
+        Image {
+            id: servantsiteimage
+            width: 50
+            anchors.bottom: parent.bottom
+            anchors.bottomMargin: 17
+            anchors.top: parent.top
+            anchors.topMargin: 17
+            anchors.left: parent.left
+            anchors.leftMargin: 10
+            source: "icon/ic_shopping_basket_2x.png"
+        }
+
+        Label {
+            id: servantsitelabel
+            text: qsTr("SERVANT服務網址")
+            anchors.top: parent.top
+            anchors.topMargin: 21
+            anchors.left: servantsiteimage.right
+            anchors.leftMargin: 8
+            font.family: "Microsoft JhengHei UI"
+            font.pointSize: 16
+            verticalAlignment: Text.AlignVCenter
+        }
+
+
+    }
+
+    Label {
+        id: generallabel
+        width: 133
+        height: 36
+        text: qsTr("一般")
+        anchors.left: parent.left
+        anchors.leftMargin: 23
+        anchors.top: servantsitebutton.bottom
+        anchors.topMargin: 9
+        font.family: "Microsoft JhengHei UI"
+        font.pointSize: 22
+        verticalAlignment: Text.AlignVCenter
+        horizontalAlignment: Text.AlignLeft
+    }
+
+    Button {
+        id: settingServantbutton
         width: 345
         height: 84
         anchors.left: parent.left
-        anchors.leftMargin: 18
-        anchors.top: parent.top
-        anchors.topMargin: 62
+        anchors.leftMargin: 22
+        anchors.top: generallabel.bottom
+        anchors.topMargin: 9
+        Material.elevation: 8
+        highlighted: true
         Material.background: "White"
-        Material.elevation: 6
-        Text {
-            id: onlineservertext1
-            width: 161
-            height: 29
-            text: qsTr("線上服務來源")
+
+        Image {
+            id: settingServantimage
+            width: 50
+            height: 50
+            anchors.left: parent.left
+            anchors.leftMargin: 10
             anchors.top: parent.top
             anchors.topMargin: 17
-            anchors.left: parent.left
-            anchors.leftMargin: 16
+            anchors.bottom: parent.bottom
+            anchors.bottomMargin: 17
+            source: "icon/ic_settings_2x.png"
+        }
+
+        Label {
+            id: settingServantlabel
+            text: qsTr("SERVANT設定")
+            anchors.left: settingServantimage.right
+            anchors.leftMargin: 8
+            anchors.top: parent.top
+            anchors.topMargin: 21
+            font.family: "Microsoft JhengHei UI"
+            font.pointSize: 16
+            horizontalAlignment: Text.AlignLeft
             verticalAlignment: Text.AlignVCenter
-            font.pointSize: 16
-            font.family: "Microsoft JhengHei UI"
-        }
-
-        Text {
-            id: onlineservertext2
-            y: 46
-            width: 287
-            height: 33
-            text: qsTr("設定線上服務的來源伺服器")
-            anchors.left: parent.left
-            anchors.leftMargin: 16
-            verticalAlignment: Text.AlignTop
-            font.pointSize: 12
-            font.family: "Microsoft JhengHei UI"
-            color:"#616161"
         }
     }
 
     Button {
-        id: editbutton
-        x: 18
+        id: settingProgrambutton
+        y: 194
         width: 345
         height: 84
-        anchors.top: settingbutton.bottom
-        anchors.topMargin: 40
-        anchors.left: editbutton.right
-        anchors.leftMargin: 77
+        anchors.left: settingServantbutton.right
+        anchors.leftMargin: 36
+        Material.elevation: 8
+        highlighted: true
         Material.background: "White"
-        Material.elevation: 6
-        Text {
-            id: edittext1
-            width: 161
-            height: 29
-            text: qsTr("設定檔編輯")
+
+        Image {
+            id: settingProgramimage
+            width: 50
+            height: 50
+            anchors.left: parent.left
+            anchors.leftMargin: 10
             anchors.top: parent.top
             anchors.topMargin: 17
-            anchors.left: parent.left
-            anchors.leftMargin: 16
+            anchors.bottom: parent.bottom
+            anchors.bottomMargin: 17
+            source: "icon/ic_apps_2x.png"
+        }
+
+        Label {
+            id: settingProgramlabel
+            width: 120
+            height: 26
+            text: qsTr("設定關聯程式")
+            anchors.left: settingProgramimage.right
+            anchors.leftMargin: 8
+            anchors.top: parent.top
+            anchors.topMargin: 21
+            font.family: "Microsoft JhengHei UI"
             font.pointSize: 16
-            font.family: "Microsoft JhengHei UI"
+            horizontalAlignment: Text.AlignLeft
+            verticalAlignment: Text.AlignVCenter
         }
+    }
 
-        Text {
-            id: edittext2
-            y: 46
-            width: 287
-            height: 33
-            text: qsTr("設定偏好的文字編輯器")
-            anchors.left: parent.left
-            anchors.leftMargin: 16
-            font.pointSize: 12
-            font.family: "Microsoft JhengHei UI"
-            color:"#616161"
-        }
-
+    Label {
+        id: networklabel
+        width: 133
+        height: 36
+        text: qsTr("網路")
+        anchors.left: parent.left
+        anchors.leftMargin: 23
+        anchors.top: settingServantbutton.bottom
+        anchors.topMargin: 9
+        font.family: "Microsoft JhengHei UI"
+        font.pointSize: 22
     }
 
     Button {
-        id: concernbutton
-        y: 62
+        id: settingconnectionbutton
+        x: 23
         width: 345
         height: 84
-        anchors.left: settingbutton.right
-        anchors.leftMargin: 50
-        anchors.top: button.bottom
-        anchors.topMargin: 63
+
+        anchors.top: networklabel.bottom
+        anchors.topMargin: 9
+        Material.elevation: 8
+        highlighted: true
         Material.background: "White"
-        Material.elevation: 6
-        Text {
-            id: concerntext1
-            width: 161
-            height: 29
-            text: qsTr("關於")
+
+        Image {
+            id: settingconnectionimage
+            width: 50
+            height: 50
             anchors.left: parent.left
-            anchors.leftMargin: 16
+            anchors.leftMargin: 10
             anchors.top: parent.top
-            anchors.topMargin: 17
-            font.pointSize: 16
-            font.family: "Microsoft JhengHei UI"
+            anchors.topMargin: 13
+            anchors.bottom: parent.bottom
+            anchors.bottomMargin: 29
+            source: "icon/ic_insert_link_2x.png"
         }
 
-        Text {
-            id: concerntext2
-            y: 46
-            width: 287
-            height: 33
-            text: qsTr("SERVANT_test_build")
-            anchors.left: parent.left
-            anchors.leftMargin: 16
-            font.pointSize: 12
+        Label {
+            id: settingconnectionlabel
+            text: qsTr("連線設定")
+            anchors.left: settingconnectionimage.right
+            anchors.leftMargin: 8
+            anchors.top: parent.top
+            anchors.topMargin: 21
             font.family: "Microsoft JhengHei UI"
-            color:"#616161"
+            font.pointSize: 16
+            horizontalAlignment: Text.AlignLeft
+            verticalAlignment: Text.AlignVCenter
         }
     }
+
+
 }
 
 
