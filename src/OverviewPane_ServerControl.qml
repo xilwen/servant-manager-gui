@@ -1,9 +1,7 @@
 import QtQuick 2.7
 import QtQuick.Controls 2.0
 import QtQuick.Layouts 1.0
-import QtQuick.Window 2.0
-import QtQuick.Controls.Material 2.0
-import QtQuick.Dialogs 1.2
+import QtQuick.Controls.Material 2.1
 
 Pane {
     id: serverInfoPane
@@ -23,9 +21,9 @@ Pane {
     Layout.columnSpan: 2
     Layout.fillHeight: true
     Layout.fillWidth: true
-    objectName:"serverInfoPane"
+    objectName: "serverInfoPane"
 
-    BackButton{
+    BackButton {
         id: backButton
         pageName: qsTr("管理伺服器")
         button.onClicked: {
@@ -34,16 +32,15 @@ Pane {
         }
     }
 
-    OverviewModule_ServerQuickInfo{
+    OverviewModule_ServerQuickInfo {
         id: serverQuickInfoPane
         anchors.top: backButton.bottom
         anchors.topMargin: 15
         anchors.left: parent.left
         anchors.leftMargin: 15
-
     }
 
-    OverviewModule_ServerQuickControl_ON{
+    OverviewModule_ServerQuickControl_ON {
         id: serverQuickControlPane_ON
         anchors.left: serverQuickInfoPane.right
         anchors.leftMargin: 15
@@ -51,7 +48,7 @@ Pane {
         anchors.topMargin: 0
     }
 
-    OverviewModule_ServerQuickControl_OFF{
+    OverviewModule_ServerQuickControl_OFF {
         id: serverQuickControlPane_OFF
         anchors.left: serverQuickInfoPane.right
         anchors.leftMargin: 15
@@ -80,7 +77,8 @@ Pane {
             anchors.rightMargin: 5
             Material.elevation: 0
             font.pointSize: 12
-            font.family: "Microsoft JhengHei UI"
+            font.family: "Microsoft JhengHei UI";
+            onClicked: serverStateChangingPane.visible = true
         }
 
         Button {
@@ -94,7 +92,12 @@ Pane {
             Material.elevation: 0
             font.pointSize: 12
             font.family: "Microsoft JhengHei UI"
+            visible: false
         }
     }
 
+    ServerStateChangingPane {
+        id: serverStateChangingPane
+        visible: false
+    }
 }

@@ -1,13 +1,7 @@
 import QtQuick 2.7
 import QtQuick.Controls 2.0
 import QtQuick.Layouts 1.0
-import QtQuick 2.7
-import QtQuick.Window 2.0
-import QtQuick.Controls 2.0
-import QtQuick.Layouts 1.0
-import QtQuick.Controls.Material 2.0
-import QtQuick.Dialogs 1.2
-import QtQuick 2.0
+import QtQuick.Controls.Material 2.1
 
 Pane {
     id: startPane
@@ -33,7 +27,7 @@ Pane {
         verticalAlignment: Text.AlignVCenter
         horizontalAlignment: Text.AlignHCenter
         font.pointSize: 20
-        font.family: qsTr("Microsoft JhengHei UI")
+        font.family: "Microsoft JhengHei UI";
     }
 
     Button {

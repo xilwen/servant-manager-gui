@@ -1,13 +1,7 @@
 import QtQuick 2.7
 import QtQuick.Controls 2.0
 import QtQuick.Layouts 1.0
-import QtQuick 2.7
-import QtQuick.Window 2.0
-import QtQuick.Controls 2.0
-import QtQuick.Layouts 1.0
-import QtQuick.Controls.Material 2.0
-import QtQuick.Dialogs 1.2
-import QtQuick 2.0
+import QtQuick.Controls.Material 2.1
 
 
 Pane {
@@ -16,11 +10,13 @@ Pane {
     height: 600
     rightPadding: 0
     leftPadding: 0
+    property bool noMachineCreated: true
     Layout.minimumWidth: 50
     Layout.maximumWidth: 200
     Layout.fillHeight: true
     Layout.fillWidth: true
     Material.background: "#ffffff"
+    Material.elevation: 5
     Button {
         id: buttonserver
         x: 57
@@ -46,14 +42,15 @@ Pane {
             anchors.fill: parent
             hoverEnabled: true
             onClicked: {
-                overviewPane.visible=true
+                //noMachineCreated ? overviewPane_Empty.visible = true: overviewPane_Normal.visible = true
+                overviewPane_Normal.visible = true
                 serverMallPane.visible=false
                 serverProductInfoPane.visible=false
                 diagnosisPane.visible=false
                 sharePane.visible=false
                 settingPane.visible=false
 
-                }
+            }
         }
 
         Rectangle {
@@ -108,7 +105,6 @@ Pane {
                 diagnosisPane.visible=false
                 sharePane.visible=false
                 settingPane.visible=false
-
             }
         }
 

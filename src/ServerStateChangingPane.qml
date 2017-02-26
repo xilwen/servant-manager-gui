@@ -1,14 +1,7 @@
 import QtQuick 2.7
 import QtQuick.Controls 2.0
 import QtQuick.Layouts 1.0
-import QtQuick 2.7
-import QtQuick.Window 2.0
-import QtQuick.Controls 2.0
-import QtQuick.Layouts 1.0
-import QtQuick.Controls.Material 2.0
-import QtQuick.Dialogs 1.2
-import QtQuick 2.0
-
+import QtQuick.Controls.Material 2.1
 
 Pane {
     id: serverStateChangingPane
@@ -59,7 +52,7 @@ Pane {
             anchors.left: backimage.right
             anchors.leftMargin: 22
             verticalAlignment: Text.AlignVCenter
-            font.family: qsTr("Microsoft JhengHei UI")
+            font.family: "Microsoft JhengHei UI";
             font.pointSize: 16
             color: "white"
             objectName: serverStartingText
@@ -68,14 +61,10 @@ Pane {
 
     Image {
         id: poweringimage
-        anchors.right: parent.right
-        anchors.rightMargin: 369
-        anchors.left: parent.left
-        anchors.leftMargin: 370
-        anchors.bottom: parent.bottom
-        anchors.bottomMargin: 247
-        anchors.top: parent.top
-        anchors.topMargin: 248
+        width: 64
+        height: 64
+        anchors.horizontalCenter: parent.horizontalCenter
+        anchors.verticalCenter: parent.verticalCenter
         sourceSize.width: 0
         opacity: 1
         z: 3
@@ -120,15 +109,9 @@ Pane {
         id: changingimage
         width: 60
         height: 60
+        anchors.horizontalCenter: parent.horizontalCenter
+        anchors.verticalCenter: parent.verticalCenter
         visible: false
-        anchors.right: parent.right
-        anchors.rightMargin: 369
-        anchors.left: parent.left
-        anchors.leftMargin: 370
-        anchors.bottom: parent.bottom
-        anchors.bottomMargin: 247
-        anchors.top: parent.top
-        anchors.topMargin: 248
         sourceSize.width: 0
         opacity: 1
         z: 3

@@ -1,14 +1,7 @@
 import QtQuick 2.7
 import QtQuick.Controls 2.0
 import QtQuick.Layouts 1.0
-import QtQuick 2.7
-import QtQuick.Window 2.0
-import QtQuick.Controls 2.0
-import QtQuick.Layouts 1.0
-import QtQuick.Controls.Material 2.0
-import QtQuick.Dialogs 1.2
-import QtQuick 2.0
-
+import QtQuick.Controls.Material 2.1
 
 Pane {
     id: serverMallPane
@@ -21,76 +14,28 @@ Pane {
     anchors.fill: parent
     objectName:"serverMallPane"
 
-    Pane {
-          id: serverMallBanner
-          height: 156
-          anchors.top: parent.top
-          anchors.topMargin: 20
-          anchors.right: parent.right
-          anchors.rightMargin: 20
-          anchors.left: parent.left
-          anchors.leftMargin: 20
-          Material.theme: Material.Dark
-          Material.elevation: 3
 
-          Label {
-              id: label1
-              x: -4
-              y: -1
-              text: qsTr("伺服器商城")
-              anchors.verticalCenterOffset: -20
-              anchors.verticalCenter: parent.verticalCenter
-              font.pointSize: 28
-              anchors.leftMargin: 10
-              anchors.left: parent.left
-              font.family: qsTr("Microsoft JhengHei UI")
-          }
-          Label {
-              id: label
-              text: qsTr("探索並取得您需要的伺服器")
-              font.pointSize: 14
-              anchors.top: label1.bottom
-              anchors.topMargin: 10
-              anchors.left: label1.left
-              anchors.leftMargin: 0
-              font.family: qsTr("Microsoft JhengHei UI")
-          }
-
-          Button {
-              id: button
-              x: 470
-              y: 111
-              width: 126
-              height: 40
-              text: qsTr(" 線上服務設定")
-              anchors.right: parent.right
-              anchors.rightMargin: 0
-              anchors.bottom: parent.bottom
-              anchors.bottomMargin: 0
-              font.family: "Microsoft JhengHei UI"
-          }
-      }
-    
     Button {
         id: ftpserverbutton
         width: 345
         height: 84
         anchors.left: parent.left
         anchors.leftMargin: 20
-        anchors.top: serverMallBanner.bottom
-        anchors.topMargin: 50
+        anchors.top: label.bottom
+        anchors.topMargin: 10
         Material.elevation: 6
         highlighted: true
         Material.background: "#FFFFFF"
         onClicked:{
             serverMallPane.visible=false
             serverProductInfoPane.visible=true
-            overviewPane.visible=false
+            overviewPane_Empty.visible=false
+            overviewPane_Normal.visible=false
             diagnosisPane.visible=false
             sharePane.visible=false
             settingPane.visible=false
-
         }
+
         Label {
             id: ftplabel
             y: 26
@@ -100,7 +45,7 @@ Pane {
             anchors.leftMargin: 10
             verticalAlignment: Text.AlignVCenter
             horizontalAlignment: Text.AlignHCenter
-            font.family: "Microsoft JhengHei UI"
+            font.family: "Microsoft JhengHei UI";
             font.pointSize:12
             Material.foreground: "#000000"
         }
@@ -117,38 +62,46 @@ Pane {
             source: "icon/ic_folder_black_48dp_2x.png"
         }
     }
+
     Button {
-        id: virtualboxbutton
-        y: 251
-        width: 345
-        height: 84
-        visible: false
-        anchors.left: ftpserverbutton.right
-        anchors.leftMargin: 50
-        Material.background:"White"
-        Material.elevation:6
-        Image {
-            id: dataimage2
-            width: 65
-            anchors.top: parent.top
-            anchors.topMargin: 10
-            anchors.left: parent.left
-            anchors.leftMargin: 10
-            anchors.bottom: parent.bottom
-            anchors.bottomMargin: 10
-            source: "icon/ic_folder_black_48dp_2x.png"
-        }
-        Text {
-            id: virtualboxlabel
-            y: 24
-            height: 36
-            text: qsTr("從Virtual Box檔案建立新的伺服器")
-            anchors.left: dataimage2.right
-            anchors.leftMargin: 10
-            verticalAlignment: Text.AlignVCenter
-            font.family: "Microsoft JhengHei UI"
-            font.pointSize:12
-        }
+        id: refreshListButton
+        x: 20
+        width: 200
+        height: 48
+        text: qsTr(" 更新伺服器清單")
+        font.family: "Microsoft JhengHei UI"
+        font.pointSize:12
+        anchors.top: parent.top
+        anchors.topMargin: 10
+        Material.background: "#81c784"
+    }
+
+    Button {
+        id: wishListButton
+        width: 200
+        height: 48
+        text: qsTr("願望清單")
+        font.family: "Microsoft JhengHei UI"
+        font.pointSize:12
+        anchors.left: refreshListButton.right
+        anchors.leftMargin: 20
+        anchors.top: refreshListButton.top
+        anchors.topMargin: 0
+        Material.background: "#bcaaa4"
+    }
+
+    Label {
+        id: label
+        text: qsTr("檔案伺服器")
+        anchors.left: refreshListButton.left
+        anchors.leftMargin: 0
+        anchors.top: refreshListButton.bottom
+        anchors.topMargin: 20
+        font.bold: false
+        verticalAlignment: Text.AlignVCenter
+        horizontalAlignment: Text.AlignLeft
+        font.family: "Microsoft JhengHei UI"
+        font.pointSize: 24
     }
 }
 

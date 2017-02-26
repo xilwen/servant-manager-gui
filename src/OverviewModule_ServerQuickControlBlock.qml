@@ -1,8 +1,7 @@
 import QtQuick 2.7
 import QtQuick.Controls 2.0
 import QtQuick.Layouts 1.0
-import QtQuick.Window 2.0
-import QtQuick.Controls.Material 2.0
+import QtQuick.Controls.Material 2.1
 
 Button {
     id: button
@@ -23,7 +22,7 @@ Button {
         anchors.leftMargin: 5
         anchors.top: actionImage.top
         anchors.topMargin: 8
-        font.family: "Microsoft JhengHei UI"
+        font.family: qsTr("Microsoft JhengHei UI")
         font.pointSize: 18
         verticalAlignment: Text.AlignVCenter
         horizontalAlignment: Text.AlignLeft

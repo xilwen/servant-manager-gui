@@ -1,9 +1,7 @@
 import QtQuick 2.7
-import QtQuick.Window 2.0
 import QtQuick.Controls 2.0
 import QtQuick.Layouts 1.0
-import QtQuick.Controls.Material 2.0
-import QtQuick.Dialogs 1.2
+import QtQuick.Controls.Material 2.1
 
 Pane {
     id: firstTimeFinishedPane
@@ -105,7 +103,7 @@ Pane {
         anchors.verticalCenter: parent.verticalCenter
         horizontalAlignment: Text.AlignHCenter
         anchors.horizontalCenter: parent.horizontalCenter
-        font.family: "Microsoft JhengHei UI"
+        font.family: qsTr("Microsoft JhengHei UI")
         font.pointSize: 14
     }
 

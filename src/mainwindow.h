@@ -37,20 +37,11 @@ private:
     QObject *loadingProgressBar,
     *statusLabel,
     *pane1,
-    *progressBar2,
-    *button2,
     *overviewPane,
     *serverInfoPane,
-    *fileDialog,
-    *bootButton,
-    *machinePane1,
-    *serverInfoName,
-    *downloadProgress,
-    *newServerButton,
     *welcomePane,
     *perfMeterPane,
-    *firstTimeFinishedPane,
-    *startWebControlButton
+    *firstTimeFinishedPane
     ;
     vBoxWrapperClient *client = nullptr;
     packageManager *pm = nullptr;

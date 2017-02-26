@@ -1,8 +1,7 @@
 import QtQuick 2.7
-import QtQuick.Window 2.0
 import QtQuick.Controls 2.0
 import QtQuick.Layouts 1.0
-import QtQuick.Controls.Material 2.0
+import QtQuick.Controls.Material 2.1
 
 Pane {
     id: bannerPane
@@ -22,12 +21,12 @@ Pane {
         y: 260
         width: 171
         height: 24
-        text: qsTr("SERVANT DevBuild")
+        text: qsTr("SERVANT Manager")
         anchors.verticalCenter: parent.verticalCenter
         verticalAlignment: Text.AlignVCenter
         z: 1
         anchors.left: parent.left
-        anchors.leftMargin: 20
+        anchors.leftMargin: 12
         font.family: "Microsoft JhengHei UI"
         font.pointSize: 14
         horizontalAlignment: Text.AlignHCenter
@@ -112,10 +111,10 @@ Pane {
             id: image1
             x: 0
             y: -1
-            width: 40
-            height: 40
-            anchors.top: button1.bottom
-            anchors.topMargin: -43
+            width: 32
+            height: 32
+            anchors.horizontalCenter: parent.horizontalCenter
+            anchors.verticalCenter: parent.verticalCenter
             source: "icon/ic_update_2x.png"
         }
     }
@@ -129,17 +128,17 @@ Pane {
         anchors.verticalCenter: parent.verticalCenter
         anchors.right: parent.right
         anchors.rightMargin: 0
-        Material.elevation:1
+        Material.elevation:0
         Material.background: "White"
 
         Image {
             id: image2
             x: 0
             y: -9
-            width: 40
-            height: 40
-            anchors.top: button2.bottom
-            anchors.topMargin: -44
+            width: 32
+            height: 32
+            anchors.horizontalCenter: parent.horizontalCenter
+            anchors.verticalCenter: parent.verticalCenter
             source: "icon/ic_info_black_24dp.png"
         }
     }

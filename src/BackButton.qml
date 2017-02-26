@@ -1,13 +1,7 @@
 import QtQuick 2.7
 import QtQuick.Controls 2.0
 import QtQuick.Layouts 1.0
-import QtQuick 2.7
-import QtQuick.Window 2.0
-import QtQuick.Controls 2.0
-import QtQuick.Layouts 1.0
-import QtQuick.Controls.Material 2.0
-import QtQuick.Dialogs 1.2
-import QtQuick 2.0
+import QtQuick.Controls.Material 2.1
 
 Pane {
     id: backButton
@@ -51,10 +45,6 @@ Pane {
             anchors.horizontalCenter: parent.horizontalCenter
             anchors.verticalCenter: parent.verticalCenter
             source: "icon/ic_arrow_back_white_24dp_1x.png"
-        }
-        onClicked: {
-            overviewPane.visible = true
-            serverInfoPane.visible = false
         }
     }
 }

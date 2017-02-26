@@ -2,8 +2,7 @@ import QtQuick 2.7
 import QtQuick.Controls 2.0
 import QtQuick.Layouts 1.0
 import QtQuick.Window 2.0
-import QtQuick.Controls.Material 2.0
-import QtQuick.Dialogs 1.2
+import QtQuick.Controls.Material 2.1
 
 ApplicationWindow {
     visible: true
@@ -42,6 +41,7 @@ ApplicationWindow {
 
             BannerPane{
                 id:bannerPane
+                z: 1
             }
 
             Pane {
@@ -65,6 +65,7 @@ ApplicationWindow {
                 ControlPane
                 {
                     id:controlPane
+                    z: 1
                 }
 
                 Pane {
@@ -90,12 +91,12 @@ ApplicationWindow {
 
                     OverviewPane_Empty{
                         id:overviewPane_Empty
-                        visible:false
+                        visible: controlPane.noMachineCreated ? true : false
                     }
 
                     OverviewPane_Normal{
                         id:overviewPane_Normal
-                        visible:true
+                        visible: controlPane.noMachineCreated ? false : true
                     }
 
                     OverviewPane_ServerControl{
@@ -124,8 +125,6 @@ ApplicationWindow {
                         id:sharePane
                         visible:false
                     }
-
-
                 }
             }
         }

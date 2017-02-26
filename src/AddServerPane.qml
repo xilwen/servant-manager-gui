@@ -1,13 +1,7 @@
 import QtQuick 2.7
 import QtQuick.Controls 2.0
 import QtQuick.Layouts 1.0
-import QtQuick 2.7
-import QtQuick.Window 2.0
-import QtQuick.Controls 2.0
-import QtQuick.Layouts 1.0
-import QtQuick.Controls.Material 2.0
-import QtQuick.Dialogs 1.2
-import QtQuick 2.0
+import QtQuick.Controls.Material 2.1
 
 Pane {
     id: addDownloadServerPane
@@ -57,7 +51,7 @@ Pane {
             anchors.left: backimage.right
             anchors.leftMargin: 22
             verticalAlignment: Text.AlignVCenter
-            font.family: "Microsoft JhengHei UI"
+            font.family: qsTr("Microsoft JhengHei UI")
             font.pointSize: 15
             color: "white"
         }
@@ -133,30 +127,31 @@ Pane {
         anchors.topMargin: 300
 
 
-    Image {
-        id: addServerHintImage
-        anchors.left: parent.left
-        anchors.leftMargin: 0
-        anchors.top: parent.top
-        anchors.topMargin: 0
-        source: "icon/ic_info_black_24dp.png"
+        Image {
+            id: addServerHintImage
+            anchors.left: parent.left
+            anchors.leftMargin: 0
+            anchors.top: parent.top
+            anchors.topMargin: 0
+            source: "icon/ic_info_black_24dp.png"
+        }
+
+        Label {
+            id: addServerHintLabel
+            height: 70
+            text: "您可以使用伺服器管理介面進行進一步的設定。"
+            anchors.top: parent.top
+            anchors.topMargin: 0
+            anchors.right: parent.right
+            anchors.rightMargin: 0
+            anchors.left: parent.left
+            anchors.leftMargin: 50
+            font.pointSize: 15
+            font.family: "Microsoft JhengHei UI"
+
+        }
     }
 
-    Label {
-        id: addServerHintLabel
-        height: 70
-        text: "您可以使用伺服器管理介面進行進一步的設定。"
-        anchors.top: parent.top
-        anchors.topMargin: 0
-        anchors.right: parent.right
-        anchors.rightMargin: 0
-        anchors.left: parent.left
-        anchors.leftMargin: 50
-        font.pointSize: 15
-        font.family: "Microsoft JhengHei UI"
-
-    }
-    }
     Button {
         id:addServerFinishedButton
         x: 649
@@ -170,5 +165,11 @@ Pane {
         anchors.bottomMargin: 75
         font.pointSize: 15
         font.family: "Microsoft JhengHei UI"
+        onClicked: addingServerPane.visible = true
+    }
+
+    AddingServerPane{
+        id:addingServerPane
+        visible:false
     }
 }
