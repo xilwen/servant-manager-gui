@@ -83,5 +83,9 @@
         <file>icon/ic_camera_alt_black_48dp_2x.png</file>
         <file>icon/ic_exit_to_app_black_48dp_2x.png</file>
         <file>icon/ic_build_black_48dp_2x.png</file>
+        <file>ServerMallButton.qml</file>
+        <file>icon/ic_done.png</file>
+        <file>icon/ic_cached.png</file>
+        <file>icon/ic_sync_problem.png</file>
     </qresource>
 </RCC>

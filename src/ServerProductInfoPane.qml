@@ -73,7 +73,7 @@ Pane {
         id: datetext
         width: 110
         height: 26
-        text: qsTr("2017年1月8號")
+        text: qsTr("2017年2月28號")
         anchors.top: teamtext.top
         anchors.topMargin: 0
         anchors.left: teamtext.right
