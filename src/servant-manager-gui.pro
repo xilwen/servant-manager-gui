@@ -6,7 +6,7 @@ DEFINES += ASIO_STANDALONE \
     _WIN32_WINNT=0x0501
 
 win32: LIBS += -L$$PWD/../../servant-base-lib/cmake-build-debug/ -lSERVANTBase
-LIBS += -L$$PWD/../../servant-dependencies/curl-7.52.1/lib -lcurl
+LIBS += -L$$PWD/../../servant-dependencies/curl-7.53.1/lib -lcurl
 
 INCLUDEPATH += $$PWD/../../servant-base-lib/src
 DEPENDPATH += $$PWD/../../servant-base-lib/src

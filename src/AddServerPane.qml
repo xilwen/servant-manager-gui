@@ -7,53 +7,17 @@ Pane {
     id: addDownloadServerPane
     width: 823
     height: 579
+    padding: 0
     anchors.rightMargin: 0
     anchors.bottomMargin: 0
     anchors.leftMargin: 0
     anchors.topMargin: 0
     anchors.fill: parent
 
-    Button {
-        id: backbutton
-        height: 58
-        anchors.top: parent.top
-        anchors.topMargin: -18
-        anchors.left: parent.left
-        anchors.leftMargin: -12
-        anchors.right: parent.right
-        anchors.rightMargin: -12
-        Material.background: "#424242"
-        onClicked: {
-            overviewPane.visible=false
-            serverMallPane.visible=true
-            serverProductInfoPane.visible=false
-            diagnosisPane.visible=false
-            sharePane.visible=false
-            settingPane.visible=false
-        }
-
-        Image {
-            id: backimage
-            y: 15
-            width: 31
-            height: 29
-            anchors.left: parent.left
-            anchors.leftMargin: 20
-            source: "icon/ic_arrow_back_white_24dp_1x.png"
-        }
-
-        Text {
-            id: ftptext
-            y: 15
-            width: 132
-            height: 28
-            text: qsTr("新增已下載的伺服器")
-            anchors.left: backimage.right
-            anchors.leftMargin: 22
-            verticalAlignment: Text.AlignVCenter
-            font.family: qsTr("Microsoft JhengHei UI")
-            font.pointSize: 15
-            color: "white"
+    BackButton{
+        pageName: qsTr("新增已下載的伺服器")
+        button.onClicked:{
+            addDownloadServerPane.visible = false
         }
     }
 
