@@ -14,6 +14,7 @@ Pane {
     anchors.fill: parent
     Label {
         id: servantlabel
+        x: 23
         width: 133
         height: 36
         text: qsTr("SERVANT")
@@ -26,85 +27,62 @@ Pane {
         font.pointSize: 22
         font.family: "Microsoft JhengHei UI"
     }
-
-    Button {
-        id: recordingbutton
-        width: 345
-        height: 84
-        anchors.top: servantlabel.bottom
-        anchors.topMargin: 9
+    ServerObjectButton{
+        id:recoderbutton
         anchors.left: parent.left
         anchors.leftMargin: 22
-        checkable: true
-        Material.elevation: 8
-        highlighted: true
-        Material.background: "White"
-        Image {
-            id: recordingimage
-            width: 50
-            anchors.bottom: parent.bottom
-            anchors.bottomMargin: 17
-            anchors.top: parent.top
-            anchors.topMargin: 17
-            anchors.left: parent.left
-            anchors.leftMargin: 10
-            source: "icon/ic_reorder_black_24dp_2x.png"
-        }
-
-        Label {
-            id: label1
-            text: qsTr("記錄")
-            anchors.top: parent.top
-            anchors.topMargin: 21
-            anchors.left: recordingimage.right
-            anchors.leftMargin: 8
-            font.family: "Microsoft JhengHei UI"
-            font.pointSize: 16
-            verticalAlignment: Text.AlignVCenter
-        }
-
-
+        anchors.top: servantlabel.bottom
+        anchors.topMargin: 9
+        serverTitle: qsTr("記錄")
+        serverImageSource:"icon/ic_reorder_black_24dp_2x.png"
     }
-
-    Button {
-        id: diagonsisbutton
+    ServerObjectButton{
+        id:diagnosisbutton
         y: 56
-        width: 345
-        height: 84
-        anchors.left: recordingbutton.right
+        anchors.left: recoderbutton.right
         anchors.leftMargin: 36
-        Material.elevation: 8
-        highlighted: true
-        Material.background: "White"
-
-        Image {
-            id: diagonsisimage
-            width: 50
-            height: 50
-            anchors.left: parent.left
-            anchors.leftMargin: 10
-            anchors.bottom: parent.bottom
-            anchors.bottomMargin: 21
-            anchors.top: parent.top
-            anchors.topMargin: 13
-            source: "icon/ic_code_2x.png"
-        }
-
-        Label {
-            id: diagonsislabel
-            text: qsTr("自我診斷")
-            anchors.top: parent.top
-            anchors.topMargin: 21
-            anchors.left: diagonsisimage.right
-            anchors.leftMargin: 8
-            font.family: "Microsoft JhengHei UI"
-            font.pointSize: 16
-            verticalAlignment: Text.AlignVCenter
-        }
+        serverTitle: qsTr("自我診斷")
+        serverImageSource:"icon/ic_code_2x.png"
+    }
+    ServerObjectButton{
+        id:checkIntbutton
+        anchors.left: parent.left
+        anchors.leftMargin: 22
+        anchors.top: intlabel.bottom
+        anchors.topMargin: 9
+        serverTitle: qsTr("檢查網路問題")
+        serverImageSource:"icon/ic_visibility_2x.png"
+    }
+    ServerObjectButton{
+        id:routerbutton
+        y: 194
+        height: 84
+        anchors.left: checkIntbutton.right
+        anchors.leftMargin: 36
+        serverTitle: qsTr("路由器設定")
+        serverImageSource:"icon/ic_help_outline_2x.png"
+    }
+    ServerObjectButton{
+        id:checksetbutton
+        anchors.left: parent.left
+        anchors.leftMargin: 22
+        anchors.top: serverlabel.bottom
+        anchors.topMargin: 9
+        serverTitle: qsTr("檢查設定")
+        serverImageSource:"icon/ic_signal_cellular_connected_no_internet_4_bar_2x.png"
+    }
+    ServerObjectButton{
+        id:backbutton
+        y: 332
+        anchors.left: checksetbutton.right
+        anchors.leftMargin: 36
+        serverTitle: qsTr("回到可用狀態")
+        serverImageSource:"icon/ic_schedule_2x.png"
     }
 
     Label {
         id: intlabel
+        y: 149
         width: 133
         height: 36
         text: qsTr("網路")
@@ -118,87 +96,9 @@ Pane {
         horizontalAlignment: Text.AlignLeft
     }
 
-    Button {
-        id: checkIntbutton
-        width: 345
-        height: 84
-        anchors.left: parent.left
-        anchors.leftMargin: 22
-        anchors.top: intlabel.bottom
-        anchors.topMargin: 9
-        Material.elevation: 8
-        highlighted: true
-        Material.background: "White"
-
-        Image {
-            id: checkIntimage
-            width: 50
-            height: 50
-            anchors.left: parent.left
-            anchors.leftMargin: 10
-            anchors.top: parent.top
-            anchors.topMargin: 16
-            anchors.bottom: parent.bottom
-            anchors.bottomMargin: 18
-            source: "icon/ic_visibility_2x.png"
-        }
-
-        Label {
-            id: checkIntlabel
-            text: qsTr("檢查網路問題")
-            anchors.left: checkIntimage.right
-            anchors.leftMargin: 8
-            anchors.top: parent.top
-            anchors.topMargin: 21
-            font.family: "Microsoft JhengHei UI"
-            font.pointSize: 16
-            horizontalAlignment: Text.AlignLeft
-            verticalAlignment: Text.AlignVCenter
-        }
-    }
-
-    Button {
-        id: routerbutton
-        y: 194
-        width: 345
-        height: 84
-        anchors.left: checkIntbutton.right
-        anchors.leftMargin: 36
-        Material.elevation: 8
-        highlighted: true
-        Material.background: "White"
-
-        Image {
-            id: routerimage
-            width: 50
-            height: 50
-            anchors.left: parent.left
-            anchors.leftMargin: 10
-            anchors.top: parent.top
-            anchors.topMargin: 17
-            anchors.bottom: parent.bottom
-            anchors.bottomMargin: 17
-            source: "icon/ic_help_outline_2x.png"
-        }
-
-        Label {
-            id: routerlabel
-            width: 120
-            height: 26
-            text: qsTr("路由器設定")
-            anchors.left: routerimage.right
-            anchors.leftMargin: 8
-            anchors.top: parent.top
-            anchors.topMargin: 21
-            font.family: qsTr("Microsoft JhengHei UI")
-            font.pointSize: 16
-            horizontalAlignment: Text.AlignLeft
-            verticalAlignment: Text.AlignVCenter
-        }
-    }
-
     Label {
         id: serverlabel
+        y: 287
         width: 133
         height: 36
         text: qsTr("伺服器")
@@ -208,83 +108,6 @@ Pane {
         anchors.topMargin: 9
         font.family: "Microsoft JhengHei UI"
         font.pointSize: 22
-    }
-
-    Button {
-        id: checkSettingbutton
-        x: 23
-        width: 345
-        height: 84
-
-        anchors.top: serverlabel.bottom
-        anchors.topMargin: 9
-        Material.elevation: 8
-        highlighted: true
-        Material.background: "White"
-
-        Image {
-            id: checkSettingimage
-            width: 50
-            height: 50
-            anchors.left: parent.left
-            anchors.leftMargin: 10
-            anchors.top: parent.top
-            anchors.topMargin: 17
-            anchors.bottom: parent.bottom
-            anchors.bottomMargin: 17
-            source: "icon/ic_signal_cellular_connected_no_internet_4_bar_2x.png"
-        }
-
-        Label {
-            id: checkSettinglabel
-            text: qsTr("檢查設定")
-            anchors.left: checkSettingimage.right
-            anchors.leftMargin: 8
-            anchors.top: parent.top
-            anchors.topMargin: 21
-            font.family: "Microsoft JhengHei UI"
-            font.pointSize: 16
-            horizontalAlignment: Text.AlignLeft
-            verticalAlignment: Text.AlignVCenter
-        }
-    }
-
-    Button {
-        id: backStatuebutton
-        y: 332
-        width: 345
-        height: 84
-        Material.elevation: 8
-        highlighted: true
-        Material.background: "White"
-        anchors.left: checkSettingbutton.right
-        anchors.leftMargin: 36
-
-        Image {
-            id: backStatueimage
-            width: 50
-            height: 50
-            anchors.left: parent.left
-            anchors.leftMargin: 10
-            anchors.top: parent.top
-            anchors.topMargin: 17
-            anchors.bottom: parent.bottom
-            anchors.bottomMargin: 17
-            source: "icon/ic_schedule_2x.png"
-        }
-
-        Label {
-            id: backStatuelabel
-            text: qsTr("回到可用狀態")
-            anchors.left: backStatueimage.right
-            anchors.leftMargin: 8
-            anchors.top: parent.top
-            anchors.topMargin: 21
-            font.family: "Microsoft JhengHei UI"
-            font.pointSize: 16
-            verticalAlignment: Text.AlignVCenter
-            horizontalAlignment: Text.AlignLeft
-        }
     }
     Pane {
         id: pane

@@ -4,17 +4,16 @@ import QtQuick.Layouts 1.0
 import QtQuick.Controls.Material 2.1
 
 Button {
-    id: button
-    width: 345
-    height: 84
+    id: button1
+    height: 64
     Layout.alignment: Qt.AlignLeft | Qt.AlignTop
     property alias serverTitle: serverTitle.text
-    property alias serverSubtitle: serverSubtitle.text
     property alias serverImageSource: serverImage.source
-    Layout.minimumHeight: 84
-    Layout.minimumWidth: 345
-    Layout.maximumHeight: 84
-    Layout.maximumWidth: 345
+    width: 300
+    Layout.minimumHeight: 64
+    Layout.minimumWidth: 300
+    Layout.maximumHeight: 64
+    Layout.maximumWidth: 300
     opacity: 1
     visible: true
     bottomPadding: 0
@@ -33,30 +32,16 @@ Button {
         height: 26
         font.family: "Microsoft JhengHei UI";
         anchors.top: parent.top
-        anchors.topMargin: 21
+        anchors.topMargin: 19
         anchors.left: serverImage.right
-        anchors.leftMargin: 8
+        anchors.leftMargin: 9
         font.pointSize: 16
     }
-    Label {
-        id: serverSubtitle
-        //text: qsTr("副標題")
-        verticalAlignment: Text.AlignVCenter
-        anchors.top: serverTitle.bottom
-        anchors.topMargin: 0
-        font.pointSize: 12
-        x: 69
-        width: 178
-        height: 26
-        horizontalAlignment: Text.AlignLeft
-        font.family: "Microsoft JhengHei UI";
-        anchors.bottom: importPBar.top
-        anchors.bottomMargin: 3
-        color:"#616161"
-    }
+
     Image{
         id: serverImage
-        width: 50
+        width: 30
+        height: 35
         anchors.bottom: parent.bottom
         anchors.bottomMargin: 17
         anchors.top: parent.top

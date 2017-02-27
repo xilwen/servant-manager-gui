@@ -13,19 +13,15 @@ Pane {
     anchors.topMargin: 0
     anchors.fill: parent
     objectName:"serverMallPane"
-
-
-    Button {
+    ServerObjectButton{
         id: ftpserverbutton
-        width: 345
-        height: 84
         anchors.left: parent.left
         anchors.leftMargin: 20
         anchors.top: label.bottom
         anchors.topMargin: 10
-        Material.elevation: 6
-        highlighted: true
-        Material.background: "#FFFFFF"
+        serverTitle: qsTr("FTP 伺服器")
+        serverSubtitle: qsTr("基本的FTP 伺服器")
+        serverImageSource: "icon/ic_folder_black_48dp_2x.png"
         onClicked:{
             serverMallPane.visible=false
             serverProductInfoPane.visible=true
@@ -35,59 +31,28 @@ Pane {
             sharePane.visible=false
             settingPane.visible=false
         }
-
-        Label {
-            id: ftplabel
-            y: 26
-            height: 32
-            text: qsTr("FTP 伺服器")
-            anchors.left: dataimage1.right
-            anchors.leftMargin: 10
-            verticalAlignment: Text.AlignVCenter
-            horizontalAlignment: Text.AlignHCenter
-            font.family: "Microsoft JhengHei UI";
-            font.pointSize:12
-            Material.foreground: "#000000"
-        }
-        
-        Image {
-            id: dataimage1
-            width: 65
-            anchors.bottom: parent.bottom
-            anchors.bottomMargin: 10
-            anchors.left: parent.left
-            anchors.leftMargin: 10
-            anchors.top: parent.top
-            anchors.topMargin: 10
-            source: "icon/ic_folder_black_48dp_2x.png"
-        }
     }
-
-    Button {
+    ServerMallButton{
         id: refreshListButton
-        x: 20
-        width: 200
-        height: 48
-        text: qsTr(" 更新伺服器清單")
-        font.family: "Microsoft JhengHei UI"
-        font.pointSize:12
+        serverTitle: qsTr(" 更新伺服器清單")
+        serverImageSource:"icon/ic_cached.png"
         anchors.top: parent.top
-        anchors.topMargin: 10
-        Material.background: "#81c784"
-    }
+        anchors.topMargin: 16
+        x: 20
+        y: 2
 
-    Button {
+    }
+    ServerMallButton{
         id: wishListButton
-        width: 200
-        height: 48
-        text: qsTr("願望清單")
-        font.family: "Microsoft JhengHei UI"
-        font.pointSize:12
+        serverTitle:qsTr("願望清單")
+        serverImageSource:"icon/ic_done.png"
+        anchors.top: parent.top
+        anchors.topMargin: 16
+        y: 2
         anchors.left: refreshListButton.right
-        anchors.leftMargin: 20
-        anchors.top: refreshListButton.top
-        anchors.topMargin: 0
-        Material.background: "#bcaaa4"
+        anchors.leftMargin: 36
+
+
     }
 
     Label {
@@ -96,12 +61,37 @@ Pane {
         anchors.left: refreshListButton.left
         anchors.leftMargin: 0
         anchors.top: refreshListButton.bottom
-        anchors.topMargin: 20
+        anchors.topMargin: 18
         font.bold: false
         verticalAlignment: Text.AlignVCenter
         horizontalAlignment: Text.AlignLeft
         font.family: "Microsoft JhengHei UI"
-        font.pointSize: 24
+        font.pointSize: 22
+    }
+
+    Image {
+        id: image
+        x: 676
+        y: 33
+        width: 30
+        height: 30
+        anchors.right: parent.right
+        anchors.rightMargin: 93
+        source: "icon/ic_sync_problem.png"
+    }
+
+    Label {
+        id: label1
+        y: 37
+        height: 22
+        text: qsTr("有更新")
+        anchors.right: parent.right
+        anchors.rightMargin: 10
+        anchors.left: image.right
+        anchors.leftMargin: 4
+        font.family: "Microsoft JhengHei UI"
+        font.pointSize: 14
+        verticalAlignment: Text.AlignVCenter
     }
 }
 
