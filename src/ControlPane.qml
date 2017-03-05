@@ -26,6 +26,7 @@ Pane {
         Material.background:servermouseArea.containsMouse?"#00aa00":"white"
         Material.elevation: 0
         Text{
+            id: textserver
             width: 141
             height: 25
             anchors.centerIn: parent
@@ -35,7 +36,9 @@ Pane {
             font.family: "Microsoft JhengHei UI"
             font.pointSize: 15
             color:servermouseArea.containsMouse?"white":"black"
+            
         }
+        
         MouseArea {
             id: servermouseArea
             anchors.leftMargin: 0
@@ -49,10 +52,14 @@ Pane {
                 diagnosisPane.visible=false
                 sharePane.visible=false
                 settingPane.visible=false
-
+                serverpane.visible=true
+                storepane.visible=false
+                diagnosispane.visible=false
+                sharepane.visible=false
+                settingpane.visible=false
             }
         }
-
+        
         Rectangle {
             id:imagebackground1
             y: 6
@@ -61,7 +68,7 @@ Pane {
             color: "#00aa00"
             anchors.left: parent.left
             anchors.leftMargin: -57
-
+            
             Image {
                 id: serverimage
                 width: 32
@@ -77,6 +84,16 @@ Pane {
             }
         }
 
+        Pane {
+            id: serverpane
+            x: 135
+            y: 6
+            width: 8
+            height: 50
+            Material.background:"#00aa00"
+            visible: false
+        }
+        
     }
     Button {
         id: buttonstore
@@ -94,7 +111,6 @@ Pane {
             anchors.bottomMargin: 0
             anchors.leftMargin: 0
             anchors.topMargin: 0
-
             hoverEnabled: true
             anchors.fill: parent
             onClicked: {
@@ -105,10 +121,16 @@ Pane {
                 diagnosisPane.visible=false
                 sharePane.visible=false
                 settingPane.visible=false
+                serverpane.visible=false
+                storepane.visible=true
+                diagnosispane.visible=false
+                sharepane.visible=false
+                settingpane.visible=false
             }
         }
-
+        
         Text {
+            id: storetext
             x: 0
             y: 60
             width: 141
@@ -121,7 +143,7 @@ Pane {
             font.pointSize: 15
             font.family: "Microsoft JhengHei UI"
         }
-
+        
         Rectangle {
             id: imagebackground2
             y: 6
@@ -144,8 +166,18 @@ Pane {
                 source: "icon/ic_store_white_24dp_1x.png"
             }
         }
-    }
 
+        Pane {
+            id: storepane
+            x: 135
+            y: 6
+            width: 8
+            height: 50
+            Material.background:"#e91e63"
+            visible: false
+        }
+    }
+    
     Button {
         id: buttondiagnosis
         x: 57
@@ -155,6 +187,7 @@ Pane {
         Material.background:diagnosismouseArea.containsMouse?"#2196F3":"white"
         Material.elevation:0
         Text{
+            id: textdiagnosis
             width: 135
             height: 25
             anchors.centerIn: parent
@@ -165,7 +198,7 @@ Pane {
             font.pointSize: 15
             color: diagnosismouseArea.containsMouse ? "white" : "black"
         }
-
+        
         MouseArea {
             id: diagnosismouseArea
             x: 0
@@ -180,10 +213,15 @@ Pane {
                 diagnosisPane.visible=true
                 sharePane.visible=false
                 settingPane.visible=false
-
+                sharePane.visible=false
+                serverpane.visible=false
+                storepane.visible=false
+                diagnosispane.visible=true
+                sharepane.visible=false
+                settingpane.visible=false
             }
         }
-
+        
         Rectangle {
             id: imagebackground3
             y: 6
@@ -205,8 +243,18 @@ Pane {
                 source: "icon/ic_build_white_24dp_1x.png"
             }
         }
-    }
 
+        Pane {
+            id: diagnosispane
+            x: 135
+            y: 6
+            width: 8
+            height: 50
+            Material.background: "#2196f3"
+            visible: false
+        }
+    }
+    
     Button {
         id: buttonshare
         x: 57
@@ -216,6 +264,7 @@ Pane {
         Material.background: sharemouseArea.containsMouse?"#3F51B5":"white"
         Material.elevation:0
         Text {
+            id: textshare
             width: 141
             height: 25
             color: sharemouseArea.containsMouse ? "white" : "black"
@@ -226,7 +275,7 @@ Pane {
             font.pointSize: 15
             font.family: "Microsoft JhengHei UI"
         }
-
+        
         MouseArea {
             id: sharemouseArea
             x: 0
@@ -241,10 +290,15 @@ Pane {
                 diagnosisPane.visible=false
                 sharePane.visible=true
                 settingPane.visible=false
-
+                sharePane.visible=true
+                serverpane.visible=false
+                storepane.visible=false
+                diagnosispane.visible=false
+                sharepane.visible=true
+                settingpane.visible=false
             }
         }
-
+        
         Rectangle {
             id: imagebackground4
             y: 6
@@ -266,8 +320,18 @@ Pane {
                 source: "icon/ic_share_white_24dp_1x.png"
             }
         }
-    }
 
+        Pane {
+            id: sharepane
+            x: 135
+            y: 6
+            width: 8
+            height: 50
+            Material.background: "#3f51b5"
+            visible: false
+        }
+    }
+    
     Button {
         id: buttonsetting
         x: 57
@@ -277,6 +341,7 @@ Pane {
         Material.background: settingmouseArea.containsMouse?"#9E9E9E":"white"
         Material.elevation:0
         Text {
+            id: textsetting
             width: 129
             height: 25
             color: settingmouseArea.containsMouse ? "white" : "black"
@@ -287,7 +352,7 @@ Pane {
             font.pointSize: 15
             font.family: "Microsoft JhengHei UI"
         }
-
+        
         MouseArea {
             id: settingmouseArea
             x: 0
@@ -302,10 +367,15 @@ Pane {
                 diagnosisPane.visible=false
                 sharePane.visible=false
                 settingPane.visible=true
-
+                sharePane.visible=false
+                serverpane.visible=false
+                storepane.visible=false
+                diagnosispane.visible=false
+                sharepane.visible=false
+                settingpane.visible=true
             }
         }
-
+        
         Rectangle {
             id: imagebackground5
             y: 6
@@ -327,5 +397,15 @@ Pane {
                 source: "icon/ic_settings_white_24dp_1x.png"
             }
         }
+    }
+
+    Pane {
+        id: settingpane
+        x: 192
+        y: 227
+        width: 8
+        height: 50
+        Material.background:"#9e9e9e"
+        visible: false
     }
 }
