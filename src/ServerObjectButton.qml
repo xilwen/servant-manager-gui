@@ -40,7 +40,7 @@ Button {
     }
     Label {
         id: serverSubtitle
-        //text: qsTr("副標題")
+        text: qsTr("副標題")
         verticalAlignment: Text.AlignVCenter
         anchors.top: serverTitle.bottom
         anchors.topMargin: 0
@@ -50,13 +50,13 @@ Button {
         height: 26
         horizontalAlignment: Text.AlignLeft
         font.family: "Microsoft JhengHei UI";
-        anchors.bottom: importPBar.top
         anchors.bottomMargin: 3
         color:"#616161"
     }
     Image{
         id: serverImage
         width: 50
+        source: ""
         anchors.bottom: parent.bottom
         anchors.bottomMargin: 17
         anchors.top: parent.top
@@ -67,5 +67,6 @@ Button {
         sourceSize.height: 60
         sourceSize.width: 60
         fillMode: Image.Stretch
+
     }
 }

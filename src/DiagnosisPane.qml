@@ -88,7 +88,6 @@ Pane {
         text: qsTr("網路")
         anchors.left: parent.left
         anchors.leftMargin: 23
-        anchors.top: recordingbutton.bottom
         anchors.topMargin: 9
         font.family: "Microsoft JhengHei UI"
         font.pointSize: 22
