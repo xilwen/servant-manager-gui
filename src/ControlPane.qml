@@ -91,7 +91,7 @@ Pane {
             width: 8
             height: 50
             Material.background:"#00aa00"
-            visible: visible
+            visible: true
         }
         
     }
