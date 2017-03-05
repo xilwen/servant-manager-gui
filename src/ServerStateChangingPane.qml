@@ -55,7 +55,7 @@ Pane {
             font.family: "Microsoft JhengHei UI";
             font.pointSize: 16
             color: "white"
-            objectName: serverStartingText
+            objectName: "serverStartingText"
         }
     }
 

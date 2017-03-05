@@ -16,5 +16,6 @@ int main(int argc, char *argv[])
 
     MainWindow mainWindow(ui);
     engine.rootContext()->setContextProperty("mainWindow", &mainWindow);
+
     return app.exec();
 }

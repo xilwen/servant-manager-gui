@@ -3,14 +3,11 @@
 
 #include <QObject>
 #include <QGuiApplication>
-#include <QQmlApplicationEngine>
-#include <QQuickStyle>
 #include <QQmlComponent>
 #include <QQmlProperty>
 #include <thread>
-#include <chrono>
-#include <iostream>
-#include "servantBase.hpp"
+#include "ServantBase.hpp"
+#include "loadingscreen.h"
 
 class MainWindow : public QObject
 {
@@ -18,36 +15,16 @@ class MainWindow : public QObject
 public:
     explicit MainWindow(QObject *ui);
     ~MainWindow();
-    Q_INVOKABLE void shutdown();
-    Q_INVOKABLE void importPackage();
-    Q_INVOKABLE void boot();
-    Q_INVOKABLE void setName0();
-    Q_INVOKABLE void setName1();
-    Q_INVOKABLE void startDownload();
-    Q_INVOKABLE void importPackageDownloaded();
-    Q_INVOKABLE void runFirstTimeWorker();
-    Q_INVOKABLE void deleteVM();
-    Q_INVOKABLE void startWebmin();
+    static QObject *getUi();
 signals:
-    void importStatusChanged(int progress);
+    void servantBaseIsReady();
 public slots:
-    void updateImportBusy(int progress);
+    void hideLoadingUI();
 private:
-    QObject *ui;
-    QObject *loadingProgressBar,
-    *statusLabel,
-    *pane1,
-    *overviewPane,
-    *serverInfoPane,
-    *welcomePane,
-    *perfMeterPane,
-    *firstTimeFinishedPane
-    ;
-    vBoxWrapperClient *client = nullptr;
-    packageManager *pm = nullptr;
-    vBoxWrapperHolder *holder = nullptr;
-    PerformanceManager *perfm = nullptr;
-    void importListener();
+    static QObject *ui;
+    void initSERVANTBaseRunner();
+    LoadingScreen *loadingScreen;
+
 };
 
 #endif // MAINWINDOW_H

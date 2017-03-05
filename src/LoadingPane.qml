@@ -11,9 +11,8 @@ Pane {
     anchors.leftMargin: 0
     anchors.topMargin: 0
     anchors.fill: parent
-    objectName: "pane1"
+    objectName: "loadingScreen"
     Material.theme: Material.Dark
-
 
     Label {
         id: logoTitle
@@ -26,15 +25,14 @@ Pane {
         horizontalAlignment: Text.AlignHCenter
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.verticalCenter: parent.verticalCenter
-
-
     }
+
     ProgressBar {
         id: loadProgressBar
         x: 528
         y: 528
         width: 400
-        objectName: "loadingProgressBar"
+        objectName: "loadingScreenProgressBar"
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.bottom: parent.bottom
         anchors.bottomMargin: 100
@@ -46,7 +44,7 @@ Pane {
         Label {
             id: loadStatusLabel
             text: qsTr("Status")
-            objectName: "statusLabel"
+            objectName: "loadingScreenStatusLabel"
             font.pointSize: 12
             font.family: "Microsoft JhengHei UI"
             horizontalAlignment: Text.AlignHCenter

@@ -16,7 +16,13 @@ LIBS += -lws2_32 -lstdc++fs -lwldap32
 QMAKE_LFLAGS += -static
 
 SOURCES += main.cpp \
-    mainwindow.cpp
+    mainwindow.cpp \
+    myserver.cpp \
+    mall.cpp \
+    diagnosis.cpp \
+    perference.cpp \
+    loadingscreen.cpp \
+    qtutilities.cpp
 
 RESOURCES += qml.qrc
 
@@ -30,6 +36,12 @@ qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
-HEADERS += mainwindow.h
+HEADERS += mainwindow.h \
+    myserver.h \
+    mall.h \
+    diagnosis.h \
+    perference.h \
+    loadingscreen.h \
+    qtutilities.h
 
 DISTFILES +=
