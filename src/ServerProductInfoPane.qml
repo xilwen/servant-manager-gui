@@ -233,7 +233,8 @@ Pane {
         anchors.leftMargin: 0
         Material.elevation: 3
         Material.background: "white"
-
+        visible:true
+        //visible:false
         Button {
             id: button3
             x: 687
@@ -247,6 +248,12 @@ Pane {
             anchors.rightMargin: 10
             Material.elevation: 0
             Material.background: "white"
+            visible:true
+            onClicked: {
+            bottomPane.visible=false
+            progressbarpane.visible=true
+            }
+
         }
 
         Button {
@@ -263,8 +270,83 @@ Pane {
             Material.background: "white"
             font.pointSize: 14
             Material.elevation: 0
+            visible:true
+
         }
+
+
     }
+    Pane {
+        id: progressbarpane
+        y: 529
+        height: 50
+        anchors.right: parent.right
+        anchors.rightMargin: 0
+        anchors.left: parent.left
+        anchors.leftMargin: 0
+        anchors.bottom: parent.bottom
+        anchors.bottomMargin: 0
+        Material.elevation: 3
+        Material.background: "white"
+        visible:false
+        //visible:true
+
+        ProgressBar {
+            id: progressBar
+            y: 3
+            height: 20
+            anchors.right: parent.right
+            anchors.rightMargin: 365
+            anchors.left: parent.left
+            anchors.leftMargin: 8
+            value: 0.5
+            visible: true
+            indeterminate: true
+            Material.accent:Material.Blue
+
+        }
+
+        Button {
+            id: cancelbutton
+            x: 644
+            y: -11
+            width: 145
+            text: qsTr("取消")
+            anchors.right: parent.right
+            anchors.rightMargin: 10
+            font.pointSize: 14
+            font.family: "Microsoft JhengHei UI"
+            Material.background: "white"
+            //visible: true
+            //visible:false
+            Material.elevation:0
+            onClicked: {
+                bottomPane.visible=true
+                progressbarpane.visible=false
+
+            }
+        }
+
+        Label {
+            id: label7
+            x: 455
+            y: -1
+            width: 145
+            height: 29
+            text: qsTr("300 / 738 MB")
+            horizontalAlignment: Text.AlignHCenter
+            verticalAlignment: Text.AlignVCenter
+            anchors.verticalCenterOffset: 0
+            anchors.verticalCenter: parent.verticalCenter
+            font.pointSize: 14
+            font.family: "Microsoft JhengHei UI"
+            anchors.right: parent.right
+            anchors.rightMargin: 199
+        }
+
+    }
+
+
 }
 
 
