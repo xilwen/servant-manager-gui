@@ -42,7 +42,6 @@ Pane {
 
     Label {
         id: perpareForNewServerLabel
-        objectName: perpareForNewServerLabel
         height: 70
         text: "正在準備"
         anchors.right: parent.right
