@@ -33,7 +33,7 @@ Button {
         height: 26
         font.family: "Microsoft JhengHei UI";
         anchors.top: parent.top
-        anchors.topMargin: 21
+        anchors.topMargin: 16
         anchors.left: serverImage.right
         anchors.leftMargin: 8
         font.pointSize: 16
@@ -41,11 +41,12 @@ Button {
     Label {
         id: serverSubtitle
         text: qsTr("副標題")
+        anchors.left: serverTitle.left
+        anchors.leftMargin: 0
         verticalAlignment: Text.AlignVCenter
         anchors.top: serverTitle.bottom
         anchors.topMargin: 0
         font.pointSize: 12
-        x: 69
         width: 178
         height: 26
         horizontalAlignment: Text.AlignLeft
@@ -55,17 +56,16 @@ Button {
     }
     Image{
         id: serverImage
-        width: 50
+        width: 56
+        height: 56
+        antialiasing: true
+        anchors.verticalCenter: parent.verticalCenter
         source: ""
-        anchors.bottom: parent.bottom
-        anchors.bottomMargin: 17
-        anchors.top: parent.top
-        anchors.topMargin: 17
         z: 3
         anchors.left: parent.left
         anchors.leftMargin: 10
-        sourceSize.height: 60
-        sourceSize.width: 60
+        sourceSize.height: 64
+        sourceSize.width: 64
         fillMode: Image.Stretch
 
     }

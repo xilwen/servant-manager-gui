@@ -6,6 +6,7 @@ import QtQuick.Controls.Material 2.1
 
 Pane {
     id: controlpane
+	objectName: "controlPane"
     width: 200
     height: 600
     rightPadding: 0
@@ -45,8 +46,7 @@ Pane {
             anchors.fill: parent
             hoverEnabled: true
             onClicked: {
-                //noMachineCreated ? overviewPane_Empty.visible = true: overviewPane_Normal.visible = true
-                overviewPane_Normal.visible = true
+                noMachineCreated ? overviewPane_Empty.visible = true: overviewPane_Normal.visible = true
                 serverMallPane.visible=false
                 serverProductInfoPane.visible=false
                 diagnosisPane.visible=false

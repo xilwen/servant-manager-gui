@@ -8,6 +8,9 @@
 #include <thread>
 #include "ServantBase.hpp"
 #include "loadingscreen.h"
+#include "firsttimesetup.h"
+#include "mall.h"
+#include "myserver.h"
 
 class MainWindow : public QObject
 {
@@ -16,14 +19,19 @@ public:
     explicit MainWindow(QObject *ui);
     ~MainWindow();
     static QObject *getUi();
+
 signals:
     void servantBaseIsReady();
 public slots:
-    void hideLoadingUI();
+    void initialServantManager();
 private:
     static QObject *ui;
-    void initSERVANTBaseRunner();
-    LoadingScreen *loadingScreen;
+    QObject *controlPane;
+    void initialServantBase();
+    LoadingScreen *loadingScreen = nullptr;
+    FirstTimeSetup *firstTimeSetup = nullptr;
+    Mall *mall = nullptr;
+    MyServer *myServer = nullptr;
 
 };
 

@@ -34,7 +34,7 @@ Pane {
         anchors.top: parent.top
         anchors.topMargin: 55
         title: qsTr("連接埠")
-        info: qsTr("21")
+        info: (serverInfoPane.itemIndex == 0)?qsTr("21") : qsTr("80")
     }
 
     OverviewModule_ServerQuickInfoBlock{
@@ -43,7 +43,7 @@ Pane {
         anchors.left: block0.right
         anchors.leftMargin: 20
         title: qsTr("服務")
-        info: qsTr("FTP")
+        info: (serverInfoPane.itemIndex == 0)?qsTr("FTP") : qsTr("CMS")
     }
 
     OverviewModule_ServerQuickInfoBlock{

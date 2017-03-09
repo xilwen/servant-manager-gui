@@ -22,7 +22,9 @@ SOURCES += main.cpp \
     diagnosis.cpp \
     perference.cpp \
     loadingscreen.cpp \
-    qtutilities.cpp
+    qtutilities.cpp \
+    firsttimesetup.cpp \
+    temporarycommandsforqml.cpp
 
 RESOURCES += qml.qrc
 
@@ -42,6 +44,8 @@ HEADERS += mainwindow.h \
     diagnosis.h \
     perference.h \
     loadingscreen.h \
-    qtutilities.h
+    qtutilities.h \
+    firsttimesetup.h \
+    temporarycommandsforqml.h
 
 DISTFILES +=

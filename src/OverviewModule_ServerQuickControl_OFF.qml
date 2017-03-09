@@ -34,6 +34,9 @@ Pane {
         anchors.topMargin: 10
         info: qsTr("完整移除相關的檔案")
         imageSource: "icon/ic_delete_black_48dp_2x.png"
+        onClicked:{
+            //TODO Delete Server Actions
+        }
     }
 
     OverviewModule_ServerQuickControlBlock{

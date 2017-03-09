@@ -30,6 +30,7 @@ Pane {
     OverviewModule_ServerQuickAction
     {
         id:  overviewModuleServerQuickAction
+        objectName: "overviewModuleServerQuickAction0"
         anchors.left: overviewModuleInfo.left
         anchors.leftMargin: 0
         anchors.top: overviewModuleInfo.bottom

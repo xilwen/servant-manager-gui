@@ -12,6 +12,7 @@ Pane {
     anchors.leftMargin: 0
     anchors.topMargin: 0
     anchors.fill: parent
+    objectName: "serverStateChangingPane"
 
     Button {
         id: backbutton
@@ -71,26 +72,18 @@ Pane {
         source: "icon/ic_power_settings_new_black_48dp.png"
     }
 
-    ProgressBar {
-        id: progressBarServerStateChanging
-        anchors.bottom: parent.bottom
-        anchors.bottomMargin: 200
-        anchors.left: parent.left
-        anchors.leftMargin: 150
-        anchors.right: parent.right
-        anchors.rightMargin: 150
-        anchors.top: poweringimage.bottom
-        anchors.topMargin: 10
-        objectName: "progressBarServerStateChanging"
-        indeterminate: true
-        Material.accent: Material.BlueGrey
-        visible: true
-        value: 0.5
+    BusyIndicator {
+        id: serverStateChangingBusyIndicator
+        width: 96
+        height: 96
+        anchors.verticalCenter: parent.verticalCenter
+        anchors.horizontalCenter: parent.horizontalCenter
     }
 
     Label {
         id: serverStartingLabel
         text: "正在啟動..."
+        visible: false
         anchors.right: parent.right
         anchors.rightMargin: 329
         anchors.left: parent.left
@@ -109,6 +102,7 @@ Pane {
         id: changingimage
         width: 60
         height: 60
+        anchors.verticalCenterOffset: 0
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.verticalCenter: parent.verticalCenter
         visible: false
@@ -121,13 +115,10 @@ Pane {
     Label {
         id: serverChangingLabel
         text: "正在變更..."
-        visible: false
-        anchors.right: parent.right
-        anchors.rightMargin: 329
-        anchors.left: parent.left
-        anchors.leftMargin: 329
-        anchors.bottom: parent.bottom
-        anchors.bottomMargin: 137
+        anchors.verticalCenterOffset: 100
+        anchors.verticalCenter: parent.verticalCenter
+        anchors.horizontalCenter: parent.horizontalCenter
+        visible: true
         anchors.top: progressBarServerStateChanging.bottom
         anchors.topMargin: 20
         font.pointSize: 15

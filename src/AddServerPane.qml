@@ -46,8 +46,8 @@ Pane {
         anchors.top: parent.top
         anchors.topMargin: 135
         currentIndex: 0
-        textRole: "FTP 伺服器"
-
+        model: [ "FTP Server", "Joomla Server" ]
+        font.family: "Microsoft JhengHei UI"
     }
 
     Label {
@@ -103,7 +103,7 @@ Pane {
         Label {
             id: addServerHintLabel
             height: 70
-            text: "您可以使用伺服器管理介面進行進一步的設定。"
+            text: "您可以使用伺服器管理介面對這個伺服器進行進一步的設定。"
             anchors.top: parent.top
             anchors.topMargin: 0
             anchors.right: parent.right
@@ -112,7 +112,6 @@ Pane {
             anchors.leftMargin: 50
             font.pointSize: 15
             font.family: "Microsoft JhengHei UI"
-
         }
     }
 

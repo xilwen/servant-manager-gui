@@ -8,7 +8,7 @@ Pane {
     width: 800
     height: 600
     visible: true
-
+    property int itemIndex: 0
     anchors.rightMargin: 0
     anchors.bottomMargin: 0
     anchors.leftMargin: 0
@@ -78,7 +78,14 @@ Pane {
             Material.elevation: 0
             font.pointSize: 12
             font.family: "Microsoft JhengHei UI";
-            onClicked: serverStateChangingPane.visible = true
+            onClicked: {
+                serverQuickControlPane_OFF.visible = false
+                serverQuickControlPane_ON.visible = true
+                serverStateChangingPane.visible = true
+                button_OFF.visible = true
+                button_ON.visible = false
+                tmpCmd.bootServer(itemIndex)
+            }
         }
 
         Button {
@@ -93,6 +100,14 @@ Pane {
             font.pointSize: 12
             font.family: "Microsoft JhengHei UI"
             visible: false
+            onClicked: {
+                serverQuickControlPane_OFF.visible = false
+                serverQuickControlPane_ON.visible = true
+                serverStateChangingPane.visible = true
+                button_OFF.visible = false
+                button_ON.visibe = true
+                tmpCmd.shutdownServer();
+            }
         }
     }
 

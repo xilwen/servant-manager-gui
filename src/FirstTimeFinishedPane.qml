@@ -50,7 +50,7 @@ Pane {
 
             onClicked: {
                 firstTimeFinishedPane.visible = false
-                overviewPane.visible=true
+                controlPane.noMachineCreated ? overviewPane_Empty.visible = true: overviewPane_Normal.visible = true
             }
 
             Image {

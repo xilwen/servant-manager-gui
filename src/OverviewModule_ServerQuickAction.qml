@@ -11,7 +11,6 @@ Button {
     property alias imageSource: serverImage.source
     property alias name: nameLabel.text
     property alias type: typeLabel.text
-//    property alias quickAction: quickActionButton.onClicked //will cause unidentified error
     property alias quickActionName: quickActionLabel.text
     Material.background: "White"
 

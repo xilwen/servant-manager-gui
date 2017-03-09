@@ -23,6 +23,7 @@ Pane {
         serverSubtitle: qsTr("基本的FTP 伺服器")
         serverImageSource: "icon/ic_folder_black_48dp_2x.png"
         onClicked:{
+            serverProductInfoPane.itemIndex = 0
             serverMallPane.visible=false
             serverProductInfoPane.visible=true
             overviewPane_Empty.visible=false
@@ -32,6 +33,28 @@ Pane {
             settingPane.visible=false
         }
     }
+
+    ServerObjectButton{
+        id: joomlaserverbutton
+        anchors.top: label2.bottom
+        anchors.topMargin: 10
+        anchors.left: label2.left
+        anchors.leftMargin: 0
+        serverTitle: qsTr("Joomla 伺服器")
+        serverSubtitle: qsTr("自由、開放原始碼的內容管理系統")
+        serverImageSource: "icon/Joomla-flat-logo-en.png"
+        onClicked:{
+            serverProductInfoPane.itemIndex = 1
+            serverMallPane.visible=false
+            serverProductInfoPane.visible=true
+            overviewPane_Empty.visible=false
+            overviewPane_Normal.visible=false
+            diagnosisPane.visible=false
+            sharePane.visible=false
+            settingPane.visible=false
+        }
+    }
+
     ServerMallButton{
         id: refreshListButton
         serverTitle: qsTr(" 更新伺服器清單")
@@ -92,6 +115,21 @@ Pane {
         font.family: "Microsoft JhengHei UI"
         font.pointSize: 14
         verticalAlignment: Text.AlignVCenter
+    }
+
+    Label {
+        id: label2
+        x: 20
+        text: qsTr("內容管理系統")
+        horizontalAlignment: Text.AlignLeft
+        anchors.left: refreshListButton.left
+        font.pointSize: 22
+        font.family: "Microsoft JhengHei UI"
+        anchors.top: label.bottom
+        verticalAlignment: Text.AlignVCenter
+        anchors.topMargin: 110
+        anchors.leftMargin: 0
+        font.bold: false
     }
 }
 

@@ -89,6 +89,11 @@ ApplicationWindow {
                     Layout.fillWidth: true
                     Layout.fillHeight: true
 
+                    AddingServerPane{
+                        id:addingServerPane
+                        visible:false
+                    }
+
                     OverviewPane_Empty{
                         id:overviewPane_Empty
                         visible: controlPane.noMachineCreated ? true : false

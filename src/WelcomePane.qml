@@ -61,7 +61,9 @@ Pane {
             }
 
             onClicked: {
-                mainWindow.runFirstTimeWorker()
+				perfMeterPane.visible = true
+                welcomePane.visible = false				
+				tmpCmd.runHardwareAssessment()
             }
         }
     }

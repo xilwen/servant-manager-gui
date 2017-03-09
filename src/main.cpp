@@ -6,6 +6,8 @@
 #include <chrono>
 #include <QQmlContext>
 #include "mainwindow.h"
+#include "firsttimesetup.h"
+#include "temporarycommandsforqml.h"
 
 int main(int argc, char *argv[])
 {
@@ -15,7 +17,8 @@ int main(int argc, char *argv[])
     QObject* ui = QQmlComponent(&engine, QUrl(QLatin1String("qrc:/main.qml"))).create();
 
     MainWindow mainWindow(ui);
-    engine.rootContext()->setContextProperty("mainWindow", &mainWindow);
-
+    TemporaryCommandsForQml tmpCmd;
+    engine.rootContext()->setContextProperty("mainWindow", &mainWindow);    
+    engine.rootContext()->setContextProperty("tmpCmd", &tmpCmd);
     return app.exec();
 }

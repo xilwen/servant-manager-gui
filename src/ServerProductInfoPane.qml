@@ -8,12 +8,16 @@ Pane {
     width: 823
     height: 579
     padding: 0
+    property int itemIndex: 0
+    property alias progressBarValue : progressBar.value
+    property alias progressText : label7.text
+    property alias succeedPaneVisible : downloadSucceedPane.visible
     anchors.rightMargin: 0
     anchors.bottomMargin: 0
     anchors.leftMargin: 0
     anchors.topMargin: 0
     anchors.fill: parent
-    objectName:"serverMallPane"
+    objectName:"serverProductInfoPane"
     Image {
         id: ftpimage
         width: 100
@@ -22,14 +26,14 @@ Pane {
         anchors.topMargin: 10
         anchors.left: parent.left
         anchors.leftMargin: 20
-        source: "icon/ic_folder_black_48dp_2x.png"
+        source: (itemIndex == 0) ? "icon/ic_folder_black_48dp_2x.png" : "icon/Joomla-flat-logo-en.png"
     }
 
     Label {
         id: ftplabel
         width: 115
         height: 25
-        text: qsTr("FTP伺服器")
+        text: (itemIndex == 0) ? qsTr("FTP伺服器") : qsTr("Joomla! 伺服器")
         anchors.top: backButton.bottom
         anchors.topMargin: 22
         anchors.left: ftpimage.right
@@ -61,10 +65,13 @@ Pane {
         anchors.topMargin: 0
         anchors.leftMargin: 0
         anchors.rightMargin: 0
-        pageName: qsTr("FTP 伺服器")
+        pageName: (itemIndex == 0) ?qsTr("FTP 伺服器") : qsTr("Joomla! 伺服器")
         button.onClicked:{
             serverProductInfoPane.visible = false
             serverMallPane.visible = true
+            succeedPaneVisible = false
+            progressbarpane.visible = false
+            bottomPane.visible = true
         }
     }
 
@@ -152,7 +159,7 @@ Pane {
 
             Label {
                 id: label3
-                text: qsTr("Webmin + Samba")
+                text:  (itemIndex == 0) ? qsTr("Webmin + Samba") : qsTr("Joomla!")
                 anchors.left: label2.left
                 anchors.leftMargin: 0
                 anchors.bottom: parent.bottom
@@ -178,7 +185,10 @@ Pane {
                 id: label6
                 x: 9
                 y: -6
-                text: qsTr("具備基礎功能的FTP Server。\n預設為公開讀取設定檔。")
+                width: 346
+                height: 139
+                text: (itemIndex == 0) ? qsTr("具備基礎功能的FTP Server。\n預設為公開讀取設定檔。"):qsTr("Joomla!是一套自由、開放原始碼的內容管理系統，以PHP撰寫。\n通常被用來搭建商業網站、個人部落格、資訊管理系統、Web 服務等，還可以進行二次開發以擴充使用範圍。")
+                wrapMode: Text.WordWrap
                 anchors.top: parent.top
                 anchors.leftMargin: 10
                 anchors.left: parent.left
@@ -234,13 +244,13 @@ Pane {
         Material.elevation: 3
         Material.background: "white"
         visible:true
-        //visible:false
+
         Button {
             id: button3
             x: 687
             width: 145
             height: 48
-            text: qsTr("下載 (738MB)")
+            text: (itemIndex == 0) ? qsTr("下載 (738MB)"):  qsTr("下載 (807MB)")
             anchors.verticalCenter: parent.verticalCenter
             anchors.right: parent.right
             font.family: "Microsoft JhengHei UI"
@@ -250,10 +260,10 @@ Pane {
             Material.background: "white"
             visible:true
             onClicked: {
-            bottomPane.visible=false
-            progressbarpane.visible=true
+                bottomPane.visible=false
+                progressbarpane.visible=true
+                tmpCmd.runDownloader(itemIndex)
             }
-
         }
 
         Button {
@@ -271,10 +281,7 @@ Pane {
             font.pointSize: 14
             Material.elevation: 0
             visible:true
-
         }
-
-
     }
     Pane {
         id: progressbarpane
@@ -289,7 +296,6 @@ Pane {
         Material.elevation: 3
         Material.background: "white"
         visible:false
-        //visible:true
 
         ProgressBar {
             id: progressBar
@@ -299,11 +305,10 @@ Pane {
             anchors.rightMargin: 365
             anchors.left: parent.left
             anchors.leftMargin: 8
-            value: 0.5
+            value: 0
             visible: true
-            indeterminate: true
+            indeterminate: false
             Material.accent:Material.Blue
-
         }
 
         Button {
@@ -317,13 +322,10 @@ Pane {
             font.pointSize: 14
             font.family: "Microsoft JhengHei UI"
             Material.background: "white"
-            //visible: true
-            //visible:false
             Material.elevation:0
             onClicked: {
                 bottomPane.visible=true
                 progressbarpane.visible=false
-
             }
         }
 
@@ -333,7 +335,7 @@ Pane {
             y: -1
             width: 145
             height: 29
-            text: qsTr("300 / 738 MB")
+            text: qsTr("~ / 738 MB")
             horizontalAlignment: Text.AlignHCenter
             verticalAlignment: Text.AlignVCenter
             anchors.verticalCenterOffset: 0
@@ -343,10 +345,39 @@ Pane {
             anchors.right: parent.right
             anchors.rightMargin: 199
         }
-
     }
+    Pane {
+        id: downloadSucceedPane
+        height: 50
+        padding: 12
+        anchors.bottom: parent.bottom
+        anchors.bottomMargin: 0
+        anchors.right: parent.right
+        anchors.rightMargin: 0
+        anchors.left: parent.left
+        anchors.leftMargin: 0
+        Material.elevation: 3
+        Material.background: "white"
+        visible: false
 
-
+        Button {
+            id: installButton
+            x: 687
+            width: 145
+            height: 48
+            text: qsTr("安裝")
+            anchors.verticalCenter: parent.verticalCenter
+            anchors.right: parent.right
+            font.family: "Microsoft JhengHei UI"
+            font.pointSize: 14
+            anchors.rightMargin: 10
+            Material.elevation: 0
+            Material.background: "white"
+            visible:true
+            onClicked: {
+                serverProductInfoPane.visible = false
+                tmpCmd.runInstaller(itemIndex)
+            }
+        }
+    }
 }
-
-

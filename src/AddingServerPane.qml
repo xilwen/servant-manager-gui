@@ -5,6 +5,8 @@ import QtQuick.Controls.Material 2.1
 
 Pane {
     id: addingServerPane
+    objectName: "addingServerPane"
+    property alias progressText: addingPercentLabel.text
     width: 823
     height: 579
     anchors.rightMargin: 0
@@ -15,27 +17,21 @@ Pane {
 
     BusyIndicator {
         id: addingServerBusyIndicator
-        anchors.right: parent.right
-        anchors.rightMargin: 369
-        anchors.left: parent.left
-        anchors.leftMargin: 370
-        anchors.top: parent.top
-        anchors.topMargin: 190
+        width: 96
+        height: 96
+        anchors.verticalCenter: parent.verticalCenter
+        anchors.horizontalCenter: parent.horizontalCenter
     }
 
     Label {
         id: addingPercentLabel
         height: 30
         text: "20%"
+        anchors.horizontalCenter: parent.horizontalCenter
+        anchors.verticalCenter: parent.verticalCenter
         font.pointSize: 15
         verticalAlignment: Text.AlignVCenter
         horizontalAlignment: Text.AlignHCenter
-        anchors.right: parent.right
-        anchors.rightMargin: 369
-        anchors.left: parent.left
-        anchors.leftMargin: 370
-        anchors.top: parent.top
-        anchors.topMargin: 260
         font.family: "Microsoft JhengHei UI"
 
     }
@@ -44,15 +40,13 @@ Pane {
         id: perpareForNewServerLabel
         height: 70
         text: "正在準備"
-        anchors.right: parent.right
-        anchors.rightMargin: 249
-        anchors.left: parent.left
-        anchors.leftMargin: 250
+        anchors.verticalCenterOffset: 90
+        anchors.horizontalCenterOffset: 0
+        anchors.verticalCenter: parent.verticalCenter
+        anchors.horizontalCenter: parent.horizontalCenter
         font.pointSize: 15
         verticalAlignment: Text.AlignVCenter
         horizontalAlignment: Text.AlignHCenter
-        anchors.top: parent.top
-        anchors.topMargin: 300
         font.family: "Microsoft JhengHei UI"
 
     }
