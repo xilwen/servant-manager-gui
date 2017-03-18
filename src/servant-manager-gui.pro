@@ -24,7 +24,8 @@ SOURCES += main.cpp \
     loadingscreen.cpp \
     qtutilities.cpp \
     firsttimesetup.cpp \
-    temporarycommandsforqml.cpp
+    temporarycommandsforqml.cpp \
+    servercontrol.cpp
 
 RESOURCES += qml.qrc
 
@@ -46,6 +47,7 @@ HEADERS += mainwindow.h \
     loadingscreen.h \
     qtutilities.h \
     firsttimesetup.h \
-    temporarycommandsforqml.h
+    temporarycommandsforqml.h \
+    servercontrol.h
 
 DISTFILES +=

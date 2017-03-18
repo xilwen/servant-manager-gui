@@ -4,14 +4,14 @@ MyServer *MyServer::instance = nullptr;
 
 MyServer::MyServer(QObject *parent) : QObject(parent)
 {
-    instance = this;
-    packageManager = ServantBase::getInstance()->getPackageManager();
+    instance = this;    
     connect(this, &MyServer::readyToInstallPackage, this, &MyServer::installPackage);
     connect(this, &MyServer::installProgressChanged, this, &MyServer::updateInstallUI);
     connect(this, &MyServer::installFinished, this, &MyServer::updateAfterInstall);
     connect(this, &MyServer::readyToBootServer, this, &MyServer::bootServer);
     connect(this, &MyServer::readyToShutdownServer, this, &MyServer::shutdownServer);
     connect(this, &MyServer::modifyFinished, this, &MyServer::closeModifyUI);
+    packageManager = ServantBase::getInstance()->getPackageManager();
     addingServerPane = MainWindow::getUi()->findChild<QObject*>("addingServerPane");
     serverInfoPane = MainWindow::getUi()->findChild<QObject*>("serverInfoPane");
     overviewModuleServerQuickAction0 = MainWindow::getUi()->findChild<QObject*>("overviewModuleServerQuickAction0");
@@ -93,6 +93,7 @@ void MyServer::bootServerRunner()
     packageManager->getMachines()->back().launch();
     int port = (itemIndex == 0)? 21 : 80;
     ServantBase::getInstance()->getVBoxWrapperClient()->waitForPortOpen(port);
+    emit ServerControl::getInstance()->readyToUpdateServerControlUI("DEMOONLY");
     emit modifyFinished();
 }
 
@@ -106,6 +107,7 @@ void MyServer::shutdownServerRunner()
         std::this_thread::sleep_for(std::chrono::milliseconds(200));
     }
     while(msg != L"PoweredOff");
+    emit ServerControl::getInstance()->readyToUpdateServerControlUI("DEMOONLY");
     emit modifyFinished();
 }
 

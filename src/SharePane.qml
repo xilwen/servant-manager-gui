@@ -34,19 +34,18 @@ Pane {
         anchors.left: parent.left
         anchors.leftMargin: 22
         serverTitle: qsTr("匯出伺服器")
-        serverSubtitle:qsTr("以VirtualBox格式")
-        serverImageSource: "icon/ic_reorder_black_24dp_2x.png"
+        serverSubtitle:qsTr("以 VirtualBox 格式(*.ova)匯出伺服器")
+        serverImageSource: "icon/ic_call_made_black_24dp_2x.png"
     }
     ServerObjectButton{
         id: pushvirtualboxbutton
         y: 56
         anchors.left: pushServerbutton.right
         anchors.leftMargin: 36
-        serverTitle: qsTr("從VirtualBox匯入")
-        serverImageSource: "qrc:/qtquickplugin/images/template_image.png"
+        serverTitle: qsTr("從 VirtualBox 匯入")
+        serverSubtitle: qsTr("從已建立的虛擬機器建立伺服器")
+        serverImageSource: "icon/ic_call_received_black_24dp_2x.png"
     }
-
-
 
     Label {
         id: backuplabel
@@ -69,6 +68,7 @@ Pane {
         anchors.top: backuplabel.bottom
         anchors.topMargin: 9
         serverTitle: qsTr("為所有機器建立快照")
+        serverSubtitle: qsTr("為所有伺服器建立當下狀態的快照")
         serverImageSource: "icon/ic_camera_enhance_2x.png"
     }
     ServerObjectButton{
@@ -77,10 +77,9 @@ Pane {
         anchors.left: camerabutton.right
         anchors.leftMargin: 36
         serverTitle: qsTr("備份所有機器")
+        serverSubtitle: qsTr("將所有伺服器備份並匯出")
         serverImageSource: "icon/ic_file_upload_2x.png"
     }
-
-
 
     Pane {
         id: pane
@@ -93,7 +92,6 @@ Pane {
         anchors.bottomMargin: -12
         anchors.top: parent.top
         anchors.topMargin: -12
-        //visible:true
         visible:false
         Image {
             id: loadingimage

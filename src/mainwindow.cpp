@@ -21,6 +21,12 @@ MainWindow::~MainWindow()
         delete loadingScreen;
     if(firstTimeSetup)
         delete firstTimeSetup;
+    if(mall)
+        delete mall;
+    if(myServer)
+        delete myServer;
+    if(serverControl)
+        delete serverControl;
 }
 
 QObject *MainWindow::getUi()
@@ -38,6 +44,7 @@ void MainWindow::initialServantManager()
 {
     mall = new Mall;
     myServer = new MyServer;
+    serverControl = new ServerControl;
     if(ServantBase::getInstance()->getPackageManager()->isFirstTime())
     {
         firstTimeSetup = new FirstTimeSetup;
@@ -53,7 +60,7 @@ void MainWindow::initialServantManager()
         {
             controlPane->setProperty("noMachineCreated", false);
             myServer->updateServerQuickAction();
-        }
+        }        
     }
     loadingScreen->setVisible(false);
 }

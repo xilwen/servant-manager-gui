@@ -18,10 +18,10 @@ Button {
         width: 167
         height: 24
         text: qsTr("開啟伺服器檔案")
+        anchors.verticalCenterOffset: -13
+        anchors.verticalCenter: parent.verticalCenter
         anchors.left: actionImage.right
-        anchors.leftMargin: 5
-        anchors.top: actionImage.top
-        anchors.topMargin: 8
+        anchors.leftMargin: 10
         font.family: qsTr("Microsoft JhengHei UI")
         font.pointSize: 18
         verticalAlignment: Text.AlignVCenter
@@ -45,10 +45,10 @@ Button {
 
     Image {
         id: actionImage
-        width: 64
-        height: 64
+        width: 56
+        height: 56
         anchors.left: parent.left
-        anchors.leftMargin: 5
+        anchors.leftMargin: 8
         anchors.verticalCenter: parent.verticalCenter
         source: "icon/ic_folder_black_48dp_2x.png"
     }

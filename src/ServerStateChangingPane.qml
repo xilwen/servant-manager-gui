@@ -84,14 +84,9 @@ Pane {
         id: serverStartingLabel
         text: "正在啟動..."
         visible: false
-        anchors.right: parent.right
-        anchors.rightMargin: 329
-        anchors.left: parent.left
-        anchors.leftMargin: 329
-        anchors.bottom: parent.bottom
-        anchors.bottomMargin: 137
-        anchors.top: progressBarServerStateChanging.bottom
-        anchors.topMargin: 20
+        anchors.verticalCenterOffset: 100
+        anchors.verticalCenter: parent.verticalCenter
+        anchors.horizontalCenter: parent.horizontalCenter
         font.pointSize: 15
         horizontalAlignment: Text.AlignHCenter
         verticalAlignment: Text.AlignVCenter
@@ -119,8 +114,6 @@ Pane {
         anchors.verticalCenter: parent.verticalCenter
         anchors.horizontalCenter: parent.horizontalCenter
         visible: true
-        anchors.top: progressBarServerStateChanging.bottom
-        anchors.topMargin: 20
         font.pointSize: 15
         horizontalAlignment: Text.AlignHCenter
         verticalAlignment: Text.AlignVCenter

@@ -88,5 +88,7 @@
         <file>icon/ic_cached.png</file>
         <file>icon/ic_sync_problem.png</file>
         <file>icon/Joomla-flat-logo-en.png</file>
+        <file>icon/ic_call_made_black_24dp_2x.png</file>
+        <file>icon/ic_call_received_black_24dp_2x.png</file>
     </qresource>
 </RCC>

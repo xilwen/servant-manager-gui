@@ -2,6 +2,7 @@
 #include "firsttimesetup.h"
 #include "mall.h"
 #include "myserver.h"
+#include "servercontrol.h"
 
 TemporaryCommandsForQml::TemporaryCommandsForQml(QObject *parent) : QObject(parent)
 {
@@ -31,4 +32,14 @@ void TemporaryCommandsForQml::bootServer(int itemIndex)
 void TemporaryCommandsForQml::shutdownServer()
 {
     emit MyServer::getInstance()->readyToShutdownServer();
+}
+
+void TemporaryCommandsForQml::updateServerControlUI(const QString &machineName)
+{
+    emit ServerControl::getInstance()->readyToUpdateServerControlUI(machineName);
+}
+
+void TemporaryCommandsForQml::deleteServer(const QString &machineName)
+{
+    emit ServerControl::getInstance()->readyToDeleteServer(machineName);
 }

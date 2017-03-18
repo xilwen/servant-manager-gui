@@ -5,7 +5,7 @@ import QtQuick.Controls.Material 2.1
 
 Button {
     id: button1
-    height: 64
+    height: 56
     Layout.alignment: Qt.AlignLeft | Qt.AlignTop
     property alias serverTitle: serverTitle.text
     property alias serverImageSource: serverImage.source
@@ -28,24 +28,20 @@ Button {
     Label {
         id: serverTitle
         text: qsTr("標題")
+        anchors.verticalCenter: parent.verticalCenter
         width: 178
         height: 26
         font.family: "Microsoft JhengHei UI";
-        anchors.top: parent.top
-        anchors.topMargin: 19
         anchors.left: serverImage.right
-        anchors.leftMargin: 9
+        anchors.leftMargin: 5
         font.pointSize: 16
     }
 
     Image{
         id: serverImage
-        width: 30
-        height: 35
-        anchors.bottom: parent.bottom
-        anchors.bottomMargin: 17
-        anchors.top: parent.top
-        anchors.topMargin: 17
+        width: 32
+        height: 32
+        anchors.verticalCenter: parent.verticalCenter
         z: 3
         anchors.left: parent.left
         anchors.leftMargin: 10

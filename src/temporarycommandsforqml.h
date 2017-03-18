@@ -13,6 +13,8 @@ public:
     Q_INVOKABLE void runInstaller(int itemIndex);
     Q_INVOKABLE void bootServer(int itemIndex);
     Q_INVOKABLE void shutdownServer();
+    Q_INVOKABLE void updateServerControlUI(const QString &machineName);
+    Q_INVOKABLE void deleteServer(const QString &machineName);
 signals:
 
 public slots:

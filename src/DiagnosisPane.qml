@@ -34,6 +34,7 @@ Pane {
         anchors.top: servantlabel.bottom
         anchors.topMargin: 9
         serverTitle: qsTr("記錄")
+        serverSubtitle: qsTr("檢視 SERVANT 的記錄檔")
         serverImageSource:"icon/ic_reorder_black_24dp_2x.png"
     }
     ServerObjectButton{
@@ -42,6 +43,7 @@ Pane {
         anchors.left: recoderbutton.right
         anchors.leftMargin: 36
         serverTitle: qsTr("自我診斷")
+        serverSubtitle: qsTr("嘗試自我修復常見的問題")
         serverImageSource:"icon/ic_code_2x.png"
     }
     ServerObjectButton{
@@ -51,6 +53,7 @@ Pane {
         anchors.top: intlabel.bottom
         anchors.topMargin: 9
         serverTitle: qsTr("檢查網路問題")
+        serverSubtitle: qsTr("嘗試修復或提示常見的網路異常")
         serverImageSource:"icon/ic_visibility_2x.png"
     }
     ServerObjectButton{
@@ -60,6 +63,7 @@ Pane {
         anchors.left: checkIntbutton.right
         anchors.leftMargin: 36
         serverTitle: qsTr("路由器設定")
+        serverSubtitle: qsTr("關於路由器調整的提示")
         serverImageSource:"icon/ic_help_outline_2x.png"
     }
     ServerObjectButton{
@@ -69,6 +73,7 @@ Pane {
         anchors.top: serverlabel.bottom
         anchors.topMargin: 9
         serverTitle: qsTr("檢查設定")
+        serverSubtitle: qsTr("檢查已建立的伺服器是否有異常設定")
         serverImageSource:"icon/ic_signal_cellular_connected_no_internet_4_bar_2x.png"
     }
     ServerObjectButton{
@@ -77,6 +82,7 @@ Pane {
         anchors.left: checksetbutton.right
         anchors.leftMargin: 36
         serverTitle: qsTr("回到可用狀態")
+        serverSubtitle: qsTr("將伺服器還原到特定的時間點")
         serverImageSource:"icon/ic_schedule_2x.png"
     }
 

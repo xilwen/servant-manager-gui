@@ -28,7 +28,8 @@ Pane {
     }
     ServerObjectButton{
         id: servantsitebutton
-        serverTitle: qsTr("SERVANT服務網址")
+        serverTitle: qsTr("服務來源")
+        serverSubtitle: qsTr("設定提供 SERVANT 服務的伺服器")
         serverImageSource:"icon/ic_shopping_basket_2x.png"
         anchors.top: settingtServertMalllabel.bottom
         anchors.topMargin: 9
@@ -54,6 +55,7 @@ Pane {
     ServerObjectButton{
         id: settingServantbutton
         serverTitle: qsTr("SERVANT設定")
+        serverSubtitle: qsTr("")
         serverImageSource:"icon/ic_settings_2x.png"
         anchors.left: parent.left
         anchors.leftMargin: 22
@@ -63,7 +65,8 @@ Pane {
     ServerObjectButton{
         id: settingProgrambutton
         y: 194
-        serverTitle: qsTr("SERVANT設定")
+        serverTitle: qsTr("設定關聯程式")
+        serverSubtitle: qsTr("設定開啟連結或檔案用的外部程式")
         serverImageSource:"icon/ic_apps_2x.png"
         anchors.left: settingServantbutton.right
         anchors.leftMargin: 36
@@ -88,6 +91,7 @@ Pane {
         anchors.left: parent.left
         anchors.leftMargin: 22
         serverTitle: qsTr("連線設定")
+        serverSubtitle: qsTr("設定連線到網際網路的方式")
         serverImageSource:"icon/ic_insert_link_2x.png"
         anchors.top: networklabel.bottom
         anchors.topMargin: 9

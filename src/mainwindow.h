@@ -11,6 +11,7 @@
 #include "firsttimesetup.h"
 #include "mall.h"
 #include "myserver.h"
+#include "servercontrol.h"
 
 class MainWindow : public QObject
 {
@@ -32,6 +33,7 @@ private:
     FirstTimeSetup *firstTimeSetup = nullptr;
     Mall *mall = nullptr;
     MyServer *myServer = nullptr;
+    ServerControl *serverControl = nullptr;
 
 };
 

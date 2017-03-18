@@ -3,7 +3,6 @@ import QtQuick.Controls 2.0
 import QtQuick.Layouts 1.0
 import QtQuick.Controls.Material 2.1
 
-
 Pane {
     id: controlpane
 	objectName: "controlPane"
@@ -52,9 +51,9 @@ Pane {
                 diagnosisPane.visible=false
                 sharePane.visible=false
                 settingPane.visible=false
-                serverpane.visible=true
-                storepane.visible=false
-                diagnosispane.visible=false
+                myServerIndicator.visible=true
+                mallIndicator.visible=false
+                diagnosisIndicator.visible=false
                 sharepane.visible=false
                 settingpane.visible=false
             }
@@ -85,7 +84,7 @@ Pane {
         }
 
         Pane {
-            id: serverpane
+            id: myServerIndicator
             x: 135
             y: 6
             width: 8
@@ -121,9 +120,9 @@ Pane {
                 diagnosisPane.visible=false
                 sharePane.visible=false
                 settingPane.visible=false
-                serverpane.visible=false
-                storepane.visible=true
-                diagnosispane.visible=false
+                myServerIndicator.visible=false
+                mallIndicator.visible=true
+                diagnosisIndicator.visible=false
                 sharepane.visible=false
                 settingpane.visible=false
             }
@@ -168,7 +167,7 @@ Pane {
         }
 
         Pane {
-            id: storepane
+            id: mallIndicator
             x: 135
             y: 6
             width: 8
@@ -214,9 +213,9 @@ Pane {
                 sharePane.visible=false
                 settingPane.visible=false
                 sharePane.visible=false
-                serverpane.visible=false
-                storepane.visible=false
-                diagnosispane.visible=true
+                myServerIndicator.visible=false
+                mallIndicator.visible=false
+                diagnosisIndicator.visible=true
                 sharepane.visible=false
                 settingpane.visible=false
             }
@@ -245,7 +244,7 @@ Pane {
         }
 
         Pane {
-            id: diagnosispane
+            id: diagnosisIndicator
             x: 135
             y: 6
             width: 8
@@ -291,9 +290,9 @@ Pane {
                 sharePane.visible=true
                 settingPane.visible=false
                 sharePane.visible=true
-                serverpane.visible=false
-                storepane.visible=false
-                diagnosispane.visible=false
+                myServerIndicator.visible=false
+                mallIndicator.visible=false
+                diagnosisIndicator.visible=false
                 sharepane.visible=true
                 settingpane.visible=false
             }
@@ -368,9 +367,9 @@ Pane {
                 sharePane.visible=false
                 settingPane.visible=true
                 sharePane.visible=false
-                serverpane.visible=false
-                storepane.visible=false
-                diagnosispane.visible=false
+                myServerIndicator.visible=false
+                mallIndicator.visible=false
+                diagnosisIndicator.visible=false
                 sharepane.visible=false
                 settingpane.visible=true
             }

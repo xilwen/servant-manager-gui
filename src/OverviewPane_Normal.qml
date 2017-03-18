@@ -66,7 +66,7 @@ Pane {
             x: 687
             width: 220
             height: 48
-            text: qsTr("新增已下載的伺服器")
+            text: qsTr("新增伺服器")
             anchors.verticalCenter: parent.verticalCenter
             anchors.right: parent.right
             font.family: "Microsoft JhengHei UI"
@@ -74,7 +74,10 @@ Pane {
             anchors.rightMargin: 10
             Material.elevation: 0
             Material.background: "white"
-            onClicked: addServerPane.visible = true
+            onClicked: {
+                overviewPane_Normal.visible = false
+                serverMallPane.visible = true
+            }
         }
     }
 

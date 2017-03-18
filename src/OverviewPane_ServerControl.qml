@@ -5,9 +5,11 @@ import QtQuick.Controls.Material 2.1
 
 Pane {
     id: serverInfoPane
+    objectName: "serverInfoPane"
     width: 800
     height: 600
     visible: true
+    //TODO implement real Getter for server informations
     property int itemIndex: 0
     anchors.rightMargin: 0
     anchors.bottomMargin: 0
@@ -21,7 +23,11 @@ Pane {
     Layout.columnSpan: 2
     Layout.fillHeight: true
     Layout.fillWidth: true
-    objectName: "serverInfoPane"
+    onVisibleChanged: {
+        if(visible == true){
+            tmpCmd.updateServerControlUI("DEMOONLY")
+        }
+    }
 
     BackButton {
         id: backButton
@@ -42,6 +48,7 @@ Pane {
 
     OverviewModule_ServerQuickControl_ON {
         id: serverQuickControlPane_ON
+        objectName: "serverQuickControlPane_ON"
         anchors.left: serverQuickInfoPane.right
         anchors.leftMargin: 15
         anchors.top: serverQuickInfoPane.top
@@ -50,6 +57,7 @@ Pane {
 
     OverviewModule_ServerQuickControl_OFF {
         id: serverQuickControlPane_OFF
+        objectName: "serverQuickControlPane_OFF"
         anchors.left: serverQuickInfoPane.right
         anchors.leftMargin: 15
         anchors.top: serverQuickInfoPane.top
@@ -69,15 +77,18 @@ Pane {
 
         Button {
             id: button_ON
-            width: 128
+            objectName: "serverInfoPane_button_ON"
+            x: 687
+            width: 220
+            height: 48
             text: qsTr("啟動伺服器")
-            z: 1
             anchors.verticalCenter: parent.verticalCenter
             anchors.right: parent.right
-            anchors.rightMargin: 5
+            font.family: "Microsoft JhengHei UI"
+            font.pointSize: 14
+            anchors.rightMargin: 10
             Material.elevation: 0
-            font.pointSize: 12
-            font.family: "Microsoft JhengHei UI";
+            Material.background: "white"
             onClicked: {
                 serverQuickControlPane_OFF.visible = false
                 serverQuickControlPane_ON.visible = true
@@ -90,23 +101,25 @@ Pane {
 
         Button {
             id: button_OFF
-            width: 128
+            objectName: "serverInfoPane_button_OFF"
+            x: 687
+            width: 220
+            height: 48
             text: qsTr("停止伺服器")
-            z: 1
             anchors.verticalCenter: parent.verticalCenter
             anchors.right: parent.right
-            anchors.rightMargin: 5
-            Material.elevation: 0
-            font.pointSize: 12
             font.family: "Microsoft JhengHei UI"
-            visible: false
-            onClicked: {
+            font.pointSize: 14
+            anchors.rightMargin: 10
+            Material.elevation: 0
+            Material.background: "white"
+            onClicked: {                
                 serverQuickControlPane_OFF.visible = false
                 serverQuickControlPane_ON.visible = true
                 serverStateChangingPane.visible = true
                 button_OFF.visible = false
-                button_ON.visibe = true
-                tmpCmd.shutdownServer();
+                button_ON.visible = true
+                tmpCmd.shutdownServer()
             }
         }
     }

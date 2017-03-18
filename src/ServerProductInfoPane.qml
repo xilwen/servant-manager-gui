@@ -18,6 +18,12 @@ Pane {
     anchors.topMargin: 0
     anchors.fill: parent
     objectName:"serverProductInfoPane"
+    onVisibleChanged: {
+        progressbarpane.visible = false
+        downloadSucceedPane.visible = false
+        bottomPane.visible = true
+    }
+
     Image {
         id: ftpimage
         width: 100
