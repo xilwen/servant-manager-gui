@@ -3,6 +3,7 @@
 #include "mall.h"
 #include "myserver.h"
 #include "servercontrol.h"
+#include "perference.h"
 
 TemporaryCommandsForQml::TemporaryCommandsForQml(QObject *parent) : QObject(parent)
 {
@@ -42,4 +43,9 @@ void TemporaryCommandsForQml::updateServerControlUI(const QString &machineName)
 void TemporaryCommandsForQml::deleteServer(const QString &machineName)
 {
     emit ServerControl::getInstance()->readyToDeleteServer(machineName);
+}
+
+void TemporaryCommandsForQml::updateAboutPane()
+{
+    emit Perference::getInstance()->readyToUpdateAboutData();
 }

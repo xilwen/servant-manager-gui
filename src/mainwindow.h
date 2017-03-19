@@ -12,6 +12,7 @@
 #include "mall.h"
 #include "myserver.h"
 #include "servercontrol.h"
+#include "perference.h"
 
 class MainWindow : public QObject
 {
@@ -34,7 +35,7 @@ private:
     Mall *mall = nullptr;
     MyServer *myServer = nullptr;
     ServerControl *serverControl = nullptr;
-
+    Perference *perference = nullptr;
 };
 
 #endif // MAINWINDOW_H

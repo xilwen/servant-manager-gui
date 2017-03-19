@@ -5,6 +5,7 @@ import QtQuick.Window 2.0
 import QtQuick.Controls.Material 2.1
 
 ApplicationWindow {
+    id: applicationWindow
     visible: true
     width: 1024
     height: 640
@@ -13,11 +14,25 @@ ApplicationWindow {
     title: qsTr("SERVANT Manager")
     Material.accent:Material.BlueGrey
 
-    LoadingPane
-    {
-        id:loadingPane
+    LoadingPane{
+        id: loadingPane
         z: 3
         visible:false
+    }
+
+    AboutPane{
+        id: aboutPane
+        anchors.horizontalCenter: parent.horizontalCenter
+        anchors.verticalCenter: parent.verticalCenter
+        z: 5
+        visible:false
+    }
+
+    Mask{
+        id: mask
+        anchors.fill: parent
+        z: 3
+        visible: false
     }
 
     Pane {

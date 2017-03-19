@@ -15,6 +15,7 @@ public:
     Q_INVOKABLE void shutdownServer();
     Q_INVOKABLE void updateServerControlUI(const QString &machineName);
     Q_INVOKABLE void deleteServer(const QString &machineName);
+    Q_INVOKABLE void updateAboutPane();
 signals:
 
 public slots:

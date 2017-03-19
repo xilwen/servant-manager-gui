@@ -21,6 +21,8 @@ MainWindow::~MainWindow()
         delete loadingScreen;
     if(firstTimeSetup)
         delete firstTimeSetup;
+    if(perference)
+        delete perference;
     if(mall)
         delete mall;
     if(myServer)
@@ -45,6 +47,7 @@ void MainWindow::initialServantManager()
     mall = new Mall;
     myServer = new MyServer;
     serverControl = new ServerControl;
+    perference = new Perference;
     if(ServantBase::getInstance()->getPackageManager()->isFirstTime())
     {
         firstTimeSetup = new FirstTimeSetup;

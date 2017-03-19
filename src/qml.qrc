@@ -90,5 +90,8 @@
         <file>icon/Joomla-flat-logo-en.png</file>
         <file>icon/ic_call_made_black_24dp_2x.png</file>
         <file>icon/ic_call_received_black_24dp_2x.png</file>
+        <file>icon/ic_fast_forward_black_24dp_2x.png</file>
+        <file>AboutPane.qml</file>
+        <file>Mask.qml</file>
     </qresource>
 </RCC>

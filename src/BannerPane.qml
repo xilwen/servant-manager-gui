@@ -141,6 +141,8 @@ Pane {
             anchors.verticalCenter: parent.verticalCenter
             source: "icon/ic_info_black_24dp.png"
         }
+
+        onClicked: aboutPane.visible = true
     }
 
 }

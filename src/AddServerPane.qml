@@ -15,7 +15,7 @@ Pane {
     anchors.fill: parent
 
     BackButton{
-        pageName: qsTr("新增已下載的伺服器")
+        pageName: qsTr("安裝新伺服器")
         button.onClicked:{
             addDownloadServerPane.visible = false
         }
@@ -25,42 +25,38 @@ Pane {
         id: serverTypeLabel
         width: 100
         height: 35
-        text: "伺服器類型"
+        text: "正要安裝："
         anchors.left: parent.left
         anchors.leftMargin: 50
         anchors.top: parent.top
-        anchors.topMargin: 90
+        anchors.topMargin: 75
         font.family: "Microsoft JhengHei UI"
         font.pointSize: 15
         verticalAlignment: Text.AlignVCenter
-        horizontalAlignment: Text.AlignHCenter
-
+        horizontalAlignment: Text.AlignLeft
     }
 
-    ComboBox {
-        id: serverTypeComboBox
-        anchors.right: parent.right
-        anchors.rightMargin: 50
+    Image {
+        id: newServerTypeImage
+        anchors.top: serverTypeLabel.bottom
+        anchors.topMargin: 15
         anchors.left: parent.left
         anchors.leftMargin: 50
-        anchors.top: parent.top
-        anchors.topMargin: 135
-        currentIndex: 0
-        model: [ "FTP Server", "Joomla Server" ]
-        font.family: "Microsoft JhengHei UI"
+        source: "icon/ic_info_black_24dp.png"
     }
 
     Label {
         id: serverNameLabel
-        width: 100
+        width: 400
         height: 35
-        text: "伺服器名稱"
+        text: "設定新伺服器的名稱(或留白以自動產生)："
+
         anchors.left: parent.left
         anchors.leftMargin: 50
         anchors.top: parent.top
         anchors.topMargin: 190
         verticalAlignment: Text.AlignVCenter
-        horizontalAlignment: Text.AlignHCenter
+        horizontalAlignment: Text.AlignLeft
         font.pointSize: 15
         font.family: "Microsoft JhengHei UI"
 
@@ -81,58 +77,137 @@ Pane {
     }
 
     Pane {
-        id: hintPane
-        height: 100
+        id: bottomPane
+        height: 50
+        padding: 12
+        anchors.bottom: parent.bottom
+        anchors.bottomMargin: 0
         anchors.right: parent.right
-        anchors.rightMargin: 50
+        anchors.rightMargin: 0
+        anchors.left: parent.left
+        anchors.leftMargin: 0
+        Material.elevation: 3
+        Material.background: "white"
+        Button {
+            id: customButton
+            x: 572
+            width: 180
+            height: 48
+            text: qsTr("自訂")
+            leftPadding: 36
+            anchors.right: defaultButton.left
+            anchors.rightMargin: 10
+            anchors.verticalCenter: parent.verticalCenter
+            font.family: "Microsoft JhengHei UI"
+            font.pointSize: 14
+            Material.elevation: 0
+            Material.background: "white"
+            onClicked: {
+                overviewPane_Empty.visible = false
+                serverMallPane.visible = true
+            }
+
+            Image {
+                id: addServerHintImage1
+                y: 235
+                width: 24
+                height: 24
+                anchors.left: parent.left
+                anchors.leftMargin: 20
+                anchors.verticalCenter: parent.verticalCenter
+                source: "icon/ic_create_black_24dp.png"
+            }
+        }
+        Button {
+            id: defaultButton
+            x: 572
+            width: 180
+            height: 48
+            text: qsTr("快速設定")
+            leftPadding: 36
+            anchors.verticalCenter: parent.verticalCenter
+            anchors.right: parent.right
+            font.family: "Microsoft JhengHei UI"
+            font.pointSize: 14
+            anchors.rightMargin: 10
+            Material.elevation: 0
+            Material.background: "white"
+            onClicked: {
+                overviewPane_Empty.visible = false
+                serverMallPane.visible = true
+            }
+
+            Image {
+                id: addServerHintImage2
+                y: 235
+                width: 24
+                height: 24
+                source: "icon/ic_fast_forward_black_24dp_2x.png"
+                anchors.leftMargin: 20
+                anchors.verticalCenter: parent.verticalCenter
+                anchors.left: parent.left
+            }
+        }
+    }
+
+    Image {
+        id: addServerHintImage
+        y: 235
+        width: 36
+        height: 36
         anchors.left: parent.left
         anchors.leftMargin: 50
-        anchors.top: parent.top
-        anchors.topMargin: 300
-
-
-        Image {
-            id: addServerHintImage
-            anchors.left: parent.left
-            anchors.leftMargin: 0
-            anchors.top: parent.top
-            anchors.topMargin: 0
-            source: "icon/ic_info_black_24dp.png"
-        }
-
-        Label {
-            id: addServerHintLabel
-            height: 70
-            text: "您可以使用伺服器管理介面對這個伺服器進行進一步的設定。"
-            anchors.top: parent.top
-            anchors.topMargin: 0
-            anchors.right: parent.right
-            anchors.rightMargin: 0
-            anchors.left: parent.left
-            anchors.leftMargin: 50
-            font.pointSize: 15
-            font.family: "Microsoft JhengHei UI"
-        }
+        anchors.bottom: bottomPane.top
+        anchors.bottomMargin: 20
+        source: "icon/ic_info_black_24dp.png"
     }
 
-    Button {
-        id:addServerFinishedButton
-        x: 649
-        y: 431
+    Label {
+        id: serverTypeLabel1
+        x: 1
+        y: 2
         width: 100
-        height: 50
-        text: "完成"
-        anchors.right: parent.right
-        anchors.rightMargin: 50
-        anchors.bottom: parent.bottom
-        anchors.bottomMargin: 75
+        height: 35
+        text: "新伺服器類型"
+        verticalAlignment: Text.AlignVCenter
+        anchors.leftMargin: 15
+        horizontalAlignment: Text.AlignLeft
+        anchors.top: serverTypeLabel.bottom
+        anchors.left: newServerTypeImage.right
+        anchors.topMargin: 20
         font.pointSize: 15
         font.family: "Microsoft JhengHei UI"
-        onClicked: addingServerPane.visible = true
     }
 
-    AddingServerPane{
-        id:addingServerPane
-        visible:false
+    Label {
+        id: serverNameLabel1
+        y: 5
+        width: 400
+        height: 35
+        text: "在安裝完成後，您也可以使用 VirtualBox 針對虛擬機器進行進階設定。"
+        anchors.left: addServerHintImage.right
+        anchors.leftMargin: 10
+        anchors.verticalCenter: addServerHintImage.verticalCenter
+        verticalAlignment: Text.AlignVCenter
+        horizontalAlignment: Text.AlignLeft
+        font.pointSize: 15
+        font.family: "Microsoft JhengHei UI"
+    }
+
+    Label {
+        id: serverNameLabel2
+        x: -6
+        y: 4
+        width: 400
+        height: 35
+        text: "與現有設定的相容性檢查會顯示在這裡。"
+        verticalAlignment: Text.AlignVCenter
+        anchors.leftMargin: 50
+        horizontalAlignment: Text.AlignLeft
+        anchors.top: serverNameTextField.bottom
+        anchors.left: parent.left
+        anchors.topMargin: 25
+        font.pointSize: 15
+        font.family: "Microsoft JhengHei UI"
     }
 }
