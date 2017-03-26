@@ -9,6 +9,7 @@ Button {
     Layout.alignment: Qt.AlignLeft | Qt.AlignTop
     property alias serverTitle: serverTitle.text
     property alias serverImageSource: serverImage.source
+    property alias button1: button1
     width: 300
     Layout.minimumHeight: 64
     Layout.minimumWidth: 300

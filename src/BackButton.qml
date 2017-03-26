@@ -6,8 +6,8 @@ import QtQuick.Controls.Material 2.1
 Pane {
     id: backButton
     property alias pageName: label.text
-    height: 45
     property alias button: button
+    height: 45
     rightPadding: 0
     bottomPadding: 0
     leftPadding: 0

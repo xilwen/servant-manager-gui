@@ -6,10 +6,10 @@ import QtQuick.Controls.Material 2.1
 Pane {
     id: aboutPane
     objectName: "aboutPane"
-    property alias vmxSupported: vmxEnabledDataLabel.text
-    property alias cpuRate: cpuRatingDataLabel.text
-    property alias ramRate: ramRatingDataLabel.text
-    property alias diskRate: diskRatingDataLabel.text
+    property alias vmxSupported: vmxEnabledLabel.label2
+    property alias cpuRate: cpuRatingLabel.label2
+    property alias ramRate: ramRatingLabel.label2
+    property alias diskRate: diskRatingLabel.label2
     property alias version: releaseDateLabel.text
     width: 848
     height: 480
@@ -25,19 +25,14 @@ Pane {
         }
     }
 
-    Pane {
+    BottomPane {
         id: bottomPane
-        height: 50
-        padding: 12
-        z:3
         anchors.bottom: parent.bottom
         anchors.bottomMargin: 0
         anchors.right: parent.right
         anchors.rightMargin: 0
         anchors.left: parent.left
         anchors.leftMargin: 0
-        Material.elevation: 5
-        Material.background: "white"
         Button {
             id: exitButton
             x: 572
@@ -75,7 +70,6 @@ Pane {
             width: 180
             height: 35
             text: "SERVANT"
-
             anchors.left: parent.left
             anchors.leftMargin: 10
             anchors.top: parent.top
@@ -120,36 +114,20 @@ Pane {
             font.family: "Microsoft JhengHei UI"
         }
 
-        Button {
+        AboutModule_Button {
             id: licenseInfoButton
-            width: 135
-            height: 36
-            text: qsTr("授權資訊")
-            anchors.bottom: parent.bottom
-            anchors.bottomMargin: 10
+            title: qsTr("授權資訊")
+            y: 360
             anchors.left: parent.left
             anchors.leftMargin: 10
-            Material.elevation: 0
-            font.pointSize: 14
-            leftPadding: 8
-            font.family: "Microsoft JhengHei UI"
         }
 
-        Button {
+        AboutModule_Button {
             id: licenseInfoButton1
-            x: -4
-            y: -3
-            width: 135
-            height: 36
-            text: qsTr("Github")
-            anchors.leftMargin: 5
-            Material.elevation: 0
+            title: qsTr("Github")
+            y: 360
             anchors.left: licenseInfoButton.right
-            font.pointSize: 14
-            anchors.bottomMargin: 10
-            leftPadding: 8
-            anchors.bottom: parent.bottom
-            font.family: "Microsoft JhengHei UI"
+            anchors.leftMargin: 10
         }
     }
 
@@ -168,144 +146,39 @@ Pane {
         anchors.topMargin: 32
         font.pointSize: 26
         font.family: "Microsoft JhengHei UI"
+
     }
 
-    Label {
+    AboutModule_Label {
         id: vmxEnabledLabel
-        x: 10
-        width: 320
-        height: 28
-        text: "硬體虛擬化"
-        verticalAlignment: Text.AlignVCenter
-        anchors.leftMargin: 0
-        horizontalAlignment: Text.AlignLeft
-        wrapMode: Text.WordWrap
+        text:qsTr("硬體虛擬化")
+        label2:qsTr("無資訊")
+        x: 340
         anchors.top: performanceTitleLabel.bottom
-        anchors.left: performanceTitleLabel.left
         anchors.topMargin: 25
-        font.pointSize: 16
-        font.family: "Microsoft JhengHei UI"
-
-        Label {
-            id: vmxEnabledDataLabel
-            x: 340
-            y: 0
-            width: 96
-            height: 28
-            text: "無資訊"
-            anchors.verticalCenter: parent.verticalCenter
-            verticalAlignment: Text.AlignVCenter
-            anchors.leftMargin: 20
-            horizontalAlignment: Text.AlignRight
-            wrapMode: Text.WordWrap
-            anchors.left: vmxEnabledLabel.right
-            font.pointSize: 16
-            font.family: "Microsoft JhengHei UI"
-        }
     }
-
-    Label {
+    AboutModule_Label {
         id: cpuRatingLabel
-        x: 5
-        y: -4
-        width: 320
-        height: 28
-        text: "處理器效能指標"
-        verticalAlignment: Text.AlignVCenter
-        anchors.leftMargin: 0
-        horizontalAlignment: Text.AlignLeft
-        wrapMode: Text.WordWrap
+        text:qsTr("處理器效能指標")
+        label2:qsTr("無資訊")
+        x: 340
         anchors.top: vmxEnabledLabel.bottom
-        anchors.left: performanceTitleLabel.left
-        anchors.topMargin: 12
-        font.pointSize: 16
-        font.family: "Microsoft JhengHei UI"
-
-        Label {
-            id: cpuRatingDataLabel
-            x: -342
-            y: 0
-            width: 96
-            height: 28
-            text: "無資訊"
-            anchors.left: parent.right
-            anchors.leftMargin: 20
-            anchors.verticalCenter: cpuRatingLabel.verticalCenter
-            verticalAlignment: Text.AlignVCenter
-            horizontalAlignment: Text.AlignRight
-            wrapMode: Text.WordWrap
-            font.pointSize: 16
-            font.family: "Microsoft JhengHei UI"
-        }
+        anchors.topMargin: 10
     }
-
-    Label {
+    AboutModule_Label {
         id: ramRatingLabel
-        x: 11
-        y: -2
-        width: 320
-        height: 28
-        text: "系統記憶體"
-        verticalAlignment: Text.AlignVCenter
-        anchors.leftMargin: 0
-        horizontalAlignment: Text.AlignLeft
-        wrapMode: Text.WordWrap
+        text:qsTr("系統記憶體")
+        label2:qsTr("無資訊")
+        x: 340
         anchors.top: cpuRatingLabel.bottom
-        anchors.left: performanceTitleLabel.left
         anchors.topMargin: 10
-        font.pointSize: 16
-        font.family: "Microsoft JhengHei UI"
-
-        Label {
-            id: ramRatingDataLabel
-            x: -342
-            y: 0
-            width: 96
-            height: 28
-            text: "無資訊"
-            verticalAlignment: Text.AlignVCenter
-            anchors.leftMargin: 20
-            horizontalAlignment: Text.AlignRight
-            wrapMode: Text.WordWrap
-            anchors.verticalCenter: parent.verticalCenter
-            anchors.left: parent.right
-            font.pointSize: 16
-            font.family: "Microsoft JhengHei UI"
-        }
     }
-
-    Label {
+    AboutModule_Label {
         id: diskRatingLabel
-        x: 15
-        y: 0
-        width: 320
-        height: 28
-        text: "儲存裝置效能指標"
-        verticalAlignment: Text.AlignVCenter
-        anchors.leftMargin: 0
-        horizontalAlignment: Text.AlignLeft
-        wrapMode: Text.WordWrap
+        text:qsTr("儲存裝置效能指標")
+        label2:qsTr("無資訊")
+        x: 340
         anchors.top: ramRatingLabel.bottom
-        anchors.left: performanceTitleLabel.left
         anchors.topMargin: 10
-        font.pointSize: 16
-        font.family: "Microsoft JhengHei UI"
-
-        Label {
-            id: diskRatingDataLabel
-            x: -342
-            y: 0
-            width: 96
-            height: 28
-            text: "無資訊"
-            verticalAlignment: Text.AlignVCenter
-            anchors.leftMargin: 20
-            horizontalAlignment: Text.AlignRight
-            wrapMode: Text.WordWrap
-            anchors.verticalCenter: parent.verticalCenter
-            anchors.left: parent.right
-            font.pointSize: 16
-            font.family: "Microsoft JhengHei UI"
-        }
     }
 }

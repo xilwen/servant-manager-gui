@@ -107,163 +107,65 @@ Pane {
         anchors.leftMargin: 20
         padding: 0
         Material.elevation: 3
-        Button {
+
+        ServerProductInfoModule_DetailCard {
             id: button
-            height: 75
             anchors.right: parent.right
             anchors.rightMargin: 0
             anchors.left: parent.left
             anchors.leftMargin: 0
             anchors.top: parent.top
-            anchors.topMargin: 0
-            Material.background: "white"
-            Material.elevation: 0
-
-            Label {
-                id: label
-                text: qsTr("作業系統")
-                anchors.left: parent.left
-                anchors.leftMargin: 10
-                anchors.top: parent.top
-                anchors.topMargin: 10
-                font.family: "Microsoft JhengHei UI"
-                font.pointSize: 14
-            }
-
-            Label {
-                id: label1
-                text: qsTr("Ubuntu Server 16.04")
-                anchors.left: label.left
-                anchors.leftMargin: 0
-                anchors.bottom: parent.bottom
-                anchors.bottomMargin: 10
-                font.family: "Microsoft JhengHei UI"
-                font.pointSize: 18
-            }
+            anchors.topMargin: -6
+            title:qsTr("作業系統")
+            subtitle:qsTr("Ubuntu Server 16.04")
+            introduction: qsTr("")
+            detail: qsTr("")
         }
-        Button {
+        ServerProductInfoModule_DetailCard {
             id: button1
-            height: 75
+            y: 64
             anchors.right: parent.right
             anchors.rightMargin: 0
             anchors.left: parent.left
             anchors.leftMargin: 0
             anchors.top: button.bottom
             anchors.topMargin: -5
-            Material.background: "white"
-            Material.elevation: 0
-            Label {
-                id: label2
-                text: qsTr("控制介面")
-                anchors.left: parent.left
-                anchors.leftMargin: 10
-                anchors.top: parent.top
-                anchors.topMargin: 10
-                font.family: "Microsoft JhengHei UI"
-                font.pointSize: 14
-            }
-
-            Label {
-                id: label3
-                text:  (itemIndex == 0) ? qsTr("Webmin + Samba") : qsTr("Joomla!")
-                anchors.left: label2.left
-                anchors.leftMargin: 0
-                anchors.bottom: parent.bottom
-                anchors.bottomMargin: 10
-                font.family: "Microsoft JhengHei UI"
-                font.pointSize: 18
-            }
-
-            Label {
-                id: label5
-                x: 8
-                y: 1
-                text: qsTr("簡介")
-                anchors.top: parent.top
-                anchors.leftMargin: 10
-                anchors.left: parent.left
-                anchors.topMargin: 83
-                font.family: "Microsoft JhengHei UI"
-                font.pointSize: 14
-            }
-
-            Label {
-                id: label6
-                x: 9
-                y: -6
-                width: 346
-                height: 139
-                text: (itemIndex == 0) ? qsTr("具備基礎功能的FTP Server。\n預設為公開讀取設定檔。"):qsTr("Joomla!是一套自由、開放原始碼的內容管理系統，以PHP撰寫。\n通常被用來搭建商業網站、個人部落格、資訊管理系統、Web 服務等，還可以進行二次開發以擴充使用範圍。")
-                wrapMode: Text.WordWrap
-                anchors.top: parent.top
-                anchors.leftMargin: 10
-                anchors.left: parent.left
-                font.family: "Microsoft JhengHei UI"
-                anchors.topMargin: 115
-                font.pointSize: 14
-            }
+            title:qsTr("控制介面")
+            subtitle:(itemIndex == 0) ? qsTr("Webmin + Samba") : qsTr("Joomla!")
+            introduction: qsTr("簡介")
+            detail: (itemIndex == 0) ? qsTr("具備基礎功能的FTP Server。\n預設為公開讀取設定檔。"):qsTr("Joomla!是一套自由、開放原始碼的內容管理系統，以PHP撰寫。\n通常被用來搭建商業網站、個人部落格、資訊管理系統、Web 服務等，還可以進行二次開發以擴充使用範圍。")
         }
     }
-    Button {
+    ServerProductInfoModule_DetailCard  {
         id: button2
-        width: 375
         height: 110
         anchors.left: pane.right
         anchors.leftMargin: 10
         anchors.top: pane.top
         anchors.topMargin: -5
-        Material.background: "white"
-
-        Label {
-            id: label4
-            text: qsTr("硬體檢查")
-            anchors.left: parent.left
-            anchors.leftMargin: 10
-            anchors.top: parent.top
-            anchors.topMargin: 10
-            font.family: "Microsoft JhengHei UI"
-            font.pointSize: 14
-        }
-
-        Label {
-            id: label15
-            text: qsTr("您的電腦符合此伺服器\n的硬體需求。")
-            anchors.left: label4.left
-            anchors.leftMargin: 0
-            anchors.bottom: parent.bottom
-            anchors.bottomMargin: 10
-            font.family: "Microsoft JhengHei UI"
-            font.pointSize: 18
-        }
+        title:qsTr("硬體檢查")
+        subtitle:qsTr("您的電腦符合此伺服器\n的硬體需求。")
+        introduction: qsTr("")
+        detail: qsTr("")
     }
 
-    Pane {
+    BottomPane {
         id: bottomPane
-        height: 50
-        padding: 12
         anchors.bottom: parent.bottom
         anchors.bottomMargin: 0
         anchors.right: parent.right
         anchors.rightMargin: 0
         anchors.left: parent.left
         anchors.leftMargin: 0
-        Material.elevation: 3
-        Material.background: "white"
         visible:true
 
-        Button {
+        ServerProductInfoModule_Button {
             id: button3
             x: 687
-            width: 145
-            height: 48
-            text: (itemIndex == 0) ? qsTr("下載 (738MB)"):  qsTr("下載 (807MB)")
+            title: (itemIndex == 0) ? qsTr("下載 (738MB)"):  qsTr("下載 (807MB)")
             anchors.verticalCenter: parent.verticalCenter
             anchors.right: parent.right
-            font.family: "Microsoft JhengHei UI"
-            font.pointSize: 14
             anchors.rightMargin: 10
-            Material.elevation: 0
-            Material.background: "white"
             visible:true
             onClicked: {
                 bottomPane.visible=false
@@ -272,20 +174,14 @@ Pane {
             }
         }
 
-        Button {
+        ServerProductInfoModule_Button {
             id: button4
             x: 681
             y: 5
-            width: 145
-            height: 48
-            text: qsTr("加入願望清單")
+            title: qsTr("加入願望清單")
             anchors.verticalCenter: parent.verticalCenter
             anchors.rightMargin: 20
-            font.family: "Microsoft JhengHei UI"
             anchors.right: button3.left
-            Material.background: "white"
-            font.pointSize: 14
-            Material.elevation: 0
             visible:true
         }
     }
@@ -317,18 +213,13 @@ Pane {
             Material.accent:Material.Blue
         }
 
-        Button {
+        ServerProductInfoModule_Button {
             id: cancelbutton
             x: 644
             y: -11
-            width: 145
-            text: qsTr("取消")
+            title: qsTr("取消")
             anchors.right: parent.right
             anchors.rightMargin: 10
-            font.pointSize: 14
-            font.family: "Microsoft JhengHei UI"
-            Material.background: "white"
-            Material.elevation:0
             onClicked: {
                 bottomPane.visible=true
                 progressbarpane.visible=false
@@ -352,33 +243,23 @@ Pane {
             anchors.rightMargin: 199
         }
     }
-    Pane {
+    BottomPane {
         id: downloadSucceedPane
-        height: 50
-        padding: 12
         anchors.bottom: parent.bottom
         anchors.bottomMargin: 0
         anchors.right: parent.right
         anchors.rightMargin: 0
         anchors.left: parent.left
         anchors.leftMargin: 0
-        Material.elevation: 3
-        Material.background: "white"
         visible: false
 
-        Button {
+        ServerProductInfoModule_Button {
             id: installButton
             x: 687
-            width: 145
-            height: 48
-            text: qsTr("安裝")
+            title: qsTr("安裝")
             anchors.verticalCenter: parent.verticalCenter
             anchors.right: parent.right
-            font.family: "Microsoft JhengHei UI"
-            font.pointSize: 14
             anchors.rightMargin: 10
-            Material.elevation: 0
-            Material.background: "white"
             visible:true
             onClicked: {
                 serverProductInfoPane.visible = false

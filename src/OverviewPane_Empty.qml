@@ -70,6 +70,7 @@ Pane {
                 serverMallPane.visible = true
             }
         }
+
     }
 
     AddServerPane{

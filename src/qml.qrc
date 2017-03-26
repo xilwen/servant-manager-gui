@@ -93,5 +93,13 @@
         <file>icon/ic_fast_forward_black_24dp_2x.png</file>
         <file>AboutPane.qml</file>
         <file>Mask.qml</file>
+        <file>AboutModule_Label.qml</file>
+        <file>AboutModule_Button.qml</file>
+        <file>BottomPane.qml</file>
+        <file>ControlModule_Button.qml</file>
+        <file>ServerProductInfoModule_Button.qml</file>
+        <file>ServerProductInfoModule_DetailCard.qml</file>
+        <file>AddServerModule_Button.qml</file>
+        <file>ControlModule_Indicator.qml</file>
     </qresource>
 </RCC>
