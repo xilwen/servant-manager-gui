@@ -23,9 +23,7 @@ Button {
     topPadding: 0
     Material.background: "#FFFFFF"
     Material.elevation: 8
-    onClicked: {
 
-    }
     Label {
         id: serverTitle
         text: qsTr("標題")

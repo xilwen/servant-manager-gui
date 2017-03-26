@@ -21,7 +21,7 @@ Pane {
         anchors.leftMargin: 10
         anchors.top: parent.top
         anchors.topMargin: 7
-        font.family: "Microsoft JhengHei UI";
+        font.family: "Microsoft JhengHei UI"
         font.pointSize: 22
         horizontalAlignment: Text.AlignLeft
         verticalAlignment: Text.AlignVCenter

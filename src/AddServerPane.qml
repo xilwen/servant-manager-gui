@@ -50,7 +50,6 @@ Pane {
         width: 400
         height: 35
         text: "設定新伺服器的名稱(或留白以自動產生)："
-
         anchors.left: parent.left
         anchors.leftMargin: 50
         anchors.top: parent.top
@@ -76,76 +75,42 @@ Pane {
 
     }
 
-    Pane {
+    BottomPane {
         id: bottomPane
-        height: 50
-        padding: 12
         anchors.bottom: parent.bottom
         anchors.bottomMargin: 0
         anchors.right: parent.right
         anchors.rightMargin: 0
         anchors.left: parent.left
         anchors.leftMargin: 0
-        Material.elevation: 3
-        Material.background: "white"
-        Button {
+        AddServerModule_Button {
             id: customButton
             x: 572
             width: 180
             height: 48
-            text: qsTr("自訂")
+            title: qsTr("自訂")
+            addServerHintImage:"icon/ic_create_black_24dp.png"
             leftPadding: 36
             anchors.right: defaultButton.left
             anchors.rightMargin: 10
             anchors.verticalCenter: parent.verticalCenter
-            font.family: "Microsoft JhengHei UI"
-            font.pointSize: 14
-            Material.elevation: 0
-            Material.background: "white"
             onClicked: {
                 overviewPane_Empty.visible = false
                 serverMallPane.visible = true
             }
-
-            Image {
-                id: addServerHintImage1
-                y: 235
-                width: 24
-                height: 24
-                anchors.left: parent.left
-                anchors.leftMargin: 20
-                anchors.verticalCenter: parent.verticalCenter
-                source: "icon/ic_create_black_24dp.png"
-            }
         }
-        Button {
+        AddServerModule_Button {
             id: defaultButton
             x: 572
-            width: 180
-            height: 48
-            text: qsTr("快速設定")
+            title: qsTr("快速設定")
+            addServerHintImage:"icon/ic_fast_forward_black_24dp_2x.png"
             leftPadding: 36
             anchors.verticalCenter: parent.verticalCenter
             anchors.right: parent.right
-            font.family: "Microsoft JhengHei UI"
-            font.pointSize: 14
             anchors.rightMargin: 10
-            Material.elevation: 0
-            Material.background: "white"
             onClicked: {
                 overviewPane_Empty.visible = false
                 serverMallPane.visible = true
-            }
-
-            Image {
-                id: addServerHintImage2
-                y: 235
-                width: 24
-                height: 24
-                source: "icon/ic_fast_forward_black_24dp_2x.png"
-                anchors.leftMargin: 20
-                anchors.verticalCenter: parent.verticalCenter
-                anchors.left: parent.left
             }
         }
     }
@@ -166,7 +131,7 @@ Pane {
         id: serverTypeLabel1
         x: 1
         y: 2
-        width: 100
+        width: 121
         height: 35
         text: "新伺服器類型"
         verticalAlignment: Text.AlignVCenter
@@ -174,7 +139,7 @@ Pane {
         horizontalAlignment: Text.AlignLeft
         anchors.top: serverTypeLabel.bottom
         anchors.left: newServerTypeImage.right
-        anchors.topMargin: 20
+        anchors.topMargin: 22
         font.pointSize: 15
         font.family: "Microsoft JhengHei UI"
     }
@@ -182,7 +147,7 @@ Pane {
     Label {
         id: serverNameLabel1
         y: 5
-        width: 400
+        width: 629
         height: 35
         text: "在安裝完成後，您也可以使用 VirtualBox 針對虛擬機器進行進階設定。"
         anchors.left: addServerHintImage.right

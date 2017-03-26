@@ -14,18 +14,17 @@ Pane {
     anchors.fill: parent
     objectName: "serverStateChangingPane"
 
-    Button {
+    BackButton {
         id: backbutton
-        height: 58
-        visible: false
+        visible: true
         anchors.top: parent.top
         anchors.topMargin: -18
         anchors.left: parent.left
         anchors.leftMargin: -12
         anchors.right: parent.right
         anchors.rightMargin: -12
-        Material.background: "#424242"
-        onClicked: {
+        pageName:qsTr("FTP伺服器")
+        button.onClicked: {
             overviewPane.visible=false
             serverMallPane.visible=true
             serverProductInfoPane.visible=false
@@ -34,31 +33,7 @@ Pane {
             settingPane.visible=false
         }
 
-        Image {
-            id: backimage
-            y: 15
-            width: 31
-            height: 29
-            anchors.left: parent.left
-            anchors.leftMargin: 20
-            source: "icon/ic_arrow_back_white_24dp_1x.png"
-        }
-
-        Text {
-            id: ftptext
-            y: 15
-            width: 132
-            height: 28
-            text: qsTr("FTP伺服器")
-            anchors.left: backimage.right
-            anchors.leftMargin: 22
-            verticalAlignment: Text.AlignVCenter
-            font.family: "Microsoft JhengHei UI";
-            font.pointSize: 16
-            color: "white"
-            objectName: "serverStartingText"
-        }
-    }
+   }
 
     Image {
         id: poweringimage
