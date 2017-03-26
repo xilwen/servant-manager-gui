@@ -2,6 +2,7 @@
 #include <QQmlApplicationEngine>
 #include <QQuickStyle>
 #include <QQmlComponent>
+#include <iostream>
 #include <thread>
 #include <chrono>
 #include <QQmlContext>
@@ -11,11 +12,19 @@
 
 int main(int argc, char *argv[])
 {
+    QGuiApplication::setAttribute(Qt::AA_Use96Dpi);
     QGuiApplication app(argc, argv);
     QQuickStyle::setStyle("Material");
     QQmlApplicationEngine engine;
-    QObject* ui = QQmlComponent(&engine, QUrl(QLatin1String("qrc:/main.qml"))).create();
-
+    QQmlComponent qQmlComponent(&engine, QUrl(QLatin1String("qrc:/main.qml")));
+    QObject* ui = qQmlComponent.create();
+    if(qQmlComponent.isError())
+    {
+        for(auto ptr = qQmlComponent.errors().begin(); ptr != qQmlComponent.errors().end(); ++ptr)
+        {
+            std::cout << ptr->toString().toStdString() << std::endl;
+        }
+    }
     MainWindow mainWindow(ui);
     TemporaryCommandsForQml tmpCmd;
     engine.rootContext()->setContextProperty("mainWindow", &mainWindow);    

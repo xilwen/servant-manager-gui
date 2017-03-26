@@ -39,13 +39,14 @@ Button {
     Label {
         id: serverSubtitle
         text: qsTr("副標題")
+        anchors.right: parent.right
+        anchors.rightMargin: 10
         anchors.left: serverTitle.left
         anchors.leftMargin: 0
         verticalAlignment: Text.AlignVCenter
         anchors.top: serverTitle.bottom
         anchors.topMargin: 0
         font.pointSize: 12
-        width: 178
         height: 26
         horizontalAlignment: Text.AlignLeft
         font.family: "Microsoft JhengHei UI";

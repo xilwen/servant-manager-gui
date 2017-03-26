@@ -31,6 +31,7 @@ void FirstTimeSetup::hardwareAssessmentRunner()
     FirstTimeUtilities::runProcessorTest();
     FirstTimeUtilities::runDiskTest();
     FirstTimeUtilities::runMemoryTest();
+    PerformanceManager::getInstance()->writeDataToFile();
     emit hardwareAssessmentFinished();
 }
 
