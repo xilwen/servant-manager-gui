@@ -29,12 +29,52 @@ Pane {
 
     OverviewModule_ServerQuickAction
     {
-        id:  overviewModuleServerQuickAction
+        id:  overviewModuleServerQuickAction0
         objectName: "overviewModuleServerQuickAction0"
         anchors.left: overviewModuleInfo.left
         anchors.leftMargin: 0
         anchors.top: overviewModuleInfo.bottom
         anchors.topMargin: 20
+        imageSource: "icon/ic_folder_black_48dp_2x.png"
+        type: qsTr("FTP伺服器")
+        quickActionName: qsTr("管理伺服器")
+        quickActionButton.onClicked: {
+            overviewPane_Normal.visible = false
+            serverInfoPane.visible = true
+        }
+        onClicked: {
+            overviewPane_Normal.visible = false
+            serverInfoPane.visible = true
+        }
+    }
+    OverviewModule_ServerQuickAction
+    {
+        id:  overviewModuleServerQuickAction1
+        objectName: "overviewModuleServerQuickAction0"
+        anchors.left: overviewModuleServerQuickAction0.right
+        anchors.leftMargin: 36
+        anchors.top: overviewModuleInfo.bottom
+        anchors.topMargin: 20
+        imageSource: "icon/ic_folder_black_48dp_2x.png"
+        type: qsTr("FTP伺服器")
+        quickActionName: qsTr("管理伺服器")
+        quickActionButton.onClicked: {
+            overviewPane_Normal.visible = false
+            serverInfoPane.visible = true
+        }
+        onClicked: {
+            overviewPane_Normal.visible = false
+            serverInfoPane.visible = true
+        }
+    }
+    OverviewModule_ServerQuickAction
+    {
+        id:  overviewModuleServerQuickAction2
+        objectName: "overviewModuleServerQuickAction0"
+        anchors.left: overviewModuleServerQuickAction0.right
+        anchors.leftMargin: -345
+        anchors.top: overviewModuleInfo.bottom
+        anchors.topMargin: 176
         imageSource: "icon/ic_folder_black_48dp_2x.png"
         type: qsTr("FTP伺服器")
         quickActionName: qsTr("管理伺服器")
@@ -83,6 +123,10 @@ Pane {
 
     AddServerPane{
         id: addServerPane
+        anchors.rightMargin: 0
+        anchors.bottomMargin: 0
+        anchors.leftMargin: 0
+        anchors.topMargin: 0
         visible:false
     }
 }

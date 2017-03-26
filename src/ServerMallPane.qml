@@ -13,17 +13,16 @@ Pane {
     anchors.topMargin: 0
     anchors.fill: parent
     objectName:"serverMallPane"
+
     ServerObjectButton{
-        id: ftpserverbutton
-        anchors.left: parent.left
-        anchors.leftMargin: 20
-        anchors.top: label.bottom
-        anchors.topMargin: 10
-        serverTitle: qsTr("FTP 伺服器")
-        serverSubtitle: qsTr("基本的FTP 伺服器")
-        serverImageSource: "icon/ic_folder_black_48dp_2x.png"
+        id: joomlaserverbutton
+        x: 20
+        y: 116
+        serverTitle: qsTr("標題")
+        serverSubtitle: qsTr("副標題")
+        serverImageSource: "icon/Joomla-flat-logo-en.png"
         onClicked:{
-            serverProductInfoPane.itemIndex = 0
+            serverProductInfoPane.itemIndex = 1
             serverMallPane.visible=false
             serverProductInfoPane.visible=true
             overviewPane_Empty.visible=false
@@ -33,15 +32,70 @@ Pane {
             settingPane.visible=false
         }
     }
-
     ServerObjectButton{
-        id: joomlaserverbutton
-        anchors.top: label2.bottom
-        anchors.topMargin: 10
-        anchors.left: label2.left
-        anchors.leftMargin: 0
-        serverTitle: qsTr("Joomla 伺服器")
-        serverSubtitle: qsTr("自由、開放原始碼的內容管理系統")
+        id: joomlaserverbutton1
+        y: 116
+        anchors.left: joomlaserverbutton.right
+        anchors.leftMargin: 36
+        serverTitle: qsTr("標題")
+        serverSubtitle: qsTr("副標題")
+        serverImageSource: "icon/Joomla-flat-logo-en.png"
+        onClicked:{
+            serverProductInfoPane.itemIndex = 1
+            serverMallPane.visible=false
+            serverProductInfoPane.visible=true
+            overviewPane_Empty.visible=false
+            overviewPane_Normal.visible=false
+            diagnosisPane.visible=false
+            sharePane.visible=false
+            settingPane.visible=false
+        }
+    }
+    ServerObjectButton{
+        id: joomlaserverbutton2
+        x: 20
+        anchors.top: joomlaserverbutton.bottom
+        anchors.topMargin: 25
+        serverTitle: qsTr("標題")
+        serverSubtitle: qsTr("副標題")
+        serverImageSource: "icon/Joomla-flat-logo-en.png"
+        onClicked:{
+            serverProductInfoPane.itemIndex = 1
+            serverMallPane.visible=false
+            serverProductInfoPane.visible=true
+            overviewPane_Empty.visible=false
+            overviewPane_Normal.visible=false
+            diagnosisPane.visible=false
+            sharePane.visible=false
+            settingPane.visible=false
+        }
+    }
+    ServerObjectButton{
+        id: joomlaserverbutton3
+        y: 225
+        anchors.left: joomlaserverbutton2.right
+        anchors.leftMargin: 36
+        serverTitle: qsTr("標題")
+        serverSubtitle: qsTr("副標題")
+        serverImageSource: "icon/Joomla-flat-logo-en.png"
+        onClicked:{
+            serverProductInfoPane.itemIndex = 1
+            serverMallPane.visible=false
+            serverProductInfoPane.visible=true
+            overviewPane_Empty.visible=false
+            overviewPane_Normal.visible=false
+            diagnosisPane.visible=false
+            sharePane.visible=false
+            settingPane.visible=false
+        }
+    }
+    ServerObjectButton{
+        id: joomlaserverbutton4
+        x: 20
+        anchors.top: joomlaserverbutton2.bottom
+        anchors.topMargin: 25
+        serverTitle: qsTr("標題")
+        serverSubtitle: qsTr("副標題")
         serverImageSource: "icon/Joomla-flat-logo-en.png"
         onClicked:{
             serverProductInfoPane.itemIndex = 1
@@ -78,20 +132,6 @@ Pane {
 
     }
 
-    Label {
-        id: label
-        text: qsTr("檔案伺服器")
-        anchors.left: refreshListButton.left
-        anchors.leftMargin: 0
-        anchors.top: refreshListButton.bottom
-        anchors.topMargin: 18
-        font.bold: false
-        verticalAlignment: Text.AlignVCenter
-        horizontalAlignment: Text.AlignLeft
-        font.family: "Microsoft JhengHei UI"
-        font.pointSize: 22
-    }
-
     Image {
         id: image
         x: 676
@@ -115,21 +155,6 @@ Pane {
         font.family: "Microsoft JhengHei UI"
         font.pointSize: 14
         verticalAlignment: Text.AlignVCenter
-    }
-
-    Label {
-        id: label2
-        x: 20
-        text: qsTr("內容管理系統")
-        horizontalAlignment: Text.AlignLeft
-        anchors.left: refreshListButton.left
-        font.pointSize: 22
-        font.family: "Microsoft JhengHei UI"
-        anchors.top: label.bottom
-        verticalAlignment: Text.AlignVCenter
-        anchors.topMargin: 110
-        anchors.leftMargin: 0
-        font.bold: false
     }
 }
 
