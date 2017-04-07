@@ -29,7 +29,9 @@ public slots:
 private:
     QObject *addingServerPane;
     QObject *serverInfoPane;
-    QObject *overviewModuleServerQuickAction0;
+    QObject *overviewModuleServerQuickAction0,
+    *overviewModuleServerQuickAction1,
+    *overviewModuleServerQuickAction2;
     QObject *serverStateChangingPane;
     PackageManager *packageManager;
     static MyServer *instance;

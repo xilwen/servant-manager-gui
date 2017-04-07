@@ -35,11 +35,11 @@ void Mall::downloadRunner()
     HtmlFileDownloader htmlFileDownloader;
     if(itemIndex == 0)
     {
-        htmlFileDownloader.startDownload("http://localhost/FTPSvr.ova", ServantBase::getInstance()->getPackageManager()->getUserDataDir() + "/FTPSvr.ova");
+        htmlFileDownloader.startDownload("http://localhost/FTPSvr.ova", ServantBase::getInstance()->getProfileManager()->getUserDataDirString() + "/FTPSvr.ova");
     }
     else
     {
-        htmlFileDownloader.startDownload("http://localhost/joomlaSvr.ova", ServantBase::getInstance()->getPackageManager()->getUserDataDir() + "/joomlaSvr.ova");
+        htmlFileDownloader.startDownload("http://localhost/joomlaSvr.ova", ServantBase::getInstance()->getProfileManager()->getUserDataDirString() + "/joomlaSvr.ova");
     }
     while(htmlFileDownloader.isDownloading())
     {

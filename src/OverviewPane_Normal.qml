@@ -50,7 +50,7 @@ Pane {
     OverviewModule_ServerQuickAction
     {
         id:  overviewModuleServerQuickAction1
-        objectName: "overviewModuleServerQuickAction0"
+        objectName: "overviewModuleServerQuickAction1"
         anchors.left: overviewModuleServerQuickAction0.right
         anchors.leftMargin: 36
         anchors.top: overviewModuleInfo.bottom
@@ -70,7 +70,7 @@ Pane {
     OverviewModule_ServerQuickAction
     {
         id:  overviewModuleServerQuickAction2
-        objectName: "overviewModuleServerQuickAction0"
+        objectName: "overviewModuleServerQuickAction2"
         anchors.left: overviewModuleServerQuickAction0.right
         anchors.leftMargin: -345
         anchors.top: overviewModuleInfo.bottom

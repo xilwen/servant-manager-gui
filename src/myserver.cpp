@@ -4,7 +4,7 @@ MyServer *MyServer::instance = nullptr;
 
 MyServer::MyServer(QObject *parent) : QObject(parent)
 {
-    instance = this;    
+    instance = this;
     connect(this, &MyServer::readyToInstallPackage, this, &MyServer::installPackage);
     connect(this, &MyServer::installProgressChanged, this, &MyServer::updateInstallUI);
     connect(this, &MyServer::installFinished, this, &MyServer::updateAfterInstall);
@@ -15,6 +15,8 @@ MyServer::MyServer(QObject *parent) : QObject(parent)
     addingServerPane = MainWindow::getUi()->findChild<QObject*>("addingServerPane");
     serverInfoPane = MainWindow::getUi()->findChild<QObject*>("serverInfoPane");
     overviewModuleServerQuickAction0 = MainWindow::getUi()->findChild<QObject*>("overviewModuleServerQuickAction0");
+    overviewModuleServerQuickAction1 = MainWindow::getUi()->findChild<QObject*>("overviewModuleServerQuickAction1");
+    overviewModuleServerQuickAction2 = MainWindow::getUi()->findChild<QObject*>("overviewModuleServerQuickAction2");
     serverStateChangingPane = MainWindow::getUi()->findChild<QObject*>("serverStateChangingPane");
 }
 
@@ -31,7 +33,7 @@ MyServer *MyServer::getInstance()
 void MyServer::installPackage(int itemIndex)
 {
     addingServerPane->setProperty("visible", true);
-    std::wstring pathwstring = packageManager->getUserDataDirWstring() + ((itemIndex == 0)? L"/FTPSvr.ova" : L"/joomlaSvr.ova");
+    std::wstring pathwstring = ServantBase::getInstance()->getProfileManager()->getUserDataDirWstring() + ((itemIndex == 0)? L"/FTPSvr.ova" : L"/joomlaSvr.ova");
     packageManager->importOVA(pathwstring);
     std::thread(&MyServer::packageInstallRunner, this).detach();
 }
@@ -62,19 +64,33 @@ void MyServer::updateAfterInstall()
 
 void MyServer::updateServerQuickAction()
 {
-    if(packageManager->getMachines()->back().getName().find(L"FTP") != std::wstring::npos)
+    std::vector<QObject*> qobjectsToUpdate = {overviewModuleServerQuickAction0, overviewModuleServerQuickAction1,
+                                             overviewModuleServerQuickAction2};
+
+    for(unsigned int i = 0; i < 3; ++i)
     {
-        overviewModuleServerQuickAction0->setProperty("type", "FTP");
-        overviewModuleServerQuickAction0->setProperty("imageSource", "qrc:///icon/ic_folder_black_48dp_2x.png");
-        serverInfoPane->setProperty("itemIndex", 0);
+        if(packageManager->getMachines()->size() > i)
+        {
+            if(packageManager->getMachines()->at(i).getName().find(L"FTP") != std::wstring::npos)
+            {
+                qobjectsToUpdate.at(i)->setProperty("type", "FTP");
+                qobjectsToUpdate.at(i)->setProperty("imageSource", "qrc:///icon/ic_folder_black_48dp_2x.png");
+                serverInfoPane->setProperty("itemIndex", 0);
+            }
+            else
+            {
+                qobjectsToUpdate.at(i)->setProperty("type", "Joomla");
+                qobjectsToUpdate.at(i)->setProperty("imageSource", "qrc:///icon/Joomla-flat-logo-en.png");
+                serverInfoPane->setProperty("itemIndex", 1);
+            }
+             qobjectsToUpdate.at(i)->setProperty("name", QString::fromStdWString(packageManager->getMachines()->at(i).getName()));
+        }
+        else
+        {
+            qobjectsToUpdate.at(i)->setProperty("visible", false);
+        }
     }
-    else
-    {
-        overviewModuleServerQuickAction0->setProperty("type", "Joomla");
-        overviewModuleServerQuickAction0->setProperty("imageSource", "qrc:///icon/Joomla-flat-logo-en.png");
-        serverInfoPane->setProperty("itemIndex", 1);
-    }
-    overviewModuleServerQuickAction0->setProperty("name", QString::fromStdWString(packageManager->getMachines()->back().getName()));
+
 }
 
 void MyServer::bootServer(int itemIndex)

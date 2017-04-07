@@ -48,7 +48,7 @@ void MainWindow::initialServantManager()
     myServer = new MyServer;
     serverControl = new ServerControl;
     perference = new Perference;
-    if(ServantBase::getInstance()->getPackageManager()->isFirstTime())
+    if(ServantBase::getInstance()->getProfileManager()->isFirstTime())
     {
         firstTimeSetup = new FirstTimeSetup;
         firstTimeSetup->setVisible(true);
