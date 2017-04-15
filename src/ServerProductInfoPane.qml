@@ -8,10 +8,22 @@ Pane {
     width: 823
     height: 579
     padding: 0
-    property int itemIndex: 0
+
     property alias progressBarValue : progressBar.value
     property alias progressText : label7.text
     property alias succeedPaneVisible : downloadSucceedPane.visible
+//    Information should be set/read from Model(Data)
+    property int itemIndex: 0 //index in model array
+    property string itemName : "伺服器名稱"
+    property string itemDescription : "伺服器簡述"
+    property string itemProducer : "伺服器製作者"
+    property string itemIcon : ""
+    property string itemUpdateDate : "更新日期"
+    property string itemOperatingSystem : "伺服器作業系統"
+    property string itemManagementUI : "伺服器管理介面"
+    property string itemIntroduction : "伺服器詳細說明"
+//    TODO Hardware Checks Strings
+
     anchors.rightMargin: 0
     anchors.bottomMargin: 0
     anchors.leftMargin: 0
@@ -22,24 +34,26 @@ Pane {
         progressbarpane.visible = false
         downloadSucceedPane.visible = false
         bottomPane.visible = true
+        tmpCmd.triggerMallDetailViewUpdate()
     }
 
     Image {
         id: ftpimage
         width: 100
         height: 100
+        antialiasing: true
         anchors.top: backButton.bottom
         anchors.topMargin: 10
         anchors.left: parent.left
         anchors.leftMargin: 20
-        source: (itemIndex == 0) ? "icon/ic_folder_black_48dp_2x.png" : "icon/Joomla-flat-logo-en.png"
+        source: itemIcon
     }
 
     Label {
         id: ftplabel
         width: 115
         height: 25
-        text: (itemIndex == 0) ? qsTr("FTP伺服器") : qsTr("Joomla! 伺服器")
+        text: itemName
         anchors.top: backButton.bottom
         anchors.topMargin: 22
         anchors.left: ftpimage.right
@@ -54,7 +68,7 @@ Pane {
         id: teamtext
         width: 120
         height: 26
-        text: qsTr("SERVANT Team")
+        text: itemProducer
         anchors.top: ftplabel.bottom
         anchors.topMargin: 10
         anchors.left: ftpimage.right
@@ -71,7 +85,7 @@ Pane {
         anchors.topMargin: 0
         anchors.leftMargin: 0
         anchors.rightMargin: 0
-        pageName: (itemIndex == 0) ?qsTr("FTP 伺服器") : qsTr("Joomla! 伺服器")
+        pageName: itemName
         button.onClicked:{
             serverProductInfoPane.visible = false
             serverMallPane.visible = true
@@ -81,12 +95,11 @@ Pane {
         }
     }
 
-
     Text {
         id: datetext
         width: 110
         height: 26
-        text: qsTr("2017年2月28號")
+        text: itemUpdateDate
         anchors.top: teamtext.top
         anchors.topMargin: 0
         anchors.left: teamtext.right
@@ -117,7 +130,7 @@ Pane {
             anchors.top: parent.top
             anchors.topMargin: -6
             title:qsTr("作業系統")
-            subtitle:qsTr("Ubuntu Server 16.04")
+            subtitle: itemOperatingSystem
             introduction: qsTr("")
             detail: qsTr("")
         }
@@ -131,9 +144,9 @@ Pane {
             anchors.top: button.bottom
             anchors.topMargin: -5
             title:qsTr("控制介面")
-            subtitle:(itemIndex == 0) ? qsTr("Webmin + Samba") : qsTr("Joomla!")
+            subtitle: itemManagementUI
             introduction: qsTr("簡介")
-            detail: (itemIndex == 0) ? qsTr("具備基礎功能的FTP Server。\n預設為公開讀取設定檔。"):qsTr("Joomla!是一套自由、開放原始碼的內容管理系統，以PHP撰寫。\n通常被用來搭建商業網站、個人部落格、資訊管理系統、Web 服務等，還可以進行二次開發以擴充使用範圍。")
+            detail: itemIntroduction
         }
     }
     ServerProductInfoModule_DetailCard  {
@@ -162,7 +175,7 @@ Pane {
         ServerProductInfoModule_Button {
             id: button3
             x: 687
-            title: (itemIndex == 0) ? qsTr("下載 (738MB)"):  qsTr("下載 (807MB)")
+            title: qsTr("下載 (未知大小)")
             anchors.verticalCenter: parent.verticalCenter
             anchors.right: parent.right
             anchors.rightMargin: 10
@@ -172,17 +185,6 @@ Pane {
                 progressbarpane.visible=true
                 tmpCmd.runDownloader(itemIndex)
             }
-        }
-
-        ServerProductInfoModule_Button {
-            id: button4
-            x: 681
-            y: 5
-            title: qsTr("加入願望清單")
-            anchors.verticalCenter: parent.verticalCenter
-            anchors.rightMargin: 20
-            anchors.right: button3.left
-            visible:true
         }
     }
     Pane {
@@ -221,8 +223,10 @@ Pane {
             anchors.right: parent.right
             anchors.rightMargin: 10
             onClicked: {
+                tmpCmd.triggerCancelDownload()
                 bottomPane.visible=true
                 progressbarpane.visible=false
+                downloadSucceedPane.visible=false
             }
         }
 

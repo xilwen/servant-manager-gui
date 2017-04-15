@@ -33,7 +33,9 @@ MyServer *MyServer::getInstance()
 void MyServer::installPackage(int itemIndex)
 {
     addingServerPane->setProperty("visible", true);
-    std::wstring pathwstring = ServantBase::getInstance()->getProfileManager()->getUserDataDirWstring() + ((itemIndex == 0)? L"/FTPSvr.ova" : L"/joomlaSvr.ova");
+    auto items(ServantBase::getInstance()->getMallManager()->getItemList());
+    std::wstring filewstring = QString::fromStdString(items->at(itemIndex).getVboxImageFile()).toStdWString();
+    std::wstring pathwstring = ServantBase::getInstance()->getProfileManager()->getUserDataDirWstring() + L"/" + filewstring;
     packageManager->importOVA(pathwstring);
     std::thread(&MyServer::packageInstallRunner, this).detach();
 }

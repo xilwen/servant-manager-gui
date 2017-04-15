@@ -49,3 +49,23 @@ void TemporaryCommandsForQml::updateAboutPane()
 {
     emit Perference::getInstance()->readyToUpdateAboutData();
 }
+
+void TemporaryCommandsForQml::triggerMallItemViewUpdate()
+{
+    emit Mall::getInstance()->updateMallItemViewTriggered();
+}
+
+void TemporaryCommandsForQml::triggerMallDetailViewUpdate()
+{
+    emit Mall::getInstance()->updateMallDetailView();
+}
+
+void TemporaryCommandsForQml::triggerRepositoryUpdate()
+{
+    emit Mall::getInstance()->updateRepositoryButtonClicked();
+}
+
+void TemporaryCommandsForQml::triggerCancelDownload()
+{
+    emit Mall::getInstance()->cancelDownloadTriggered();
+}

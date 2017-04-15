@@ -16,6 +16,10 @@ public:
     Q_INVOKABLE void updateServerControlUI(const QString &machineName);
     Q_INVOKABLE void deleteServer(const QString &machineName);
     Q_INVOKABLE void updateAboutPane();
+    Q_INVOKABLE void triggerMallItemViewUpdate();
+    Q_INVOKABLE void triggerMallDetailViewUpdate();
+    Q_INVOKABLE void triggerRepositoryUpdate();
+    Q_INVOKABLE void triggerCancelDownload();
 signals:
 
 public slots:
