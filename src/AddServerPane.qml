@@ -52,8 +52,8 @@ Pane {
         text: "設定新伺服器的名稱(或留白以自動產生)："
         anchors.left: parent.left
         anchors.leftMargin: 50
-        anchors.top: parent.top
-        anchors.topMargin: 190
+        anchors.top: serverTypeLabel.bottom
+        anchors.topMargin: 80
         verticalAlignment: Text.AlignVCenter
         horizontalAlignment: Text.AlignLeft
         font.pointSize: 15
@@ -67,8 +67,8 @@ Pane {
         anchors.rightMargin: 50
         anchors.left: parent.left
         anchors.leftMargin: 50
-        anchors.top: parent.top
-        anchors.topMargin: 235
+        anchors.top: serverNameLabel.bottom
+        anchors.topMargin: 10
         font.pointSize: 15
         horizontalAlignment: Text.AlignLeft
 
@@ -84,26 +84,11 @@ Pane {
         anchors.left: parent.left
         anchors.leftMargin: 0
         AddServerModule_Button {
-            id: customButton
-            x: 572
-            width: 180
-            height: 48
-            title: qsTr("自訂")
-            addServerHintImage:"icon/ic_create_black_24dp.png"
-            leftPadding: 36
-            anchors.right: defaultButton.left
-            anchors.rightMargin: 10
-            anchors.verticalCenter: parent.verticalCenter
-            onClicked: {
-                overviewPane_Empty.visible = false
-                serverMallPane.visible = true
-            }
-        }
-        AddServerModule_Button {
             id: defaultButton
             x: 572
-            title: qsTr("快速設定")
-            addServerHintImage:"icon/ic_fast_forward_black_24dp_2x.png"
+            imageOnLeft: false
+            title: qsTr("選擇效能需求")
+            addServerHintImage:"icon/ic_skip_next_black_24dp_2x.png"
             leftPadding: 36
             anchors.verticalCenter: parent.verticalCenter
             anchors.right: parent.right
@@ -145,11 +130,11 @@ Pane {
     }
 
     Label {
-        id: serverNameLabel1
+        id: addServerHintLabel
         y: 5
         width: 629
         height: 35
-        text: "在安裝完成後，您也可以使用 VirtualBox 針對虛擬機器進行進階設定。"
+        text: "在安裝完成後，可以使用 VirtualBox 針對虛擬機器進行進階設定。"
         anchors.left: addServerHintImage.right
         anchors.leftMargin: 10
         anchors.verticalCenter: addServerHintImage.verticalCenter
@@ -160,12 +145,12 @@ Pane {
     }
 
     Label {
-        id: serverNameLabel2
+        id: passwordLabel
         x: -6
         y: 4
         width: 400
         height: 35
-        text: "與現有設定的相容性檢查會顯示在這裡。"
+        text: "設定用於新伺服器中的密碼(預設使用者名稱為SERVANT)："
         verticalAlignment: Text.AlignVCenter
         anchors.leftMargin: 50
         horizontalAlignment: Text.AlignLeft
@@ -174,5 +159,21 @@ Pane {
         anchors.topMargin: 25
         font.pointSize: 15
         font.family: "Microsoft JhengHei UI"
+    }
+
+    TextField {
+        id: passwordTextField
+        x: 3
+        y: -3
+        text: ""
+        echoMode: TextInput.Password
+        anchors.rightMargin: 50
+        anchors.right: parent.right
+        anchors.top: passwordLabel.bottom
+        horizontalAlignment: Text.AlignLeft
+        anchors.left: parent.left
+        font.pointSize: 15
+        anchors.leftMargin: 50
+        anchors.topMargin: 6
     }
 }

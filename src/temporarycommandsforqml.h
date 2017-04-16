@@ -20,6 +20,7 @@ public:
     Q_INVOKABLE void triggerMallDetailViewUpdate();
     Q_INVOKABLE void triggerRepositoryUpdate();
     Q_INVOKABLE void triggerCancelDownload();
+    Q_INVOKABLE void triggerMallRepoUrlUpdate(QString qstring);
 signals:
 
 public slots:

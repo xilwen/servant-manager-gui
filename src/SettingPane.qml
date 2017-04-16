@@ -35,6 +35,9 @@ Pane {
         anchors.topMargin: 9
         anchors.left: parent.left
         anchors.leftMargin: 22
+        onClicked:{
+            setting_RepositoryPane.visible = true
+        }
     }
 
 

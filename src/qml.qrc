@@ -23,7 +23,6 @@
         <file>icon/ic_check_white_48px.png</file>
         <file>icon/ic_file_download_white_24dp_1x.png</file>
         <file>icon/ic_file_download_white_24dp_2x.png</file>
-        <file>icon/ic_folder_black_48dp_2x.png</file>
         <file>icon/ic_folder_open_white_48dp_2x.png</file>
         <file>icon/ic_folder_white_24dp_2x.png</file>
         <file>icon/ic_insert_drive_file_white_24dp_2x.png</file>
@@ -87,7 +86,6 @@
         <file>icon/ic_done.png</file>
         <file>icon/ic_cached.png</file>
         <file>icon/ic_sync_problem.png</file>
-        <file>icon/Joomla-flat-logo-en.png</file>
         <file>icon/ic_call_made_black_24dp_2x.png</file>
         <file>icon/ic_call_received_black_24dp_2x.png</file>
         <file>icon/ic_fast_forward_black_24dp_2x.png</file>
@@ -101,5 +99,9 @@
         <file>ServerProductInfoModule_DetailCard.qml</file>
         <file>AddServerModule_Button.qml</file>
         <file>ControlModule_Indicator.qml</file>
+        <file>icon/ic_skip_next_black_24dp_2x.png</file>
+        <file>AddServerPane_PerformanceSetting.qml</file>
+        <file>icon/ic_skip_previous_black_24dp_2x.png</file>
+        <file>Setting_Repository.qml</file>
     </qresource>
 </RCC>

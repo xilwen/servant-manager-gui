@@ -69,3 +69,8 @@ void TemporaryCommandsForQml::triggerCancelDownload()
 {
     emit Mall::getInstance()->cancelDownloadTriggered();
 }
+
+void TemporaryCommandsForQml::triggerMallRepoUrlUpdate(QString qstring)
+{
+    emit Mall::getInstance()->updateMallRepoUrlTriggered(qstring);
+}
