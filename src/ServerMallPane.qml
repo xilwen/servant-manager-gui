@@ -13,149 +13,232 @@ Pane {
     anchors.topMargin: 0
     anchors.fill: parent
     objectName:"serverMallPane"
+    property int itemsInRow : 0
+    onWidthChanged: {
+        itemsInRow = width % (joomlaserverbutton.width+20)
+        joomlaserverbutton1.x=66
+    }
 
     onVisibleChanged:
     {
         tmpCmd.triggerMallItemViewUpdate()
     }
 
-    ServerObjectButton{
-        id: joomlaserverbutton
-        objectName: "serverObjectButton0"
-        x: 20
-        y: 116
-        serverTitle: qsTr("標題")
-        serverSubtitle: qsTr("副標題")
-        serverImageSource: "icon/Joomla-flat-logo-en.png"
-        onClicked:{
-            serverProductInfoPane.itemIndex = 0
-            serverMallPane.visible=false
-            serverProductInfoPane.visible=true
-            overviewPane_Empty.visible=false
-            overviewPane_Normal.visible=false
-            diagnosisPane.visible=false
-            sharePane.visible=false
-            settingPane.visible=false
-        }
-    }
-    ServerObjectButton{
-        id: joomlaserverbutton1
-        objectName: "serverObjectButton1"
-        y: 116
-        anchors.left: joomlaserverbutton.right
-        anchors.leftMargin: 36
-        serverTitle: qsTr("標題")
-        serverSubtitle: qsTr("副標題")
-        serverImageSource: "icon/Joomla-flat-logo-en.png"
-        onClicked:{
-            serverProductInfoPane.itemIndex = 1
-            serverMallPane.visible=false
-            serverProductInfoPane.visible=true
-            overviewPane_Empty.visible=false
-            overviewPane_Normal.visible=false
-            diagnosisPane.visible=false
-            sharePane.visible=false
-            settingPane.visible=false
-        }
-    }
-    ServerObjectButton{
-        id: joomlaserverbutton2
-        objectName: "serverObjectButton2"
-        x: 20
-        anchors.top: joomlaserverbutton.bottom
-        anchors.topMargin: 25
-        serverTitle: qsTr("標題")
-        serverSubtitle: qsTr("副標題")
-        serverImageSource: "icon/Joomla-flat-logo-en.png"
-        onClicked:{
-            serverProductInfoPane.itemIndex = 2
-            serverMallPane.visible=false
-            serverProductInfoPane.visible=true
-            overviewPane_Empty.visible=false
-            overviewPane_Normal.visible=false
-            diagnosisPane.visible=false
-            sharePane.visible=false
-            settingPane.visible=false
-        }
-    }
-    ServerObjectButton{
-        id: joomlaserverbutton3
-        objectName: "serverObjectButton3"
-        y: 225
-        anchors.left: joomlaserverbutton2.right
-        anchors.leftMargin: 36
-        serverTitle: qsTr("標題")
-        serverSubtitle: qsTr("副標題")
-        serverImageSource: "icon/Joomla-flat-logo-en.png"
-        onClicked:{
-            serverProductInfoPane.itemIndex = 3
-            serverMallPane.visible=false
-            serverProductInfoPane.visible=true
-            overviewPane_Empty.visible=false
-            overviewPane_Normal.visible=false
-            diagnosisPane.visible=false
-            sharePane.visible=false
-            settingPane.visible=false
-        }
-    }
-    ServerObjectButton{
-        id: joomlaserverbutton4
-        objectName: "serverObjectButton4"
-        x: 20
-        anchors.top: joomlaserverbutton2.bottom
-        anchors.topMargin: 25
-        serverTitle: qsTr("標題")
-        serverSubtitle: qsTr("副標題")
-        serverImageSource: "icon/Joomla-flat-logo-en.png"
-        onClicked:{
-            serverProductInfoPane.itemIndex = 4
-            serverMallPane.visible=false
-            serverProductInfoPane.visible=true
-            overviewPane_Empty.visible=false
-            overviewPane_Normal.visible=false
-            diagnosisPane.visible=false
-            sharePane.visible=false
-            settingPane.visible=false
-        }
-    }
-
-    ServerMallButton{
-        id: refreshListButton
-        serverTitle: qsTr(" 更新伺服器清單")
-        serverImageSource:"icon/ic_cached.png"
+    OverviewModule_Info{
+        id:welcome
+        height: 153
+        anchors.right: parent.right
+        anchors.rightMargin: -12
+        anchors.left: parent.left
+        anchors.leftMargin: -12
         anchors.top: parent.top
-        anchors.topMargin: 16
-        x: 20
-        y: 2
-        onClicked:{
-            tmpCmd.triggerRepositoryUpdate()
+        anchors.topMargin: -12
+        titleText: qsTr("歡迎使用")
+        infoText: qsTr("")
+        z:2
+    }
+    Flickable {
+        id: flickable
+        anchors.rightMargin: -12
+        anchors.bottomMargin: -12
+        anchors.leftMargin: -12
+        anchors.topMargin: 137
+        anchors.fill: parent
+        maximumFlickVelocity: 1500
+        flickDeceleration: 2500
+        contentHeight: parent.height
+        ScrollBar.vertical: ScrollBar { id: vbar; active: vbar.active }
+        Pane {
+            id: fpane
+            spacing: 40
+            width: flickable.width
+            height: flickable.height
+            padding: 0
+            anchors.right: parent.right
+            anchors.rightMargin: 0
+            anchors.left: parent.left
+            anchors.leftMargin: 0
+            ServerObjectButton{
+                id: joomlaserverbutton
+                objectName: "serverObjectButton0"
+                x:44
+                y:25
+                serverTitle: qsTr("標題")
+                serverSubtitle: qsTr("副標題")
+                serverImageSource: "icon/Joomla-flat-logo-en.png"
+                visible: true
+                onClicked:{
+                    serverProductInfoPane.itemIndex = 0
+                    serverMallPane.visible=false
+                    serverProductInfoPane.visible=true
+                    overviewPane_Empty.visible=false
+                    overviewPane_Normal.visible=false
+                    diagnosisPane.visible=false
+                    sharePane.visible=false
+                    settingPane.visible=false
+                }
+            }
+            ServerObjectButton{
+                id: joomlaserverbutton1
+                objectName: "serverObjectButton1"
+                anchors.top: parent.top
+                anchors.topMargin: 25
+                anchors.left: joomlaserverbutton.right
+                anchors.leftMargin: 36
+                serverTitle: qsTr("標題")
+                serverSubtitle: qsTr("副標題")
+                serverImageSource: "icon/Joomla-flat-logo-en.png"
+                onClicked:{
+                    serverProductInfoPane.itemIndex = 1
+                    serverMallPane.visible=false
+                    serverProductInfoPane.visible=true
+                    overviewPane_Empty.visible=false
+                    overviewPane_Normal.visible=false
+                    diagnosisPane.visible=false
+                    sharePane.visible=false
+                    settingPane.visible=false
+                }
+            }
+            ServerObjectButton{
+                id: joomlaserverbutton2
+                objectName: "serverObjectButton2"
+                anchors.left: parent.left
+                anchors.leftMargin: 44
+                anchors.top: joomlaserverbutton.bottom
+                anchors.topMargin: 25
+                serverTitle: qsTr("標題")
+                serverSubtitle: qsTr("副標題")
+                serverImageSource: "icon/Joomla-flat-logo-en.png"
+                onClicked:{
+                    serverProductInfoPane.itemIndex = 2
+                    serverMallPane.visible=false
+                    serverProductInfoPane.visible=true
+                    overviewPane_Empty.visible=false
+                    overviewPane_Normal.visible=false
+                    diagnosisPane.visible=false
+                    sharePane.visible=false
+                    settingPane.visible=false
+                }
+            }
+            ServerObjectButton{
+                id: joomlaserverbutton3
+                objectName: "serverObjectButton3"
+                anchors.top: joomlaserverbutton1.bottom
+                anchors.topMargin: 25
+                anchors.left: joomlaserverbutton2.right
+                anchors.leftMargin: 36
+                serverTitle: qsTr("標題")
+                serverSubtitle: qsTr("副標題")
+                serverImageSource: "icon/Joomla-flat-logo-en.png"
+                onClicked:{
+                    serverProductInfoPane.itemIndex = 3
+                    serverMallPane.visible=false
+                    serverProductInfoPane.visible=true
+                    overviewPane_Empty.visible=false
+                    overviewPane_Normal.visible=false
+                    diagnosisPane.visible=false
+                    sharePane.visible=false
+                    settingPane.visible=false
+                }
+            }
+            ServerObjectButton{
+                id: joomlaserverbutton4
+                objectName: "serverObjectButton4"
+                anchors.left: parent.left
+                anchors.leftMargin: 44
+                anchors.top: joomlaserverbutton2.bottom
+                anchors.topMargin: 25
+                serverTitle: qsTr("標題")
+                serverSubtitle: qsTr("副標題")
+                serverImageSource: "icon/Joomla-flat-logo-en.png"
+                onClicked:{
+                    serverProductInfoPane.itemIndex = 4
+                    serverMallPane.visible=false
+                    serverProductInfoPane.visible=true
+                    overviewPane_Empty.visible=false
+                    overviewPane_Normal.visible=false
+                    diagnosisPane.visible=false
+                    sharePane.visible=false
+                    settingPane.visible=false
+                }
+            }
+
+            ServerObjectButton {
+                id: joomlaserverbutton5
+                width: 345
+                height: 84
+                anchors.top: joomlaserverbutton3.bottom
+                anchors.topMargin: 25
+                anchors.left: joomlaserverbutton4.right
+                anchors.leftMargin: 36
+                objectName: "serverObjectButton5"
+                serverTitle: qsTr("標題")
+                serverImageSource: "icon/Joomla-flat-logo-en.png"
+                serverSubtitle: qsTr("副標題")
+                onClicked:{
+                    serverProductInfoPane.itemIndex = 2
+                    serverMallPane.visible=false
+                    serverProductInfoPane.visible=true
+                    overviewPane_Empty.visible=false
+                    overviewPane_Normal.visible=false
+                    diagnosisPane.visible=false
+                    sharePane.visible=false
+                    settingPane.visible=false
+                }
+            }
+            ServerObjectButton {
+                id: joomlaserverbutton6
+                x: 44
+                width: 345
+                height: 84
+                anchors.top: joomlaserverbutton4.bottom
+                anchors.topMargin: 25
+                objectName: "serverObjectButton6"
+                serverTitle: qsTr("標題")
+                serverImageSource: "icon/Joomla-flat-logo-en.png"
+                serverSubtitle: qsTr("副標題")
+            }
+
+            ServerObjectButton {
+                id: joomlaserverbutton7
+                width: 345
+                height: 84
+                anchors.left: joomlaserverbutton6.right
+                anchors.leftMargin: 36
+                anchors.top: joomlaserverbutton5.bottom
+                anchors.topMargin: 25
+                serverTitle: qsTr("標題")
+                objectName: "serverObjectButton4"
+                serverImageSource: "icon/Joomla-flat-logo-en.png"
+                serverSubtitle: qsTr("副標題")
+            }
+
+            ServerObjectButton {
+                id: joomlaserverbutton8
+                x: 44
+                width: 345
+                height: 84
+                anchors.top: joomlaserverbutton6.bottom
+                anchors.topMargin: 25
+                serverTitle: qsTr("標題")
+                objectName: "serverObjectButton4"
+                serverImageSource: "icon/Joomla-flat-logo-en.png"
+                serverSubtitle: qsTr("副標題")
+            }
+
+            ServerObjectButton {
+                id: joomlaserverbutton9
+                x: 425
+                width: 345
+                height: 84
+                serverTitle: qsTr("標題")
+                anchors.topMargin: 25
+                objectName: "serverObjectButton4"
+                serverImageSource: "icon/Joomla-flat-logo-en.png"
+                anchors.top: joomlaserverbutton7.bottom
+                serverSubtitle: qsTr("副標題")
+            }
         }
-
-    }
-
-    Image {
-        id: image
-        x: 676
-        y: 33
-        width: 30
-        height: 30
-        anchors.right: parent.right
-        anchors.rightMargin: 93
-        source: "icon/ic_sync_problem.png"
-    }
-
-    Label {
-        id: label1
-        y: 37
-        height: 22
-        text: qsTr("更新檢查結果")
-        anchors.right: parent.right
-        anchors.rightMargin: 10
-        anchors.left: image.right
-        anchors.leftMargin: 4
-        font.family: "Microsoft JhengHei UI"
-        font.pointSize: 14
-        verticalAlignment: Text.AlignVCenter
     }
 }
 

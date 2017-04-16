@@ -7,7 +7,6 @@ Button {
     id: button
     width: 345
     height: 84
-    Layout.alignment: Qt.AlignLeft | Qt.AlignTop
     property alias serverTitle: serverTitle.text
     property alias serverSubtitle: serverSubtitle.text
     property alias serverImageSource: serverImage.source
@@ -16,14 +15,12 @@ Button {
     Layout.maximumHeight: 84
     Layout.maximumWidth: 345
     opacity: 1
-    visible: true
     bottomPadding: 0
     rightPadding: 0
     leftPadding: 0
     topPadding: 0
     Material.background: "#FFFFFF"
-    Material.elevation: 8
-
+    Material.elevation: 5
     Label {
         id: serverTitle
         text: qsTr("標題")

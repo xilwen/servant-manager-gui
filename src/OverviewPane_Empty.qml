@@ -17,12 +17,13 @@ Pane {
 
     OverviewModule_Info{
         id:overviewModuleInfo
+        height: 160
         anchors.top: parent.top
-        anchors.topMargin: 15
+        anchors.topMargin: 0
         anchors.right: parent.right
-        anchors.rightMargin: 15
+        anchors.rightMargin: 0
         anchors.left: parent.left
-        anchors.leftMargin: 15
+        anchors.leftMargin: 0
         titleText: qsTr("歡迎")
         infoText: qsTr("您可以從左方的「伺服器商城」下載並架設伺服器。\n已經在VirtualBox上設定好伺服器了嗎? 請造訪分享與備份，以匯入伺服器。")
     }
@@ -31,7 +32,8 @@ Pane {
         id: emptyLabel
         font.family: "Microsoft JhengHei UI"
         text: qsTr("這裡一片空白。")
-        anchors.verticalCenterOffset: 100
+        anchors.horizontalCenterOffset: 1
+        anchors.verticalCenterOffset: 67
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.verticalCenter: parent.verticalCenter
         font.pointSize: 14
