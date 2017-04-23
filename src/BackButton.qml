@@ -7,6 +7,7 @@ Pane {
     id: backButton
     property alias pageName: label.text
     property alias button: button
+    property bool showBackButton: true
     height: 45
     rightPadding: 0
     bottomPadding: 0
@@ -39,6 +40,7 @@ Pane {
         anchors.leftMargin: 0
         anchors.verticalCenter: parent.verticalCenter
         Material.elevation: 0
+        visible: (showBackButton)? true: false
         Image{
             width: 24
             height: 24

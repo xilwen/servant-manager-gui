@@ -11,6 +11,7 @@ Button {
     Layout.alignment: Qt.AlignLeft | Qt.AlignTop
     property alias title:title.text
     property alias addServerHintImage:addServerHintImage.source
+    property bool imageOnLeft: true
     Layout.minimumHeight: 48
     Layout.minimumWidth: 180
     Layout.maximumHeight: 48
@@ -24,7 +25,7 @@ Button {
         width: 24
         height: 24
         source: ""
-        anchors.leftMargin: 20
+        anchors.leftMargin : (imageOnLeft)? 20 : button.width - 32
         anchors.verticalCenter: parent.verticalCenter
         anchors.left: parent.left
     }
@@ -38,7 +39,7 @@ Button {
         font.pointSize: 14
         font.family: "Microsoft JhengHei UI"
         anchors.left: addServerHintImage.right
-        anchors.leftMargin: 18
+        anchors.leftMargin:  (imageOnLeft)? 18 : (- button.width + addServerHintImage.width)
         verticalAlignment: Text.AlignVCenter
     }
 }
