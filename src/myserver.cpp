@@ -11,13 +11,17 @@ MyServer::MyServer(QObject *parent) : QObject(parent)
     connect(this, &MyServer::readyToBootServer, this, &MyServer::bootServer);
     connect(this, &MyServer::readyToShutdownServer, this, &MyServer::shutdownServer);
     connect(this, &MyServer::modifyFinished, this, &MyServer::closeModifyUI);
+    connect(this, &MyServer::updateServerQuickActionTriggered, this, &MyServer::updateServerQuickActionSlot);
     packageManager = ServantBase::getInstance()->getPackageManager();
     addingServerPane = MainWindow::getUi()->findChild<QObject*>("addingServerPane");
     serverInfoPane = MainWindow::getUi()->findChild<QObject*>("serverInfoPane");
-    overviewModuleServerQuickAction0 = MainWindow::getUi()->findChild<QObject*>("overviewModuleServerQuickAction0");
-    overviewModuleServerQuickAction1 = MainWindow::getUi()->findChild<QObject*>("overviewModuleServerQuickAction1");
-    overviewModuleServerQuickAction2 = MainWindow::getUi()->findChild<QObject*>("overviewModuleServerQuickAction2");
     serverStateChangingPane = MainWindow::getUi()->findChild<QObject*>("serverStateChangingPane");
+    controlPane = MainWindow::getUi()->findChild<QObject*>("controlPane");
+    for(auto i = 0; i < overviewModuleServerQuickActionAmount; ++i)
+    {
+        QObject *overviewModuleServerQuickAction = MainWindow::getUi()->findChild<QObject*>(QString::fromStdString(std::string("overviewModuleServerQuickAction" + std::to_string(i))));
+        overviewModuleServerQuickActions.push_back(overviewModuleServerQuickAction);
+    }
 }
 
 MyServer::~MyServer()
@@ -36,6 +40,7 @@ void MyServer::installPackage(int itemIndex)
     auto items(ServantBase::getInstance()->getMallManager()->getItemList());
     std::wstring filewstring = QString::fromStdString(items->at(itemIndex).getVboxImageFile()).toStdWString();
     std::wstring pathwstring = ServantBase::getInstance()->getProfileManager()->getUserDataDirWstring() + L"/" + filewstring;
+    this->itemIndex = itemIndex;
     packageManager->importOVA(pathwstring);
     std::thread(&MyServer::packageInstallRunner, this).detach();
 }
@@ -47,9 +52,13 @@ void MyServer::packageInstallRunner()
         installProgressChanged(packageManager->OVAImportProgress());
         std::this_thread::sleep_for(std::chrono::milliseconds(250));
     }
-    packageManager->OVAImportSucceeded();
-    installProgressChanged(100);
-    emit installFinished();
+    if(packageManager->OVAImportSucceeded())
+    {
+        auto items(ServantBase::getInstance()->getMallManager()->getItemList());
+        items->at(itemIndex).installAdditionalInfoToLastInstalledMachine();
+        installProgressChanged(100);
+        emit installFinished();
+    }
 }
 
 void MyServer::updateInstallUI(int progress)
@@ -65,31 +74,30 @@ void MyServer::updateAfterInstall()
 }
 
 void MyServer::updateServerQuickAction()
-{
-    std::vector<QObject*> qobjectsToUpdate = {overviewModuleServerQuickAction0, overviewModuleServerQuickAction1,
-                                             overviewModuleServerQuickAction2};
+{    
+    packageManager->refreshMachines();
 
-    for(unsigned int i = 0; i < 3; ++i)
+    if(packageManager->getMachines()->empty())
+    {
+        controlPane->setProperty("noMachineCreated", true);
+    }
+    else
+    {
+        controlPane->setProperty("noMachineCreated", false);
+    }
+
+    for(unsigned int i = 0; i < overviewModuleServerQuickActionAmount; ++i)
     {
         if(packageManager->getMachines()->size() > i)
         {
-            if(packageManager->getMachines()->at(i).getName().find(L"FTP") != std::wstring::npos)
-            {
-                qobjectsToUpdate.at(i)->setProperty("type", "FTP");
-                qobjectsToUpdate.at(i)->setProperty("imageSource", "qrc:///icon/ic_folder_black_48dp_2x.png");
-                serverInfoPane->setProperty("itemIndex", 0);
-            }
-            else
-            {
-                qobjectsToUpdate.at(i)->setProperty("type", "Joomla");
-                qobjectsToUpdate.at(i)->setProperty("imageSource", "qrc:///icon/Joomla-flat-logo-en.png");
-                serverInfoPane->setProperty("itemIndex", 1);
-            }
-             qobjectsToUpdate.at(i)->setProperty("name", QString::fromStdWString(packageManager->getMachines()->at(i).getName()));
+            overviewModuleServerQuickActions.at(i)->setProperty("name", QString::fromStdWString(packageManager->getMachines()->at(i).getName()));
+            overviewModuleServerQuickActions.at(i)->setProperty("imageSource", QString::fromUtf8(packageManager->getMachines()->at(i).getIconPath().c_str()));
+            overviewModuleServerQuickActions.at(i)->setProperty("type", QString::fromUtf8(packageManager->getMachines()->at(i).getType().c_str()));
+            overviewModuleServerQuickActions.at(i)->setProperty("visible", true);
         }
         else
         {
-            qobjectsToUpdate.at(i)->setProperty("visible", false);
+            overviewModuleServerQuickActions.at(i)->setProperty("visible", false);
         }
     }
 
@@ -101,15 +109,17 @@ void MyServer::bootServer(int itemIndex)
     std::thread(&MyServer::bootServerRunner, this).detach();
 }
 
-void MyServer::shutdownServer()
+void MyServer::shutdownServer(int itemIndex)
 {
+    this->itemIndex = itemIndex;
     std::thread(&MyServer::shutdownServerRunner, this).detach();
 }
 
 void MyServer::bootServerRunner()
 {
-    packageManager->getMachines()->back().launch();
-    int port = (itemIndex == 0)? 21 : 80;
+    packageManager->getMachines()->at(itemIndex).launch();
+    //TODO Real Port!
+    int port = 80;
     ServantBase::getInstance()->getVBoxWrapperClient()->waitForPortOpen(port);
     emit ServerControl::getInstance()->readyToUpdateServerControlUI("DEMOONLY");
     emit modifyFinished();
@@ -117,7 +127,7 @@ void MyServer::bootServerRunner()
 
 void MyServer::shutdownServerRunner()
 {
-    packageManager->getMachines()->back().sendPowerOffSignal();
+    packageManager->getMachines()->at(itemIndex).sendPowerOffSignal();
     std::wstring msg;
     do
     {
@@ -132,4 +142,9 @@ void MyServer::shutdownServerRunner()
 void MyServer::closeModifyUI()
 {
     serverStateChangingPane->setProperty("visible", false);
+}
+
+void MyServer::updateServerQuickActionSlot()
+{
+    updateServerQuickAction();
 }

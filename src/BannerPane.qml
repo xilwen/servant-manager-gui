@@ -16,12 +16,25 @@ Pane {
     Layout.alignment: Qt.AlignHCenter | Qt.AlignVCenter
     Material.background: "#ffffff"
     Material.elevation: 5
+    Image {
+        id: image3
+        x: 12
+        y: 2
+        width: 150
+        height: 27
+        anchors.verticalCenter: parent.verticalCenter
+        anchors.left: parent.left
+        anchors.leftMargin: 5
+        source: "qrc:/icon/SERVANT-logo.png"
+    }
+
     Label {
         id: label
         y: 260
         width: 171
         height: 24
         text: qsTr("SERVANT Manager")
+        visible: false
         anchors.verticalCenter: parent.verticalCenter
         verticalAlignment: Text.AlignVCenter
         z: 1
@@ -41,8 +54,8 @@ Pane {
         anchors.topMargin: 1
         anchors.right: button1.left
         anchors.rightMargin: 10
-        anchors.left: label.right
-        anchors.leftMargin: 15
+        anchors.left: image3.right
+        anchors.leftMargin: 10
         padding: 0
         Material.elevation: 3
         TextField {
@@ -144,5 +157,7 @@ Pane {
 
         onClicked: aboutPane.visible = true
     }
+
+
 
 }

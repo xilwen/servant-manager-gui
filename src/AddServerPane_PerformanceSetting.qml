@@ -4,7 +4,7 @@ import QtQuick.Layouts 1.0
 import QtQuick.Controls.Material 2.1
 
 Pane {
-    id: addDownloadServerPane
+    id: addServerPane_PerformanceSetting
     width: 823
     height: 579
     padding: 0
@@ -14,6 +14,7 @@ Pane {
     anchors.topMargin: 0
     anchors.fill: parent
     property int performanceProfile: 0
+    z: 3
 
     BackButton{
         showBackButton: false
@@ -25,11 +26,13 @@ Pane {
 
     Image {
         id: newServerTypeImage
+        width: 48
+        height: 48
         anchors.top: parent.top
         anchors.topMargin: 65
         anchors.left: parent.left
         anchors.leftMargin: 50
-        source: "icon/ic_info_black_24dp.png"
+        source: serverProductInfoPane.itemIcon
     }
 
     BottomPane {
@@ -51,8 +54,9 @@ Pane {
             anchors.right: parent.right
             anchors.rightMargin: 10
             onClicked: {
-                overviewPane_Empty.visible = false
-                serverMallPane.visible = true
+                addServerPane_PerformanceSetting.visible = false
+                serverProductInfoPane.visible = false
+                tmpCmd.runInstaller(serverProductInfoPane.itemIndex)
             }
         }
 
@@ -67,14 +71,19 @@ Pane {
             imageOnLeft: true
             title: qsTr(" 回到上一頁")
             addServerHintImage: "icon/ic_skip_previous_black_24dp_2x.png"
+            onClicked: {
+                addServerPane.visible = true
+                addServerPane_PerformanceSetting.visible = false
+            }
         }
     }
 
     Image {
         id: addServerHintImage
         y: 235
-        width: 36
-        height: 36
+        width: 48
+        height: 48
+        fillMode: Image.PreserveAspectFit
         anchors.left: parent.left
         anchors.leftMargin: 50
         anchors.bottom: bottomPane.top
@@ -88,7 +97,7 @@ Pane {
         y: 2
         width: 121
         height: 35
-        text: "新伺服器類型"
+        text: serverProductInfoPane.itemName
         verticalAlignment: Text.AlignVCenter
         anchors.leftMargin: 15
         horizontalAlignment: Text.AlignLeft

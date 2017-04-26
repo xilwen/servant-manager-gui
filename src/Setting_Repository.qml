@@ -14,6 +14,7 @@ Pane {
     Material.elevation: 8
     onVisibleChanged: {
         if(visible == true){
+            tmpCmd.triggerGetMallRepoUrl()
             mask.visible = true
         } else{
             mask.visible = false
@@ -84,7 +85,7 @@ Pane {
             Material.elevation: 0
             font.family: "Microsoft JhengHei UI"
             onClicked: {
-                textField.text = "http://localhost/SERVANT/repo/"
+                textField.text = "http://134.208.2.142:8090/SERVANT/repo/"
             }
         }
     }

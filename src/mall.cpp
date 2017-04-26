@@ -16,6 +16,7 @@ Mall::Mall(QObject *parent) : QObject(parent)
     connect(this, &Mall::updateMallDetailViewTriggered, this, &Mall::updateMallDetailView);
     connect(this, &Mall::cancelDownloadTriggered, this, &Mall::cancelDownload);
     connect(this, &Mall::updateMallRepoUrlTriggered, this, &Mall::updateMallRepoUrl);
+    connect(this, &Mall::getMallRepoUrlTriggered, this, &Mall::getMallRepoUrl);
     serverProductInfoPane = MainWindow::getUi()->findChild<QObject*>("serverProductInfoPane");
     for(auto i = 0; i < serverObjectButtonsAmount; ++i)
     {
@@ -47,14 +48,18 @@ void Mall::downloadRunner()
     std::string remoteFile(ConfigManager::getInstance()->getRemoteServiceHost() +
                            "/" + items->at(itemIndex).getVboxImageFile());
     std::string localFile(ServantBase::getInstance()->getProfileManager()->getUserDataDirString() +
-                           "/"  + items->at(itemIndex).getVboxImageFile());
+                          "/"  + items->at(itemIndex).getVboxImageFile());
     htmlFileDownloader->startDownload(remoteFile, localFile);
     while(htmlFileDownloader->isDownloading())
     {
         downloadProgressChanged(htmlFileDownloader->downloadProgress());
         std::this_thread::sleep_for(std::chrono::milliseconds(50));
     }
-    emit downloadCompleted();
+    if(htmlFileDownloader->succeededLastTime())
+    {
+        items->at(itemIndex).downloadAdditionalFiles();
+        emit downloadCompleted();
+    }
 }
 
 void Mall::updateDownloadProgressUI(int downloadProgress)
@@ -107,6 +112,7 @@ void Mall::updateMallDetailView()
     serverProductInfoPane->setProperty("itemOperatingSystem", QString::fromUtf8(items->at(itemIndex).getOperatingSystem().c_str()));
     serverProductInfoPane->setProperty("itemManagementUI", QString::fromUtf8(items->at(itemIndex).getManagementUI().c_str()));
     serverProductInfoPane->setProperty("itemIntroduction", QString::fromUtf8(items->at(itemIndex).getIntroduction().c_str()));
+    serverProductInfoPane->setProperty("itemFileSize", QString::fromUtf8(items->at(itemIndex).getFileSize().c_str()));
 }
 
 void Mall::cancelDownload()
@@ -118,6 +124,14 @@ void Mall::updateMallRepoUrl(QString qstring)
 {
     ServantBase::getInstance()->getConfigManager()->setRemoteServiceHost(qstring.toUtf8().data());
     emit updateRepositoryButtonClicked();
+}
+
+void Mall::getMallRepoUrl()
+{
+    QObject *setting_RepositoryPane
+            = MainWindow::getUi()->findChild<QObject*>("setting_RepositoryPane");
+    setting_RepositoryPane->setProperty("repoUrl",
+                                        QString::fromUtf8(ServantBase::getInstance()->getConfigManager()->getRemoteServiceHost().c_str()));
 }
 
 

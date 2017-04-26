@@ -42,7 +42,6 @@
         <file>icon/orangebackground.png</file>
         <file>OverviewModule_Info.qml</file>
         <file>OverviewModule_ServerQuickAction.qml</file>
-        <file>OverviewModule_NewServerFloatingButton.qml</file>
         <file>icon/ic_search.png</file>
         <file>BackButton.qml</file>
         <file>icon/ic_power_settings_new.png</file>
@@ -103,5 +102,7 @@
         <file>AddServerPane_PerformanceSetting.qml</file>
         <file>icon/ic_skip_previous_black_24dp_2x.png</file>
         <file>Setting_Repository.qml</file>
+        <file>icon/SERVANT-logo.png</file>
+        <file>icon/SERVANT-logo-dark.png</file>
     </qresource>
 </RCC>

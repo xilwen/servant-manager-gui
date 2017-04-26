@@ -19,6 +19,7 @@ Pane {
         x: 385
         y: 260
         text: qsTr("SERVANT")
+        visible: false
         anchors.verticalCenterOffset: -60
         font.family: "Microsoft JhengHei UI"
         font.pointSize: 32
@@ -44,6 +45,7 @@ Pane {
         Label {
             id: loadStatusLabel
             text: qsTr("Status")
+            visible: false
             objectName: "loadingScreenStatusLabel"
             font.pointSize: 12
             font.family: "Microsoft JhengHei UI"
@@ -52,5 +54,14 @@ Pane {
             anchors.bottom: parent.bottom
             anchors.bottomMargin: 20
         }
+    }
+
+    Image {
+        id: image
+        width: 330
+        height: 53
+        anchors.horizontalCenter: parent.horizontalCenter
+        anchors.verticalCenter: parent.verticalCenter
+        source: "icon/SERVANT-logo-dark.png"
     }
 }
