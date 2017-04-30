@@ -30,7 +30,6 @@ public slots:
     void updateMallDetailView();
     void cancelDownload();
     void updateMallRepoUrl(QString qstring);
-    void getMallRepoUrl();
 private:
     static Mall *instance;
     QObject *serverProductInfoPane;

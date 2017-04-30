@@ -104,5 +104,9 @@
         <file>Setting_Repository.qml</file>
         <file>icon/SERVANT-logo.png</file>
         <file>icon/SERVANT-logo-dark.png</file>
+        <file>OpBannerPane.qml</file>
+        <file>icon/ic_settings_applications_white_48dp_2x.png</file>
+        <file>icon/ic_share_white_48dp_2x.png</file>
+        <file>icon/ic_build_white_48dp_2x.png</file>
     </qresource>
 </RCC>

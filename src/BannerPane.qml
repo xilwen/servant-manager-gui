@@ -29,6 +29,17 @@ Pane {
     }
 
     Label {
+        id: managerlabel
+        text: qsTr("Manager")
+        anchors.verticalCenter: parent.verticalCenter
+        anchors.left: image3.right
+        anchors.leftMargin: 8
+        font.pointSize: 16
+        font.family: "Microsoft JhengHei UI"
+        Material.foreground: Material.Grey
+    }
+
+    Label {
         id: label
         y: 260
         width: 171
@@ -48,6 +59,7 @@ Pane {
     Pane {
         id: pane
         width: 650
+        visible: false
         anchors.bottom: parent.bottom
         anchors.bottomMargin: 1
         anchors.top: parent.top
@@ -110,6 +122,7 @@ Pane {
         x: 911
         width: 40
         text: qsTr("")
+        visible: false
         padding: 0
         anchors.bottom: parent.bottom
         anchors.bottomMargin: -5

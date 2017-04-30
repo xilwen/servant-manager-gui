@@ -16,7 +16,6 @@ Mall::Mall(QObject *parent) : QObject(parent)
     connect(this, &Mall::updateMallDetailViewTriggered, this, &Mall::updateMallDetailView);
     connect(this, &Mall::cancelDownloadTriggered, this, &Mall::cancelDownload);
     connect(this, &Mall::updateMallRepoUrlTriggered, this, &Mall::updateMallRepoUrl);
-    connect(this, &Mall::getMallRepoUrlTriggered, this, &Mall::getMallRepoUrl);
     serverProductInfoPane = MainWindow::getUi()->findChild<QObject*>("serverProductInfoPane");
     for(auto i = 0; i < serverObjectButtonsAmount; ++i)
     {
@@ -125,13 +124,3 @@ void Mall::updateMallRepoUrl(QString qstring)
     ServantBase::getInstance()->getConfigManager()->setRemoteServiceHost(qstring.toUtf8().data());
     emit updateRepositoryButtonClicked();
 }
-
-void Mall::getMallRepoUrl()
-{
-    QObject *setting_RepositoryPane
-            = MainWindow::getUi()->findChild<QObject*>("setting_RepositoryPane");
-    setting_RepositoryPane->setProperty("repoUrl",
-                                        QString::fromUtf8(ServantBase::getInstance()->getConfigManager()->getRemoteServiceHost().c_str()));
-}
-
-

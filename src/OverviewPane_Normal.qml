@@ -322,6 +322,7 @@ Pane {
             onClicked: {
                 overviewPane_Normal.visible = false
                 serverMallPane.visible = true
+                controlPane.indicatorPointer = 1
             }
         }
     }

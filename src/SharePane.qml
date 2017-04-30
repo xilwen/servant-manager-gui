@@ -7,6 +7,10 @@ Pane {
     id: sharePane
     width: 823
     height: 579
+    leftPadding: 0
+    rightPadding: 0
+    bottomPadding: 0
+    topPadding: 0
     anchors.rightMargin: 0
     anchors.bottomMargin: 0
     anchors.leftMargin: 0
@@ -19,9 +23,9 @@ Pane {
         height: 36
         text: qsTr("分享與匯入")
         anchors.left: parent.left
-        anchors.leftMargin: 22
-        anchors.top: parent.top
-        anchors.topMargin: 11
+        anchors.leftMargin: 20
+        anchors.top: opBannerPane.bottom
+        anchors.topMargin: 15
         horizontalAlignment: Text.AlignHCenter
         verticalAlignment: Text.AlignVCenter
         font.pointSize: 22
@@ -32,14 +36,15 @@ Pane {
         anchors.top: sharelabel.bottom
         anchors.topMargin: 9
         anchors.left: parent.left
-        anchors.leftMargin: 22
+        anchors.leftMargin: 20
         serverTitle: qsTr("匯出伺服器")
         serverSubtitle:qsTr("以 VirtualBox 格式(*.ova)匯出伺服器")
         serverImageSource: "icon/ic_call_made_black_24dp_2x.png"
     }
     ServerObjectButton{
         id: pushvirtualboxbutton
-        y: 56
+        anchors.top: pushServerbutton.top
+        anchors.topMargin: 0
         anchors.left: pushServerbutton.right
         anchors.leftMargin: 36
         serverTitle: qsTr("從 VirtualBox 匯入")
@@ -53,9 +58,9 @@ Pane {
         height: 36
         text: qsTr("備份")
         anchors.left: parent.left
-        anchors.leftMargin: 23
+        anchors.leftMargin: 20
         anchors.top: pushServerbutton.bottom
-        anchors.topMargin: 9
+        anchors.topMargin: 10
         font.family: "Microsoft JhengHei UI"
         font.pointSize: 22
         verticalAlignment: Text.AlignVCenter
@@ -64,7 +69,7 @@ Pane {
     ServerObjectButton{
         id: camerabutton
         anchors.left: parent.left
-        anchors.leftMargin: 22
+        anchors.leftMargin: 20
         anchors.top: backuplabel.bottom
         anchors.topMargin: 9
         serverTitle: qsTr("為所有機器建立快照")
@@ -73,7 +78,8 @@ Pane {
     }
     ServerObjectButton{
         id: backupMachinebutton
-        y: 194
+        anchors.top: camerabutton.top
+        anchors.topMargin: 0
         anchors.left: camerabutton.right
         anchors.leftMargin: 36
         serverTitle: qsTr("備份所有機器")
@@ -84,6 +90,11 @@ Pane {
     Pane {
         id: pane
         width: 823
+        padding: 0
+        leftPadding: 0
+        rightPadding: 0
+        bottomPadding: 0
+        topPadding: 0
         anchors.right: parent.right
         anchors.rightMargin: -12
         anchors.left: parent.left
@@ -128,6 +139,17 @@ Pane {
             font.family: "Microsoft JhengHei UI"
             font.pointSize: 16
         }
+    }
+
+    OpBannerPane {
+        id: opBannerPane
+        x: 244
+        anchors.top: parent.top
+        anchors.topMargin: 0
+        pageIcon: "icon/ic_share_white_48dp_2x.png"
+        pageName: "分享及備份"
+        backgroundColor: "#2f3e9e"
+        haveDesciprtion: false
     }
 }
 
