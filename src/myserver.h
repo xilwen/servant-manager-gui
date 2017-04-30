@@ -17,25 +17,27 @@ signals:
     void installProgressChanged(int progress);
     void installFinished();
     void readyToBootServer(int itemIndex);
-    void readyToShutdownServer();
+    void readyToShutdownServer(int itemIndex);
     void modifyFinished();
+    void updateServerQuickActionTriggered();
 public slots:
     void installPackage(int itemIndex);
     void updateInstallUI(int progress);
     void updateAfterInstall();
     void bootServer(int itemIndex);
-    void shutdownServer();
+    void shutdownServer(int itemIndex);
     void closeModifyUI();
+    void updateServerQuickActionSlot();
 private:
     QObject *addingServerPane;
     QObject *serverInfoPane;
-    QObject *overviewModuleServerQuickAction0,
-    *overviewModuleServerQuickAction1,
-    *overviewModuleServerQuickAction2;
+    QObject *controlPane;
+    std::vector<QObject*> overviewModuleServerQuickActions;
     QObject *serverStateChangingPane;
     PackageManager *packageManager;
     static MyServer *instance;
     int itemIndex = 0;
+    const unsigned int overviewModuleServerQuickActionAmount = 10;
     void packageInstallRunner();
     void bootServerRunner();
     void shutdownServerRunner();

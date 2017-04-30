@@ -47,14 +47,18 @@ void Mall::downloadRunner()
     std::string remoteFile(ConfigManager::getInstance()->getRemoteServiceHost() +
                            "/" + items->at(itemIndex).getVboxImageFile());
     std::string localFile(ServantBase::getInstance()->getProfileManager()->getUserDataDirString() +
-                           "/"  + items->at(itemIndex).getVboxImageFile());
+                          "/"  + items->at(itemIndex).getVboxImageFile());
     htmlFileDownloader->startDownload(remoteFile, localFile);
     while(htmlFileDownloader->isDownloading())
     {
         downloadProgressChanged(htmlFileDownloader->downloadProgress());
         std::this_thread::sleep_for(std::chrono::milliseconds(50));
     }
-    emit downloadCompleted();
+    if(htmlFileDownloader->succeededLastTime())
+    {
+        items->at(itemIndex).downloadAdditionalFiles();
+        emit downloadCompleted();
+    }
 }
 
 void Mall::updateDownloadProgressUI(int downloadProgress)
@@ -107,6 +111,7 @@ void Mall::updateMallDetailView()
     serverProductInfoPane->setProperty("itemOperatingSystem", QString::fromUtf8(items->at(itemIndex).getOperatingSystem().c_str()));
     serverProductInfoPane->setProperty("itemManagementUI", QString::fromUtf8(items->at(itemIndex).getManagementUI().c_str()));
     serverProductInfoPane->setProperty("itemIntroduction", QString::fromUtf8(items->at(itemIndex).getIntroduction().c_str()));
+    serverProductInfoPane->setProperty("itemFileSize", QString::fromUtf8(items->at(itemIndex).getFileSize().c_str()));
 }
 
 void Mall::cancelDownload()
@@ -119,5 +124,3 @@ void Mall::updateMallRepoUrl(QString qstring)
     ServantBase::getInstance()->getConfigManager()->setRemoteServiceHost(qstring.toUtf8().data());
     emit updateRepositoryButtonClicked();
 }
-
-

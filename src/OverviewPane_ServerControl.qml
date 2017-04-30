@@ -119,7 +119,7 @@ Pane {
                 serverStateChangingPane.visible = true
                 button_OFF.visible = false
                 button_ON.visible = true
-                tmpCmd.shutdownServer()
+                tmpCmd.shutdownServer(itemIndex)
             }
         }
     }

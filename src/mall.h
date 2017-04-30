@@ -20,6 +20,7 @@ signals:
     void updateMallDetailViewTriggered();
     void cancelDownloadTriggered();
     void updateMallRepoUrlTriggered(QString qstring);
+    void getMallRepoUrlTriggered();
 public slots:
     void downloadPackage(int itemIndex);
     void updateDownloadProgressUI(int downloadProgress);
@@ -35,7 +36,7 @@ private:
     std::vector<QObject*> serverObjectButtons;
     void downloadRunner();
     int itemIndex;
-    const int serverObjectButtonsAmount = 5;
+    const int serverObjectButtonsAmount = 10;
 };
 
 #endif // MALL_H

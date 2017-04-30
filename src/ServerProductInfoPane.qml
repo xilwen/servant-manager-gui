@@ -12,7 +12,7 @@ Pane {
     property alias progressBarValue : progressBar.value
     property alias progressText : label7.text
     property alias succeedPaneVisible : downloadSucceedPane.visible
-//    Information should be set/read from Model(Data)
+    //    Information should be set/read from Model(Data)
     property int itemIndex: 0 //index in model array
     property string itemName : "伺服器名稱"
     property string itemDescription : "伺服器簡述"
@@ -22,7 +22,8 @@ Pane {
     property string itemOperatingSystem : "伺服器作業系統"
     property string itemManagementUI : "伺服器管理介面"
     property string itemIntroduction : "伺服器詳細說明"
-//    TODO Hardware Checks Strings
+    property string itemFileSize : "伺服器包裝檔案大小"
+    //    TODO Hardware Checks Strings
 
     anchors.rightMargin: 0
     anchors.bottomMargin: 0
@@ -160,6 +161,7 @@ Pane {
         subtitle:qsTr("您的電腦符合此伺服器\n的硬體需求。")
         introduction: qsTr("")
         detail: qsTr("")
+        Material.elevation : 3
     }
 
     BottomPane {
@@ -175,7 +177,7 @@ Pane {
         ServerProductInfoModule_Button {
             id: button3
             x: 687
-            title: qsTr("下載 (未知大小)")
+            title: qsTr("下載 (約") + itemFileSize + qsTr(")")
             anchors.verticalCenter: parent.verticalCenter
             anchors.right: parent.right
             anchors.rightMargin: 10
@@ -266,9 +268,33 @@ Pane {
             anchors.rightMargin: 10
             visible:true
             onClicked: {
-                serverProductInfoPane.visible = false
-                tmpCmd.runInstaller(itemIndex)
+                addServerPane.visible = true
             }
         }
+    }
+
+    ServerProductInfoModule_DetailCard {
+        id: button4
+        subtitle: "N/A"
+        anchors.right: button2.right
+        anchors.rightMargin: 0
+        anchors.left: button2.left
+        anchors.leftMargin: 0
+        anchors.top: button2.bottom
+        anchors.topMargin: 7
+        introduction: qsTr("")
+        detail: qsTr("")
+        title: qsTr("造訪網頁")
+        Material.elevation : 3
+    }
+    AddServerPane{
+        id: addServerPane
+        anchors.fill: parent
+        visible: false
+    }
+    AddServerPane_PerformanceSetting{
+        id: addServerPane_PerformanceSetting
+        anchors.fill: parent
+        visible: false
     }
 }

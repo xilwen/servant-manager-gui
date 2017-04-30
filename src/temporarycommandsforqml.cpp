@@ -30,9 +30,9 @@ void TemporaryCommandsForQml::bootServer(int itemIndex)
     emit MyServer::getInstance()->readyToBootServer(itemIndex);
 }
 
-void TemporaryCommandsForQml::shutdownServer()
+void TemporaryCommandsForQml::shutdownServer(int itemIndex)
 {
-    emit MyServer::getInstance()->readyToShutdownServer();
+    emit MyServer::getInstance()->readyToShutdownServer(itemIndex);
 }
 
 void TemporaryCommandsForQml::updateServerControlUI(const QString &machineName)
@@ -73,4 +73,14 @@ void TemporaryCommandsForQml::triggerCancelDownload()
 void TemporaryCommandsForQml::triggerMallRepoUrlUpdate(QString qstring)
 {
     emit Mall::getInstance()->updateMallRepoUrlTriggered(qstring);
+}
+
+void TemporaryCommandsForQml::triggerGetMallRepoUrl()
+{
+    emit Mall::getInstance()->getMallRepoUrlTriggered();
+}
+
+void TemporaryCommandsForQml::triggerUpdateServerQuickAction()
+{
+    emit MyServer::getInstance()->updateServerQuickActionTriggered();
 }

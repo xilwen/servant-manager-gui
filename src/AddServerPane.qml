@@ -13,6 +13,7 @@ Pane {
     anchors.leftMargin: 0
     anchors.topMargin: 0
     anchors.fill: parent
+    z:3
 
     BackButton{
         pageName: qsTr("安裝新伺服器")
@@ -38,11 +39,13 @@ Pane {
 
     Image {
         id: newServerTypeImage
+        width: 48
+        height: 48
         anchors.top: serverTypeLabel.bottom
         anchors.topMargin: 15
         anchors.left: parent.left
         anchors.leftMargin: 50
-        source: "icon/ic_info_black_24dp.png"
+        source: serverProductInfoPane.itemIcon
     }
 
     Label {
@@ -94,8 +97,8 @@ Pane {
             anchors.right: parent.right
             anchors.rightMargin: 10
             onClicked: {
-                overviewPane_Empty.visible = false
-                serverMallPane.visible = true
+                addServerPane.visible = false
+                addServerPane_PerformanceSetting.visible = true
             }
         }
     }
@@ -118,7 +121,7 @@ Pane {
         y: 2
         width: 121
         height: 35
-        text: "新伺服器類型"
+        text: serverProductInfoPane.itemName
         verticalAlignment: Text.AlignVCenter
         anchors.leftMargin: 15
         horizontalAlignment: Text.AlignLeft

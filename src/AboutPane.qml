@@ -70,6 +70,7 @@ Pane {
             width: 180
             height: 35
             text: "SERVANT"
+            visible: false
             anchors.left: parent.left
             anchors.leftMargin: 10
             anchors.top: parent.top
@@ -128,6 +129,17 @@ Pane {
             y: 360
             anchors.left: licenseInfoButton.right
             anchors.leftMargin: 10
+        }
+
+        Image {
+            id: image
+            width: 185
+            height: 35
+            anchors.left: parent.left
+            anchors.leftMargin: 8
+            anchors.top: parent.top
+            anchors.topMargin: 20
+            source: "icon/SERVANT-logo-dark.png"
         }
     }
 

@@ -7,11 +7,23 @@ Pane {
     id: diagnosisPane
     width: 823
     height: 579
+    leftPadding: 0
+    rightPadding: 0
+    bottomPadding: 0
+    topPadding: 0
     anchors.rightMargin: 0
     anchors.bottomMargin: 0
     anchors.leftMargin: 0
     anchors.topMargin: 0
     anchors.fill: parent
+    OpBannerPane{
+        id: opBannerPane
+        pageIcon: "icon/ic_build_white_48dp_2x.png"
+        pageName: "診斷"
+        haveDesciprtion: false
+        backgroundColor: "#2196f3"
+    }
+
     Label {
         id: servantlabel
         x: 23
@@ -20,8 +32,8 @@ Pane {
         text: qsTr("SERVANT")
         anchors.left: parent.left
         anchors.leftMargin: 22
-        anchors.top: parent.top
-        anchors.topMargin: 11
+        anchors.top: opBannerPane.bottom
+        anchors.topMargin: 10
         horizontalAlignment: Text.AlignHCenter
         verticalAlignment: Text.AlignVCenter
         font.pointSize: 22

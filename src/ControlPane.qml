@@ -11,6 +11,7 @@ Pane {
     rightPadding: 0
     leftPadding: 0
     property bool noMachineCreated: true
+    property int indicatorPointer: 0
     Layout.minimumWidth: 50
     Layout.maximumWidth: 200
     Layout.fillHeight: true
@@ -31,18 +32,14 @@ Pane {
             diagnosisPane.visible=false
             sharePane.visible=false
             settingPane.visible=false
-            myServerIndicator.visible=true
-            mallIndicator.visible=false
-            diagnosisIndicator.visible=false
-            sharepane.visible=false
-            settingpane.visible=false
+            indicatorPointer = 0
         }
         ControlModule_Indicator {
             id: myServerIndicator
             x: 135
             y: 6
             indicatorColor:"#00aa00"
-            visible: true
+            visible: (indicatorPointer==0)?true:false
         }
     }
 
@@ -61,18 +58,14 @@ Pane {
             diagnosisPane.visible=false
             sharePane.visible=false
             settingPane.visible=false
-            myServerIndicator.visible=false
-            mallIndicator.visible=true
-            diagnosisIndicator.visible=false
-            sharepane.visible=false
-            settingpane.visible=false
+            indicatorPointer = 1
         }
         ControlModule_Indicator {
             id: mallIndicator
             x: 135
             y: 6
             indicatorColor:"#E91E63"
-            visible: false
+            visible: (indicatorPointer==1)?true:false
         }
     }
     
@@ -81,7 +74,7 @@ Pane {
         x: 57
         y: 121
         title: qsTr("診斷              ")
-        image: "icon/ic_storage_white_24dp_1x.png"
+        image: "icon/ic_build_white_48dp_2x.png"
         bgColor: "#2196F3"
         mouseArea.onClicked: {
             overviewPane_Empty.visible=false
@@ -92,18 +85,14 @@ Pane {
             sharePane.visible=false
             settingPane.visible=false
             sharePane.visible=false
-            myServerIndicator.visible=false
-            mallIndicator.visible=false
-            diagnosisIndicator.visible=true
-            sharepane.visible=false
-            settingpane.visible=false
+            indicatorPointer = 2
         }
         ControlModule_Indicator {
             id: diagnosisIndicator
             x: 135
             y: 6
             indicatorColor: "#2196f3"
-            visible: false
+            visible: (indicatorPointer==2)?true:false
         }
     }
     
@@ -112,7 +101,7 @@ Pane {
         x: 57
         y: 171
         title: qsTr("分享及備份       ")
-        image: "icon/ic_share_white_24dp_1x.png"
+        image: "icon/ic_share_white_48dp_2x.png"
         bgColor: "#3F51B5"
         mouseArea.onClicked: {
             overviewPane_Empty.visible=false
@@ -123,18 +112,14 @@ Pane {
             sharePane.visible=true
             settingPane.visible=false
             sharePane.visible=true
-            myServerIndicator.visible=false
-            mallIndicator.visible=false
-            diagnosisIndicator.visible=false
-            sharepane.visible=true
-            settingpane.visible=false
+            indicatorPointer = 3
         }
         ControlModule_Indicator {
             id: sharepane
             x: 135
             y: 6
             indicatorColor: "#3F51B5"
-            visible: false
+            visible: (indicatorPointer==3)?true:false
         }
     }
     
@@ -154,18 +139,14 @@ Pane {
             sharePane.visible=false
             settingPane.visible=true
             sharePane.visible=false
-            myServerIndicator.visible=false
-            mallIndicator.visible=false
-            diagnosisIndicator.visible=false
-            sharepane.visible=false
-            settingpane.visible=true
+            indicatorPointer = 4
         }
         ControlModule_Indicator {
             id: settingpane
             x: 135
             y: 6
             indicatorColor:"#9e9e9e"
-            visible: false
+            visible: (indicatorPointer==4)?true:false
         }
     }
 }

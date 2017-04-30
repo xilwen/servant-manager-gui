@@ -15,6 +15,15 @@ Pane {
     anchors.topMargin: 0
     anchors.fill: parent
 
+    onVisibleChanged: {
+        tmpCmd.triggerUpdateServerQuickAction();
+        if(!controlPane.noMachineCreated)
+        {
+            visible = false
+            overviewPane_Normal.visible = true
+        }
+    }
+
     OverviewModule_Info{
         id:overviewModuleInfo
         height: 160
@@ -70,6 +79,7 @@ Pane {
             onClicked: {
                 overviewPane_Empty.visible = false
                 serverMallPane.visible = true
+                controlPane.indicatorPointer = 1
             }
         }
 

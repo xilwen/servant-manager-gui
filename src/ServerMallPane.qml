@@ -26,17 +26,34 @@ Pane {
 
     OverviewModule_Info{
         id:welcome
-        height: 153
+        height: 160
         anchors.right: parent.right
         anchors.rightMargin: -12
         anchors.left: parent.left
         anchors.leftMargin: -12
         anchors.top: parent.top
         anchors.topMargin: -12
-        titleText: qsTr("歡迎使用")
-        infoText: qsTr("")
+        titleText: qsTr("伺服器商城")
+        infoText: qsTr("探索、下載並輕鬆安裝伺服器")
         z:2
+        ServerMallButton{
+            id: refreshListButton
+            serverTitle: qsTr(" 更新伺服器清單")
+            serverImageSource:"icon/ic_cached.png"
+            x: 20
+            y: 2
+            width: 256
+            anchors.bottom: parent.bottom
+            anchors.bottomMargin: 0
+            anchors.right: parent.right
+            anchors.rightMargin: 0
+            onClicked:{
+                tmpCmd.triggerRepositoryUpdate()
+            }
+        }
     }
+
+
     Flickable {
         id: flickable
         anchors.rightMargin: -12
@@ -208,7 +225,7 @@ Pane {
                 anchors.top: joomlaserverbutton5.bottom
                 anchors.topMargin: 25
                 serverTitle: qsTr("標題")
-                objectName: "serverObjectButton4"
+                objectName: "serverObjectButton7"
                 serverImageSource: "icon/Joomla-flat-logo-en.png"
                 serverSubtitle: qsTr("副標題")
             }
@@ -221,7 +238,7 @@ Pane {
                 anchors.top: joomlaserverbutton6.bottom
                 anchors.topMargin: 25
                 serverTitle: qsTr("標題")
-                objectName: "serverObjectButton4"
+                objectName: "serverObjectButton8"
                 serverImageSource: "icon/Joomla-flat-logo-en.png"
                 serverSubtitle: qsTr("副標題")
             }
@@ -233,7 +250,7 @@ Pane {
                 height: 84
                 serverTitle: qsTr("標題")
                 anchors.topMargin: 25
-                objectName: "serverObjectButton4"
+                objectName: "serverObjectButton9"
                 serverImageSource: "icon/Joomla-flat-logo-en.png"
                 anchors.top: joomlaserverbutton7.bottom
                 serverSubtitle: qsTr("副標題")
