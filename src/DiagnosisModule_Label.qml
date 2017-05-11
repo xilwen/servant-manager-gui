@@ -4,15 +4,12 @@ import QtQuick.Layouts 1.0
 import QtQuick.Controls.Material 2.1
 
 Label {
+    id: label
     text: qsTr("標題")
     color:"#212121"
     property alias label2: label2.text
-    Layout.minimumHeight: 28
-    Layout.minimumWidth: 320
-    Layout.maximumHeight: 28
-    Layout.maximumWidth: 320
     height: 28
-    width: 320
+    width: 640
     opacity: 1
     visible: true
     font.pointSize: 16
@@ -21,18 +18,16 @@ Label {
     Label {
         id: label2
         y: 0
-        text: qsTr("副標題")
-        horizontalAlignment: Text.AlignRight
+        text: qsTr("內容")
+        horizontalAlignment: Text.AlignLeft
         verticalAlignment: Text.AlignTop
         color:"#212121"
-        anchors.left: parent.right
-        anchors.leftMargin: 21
+        anchors.left: parent.horizontalCenter
+        anchors.leftMargin: 0
         height: 28
-        width: 96
+        width: 200
         font.pointSize: 16
         font.family: "Microsoft JhengHei UI"
     }
 
 }
-
-

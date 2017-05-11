@@ -18,13 +18,14 @@ Pane {
     Material.elevation: 5
     Image {
         id: image3
-        x: 12
+        x: 5
         y: 2
-        width: 150
-        height: 27
+        width: 200
+        height: 32
+        antialiasing: true
         anchors.verticalCenter: parent.verticalCenter
         anchors.left: parent.left
-        anchors.leftMargin: 5
+        anchors.leftMargin: 0
         source: "qrc:/icon/SERVANT-logo.png"
     }
 
