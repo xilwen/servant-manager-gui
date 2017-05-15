@@ -11,6 +11,7 @@ Pane {
     rightPadding: 0
     leftPadding: 0
     property bool noMachineCreated: true
+    property bool locked: false
     property int indicatorPointer: 0
     Layout.minimumWidth: 50
     Layout.maximumWidth: 200

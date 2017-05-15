@@ -25,7 +25,7 @@ Pane {
     Layout.fillWidth: true
     onVisibleChanged: {
         if(visible == true){
-            tmpCmd.updateServerControlUI("DEMOONLY")
+            tmpCmd.updateServerControlUI(itemIndex)
         }
     }
 

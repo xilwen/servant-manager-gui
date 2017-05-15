@@ -11,12 +11,12 @@ public:
     static ServerControl *getInstance();
 
 signals:
-    void readyToUpdateServerControlUI(const QString &machineName);
-    void readyToDeleteServer(const QString &machineName);
+    void readyToUpdateServerControlUI(int itemIndex);
+    void readyToDeleteServer(int itemIndex);
 
 public slots:
-    void updateServerControlUI(const QString &machineName);
-    void deleteServer(const QString &machineName);
+    void updateServerControlUI(int itemIndex);
+    void deleteServer(int itemIndex);
 private:
     static ServerControl *instance;
     QObject *serverInfoPane = nullptr;

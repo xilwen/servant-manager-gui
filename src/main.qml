@@ -169,12 +169,4 @@ ApplicationWindow {
         z: 3
         visible: false
     }
-
-    Setting_Repository{
-        id: setting_RepositoryPane
-        anchors.horizontalCenter: parent.horizontalCenter
-        anchors.verticalCenter: parent.verticalCenter
-        z: 5
-        visible: false
-    }
 }

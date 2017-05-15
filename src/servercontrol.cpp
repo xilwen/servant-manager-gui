@@ -23,11 +23,9 @@ ServerControl *ServerControl::getInstance()
     return instance;
 }
 
-void ServerControl::updateServerControlUI(const QString &machineName)
+void ServerControl::updateServerControlUI(int itemIndex)
 {
-    auto machine = PackageManager::getInstance()->getMachines()->back().getInstance();
-//    remove after DEMO
-//    auto machine = VirtualMachine::getVirtualMachine(machineName.toStdWString());
+    auto machine = PackageManager::getInstance()->getMachines()->at(itemIndex).getInstance();
     if(machine->getStatus() == VirtualMachineState::PoweredOff)
     {
         QtUtilities::setVisible(serverQuickControlPane_OFF, true);
@@ -51,9 +49,9 @@ void ServerControl::updateServerControlUI(const QString &machineName)
     }
 }
 
-void ServerControl::deleteServer(const QString &machineName)
+void ServerControl::deleteServer(int itemIndex)
 {
-    PackageManager::getInstance()->DeleteMachine(PackageManager::getInstance()->getMachines()->back().getName());
-//    remove after DEMO
-//    PackageManager::getInstance()->DeleteMachine(machineName.toStdWString());
+    PackageManager::getInstance()->DeleteMachine(PackageManager::getInstance()->getMachines()->at(itemIndex).getUuid());
+    QObject *overviewPane = MainWindow::getUi()->findChild<QObject*>("overviewPane");
+    overviewPane->setProperty("visible", true);
 }

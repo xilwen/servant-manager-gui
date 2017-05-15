@@ -21,6 +21,8 @@ signals:
     void cancelDownloadTriggered();
     void updateMallRepoUrlTriggered(QString qstring);
     void getMallRepoUrlTriggered();
+    void getIpifyTriggered();
+    void websitePulseTriggered();
 public slots:
     void downloadPackage(int itemIndex);
     void updateDownloadProgressUI(int downloadProgress);
@@ -30,6 +32,8 @@ public slots:
     void updateMallDetailView();
     void cancelDownload();
     void updateMallRepoUrl(QString qstring);
+    void getIpify();
+    void triggerWebsitePulse();
 private:
     static Mall *instance;
     QObject *serverProductInfoPane;

@@ -12,12 +12,13 @@ MyServer::MyServer(QObject *parent) : QObject(parent)
     connect(this, &MyServer::readyToShutdownServer, this, &MyServer::shutdownServer);
     connect(this, &MyServer::modifyFinished, this, &MyServer::closeModifyUI);
     connect(this, &MyServer::updateServerQuickActionTriggered, this, &MyServer::updateServerQuickActionSlot);
+    connect(this, &MyServer::networkInfoTriggered, this, &MyServer::openNetworkInfo);
     packageManager = ServantBase::getInstance()->getPackageManager();
     addingServerPane = MainWindow::getUi()->findChild<QObject*>("addingServerPane");
     serverInfoPane = MainWindow::getUi()->findChild<QObject*>("serverInfoPane");
     serverStateChangingPane = MainWindow::getUi()->findChild<QObject*>("serverStateChangingPane");
     controlPane = MainWindow::getUi()->findChild<QObject*>("controlPane");
-    for(auto i = 0; i < overviewModuleServerQuickActionAmount; ++i)
+    for(unsigned int i = 0; i < overviewModuleServerQuickActionAmount; ++i)
     {
         QObject *overviewModuleServerQuickAction = MainWindow::getUi()->findChild<QObject*>(QString::fromStdString(std::string("overviewModuleServerQuickAction" + std::to_string(i))));
         overviewModuleServerQuickActions.push_back(overviewModuleServerQuickAction);
@@ -121,7 +122,7 @@ void MyServer::bootServerRunner()
     //TODO Real Port!
     int port = 80;
     ServantBase::getInstance()->getVBoxWrapperClient()->waitForPortOpen(port);
-    emit ServerControl::getInstance()->readyToUpdateServerControlUI("DEMOONLY");
+    emit ServerControl::getInstance()->readyToUpdateServerControlUI(itemIndex);
     emit modifyFinished();
 }
 
@@ -135,7 +136,7 @@ void MyServer::shutdownServerRunner()
         std::this_thread::sleep_for(std::chrono::milliseconds(200));
     }
     while(msg != L"PoweredOff");
-    emit ServerControl::getInstance()->readyToUpdateServerControlUI("DEMOONLY");
+    emit ServerControl::getInstance()->readyToUpdateServerControlUI(itemIndex);
     emit modifyFinished();
 }
 
@@ -147,4 +148,10 @@ void MyServer::closeModifyUI()
 void MyServer::updateServerQuickActionSlot()
 {
     updateServerQuickAction();
+}
+
+void MyServer::openNetworkInfo()
+{
+    WindowsUtilities::ipconfigAndSave();
+    WindowsUtilities::startURI("C:\\SERVANT\\ipconfig.txt");
 }

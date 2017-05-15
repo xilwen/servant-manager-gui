@@ -20,6 +20,7 @@ signals:
     void readyToShutdownServer(int itemIndex);
     void modifyFinished();
     void updateServerQuickActionTriggered();
+    void networkInfoTriggered();
 public slots:
     void installPackage(int itemIndex);
     void updateInstallUI(int progress);
@@ -28,6 +29,7 @@ public slots:
     void shutdownServer(int itemIndex);
     void closeModifyUI();
     void updateServerQuickActionSlot();
+    void openNetworkInfo();
 private:
     QObject *addingServerPane;
     QObject *serverInfoPane;

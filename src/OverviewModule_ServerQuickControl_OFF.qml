@@ -35,9 +35,8 @@ Pane {
         info: qsTr("完整移除相關的檔案")
         imageSource: "icon/ic_delete_black_48dp_2x.png"
         onClicked:{
+            tmpCmd.deleteServer(serverInfoPane.itemIndex)
             serverInfoPane.visible = false
-            overviewPane_Empty.visible = true
-            tmpCmd.deleteServer("DEMOONLY")
         }
     }
 

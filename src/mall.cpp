@@ -16,6 +16,8 @@ Mall::Mall(QObject *parent) : QObject(parent)
     connect(this, &Mall::updateMallDetailViewTriggered, this, &Mall::updateMallDetailView);
     connect(this, &Mall::cancelDownloadTriggered, this, &Mall::cancelDownload);
     connect(this, &Mall::updateMallRepoUrlTriggered, this, &Mall::updateMallRepoUrl);
+    connect(this, &Mall::getIpifyTriggered, this, &Mall::getIpify);
+    connect(this, &Mall::websitePulseTriggered, this, &Mall::triggerWebsitePulse);
     serverProductInfoPane = MainWindow::getUi()->findChild<QObject*>("serverProductInfoPane");
     for(auto i = 0; i < serverObjectButtonsAmount; ++i)
     {
@@ -81,7 +83,7 @@ void Mall::updateRepository()
 void Mall::updateMallItemView()
 {
     auto items(ServantBase::getInstance()->getMallManager()->getItemList());
-    for(unsigned int i = 0; i < serverObjectButtonsAmount; ++i)
+    for(int i = 0; i < serverObjectButtonsAmount; ++i)
     {
         if(i < items->size())
         {
@@ -123,4 +125,15 @@ void Mall::updateMallRepoUrl(QString qstring)
 {
     ServantBase::getInstance()->getConfigManager()->setRemoteServiceHost(qstring.toUtf8().data());
     emit updateRepositoryButtonClicked();
+}
+
+void Mall::getIpify()
+{
+    QObject *diagnosisPaneIpifyLabel = MainWindow::getUi()->findChild<QObject*>(QString::fromStdString("diagnosisPaneIpifyLabel"));
+    diagnosisPaneIpifyLabel->setProperty("label2", QString::fromUtf8(DiagnosisUtilities::getInstance()->getIpFromIpify().c_str()));
+}
+
+void Mall::triggerWebsitePulse()
+{
+    WindowsUtilities::startURI("https://www.websitepulse.com/tools/server-test");
 }

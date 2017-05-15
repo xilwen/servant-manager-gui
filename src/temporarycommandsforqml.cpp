@@ -35,14 +35,14 @@ void TemporaryCommandsForQml::shutdownServer(int itemIndex)
     emit MyServer::getInstance()->readyToShutdownServer(itemIndex);
 }
 
-void TemporaryCommandsForQml::updateServerControlUI(const QString &machineName)
+void TemporaryCommandsForQml::updateServerControlUI(int itemIndex)
 {
-    emit ServerControl::getInstance()->readyToUpdateServerControlUI(machineName);
+    emit ServerControl::getInstance()->readyToUpdateServerControlUI(itemIndex);
 }
 
-void TemporaryCommandsForQml::deleteServer(const QString &machineName)
+void TemporaryCommandsForQml::deleteServer(int itemIndex)
 {
-    emit ServerControl::getInstance()->readyToDeleteServer(machineName);
+    emit ServerControl::getInstance()->readyToDeleteServer(itemIndex);
 }
 
 void TemporaryCommandsForQml::updateAboutPane()
@@ -83,4 +83,19 @@ void TemporaryCommandsForQml::triggerGetMallRepoUrl()
 void TemporaryCommandsForQml::triggerUpdateServerQuickAction()
 {
     emit MyServer::getInstance()->updateServerQuickActionTriggered();
+}
+
+void TemporaryCommandsForQml::triggerIpify()
+{
+    emit Mall::getInstance()->getIpifyTriggered();
+}
+
+void TemporaryCommandsForQml::triggerNetworkInfo()
+{
+    emit MyServer::getInstance()->networkInfoTriggered();
+}
+
+void TemporaryCommandsForQml::triggerWebsitePulse()
+{
+    emit Mall::getInstance()->websitePulseTriggered();
 }
