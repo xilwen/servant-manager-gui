@@ -32,6 +32,7 @@ void FirstTimeSetup::hardwareAssessmentRunner()
     FirstTimeUtilities::runDiskTest();
     FirstTimeUtilities::runMemoryTest();
     PerformanceManager::getInstance()->writeDataToFile();
+    ServantBase::getInstance()->getMallManager()->updateItemList();
     emit hardwareAssessmentFinished();
 }
 

@@ -133,7 +133,7 @@ Pane {
 
         Image {
             id: image
-            width: 185
+            width: 220
             height: 35
             anchors.left: parent.left
             anchors.leftMargin: 8

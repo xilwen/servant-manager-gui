@@ -21,7 +21,10 @@ Pane {
 
     onVisibleChanged:
     {
-        tmpCmd.triggerMallItemViewUpdate()
+        if(visible)
+        {
+            tmpCmd.triggerMallItemViewUpdate()
+        }
     }
 
     OverviewModule_Info{
@@ -35,6 +38,7 @@ Pane {
         anchors.topMargin: -12
         titleText: qsTr("伺服器商城")
         infoText: qsTr("探索、下載並輕鬆安裝伺服器")
+        imageSource: "icon/ServerMallPane_bg.png"
         z:2
         ServerMallButton{
             id: refreshListButton

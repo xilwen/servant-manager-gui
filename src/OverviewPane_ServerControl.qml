@@ -9,8 +9,12 @@ Pane {
     width: 800
     height: 600
     visible: true
-    //TODO implement real Getter for server informations
     property int itemIndex: 0
+    property string serverName: ""
+    property string serverType: ""
+    property string serverPortNumber: ""
+    property string serverManagementURL: ""
+    property string serverShareURL: ""
     anchors.rightMargin: 0
     anchors.bottomMargin: 0
     anchors.leftMargin: 0
@@ -24,108 +28,175 @@ Pane {
     Layout.fillHeight: true
     Layout.fillWidth: true
     onVisibleChanged: {
-        if(visible == true){
+        if(visible){
             tmpCmd.updateServerControlUI(itemIndex)
+            controlPane.indicatorPointer = 0
         }
     }
 
     BackButton {
         id: backButton
         pageName: qsTr("管理伺服器")
+        z:3
         button.onClicked: {
             serverInfoPane.visible = false
             overviewPane_Normal.visible = true
         }
     }
 
-    OverviewModule_ServerQuickInfo {
-        id: serverQuickInfoPane
+    Flickable {
+        id: flickable
         anchors.top: backButton.bottom
-        anchors.topMargin: 15
-        anchors.left: parent.left
-        anchors.leftMargin: 15
-    }
-
-    OverviewModule_ServerQuickControl_ON {
-        id: serverQuickControlPane_ON
-        objectName: "serverQuickControlPane_ON"
-        anchors.left: serverQuickInfoPane.right
-        anchors.leftMargin: 15
-        anchors.top: serverQuickInfoPane.top
-        anchors.topMargin: 0
-    }
-
-    OverviewModule_ServerQuickControl_OFF {
-        id: serverQuickControlPane_OFF
-        objectName: "serverQuickControlPane_OFF"
-        anchors.left: serverQuickInfoPane.right
-        anchors.leftMargin: 15
-        anchors.top: serverQuickInfoPane.top
-        anchors.topMargin: 0
-    }
-
-    Pane {
-        id: pane
-        height: 50
         anchors.right: parent.right
-        anchors.rightMargin: 0
-        anchors.left: parent.left
-        anchors.leftMargin: 0
         anchors.bottom: parent.bottom
+        anchors.left: parent.left
+        anchors.rightMargin: 0
         anchors.bottomMargin: 0
-        Material.elevation: 3
+        anchors.leftMargin: 0
+        anchors.topMargin: 0
+        maximumFlickVelocity: 1500
+        flickDeceleration: 2500
+        contentHeight: serverQuickInfo.height + serverQuickControlPane_OFF.height + mainInfoPane.height + 50
+        ScrollBar.vertical: ScrollBar { id: vbar; active: vbar.active }
 
-        Button {
-            id: button_ON
-            objectName: "serverInfoPane_button_ON"
-            x: 687
-            width: 220
-            height: 48
-            text: qsTr("啟動伺服器")
-            anchors.verticalCenter: parent.verticalCenter
-            anchors.right: parent.right
-            font.family: "Microsoft JhengHei UI"
-            font.pointSize: 14
-            anchors.rightMargin: 10
-            Material.elevation: 0
-            Material.background: "white"
-            onClicked: {
-                serverQuickControlPane_OFF.visible = false
-                serverQuickControlPane_ON.visible = true
-                serverStateChangingPane.visible = true
-                button_OFF.visible = true
-                button_ON.visible = false
-                tmpCmd.bootServer(itemIndex)
-            }
+        OverviewModule_ServerQuickInfo{
+            id: serverQuickInfo
+            width: 765
+            height: 235
+            anchors.horizontalCenterOffset: -5
+            anchors.horizontalCenter: parent.horizontalCenter
+            anchors.top: mainInfoPane.bottom
+            anchors.topMargin: 15
         }
 
-        Button {
-            id: button_OFF
-            objectName: "serverInfoPane_button_OFF"
-            x: 687
-            width: 220
-            height: 48
-            text: qsTr("停止伺服器")
-            anchors.verticalCenter: parent.verticalCenter
-            anchors.right: parent.right
-            font.family: "Microsoft JhengHei UI"
-            font.pointSize: 14
-            anchors.rightMargin: 10
-            Material.elevation: 0
-            Material.background: "white"
-            onClicked: {                
-                serverQuickControlPane_OFF.visible = false
-                serverQuickControlPane_ON.visible = true
-                serverStateChangingPane.visible = true
-                button_OFF.visible = false
-                button_ON.visible = true
-                tmpCmd.shutdownServer(itemIndex)
-            }
+        OverviewModule_ServerQuickControl_ON {
+            id: serverQuickControlPane_ON
+            width: 765
+            height: 210
+            anchors.horizontalCenterOffset: -5
+            anchors.horizontalCenter: parent.horizontalCenter
+            objectName: "serverQuickControlPane_ON"
+            anchors.top: serverQuickInfo.bottom
+            anchors.topMargin: 15
         }
-    }
 
-    ServerStateChangingPane {
-        id: serverStateChangingPane
-        visible: false
+        OverviewModule_ServerQuickControl_OFF {
+            id: serverQuickControlPane_OFF
+            width: 765
+            height: 210
+            anchors.horizontalCenterOffset: -5
+            anchors.horizontalCenter: parent.horizontalCenter
+            objectName: "serverQuickControlPane_OFF"
+            anchors.top: serverQuickInfo.bottom
+            anchors.topMargin: 15
+        }
+
+        Pane {
+            id: mainInfoPane
+            height: 130
+            padding: 5
+            leftPadding: 5
+            rightPadding: 5
+            topPadding: 5
+            bottomPadding: 5
+            anchors.top: parent.top
+            anchors.topMargin: 0
+            anchors.right: parent.right
+            anchors.rightMargin: 15
+            anchors.left: parent.left
+            anchors.leftMargin: 0
+            Material.elevation: 0
+
+            Image {
+                id: serverIcon
+                width: 100
+                height: 100
+                anchors.top: parent.top
+                anchors.topMargin: 10
+                anchors.left: parent.left
+                anchors.leftMargin: 15
+                source: "qrc:/qtquickplugin/images/template_image.png"
+            }
+
+            Label {
+                id: serverNameLabel
+                font.family: "Microsoft JhengHei UI"
+                font.pointSize: 20
+                text: qsTr("Label")
+                anchors.top: parent.top
+                anchors.topMargin: 10
+                anchors.left: serverIcon.right
+                anchors.leftMargin: 10
+            }
+
+            Label {
+                id: serverTypeLabel
+                font.family: "Microsoft JhengHei UI"
+                font.pointSize: 16
+                text: qsTr("Label")
+                anchors.top: serverNameLabel.bottom
+                anchors.topMargin: 5
+                anchors.left: serverNameLabel.left
+                anchors.leftMargin: 0
+            }
+
+            ServerStateChangingPane{
+                id: serverStateChangingPane
+                visible: false
+            }
+
+            Button {
+                id: button_ON
+                objectName: "serverInfoPane_button_ON"
+                x: 687
+                width: 220
+                height: 48
+                text: qsTr("啟動伺服器")
+                anchors.bottom: parent.bottom
+                anchors.bottomMargin: 0
+                anchors.right: parent.right
+                font.family: "Microsoft JhengHei UI"
+                font.pointSize: 14
+                anchors.rightMargin: 15
+                Material.elevation: 2
+                Material.background: "#4caf50"
+                Material.foreground: "white"
+                onClicked: {
+                    serverQuickControlPane_OFF.visible = false
+                    serverQuickControlPane_ON.visible = true
+                    serverStateChangingPane.visible = true
+                    button_OFF.visible = true
+                    button_ON.visible = false
+                    tmpCmd.bootServer(itemIndex)
+                }
+            }
+
+            Button {
+                id: button_OFF
+                objectName: "serverInfoPane_button_OFF"
+                x: 687
+                width: 220
+                height: 48
+                text: qsTr("停止伺服器")
+                anchors.bottom: parent.bottom
+                anchors.bottomMargin: 0
+                anchors.right: parent.right
+                font.family: "Microsoft JhengHei UI"
+                font.pointSize: 14
+                anchors.rightMargin: 15
+                Material.elevation: 2
+                Material.background: "#f44336"
+                Material.foreground: "white"
+                onClicked: {
+                    serverQuickControlPane_OFF.visible = false
+                    serverQuickControlPane_ON.visible = true
+                    serverStateChangingPane.visible = true
+                    button_OFF.visible = false
+                    button_ON.visible = true
+                    tmpCmd.shutdownServer(itemIndex)
+                }
+            }
+
+        }
     }
 }

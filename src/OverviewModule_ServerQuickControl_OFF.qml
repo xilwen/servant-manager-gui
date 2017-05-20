@@ -4,7 +4,8 @@ import QtQuick.Layouts 1.0
 import QtQuick.Controls.Material 2.1
 
 Pane {
-    width: 350
+    id: pane
+    width: 750
     height: 380
     anchors.top: parent.top
     anchors.topMargin: 54
@@ -28,6 +29,9 @@ Pane {
     OverviewModule_ServerQuickControlBlock{
         id: block0
         name: qsTr("刪除伺服器")
+        height: 45
+        anchors.right: parent.right
+        anchors.rightMargin: 0
         anchors.left: titleLabel.left
         anchors.leftMargin: 0
         anchors.top: titleLabel.bottom
@@ -42,13 +46,16 @@ Pane {
 
     OverviewModule_ServerQuickControlBlock{
         id: block1
-        name: qsTr("開啟 VirtualBox")
+        name: qsTr("快照管理")
+        height: 45
+        anchors.right: parent.right
+        anchors.rightMargin: 0
         info: qsTr("")
         anchors.left: block0.left
         anchors.leftMargin: 0
         anchors.top: block0.bottom
-        anchors.topMargin: 10
-        imageSource: "icon/ic_exit_to_app_black_48dp_2x.png"
+        anchors.topMargin: 0
+        imageSource: "icon/ic_camera_alt_black_48dp_2x.png"
     }
 
     OverviewModule_ServerQuickControlBlock{
@@ -56,9 +63,12 @@ Pane {
         anchors.left: block1.left
         anchors.leftMargin: 0
         anchors.top: block1.bottom
-        anchors.topMargin: 10
-        name: qsTr("快照管理")
+        anchors.topMargin: 0
+        name: qsTr("開啟 VirtualBox")
+        height: 45
+        anchors.right: parent.right
+        anchors.rightMargin: 0
         info: qsTr("")
-        imageSource: "icon/ic_camera_alt_black_48dp_2x.png"
+        imageSource: "icon/ic_exit_to_app_black_48dp_2x.png"
     }
 }

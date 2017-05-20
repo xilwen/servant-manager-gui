@@ -16,11 +16,13 @@ Pane {
     anchors.fill: parent
 
     onVisibleChanged: {
-        tmpCmd.triggerUpdateServerQuickAction();
-        if(!controlPane.noMachineCreated)
-        {
-            visible = false
-            overviewPane_Normal.visible = true
+        if(visible){
+            tmpCmd.triggerUpdateServerQuickAction();
+            if(!controlPane.noMachineCreated){
+                visible = false
+                overviewPane_Normal.visible = true
+            }
+            controlPane.indicatorPointer = 0
         }
     }
 
@@ -35,6 +37,7 @@ Pane {
         anchors.leftMargin: 0
         titleText: qsTr("歡迎")
         infoText: qsTr("您可以從左方的「伺服器商城」下載並架設伺服器。\n已經在VirtualBox上設定好伺服器了嗎? 請造訪分享與備份，以匯入伺服器。")
+        imageSource: "icon/MyServerPane.png"
     }
 
     Label {

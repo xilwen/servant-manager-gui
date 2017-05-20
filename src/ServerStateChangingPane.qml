@@ -14,27 +14,6 @@ Pane {
     anchors.fill: parent
     objectName: "serverStateChangingPane"
 
-    BackButton {
-        id: backbutton
-        visible: true
-        anchors.top: parent.top
-        anchors.topMargin: -18
-        anchors.left: parent.left
-        anchors.leftMargin: -12
-        anchors.right: parent.right
-        anchors.rightMargin: -12
-        pageName:qsTr("FTP伺服器")
-        button.onClicked: {
-            overviewPane.visible=false
-            serverMallPane.visible=true
-            serverProductInfoPane.visible=false
-            diagnosisPane.visible=false
-            sharePane.visible=false
-            settingPane.visible=false
-        }
-
-   }
-
     Image {
         id: poweringimage
         width: 64

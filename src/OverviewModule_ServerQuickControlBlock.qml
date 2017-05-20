@@ -6,24 +6,24 @@ import QtQuick.Controls.Material 2.1
 Button {
     id: button
     width: 300
-    height: 80
+    height: 50
     property alias name: nameLabel.text
     property alias info: infoLabel.text
     property alias imageSource: actionImage.source
     Material.background:"White"
-    Material.elevation:3
+    Material.elevation:0
 
     Label {
         id: nameLabel
         width: 167
         height: 24
         text: qsTr("開啟伺服器檔案")
-        anchors.verticalCenterOffset: -13
+        anchors.verticalCenterOffset: 0
         anchors.verticalCenter: parent.verticalCenter
         anchors.left: actionImage.right
         anchors.leftMargin: 10
         font.family: qsTr("Microsoft JhengHei UI")
-        font.pointSize: 18
+        font.pointSize: 16
         verticalAlignment: Text.AlignVCenter
         horizontalAlignment: Text.AlignLeft
     }
@@ -33,6 +33,7 @@ Button {
         width: 63
         height: 24
         text: qsTr("Z:/")
+        visible: false
         anchors.left: nameLabel.left
         anchors.leftMargin: 0
         anchors.top: nameLabel.bottom
@@ -45,8 +46,8 @@ Button {
 
     Image {
         id: actionImage
-        width: 56
-        height: 56
+        width: 32
+        height: 32
         anchors.left: parent.left
         anchors.leftMargin: 8
         anchors.verticalCenter: parent.verticalCenter

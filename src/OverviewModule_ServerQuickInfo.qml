@@ -5,8 +5,8 @@ import QtQuick.Controls.Material 2.1
 
 Pane {
     id: overviewModule_ServerQuickInfo
-    width: 350
-    height: 380
+    width: 700
+    height: 200
     anchors.top: parent.top
     anchors.topMargin: 54
     Material.background: "White"
@@ -29,45 +29,32 @@ Pane {
 
     OverviewModule_ServerQuickInfoBlock{
         id: block0
+        height: 50
         anchors.left: label9.left
         anchors.leftMargin: 0
-        anchors.top: parent.top
-        anchors.topMargin: 55
-        title: qsTr("連接埠")
-        info: (serverInfoPane.itemIndex == 0)?qsTr("21") : qsTr("80")
+        anchors.top: label9.bottom
+        anchors.topMargin: 10
+        title: qsTr("連接埠(Port)")
+        info: serverInfoPane.serverPortNumber
     }
 
     OverviewModule_ServerQuickInfoBlock{
         id: block1
-        anchors.verticalCenter: block0.verticalCenter
-        anchors.left: block0.right
-        anchors.leftMargin: 20
-        title: qsTr("服務")
-        info: (serverInfoPane.itemIndex == 0)?qsTr("FTP") : qsTr("CMS")
+        anchors.top: block0.bottom
+        anchors.topMargin: 0
+        anchors.left: block0.left
+        anchors.leftMargin: 0
+        title: qsTr("本機管理介面網址")
+        info: serverInfoPane.serverManagementURL
     }
 
     OverviewModule_ServerQuickInfoBlock{
         id: block2
         anchors.left: block0.left
         anchors.leftMargin: 0
-        anchors.top: block0.bottom
-        anchors.topMargin: 10
-        title: qsTr("運作中")
-        info: qsTr("不明")
-    }
-
-    Label {
-        id: label16
-        y: 334
-        height: 24
-        text: qsTr("SERVANT Watchdog 未運作")
-        anchors.horizontalCenter: parent.horizontalCenter
-        anchors.bottom: parent.bottom
-        anchors.bottomMargin: 0
-        horizontalAlignment: Text.AlignHCenter
-        verticalAlignment: Text.AlignVCenter
-        font.family: "Microsoft JhengHei UI"
-        color:"#616161"
-        font.pointSize: 14
+        anchors.top: block1.bottom
+        anchors.topMargin: 0
+        title: qsTr("可能的分享連結")
+        info: serverInfoPane.serverShareURL
     }
 }

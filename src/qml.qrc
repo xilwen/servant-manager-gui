@@ -108,5 +108,7 @@
         <file>icon/ic_share_white_48dp_2x.png</file>
         <file>icon/ic_build_white_48dp_2x.png</file>
         <file>DiagnosisModule_Label.qml</file>
+        <file>icon/MyServerPane.png</file>
+        <file>icon/ServerMallPane_bg.png</file>
     </qresource>
 </RCC>

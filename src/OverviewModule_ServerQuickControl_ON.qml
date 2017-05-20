@@ -4,7 +4,8 @@ import QtQuick.Layouts 1.0
 import QtQuick.Controls.Material 2.1
 
 Pane {
-    width: 350
+    id: pane
+    width: 700
     height: 380
     anchors.top: parent.top
     anchors.topMargin: 54
@@ -28,6 +29,9 @@ Pane {
     OverviewModule_ServerQuickControlBlock{
         id: block0
         name: qsTr("開啟伺服器檔案")
+        height: 45
+        anchors.right: parent.right
+        anchors.rightMargin: 0
         anchors.left: titleLabel.left
         anchors.leftMargin: 0
         anchors.top: titleLabel.bottom
@@ -39,11 +43,14 @@ Pane {
     OverviewModule_ServerQuickControlBlock{
         id: block1
         name: qsTr("開啟管理介面")
+        height: 45
+        anchors.right: parent.right
+        anchors.rightMargin: 0
         info: qsTr("Localhost")
         anchors.left: block0.left
         anchors.leftMargin: 0
         anchors.top: block0.bottom
-        anchors.topMargin: 10
+        anchors.topMargin: 0
         imageSource: "icon/ic_build_black_48dp_2x.png"
     }
 
@@ -52,8 +59,11 @@ Pane {
         anchors.left: block1.left
         anchors.leftMargin: 0
         anchors.top: block1.bottom
-        anchors.topMargin: 10
+        anchors.topMargin: 0
         name: qsTr("開啟VirtualBox")
+        height: 45
+        anchors.right: parent.right
+        anchors.rightMargin: 0
         info: qsTr("")
         imageSource: "icon/ic_exit_to_app_black_48dp_2x.png"
     }

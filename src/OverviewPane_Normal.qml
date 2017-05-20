@@ -16,14 +16,23 @@ Pane {
     anchors.fill: parent
 
     onVisibleChanged: {
-        tmpCmd.triggerUpdateServerQuickAction();
-        if(controlPane.noMachineCreated)
-        {
-            visible = false
-            overviewPane_Empty.visible = true
+        if(visible){
+            tmpCmd.triggerUpdateServerQuickAction();
+            if(controlPane.noMachineCreated)
+            {
+                visible = false
+                overviewPane_Empty.visible = true
+            }
+            controlPane.indicatorPointer = 0
         }
     }
 
+    function showServerInfoPane(itemIndex)
+    {
+        overviewPane_Normal.visible = false
+        serverInfoPane.itemIndex = itemIndex
+        serverInfoPane.visible = true
+    }
 
     OverviewModule_Info{
         id:overviewModuleInfo
@@ -35,7 +44,8 @@ Pane {
         anchors.left: parent.left
         anchors.leftMargin: 0
         titleText: qsTr("一切正常")
-        infoText: qsTr("目前 SERVANT 服務皆正常運作中。")
+        infoText: qsTr("目前 SERVANT 服務正常運作中。")
+        imageSource: "icon/MyServerPane.png"
         z:2
     }
 
@@ -63,14 +73,10 @@ Pane {
             type: qsTr("FTP伺服器")
             quickActionName: qsTr("管理伺服器")
             quickActionButton.onClicked: {
-                overviewPane_Normal.visible = false
-                serverInfoPane.visible = true
-                serverInfoPane.itemIndex = 0
+                showServerInfoPane(0)
             }
             onClicked: {
-                overviewPane_Normal.visible = false
-                serverInfoPane.visible = true
-                serverInfoPane.itemIndex = 0
+                showServerInfoPane(0)
             }
         }
         OverviewModule_ServerQuickAction
@@ -86,14 +92,10 @@ Pane {
             type: qsTr("FTP伺服器")
             quickActionName: qsTr("管理伺服器")
             quickActionButton.onClicked: {
-                overviewPane_Normal.visible = false
-                serverInfoPane.visible = true
-                serverInfoPane.itemIndex = 1
+                showServerInfoPane(1)
             }
             onClicked: {
-                overviewPane_Normal.visible = false
-                serverInfoPane.visible = true
-                serverInfoPane.itemIndex = 1
+                showServerInfoPane(1)
             }
         }
         OverviewModule_ServerQuickAction
@@ -109,14 +111,10 @@ Pane {
             type: qsTr("FTP伺服器")
             quickActionName: qsTr("管理伺服器")
             quickActionButton.onClicked: {
-                overviewPane_Normal.visible = false
-                serverInfoPane.visible = true
-                serverInfoPane.itemIndex = 2
+                showServerInfoPane(2)
             }
             onClicked: {
-                overviewPane_Normal.visible = false
-                serverInfoPane.visible = true
-                serverInfoPane.itemIndex = 2
+                showServerInfoPane(2)
             }
         }
 
@@ -133,14 +131,10 @@ Pane {
             imageSource: "icon/ic_folder_black_48dp_2x.png"
             type: qsTr("FTP伺服器")
             quickActionButton.onClicked: {
-                overviewPane_Normal.visible = false
-                serverInfoPane.visible = true
-                serverInfoPane.itemIndex = 3
+                showServerInfoPane(3)
             }
             onClicked: {
-                overviewPane_Normal.visible = false
-                serverInfoPane.visible = true
-                serverInfoPane.itemIndex = 3
+                showServerInfoPane(3)
             }
         }
 
@@ -156,14 +150,10 @@ Pane {
             imageSource: "icon/ic_folder_black_48dp_2x.png"
             type: qsTr("FTP伺服器")
             quickActionButton.onClicked: {
-                overviewPane_Normal.visible = false
-                serverInfoPane.visible = true
-                serverInfoPane.itemIndex = 4
+                showServerInfoPane(4)
             }
             onClicked: {
-                overviewPane_Normal.visible = false
-                serverInfoPane.visible = true
-                serverInfoPane.itemIndex = 4
+                showServerInfoPane(4)
             }
         }
 
@@ -179,14 +169,10 @@ Pane {
             imageSource: "icon/ic_folder_black_48dp_2x.png"
             type: qsTr("FTP伺服器")
             quickActionButton.onClicked: {
-                overviewPane_Normal.visible = false
-                serverInfoPane.visible = true
-                serverInfoPane.itemIndex = 5
+                showServerInfoPane(5)
             }
             onClicked: {
-                overviewPane_Normal.visible = false
-                serverInfoPane.visible = true
-                serverInfoPane.itemIndex = 5
+                showServerInfoPane(5)
             }
         }
 
@@ -202,14 +188,10 @@ Pane {
             imageSource: "icon/ic_folder_black_48dp_2x.png"
             type: qsTr("FTP伺服器")
             quickActionButton.onClicked: {
-                overviewPane_Normal.visible = false
-                serverInfoPane.visible = true
-                serverInfoPane.itemIndex = 6
+                showServerInfoPane(6)
             }
             onClicked: {
-                overviewPane_Normal.visible = false
-                serverInfoPane.visible = true
-                serverInfoPane.itemIndex = 6
+                showServerInfoPane(6)
             }
         }
 
@@ -225,14 +207,10 @@ Pane {
             imageSource: "icon/ic_folder_black_48dp_2x.png"
             type: qsTr("FTP伺服器")
             quickActionButton.onClicked: {
-                overviewPane_Normal.visible = false
-                serverInfoPane.visible = true
-                serverInfoPane.itemIndex = 7
+                showServerInfoPane(7)
             }
             onClicked: {
-                overviewPane_Normal.visible = false
-                serverInfoPane.visible = true
-                serverInfoPane.itemIndex = 7
+                showServerInfoPane(7)
             }
         }
 
@@ -248,14 +226,10 @@ Pane {
             imageSource: "icon/ic_folder_black_48dp_2x.png"
             type: qsTr("FTP伺服器")
             quickActionButton.onClicked: {
-                overviewPane_Normal.visible = false
-                serverInfoPane.visible = true
-                serverInfoPane.itemIndex = 8
+                showServerInfoPane(8)
             }
             onClicked: {
-                overviewPane_Normal.visible = false
-                serverInfoPane.visible = true
-                serverInfoPane.itemIndex = 8
+                showServerInfoPane(8)
             }
         }
 
@@ -271,14 +245,10 @@ Pane {
             imageSource: "icon/ic_folder_black_48dp_2x.png"
             type: qsTr("FTP伺服器")
             quickActionButton.onClicked: {
-                overviewPane_Normal.visible = false
-                serverInfoPane.visible = true
-                serverInfoPane.itemIndex = 9
+                showServerInfoPane(9)
             }
             onClicked: {
-                overviewPane_Normal.visible = false
-                serverInfoPane.visible = true
-                serverInfoPane.itemIndex = 9
+                showServerInfoPane(9)
             }
         }
     }
