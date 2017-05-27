@@ -12,6 +12,7 @@ Pane {
     property int itemIndex: 0
     property string serverName: ""
     property string serverType: ""
+    property string serverIcon: ""
     property string serverPortNumber: ""
     property string serverManagementURL: ""
     property string serverShareURL: ""
@@ -108,24 +109,24 @@ Pane {
             Material.elevation: 0
 
             Image {
-                id: serverIcon
+                id: serverIconImage
                 width: 100
                 height: 100
                 anchors.top: parent.top
                 anchors.topMargin: 10
                 anchors.left: parent.left
                 anchors.leftMargin: 15
-                source: "qrc:/qtquickplugin/images/template_image.png"
+                source: serverIcon
             }
 
             Label {
                 id: serverNameLabel
                 font.family: "Microsoft JhengHei UI"
                 font.pointSize: 20
-                text: qsTr("Label")
+                text: serverName
                 anchors.top: parent.top
                 anchors.topMargin: 10
-                anchors.left: serverIcon.right
+                anchors.left: serverIconImage.right
                 anchors.leftMargin: 10
             }
 
@@ -133,7 +134,7 @@ Pane {
                 id: serverTypeLabel
                 font.family: "Microsoft JhengHei UI"
                 font.pointSize: 16
-                text: qsTr("Label")
+                text: serverType
                 anchors.top: serverNameLabel.bottom
                 anchors.topMargin: 5
                 anchors.left: serverNameLabel.left
@@ -142,6 +143,13 @@ Pane {
 
             ServerStateChangingPane{
                 id: serverStateChangingPane
+                x: 687
+                width: 240
+                height: 46
+                anchors.bottom: parent.bottom
+                anchors.bottomMargin: 0
+                anchors.right: parent.right
+                anchors.rightMargin: 5
                 visible: false
             }
 
@@ -199,4 +207,5 @@ Pane {
 
         }
     }
+
 }

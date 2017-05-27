@@ -48,11 +48,12 @@ void ServerControl::updateServerControlUI(int itemIndex)
         QtUtilities::setVisible(serverInfoPane_button_OFF, false);
     }
 
-    serverInfoPane->setProperty("serverName", QString::fromStdWString(machine->getName());
-    serverInfoPane->setProperty("serverType", QString::fromUtf8(machine->getType().str()));
+    serverInfoPane->setProperty("serverName", QString::fromStdWString(machine->getName()));
+    serverInfoPane->setProperty("serverType", QString::fromUtf8(machine->getType().c_str()));
     serverInfoPane->setProperty("serverPortNumber", QString::fromStdString(std::to_string(machine->getPortNumber())));
-    serverInfoPane->setProperty("serverManagementURL", QString::fromUtf8(machine->getManagementURL.str()));
-    serverInfoPane->setProperty("serverShareURL", QString::fromUtf8(machine->getManagementURL()));
+    serverInfoPane->setProperty("serverManagementURL", QString::fromUtf8(machine->getManagementURL().c_str()));
+    serverInfoPane->setProperty("serverShareURL", QString::fromUtf8(machine->getShareURL().c_str()));
+    serverInfoPane->setProperty("serverIcon", QString::fromUtf8(machine->getIconPath().c_str()));
 }
 
 void ServerControl::deleteServer(int itemIndex)

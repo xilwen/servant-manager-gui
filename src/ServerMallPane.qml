@@ -15,8 +15,8 @@ Pane {
     objectName:"serverMallPane"
     property int itemsInRow : 0
     onWidthChanged: {
-        itemsInRow = width % (joomlaserverbutton.width+20)
-        joomlaserverbutton1.x=66
+        itemsInRow = width % (mallItemButton.width+20)
+        mallItemButton1.x=66
     }
 
     onVisibleChanged:
@@ -67,23 +67,21 @@ Pane {
         anchors.fill: parent
         maximumFlickVelocity: 1500
         flickDeceleration: 2500
-        contentHeight: parent.height
+        contentHeight: fpane.height
         ScrollBar.vertical: ScrollBar { id: vbar; active: vbar.active }
         Pane {
             id: fpane
             spacing: 40
-            width: flickable.width
-            height: flickable.height
+            width: mallItemButton.x + (mallItemButton.width * 2) + (mallItemButton1.anchors.leftMargin * 2)
+            height: mallItemButton.y + (mallItemButton.height * 5) + (mallItemButton2.anchors.topMargin * 5)
+            anchors.horizontalCenterOffset: -5
+            anchors.horizontalCenter: parent.horizontalCenter
             padding: 0
-            anchors.right: parent.right
-            anchors.rightMargin: 0
-            anchors.left: parent.left
-            anchors.leftMargin: 0
             ServerObjectButton{
-                id: joomlaserverbutton
+                id: mallItemButton
                 objectName: "serverObjectButton0"
                 x:44
-                y:25
+                y:40
                 serverTitle: qsTr("標題")
                 serverSubtitle: qsTr("副標題")
                 serverImageSource: "icon/Joomla-flat-logo-en.png"
@@ -100,11 +98,11 @@ Pane {
                 }
             }
             ServerObjectButton{
-                id: joomlaserverbutton1
+                id: mallItemButton1
                 objectName: "serverObjectButton1"
-                anchors.top: parent.top
-                anchors.topMargin: 25
-                anchors.left: joomlaserverbutton.right
+                anchors.top: mallItemButton.top
+                anchors.topMargin: 0
+                anchors.left: mallItemButton.right
                 anchors.leftMargin: 36
                 serverTitle: qsTr("標題")
                 serverSubtitle: qsTr("副標題")
@@ -121,11 +119,11 @@ Pane {
                 }
             }
             ServerObjectButton{
-                id: joomlaserverbutton2
+                id: mallItemButton2
                 objectName: "serverObjectButton2"
                 anchors.left: parent.left
                 anchors.leftMargin: 44
-                anchors.top: joomlaserverbutton.bottom
+                anchors.top: mallItemButton.bottom
                 anchors.topMargin: 25
                 serverTitle: qsTr("標題")
                 serverSubtitle: qsTr("副標題")
@@ -142,11 +140,11 @@ Pane {
                 }
             }
             ServerObjectButton{
-                id: joomlaserverbutton3
+                id: mallItemButton3
                 objectName: "serverObjectButton3"
-                anchors.top: joomlaserverbutton1.bottom
+                anchors.top: mallItemButton1.bottom
                 anchors.topMargin: 25
-                anchors.left: joomlaserverbutton2.right
+                anchors.left: mallItemButton2.right
                 anchors.leftMargin: 36
                 serverTitle: qsTr("標題")
                 serverSubtitle: qsTr("副標題")
@@ -163,11 +161,11 @@ Pane {
                 }
             }
             ServerObjectButton{
-                id: joomlaserverbutton4
+                id: mallItemButton4
                 objectName: "serverObjectButton4"
                 anchors.left: parent.left
                 anchors.leftMargin: 44
-                anchors.top: joomlaserverbutton2.bottom
+                anchors.top: mallItemButton2.bottom
                 anchors.topMargin: 25
                 serverTitle: qsTr("標題")
                 serverSubtitle: qsTr("副標題")
@@ -185,12 +183,12 @@ Pane {
             }
 
             ServerObjectButton {
-                id: joomlaserverbutton5
+                id: mallItemButton5
                 width: 345
                 height: 84
-                anchors.top: joomlaserverbutton3.bottom
+                anchors.top: mallItemButton3.bottom
                 anchors.topMargin: 25
-                anchors.left: joomlaserverbutton4.right
+                anchors.left: mallItemButton4.right
                 anchors.leftMargin: 36
                 objectName: "serverObjectButton5"
                 serverTitle: qsTr("標題")
@@ -208,11 +206,11 @@ Pane {
                 }
             }
             ServerObjectButton {
-                id: joomlaserverbutton6
+                id: mallItemButton6
                 x: 44
                 width: 345
                 height: 84
-                anchors.top: joomlaserverbutton4.bottom
+                anchors.top: mallItemButton4.bottom
                 anchors.topMargin: 25
                 objectName: "serverObjectButton6"
                 serverTitle: qsTr("標題")
@@ -221,12 +219,12 @@ Pane {
             }
 
             ServerObjectButton {
-                id: joomlaserverbutton7
+                id: mallItemButton7
                 width: 345
                 height: 84
-                anchors.left: joomlaserverbutton6.right
+                anchors.left: mallItemButton6.right
                 anchors.leftMargin: 36
-                anchors.top: joomlaserverbutton5.bottom
+                anchors.top: mallItemButton5.bottom
                 anchors.topMargin: 25
                 serverTitle: qsTr("標題")
                 objectName: "serverObjectButton7"
@@ -235,11 +233,11 @@ Pane {
             }
 
             ServerObjectButton {
-                id: joomlaserverbutton8
+                id: mallItemButton8
                 x: 44
                 width: 345
                 height: 84
-                anchors.top: joomlaserverbutton6.bottom
+                anchors.top: mallItemButton6.bottom
                 anchors.topMargin: 25
                 serverTitle: qsTr("標題")
                 objectName: "serverObjectButton8"
@@ -248,7 +246,7 @@ Pane {
             }
 
             ServerObjectButton {
-                id: joomlaserverbutton9
+                id: mallItemButton9
                 x: 425
                 width: 345
                 height: 84
@@ -256,7 +254,7 @@ Pane {
                 anchors.topMargin: 25
                 objectName: "serverObjectButton9"
                 serverImageSource: "icon/Joomla-flat-logo-en.png"
-                anchors.top: joomlaserverbutton7.bottom
+                anchors.top: mallItemButton7.bottom
                 serverSubtitle: qsTr("副標題")
             }
         }

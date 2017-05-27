@@ -65,6 +65,7 @@ ApplicationWindow {
                 height: 200
                 Layout.fillWidth: true
                 Layout.maximumHeight: 1
+                z: 1
                 visible:true
                 Material.background:"#d3d3d3"
             }
@@ -89,6 +90,7 @@ ApplicationWindow {
                     height: 200
                     Layout.fillHeight: true
                     Layout.maximumWidth: 1
+                    z: 1
                     visible:true
                     Material.background:"#d3d3d3"
                 }
@@ -167,6 +169,13 @@ ApplicationWindow {
         id: firstTimeFinishedPane
         anchors.fill: parent
         z: 3
+        visible: false
+    }
+
+    ErrorHappenedPane{
+        id: errorHappenedPane
+        anchors.horizontalCenter: parent.horizontalCenter
+        anchors.verticalCenter: parent.verticalCenter
         visible: false
     }
 }

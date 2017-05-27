@@ -32,110 +32,119 @@ Pane {
     }
 
     Pane{
-        id: generalCategoryPane
-        height: 120
-        anchors.right: parent.right
-        anchors.rightMargin: 30
-        anchors.left: parent.left
-        anchors.leftMargin: 30
+        id:diagnosisLayoutPane
+        width: 825
+        height: diagnosisPane.height - opBannerPane.height
+        anchors.horizontalCenter: parent.horizontalCenter
         anchors.top: opBannerPane.bottom
-        anchors.topMargin: 25
-        Material.background: "#ffffff"
-        Material.elevation: 5
+        anchors.topMargin: 10
+
+        Pane{
+            id: generalCategoryPane
+            height: 120
+            anchors.right: parent.right
+            anchors.rightMargin: 30
+            anchors.left: parent.left
+            anchors.leftMargin: 30
+            anchors.top: opBannerPane.bottom
+            anchors.topMargin: 25
+            Material.background: "#ffffff"
+            Material.elevation: 5
+
+            Label {
+                id: serverlabel1
+                width: 133
+                height: 36
+                text: qsTr("外部網路")
+                anchors.top: parent.top
+                font.pointSize: 22
+                anchors.topMargin: 5
+                font.family: "Microsoft JhengHei UI"
+                anchors.left: parent.left
+                anchors.leftMargin: 5
+            }
+
+            DiagnosisModule_Label {
+                id: diagnosisModule_Label1
+                objectName: "diagnosisPaneIpifyLabel"
+                text: "本機對外 IP (ipify.org)"
+                label2: "0.0.0.0"
+                anchors.top: serverlabel1.bottom
+                anchors.topMargin: 20
+                anchors.right: parent.right
+                anchors.rightMargin: 10
+                anchors.left: serverlabel1.left
+                anchors.leftMargin: 5
+            }
+        }
+
+
+        ServerObjectButton{
+            id:checksetbutton
+            anchors.left: serverlabel.left
+            anchors.leftMargin: 0
+            anchors.top: serverlabel.bottom
+            anchors.topMargin: 9
+            serverTitle: qsTr("檢視連線資訊")
+            serverSubtitle: qsTr("使用系統工具確認網路資訊")
+            serverImageSource:"icon/ic_signal_cellular_connected_no_internet_4_bar_2x.png"
+            onClicked:{
+                tmpCmd.triggerNetworkInfo()
+            }
+        }
+        ServerObjectButton{
+            id:backbutton
+            anchors.top: checksetbutton.bottom
+            anchors.topMargin: -84
+            anchors.left: checksetbutton.right
+            anchors.leftMargin: 36
+            serverTitle: qsTr("測試伺服器")
+            serverSubtitle: qsTr("開啟 WebSite Pulse 網站")
+            serverImageSource:"icon/ic_schedule_2x.png"
+            onClicked:{
+                tmpCmd.triggerWebsitePulse()
+            }
+        }
 
         Label {
-            id: serverlabel1
+            id: serverlabel
             width: 133
             height: 36
-            text: qsTr("外部網路")
-            anchors.top: parent.top
-            font.pointSize: 22
-            anchors.topMargin: 5
-            font.family: "Microsoft JhengHei UI"
+            text: qsTr("工具")
             anchors.left: parent.left
-            anchors.leftMargin: 5
-        }
-
-        DiagnosisModule_Label {
-            id: diagnosisModule_Label1
-            objectName: "diagnosisPaneIpifyLabel"
-            text: "本機對外 IP (ipify.org)"
-            label2: "0.0.0.0"
-            anchors.top: serverlabel1.bottom
+            anchors.leftMargin: 30
+            anchors.top: generalCategoryPane.bottom
             anchors.topMargin: 20
-            anchors.right: parent.right
-            anchors.rightMargin: 10
-            anchors.left: serverlabel1.left
-            anchors.leftMargin: 5
+            font.family: "Microsoft JhengHei UI"
+            font.pointSize: 22
         }
-    }
 
-
-    ServerObjectButton{
-        id:checksetbutton
-        anchors.left: serverlabel.left
-        anchors.leftMargin: 0
-        anchors.top: serverlabel.bottom
-        anchors.topMargin: 9
-        serverTitle: qsTr("檢視連線資訊")
-        serverSubtitle: qsTr("使用系統工具確認網路資訊")
-        serverImageSource:"icon/ic_signal_cellular_connected_no_internet_4_bar_2x.png"
-        onClicked:{
-            tmpCmd.triggerNetworkInfo()
+        Image {
+            id: addServerHintImage
+            y: 235
+            width: 36
+            height: 36
+            anchors.left: parent.left
+            anchors.leftMargin: 50
+            anchors.bottom: parent.bottom
+            anchors.bottomMargin: 75
+            source: "icon/ic_info_black_24dp.png"
         }
-    }
-    ServerObjectButton{
-        id:backbutton
-        anchors.top: checksetbutton.bottom
-        anchors.topMargin: -84
-        anchors.left: checksetbutton.right
-        anchors.leftMargin: 36
-        serverTitle: qsTr("測試伺服器")
-        serverSubtitle: qsTr("開啟 WebSite Pulse 網站")
-        serverImageSource:"icon/ic_schedule_2x.png"
-        onClicked:{
-            tmpCmd.triggerWebsitePulse()
+
+        Label {
+            id: addServerHintLabel
+            y: 5
+            width: 629
+            height: 35
+            text: "通常可以在連線資訊中，找到目前連線的預設閘道(Gateway)資訊。將預設閘道的IP輸入瀏覽器網址列開啟，即可看到路由器的設定畫面。若您並沒有該路由器的權限或者該路由器並沒有網頁介面，請聯絡網路管理員或者相關負責人員。"
+            wrapMode: Text.WordWrap
+            anchors.left: addServerHintImage.right
+            anchors.leftMargin: 10
+            anchors.verticalCenter: addServerHintImage.verticalCenter
+            verticalAlignment: Text.AlignVCenter
+            horizontalAlignment: Text.AlignLeft
+            font.pointSize: 15
+            font.family: "Microsoft JhengHei UI"
         }
-    }
-
-    Label {
-        id: serverlabel
-        width: 133
-        height: 36
-        text: qsTr("工具")
-        anchors.left: parent.left
-        anchors.leftMargin: 30
-        anchors.top: generalCategoryPane.bottom
-        anchors.topMargin: 20
-        font.family: "Microsoft JhengHei UI"
-        font.pointSize: 22
-    }
-
-    Image {
-        id: addServerHintImage
-        y: 235
-        width: 36
-        height: 36
-        anchors.left: parent.left
-        anchors.leftMargin: 50
-        anchors.bottom: parent.bottom
-        anchors.bottomMargin: 75
-        source: "icon/ic_info_black_24dp.png"
-    }
-
-    Label {
-        id: addServerHintLabel
-        y: 5
-        width: 629
-        height: 35
-        text: "通常可以在連線資訊中，找到目前連線的預設閘道(Gateway)資訊。將預設閘道的IP輸入瀏覽器網址列開啟，即可看到路由器的設定畫面。若您並沒有該路由器的權限或者該路由器並沒有網頁介面，請聯絡網路管理員或者相關負責人員。"
-        wrapMode: Text.WordWrap
-        anchors.left: addServerHintImage.right
-        anchors.leftMargin: 10
-        anchors.verticalCenter: addServerHintImage.verticalCenter
-        verticalAlignment: Text.AlignVCenter
-        horizontalAlignment: Text.AlignLeft
-        font.pointSize: 15
-        font.family: "Microsoft JhengHei UI"
     }
 }

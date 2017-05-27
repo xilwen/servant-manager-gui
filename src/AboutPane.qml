@@ -13,7 +13,7 @@ Pane {
     property alias version: releaseDateLabel.text
     width: 848
     height: 480
-    z: 99
+    z: 98
     padding: 0
     Material.elevation: 8
     onVisibleChanged: {

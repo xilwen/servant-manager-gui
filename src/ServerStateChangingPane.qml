@@ -5,15 +5,11 @@ import QtQuick.Controls.Material 2.1
 
 Pane {
     id: serverStateChangingPane
-    width: 823
-    height: 579
-    anchors.rightMargin: 0
-    anchors.bottomMargin: 0
-    anchors.leftMargin: 0
-    anchors.topMargin: 0
-    anchors.fill: parent
+    width: 220
+    height: 48
+    z: 3
     objectName: "serverStateChangingPane"
-
+    Material.elevation: 0
     Image {
         id: poweringimage
         width: 64
@@ -22,16 +18,18 @@ Pane {
         anchors.verticalCenter: parent.verticalCenter
         sourceSize.width: 0
         opacity: 1
+        visible:false
         z: 3
         source: "icon/ic_power_settings_new_black_48dp.png"
     }
 
     BusyIndicator {
         id: serverStateChangingBusyIndicator
-        width: 96
-        height: 96
+        width: 36
+        height: 36
         anchors.verticalCenter: parent.verticalCenter
-        anchors.horizontalCenter: parent.horizontalCenter
+        anchors.left: parent.left
+        anchors.leftMargin: 5
     }
 
     Label {
@@ -41,7 +39,7 @@ Pane {
         anchors.verticalCenterOffset: 100
         anchors.verticalCenter: parent.verticalCenter
         anchors.horizontalCenter: parent.horizontalCenter
-        font.pointSize: 15
+        font.pointSize: 14
         horizontalAlignment: Text.AlignHCenter
         verticalAlignment: Text.AlignVCenter
         font.family: "Microsoft JhengHei UI"
@@ -49,10 +47,11 @@ Pane {
 
     Image {
         id: changingimage
-        width: 60
-        height: 60
+        width: 36
+        height: 36
+        anchors.left: parent.left
+        anchors.leftMargin: 5
         anchors.verticalCenterOffset: 0
-        anchors.horizontalCenter: parent.horizontalCenter
         anchors.verticalCenter: parent.verticalCenter
         visible: false
         sourceSize.width: 0
@@ -63,8 +62,8 @@ Pane {
 
     Label {
         id: serverChangingLabel
-        text: "正在變更..."
-        anchors.verticalCenterOffset: 100
+        text: "請稍候..."
+        anchors.verticalCenterOffset: 0
         anchors.verticalCenter: parent.verticalCenter
         anchors.horizontalCenter: parent.horizontalCenter
         visible: true
