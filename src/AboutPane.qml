@@ -121,6 +121,7 @@ Pane {
             y: 360
             anchors.left: parent.left
             anchors.leftMargin: 10
+            onClicked: tmpCmd.triggerStartURI("LICENSE")
         }
 
         AboutModule_Button {
@@ -129,6 +130,7 @@ Pane {
             y: 360
             anchors.left: licenseInfoButton.right
             anchors.leftMargin: 10
+            onClicked: tmpCmd.triggerStartURI("https://github.com/xilwen/servant-manager-gui")
         }
 
         Image {
@@ -190,6 +192,7 @@ Pane {
         text:qsTr("儲存裝置效能指標")
         label2:qsTr("無資訊")
         x: 340
+        visible: false
         anchors.top: ramRatingLabel.bottom
         anchors.topMargin: 10
     }

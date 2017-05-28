@@ -31,7 +31,7 @@ RESOURCES += qml.qrc
 
 INCLUDEPATH += $$PWD/../../servant-dependencies/asio-1.10.6/include
 INCLUDEPATH += $$PWD/../../servant-dependencies/nlohmann-json/
-
+win32: RC_ICONS = $$PWD/icon/app.ico
 # Additional import path used to resolve QML modules in Qt Creator's code model
 QML_IMPORT_PATH =
 

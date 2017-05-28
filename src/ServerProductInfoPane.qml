@@ -137,10 +137,10 @@ Pane {
         id: pane
         width: 364
         height: 329
+        anchors.horizontalCenterOffset: -185
+        anchors.horizontalCenter: parent.horizontalCenter
         anchors.top: ftpimage.bottom
         anchors.topMargin: 20
-        anchors.left: parent.left
-        anchors.leftMargin: 20
         padding: 0
         Material.elevation: 3
 
@@ -174,9 +174,10 @@ Pane {
     }
     ServerProductInfoModule_DetailCard  {
         id: button2
+        width: 365
         height: 110
-        anchors.left: pane.right
-        anchors.leftMargin: 10
+        anchors.horizontalCenterOffset: 195
+        anchors.horizontalCenter: parent.horizontalCenter
         anchors.top: pane.top
         anchors.topMargin: -5
         title:qsTr("硬體檢查")

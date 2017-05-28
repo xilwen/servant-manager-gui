@@ -1,5 +1,6 @@
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
+#include <QIcon>
 #include <QQuickStyle>
 #include <QQmlComponent>
 #include <iostream>
@@ -14,6 +15,7 @@ int main(int argc, char *argv[])
 {
     QGuiApplication::setAttribute(Qt::AA_Use96Dpi);
     QGuiApplication app(argc, argv);
+    app.setWindowIcon(QIcon(":/icon/app.ico"));
     QQuickStyle::setStyle("Material");
     QQmlApplicationEngine engine;
     QQmlComponent qQmlComponent(&engine, QUrl(QLatin1String("qrc:/main.qml")));

@@ -110,5 +110,10 @@
         <file>DiagnosisModule_Label.qml</file>
         <file>icon/MyServerPane.png</file>
         <file>icon/ServerMallPane_bg.png</file>
+        <file>AddServerModule_BottomPane.qml</file>
+        <file>icon/ic_directions_bike_black_48dp_2x.png</file>
+        <file>icon/ic_directions_car_black_48dp_2x.png</file>
+        <file>icon/ic_flight_black_48dp_2x.png</file>
+        <file>icon/app.ico</file>
     </qresource>
 </RCC>

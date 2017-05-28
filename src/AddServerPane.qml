@@ -4,7 +4,7 @@ import QtQuick.Layouts 1.0
 import QtQuick.Controls.Material 2.1
 
 Pane {
-    id: addDownloadServerPane
+    id: addServerPane
     width: 823
     height: 579
     padding: 0
@@ -15,12 +15,16 @@ Pane {
     anchors.fill: parent
     z:3
 
-
+    onVisibleChanged: {
+        if(!visible){
+            serverProductInfoPane.newServerName = serverNameTextField.text
+        }
+    }
 
     BackButton{
         pageName: qsTr("安裝新伺服器")
         button.onClicked:{
-            addDownloadServerPane.visible = false
+            addServerPane.visible = false
         }
     }
 
@@ -78,40 +82,15 @@ Pane {
         horizontalAlignment: Text.AlignLeft
     }
 
-    BottomPane {
-        id: bottomPane
-        anchors.bottom: parent.bottom
-        anchors.bottomMargin: 0
-        anchors.right: parent.right
-        anchors.rightMargin: 0
-        anchors.left: parent.left
-        anchors.leftMargin: 0
-        AddServerModule_Button {
-            id: defaultButton
-            x: 572
-            imageOnLeft: false
-            title: qsTr("選擇效能需求")
-            addServerHintImage:"icon/ic_skip_next_black_24dp_2x.png"
-            leftPadding: 36
-            anchors.verticalCenter: parent.verticalCenter
-            anchors.right: parent.right
-            anchors.rightMargin: 10
-            onClicked: {
-                addServerPane.visible = false
-                addServerPane_PerformanceSetting.visible = true
-            }
-        }
-    }
-
     Image {
         id: addServerHintImage
         y: 235
         width: 36
         height: 36
+        anchors.bottom: parent.bottom
+        anchors.bottomMargin: 75
         anchors.left: parent.left
         anchors.leftMargin: 50
-        anchors.bottom: bottomPane.top
-        anchors.bottomMargin: 20
         source: "icon/ic_info_black_24dp.png"
     }
 
@@ -154,6 +133,7 @@ Pane {
         width: 400
         height: 35
         text: "設定用於新伺服器中的密碼(預設使用者名稱為SERVANT)："
+        visible: false
         verticalAlignment: Text.AlignVCenter
         anchors.leftMargin: 50
         horizontalAlignment: Text.AlignLeft
@@ -169,6 +149,7 @@ Pane {
         x: 3
         y: -3
         text: ""
+        visible: false
         echoMode: TextInput.Password
         anchors.rightMargin: 50
         anchors.right: parent.right
@@ -178,5 +159,15 @@ Pane {
         font.pointSize: 15
         anchors.leftMargin: 50
         anchors.topMargin: 6
+    }
+
+    AddServerModule_BottomPane{
+        nextButtonText: "選擇效能需求"
+        previousButtonVisible: false
+        progressValue: 0.25
+        nextButton.onClicked: {
+            addServerPane.visible = false
+            addServerPane_PerformanceSetting.visible = true
+        }
     }
 }

@@ -35,49 +35,6 @@ Pane {
         source: serverProductInfoPane.itemIcon
     }
 
-    BottomPane {
-        id: bottomPane
-        anchors.bottom: parent.bottom
-        anchors.bottomMargin: 0
-        anchors.right: parent.right
-        anchors.rightMargin: 0
-        anchors.left: parent.left
-        anchors.leftMargin: 0
-        AddServerModule_Button {
-            id: defaultButton
-            x: 572
-            imageOnLeft: false
-            title: qsTr("開始安裝")
-            addServerHintImage:"icon/ic_skip_next_black_24dp_2x.png"
-            leftPadding: 36
-            anchors.verticalCenter: parent.verticalCenter
-            anchors.right: parent.right
-            anchors.rightMargin: 10
-            onClicked: {
-                addServerPane_PerformanceSetting.visible = false
-                serverProductInfoPane.visible = false
-                tmpCmd.runInstaller(serverProductInfoPane.itemIndex)
-            }
-        }
-
-        AddServerModule_Button {
-            id: defaultButton1
-            x: 573
-            y: -6
-            leftPadding: 36
-            anchors.rightMargin: 20
-            anchors.right: defaultButton.left
-            anchors.verticalCenter: parent.verticalCenter
-            imageOnLeft: true
-            title: qsTr(" 回到上一頁")
-            addServerHintImage: "icon/ic_skip_previous_black_24dp_2x.png"
-            onClicked: {
-                addServerPane.visible = true
-                addServerPane_PerformanceSetting.visible = false
-            }
-        }
-    }
-
     Image {
         id: addServerHintImage
         y: 235
@@ -86,8 +43,8 @@ Pane {
         fillMode: Image.PreserveAspectFit
         anchors.left: parent.left
         anchors.leftMargin: 50
-        anchors.bottom: bottomPane.top
-        anchors.bottomMargin: 20
+        anchors.bottom: parent.bottom
+        anchors.bottomMargin: 75
         source: "icon/ic_info_black_24dp.png"
     }
 
@@ -127,10 +84,15 @@ Pane {
         id: radioButton
         x: 50
         y: 162
-        text: qsTr("設定檔1")
+        text: qsTr("輕量級")
+        anchors.horizontalCenterOffset: -250
+        anchors.horizontalCenter: parent.horizontalCenter
+        anchors.verticalCenterOffset: -100
+        anchors.verticalCenter: parent.verticalCenter
         checked: false
         font.pointSize: 15
         font.family: "Microsoft JhengHei UI"
+        visible: (serverProductInfoPane.itemProfile0CPU == 0)? false : true
         onCheckedChanged:
         {
             if(checked == true)
@@ -143,15 +105,25 @@ Pane {
             id: profileHintLabel1
             width: 121
             height: 35
-            text: " 設定檔1的說明"
+            text: "2~3 人使用\n" + serverProductInfoPane.itemProfile0CPU.toString() +" CPU\n" + serverProductInfoPane.itemProfile0RAM.toString() + "MB RAM\n"
+            wrapMode: Text.NoWrap
+            anchors.horizontalCenter: parent.horizontalCenter
             anchors.top: parent.bottom
-            horizontalAlignment: Text.AlignLeft
-            anchors.left: parent.left
+            anchors.topMargin: 125
+            horizontalAlignment: Text.AlignHCenter
+            verticalAlignment: Text.AlignTop
             font.pointSize: 15
-            verticalAlignment: Text.AlignVCenter
-            anchors.leftMargin: 30
             font.family: "Microsoft JhengHei UI"
-            anchors.topMargin: -15
+        }
+
+        Image {
+            id: image
+            width: 100
+            height: 100
+            anchors.top: parent.bottom
+            anchors.topMargin: 10
+            anchors.horizontalCenter: parent.horizontalCenter
+            source: "icon/ic_directions_bike_black_48dp_2x.png"
         }
     }
 
@@ -159,9 +131,13 @@ Pane {
         id: radioButton1
         x: 50
         y: 253
-        text: qsTr("設定檔2")
+        text: qsTr("中量級")
+        anchors.horizontalCenter: parent.horizontalCenter
+        anchors.verticalCenterOffset: -100
+        anchors.verticalCenter: parent.verticalCenter
         font.pointSize: 15
         font.family: "Microsoft JhengHei UI"
+        visible: (serverProductInfoPane.itemProfile1CPU == 0)? false : true
         onCheckedChanged:
         {
             if(checked == true)
@@ -174,15 +150,26 @@ Pane {
             id: profileHintLabel2
             width: 121
             height: 35
-            text: " 設定檔2的說明"
+            text: "7~8 人使用\n" + serverProductInfoPane.itemProfile1CPU.toString() +" CPU\n" + serverProductInfoPane.itemProfile1RAM.toString() + "MB RAM\n"
+            anchors.horizontalCenter: parent.horizontalCenter
             anchors.top: parent.bottom
-            horizontalAlignment: Text.AlignLeft
-            anchors.left: parent.left
-            verticalAlignment: Text.AlignVCenter
+            anchors.topMargin: 125
+            horizontalAlignment: Text.AlignHCenter
+            verticalAlignment: Text.AlignTop
             font.pointSize: 15
-            anchors.leftMargin: 30
             font.family: "Microsoft JhengHei UI"
-            anchors.topMargin: -15
+        }
+
+        Image {
+            id: image1
+            x: 0
+            y: -8
+            width: 100
+            height: 100
+            source: "icon/ic_directions_car_black_48dp_2x.png"
+            anchors.horizontalCenter: parent.horizontalCenter
+            anchors.top: parent.bottom
+            anchors.topMargin: 10
         }
     }
 
@@ -190,9 +177,14 @@ Pane {
         id: radioButton2
         x: 50
         y: 344
-        text: qsTr("設定檔3")
+        text: qsTr("重量級")
+        anchors.horizontalCenterOffset: 250
+        anchors.horizontalCenter: parent.horizontalCenter
+        anchors.verticalCenterOffset: -100
+        anchors.verticalCenter: parent.verticalCenter
         font.pointSize: 15
         font.family: "Microsoft JhengHei UI"
+        visible: (serverProductInfoPane.itemProfile2CPU == 0)? false : true
         onCheckedChanged:
         {
             if(checked == true)
@@ -205,15 +197,43 @@ Pane {
             id: profileHintLabel3
             width: 121
             height: 35
-            text: " 設定檔3的說明"
+            text: "15 人使用\n" + serverProductInfoPane.itemProfile2CPU.toString() +" CPU\n" + serverProductInfoPane.itemProfile2RAM.toString() + "MB RAM\n"
+            anchors.horizontalCenter: parent.horizontalCenter
             anchors.top: parent.bottom
-            horizontalAlignment: Text.AlignLeft
-            anchors.left: parent.left
-            verticalAlignment: Text.AlignVCenter
+            anchors.topMargin: 125
+            horizontalAlignment: Text.AlignHCenter
+            verticalAlignment: Text.AlignTop
             font.pointSize: 15
-            anchors.leftMargin: 30
             font.family: "Microsoft JhengHei UI"
-            anchors.topMargin: -15
+        }
+
+        Image {
+            id: image2
+            x: 6
+            y: -2
+            width: 100
+            height: 100
+            source: "icon/ic_flight_black_48dp_2x.png"
+            anchors.horizontalCenter: parent.horizontalCenter
+            anchors.top: parent.bottom
+            anchors.topMargin: 10
+        }
+    }
+
+
+    AddServerModule_BottomPane{
+        nextButtonText: "選擇連結埠"
+        previousButtonText: "上一步"
+        previousButtonVisible: true
+        progressValue: 0.5
+        previousButton.onClicked: {
+            addServerPane.visible = true
+            addServerPane_PerformanceSetting.visible = false
+        }
+        nextButton.onClicked: {
+            addServerPane_PerformanceSetting.visible = false
+            serverProductInfoPane.visible = false
+            tmpCmd.runInstaller(serverProductInfoPane.itemIndex)
         }
     }
 
@@ -223,14 +243,13 @@ Pane {
         y: 121
         width: 121
         height: 35
-        text: "請選擇適合使用情境的效能設定檔："
+        text: "請選擇適合使用情境的效能設定檔"
+        anchors.horizontalCenter: parent.horizontalCenter
         anchors.top: newServerTypeImage.bottom
-        horizontalAlignment: Text.AlignLeft
-        anchors.left: newServerTypeImage.left
+        anchors.topMargin: 5
+        horizontalAlignment: Text.AlignHCenter
         verticalAlignment: Text.AlignVCenter
         font.pointSize: 15
-        anchors.leftMargin: 0
         font.family: "Microsoft JhengHei UI"
-        anchors.topMargin: 10
     }
 }

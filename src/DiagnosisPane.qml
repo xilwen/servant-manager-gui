@@ -78,7 +78,6 @@ Pane {
             }
         }
 
-
         ServerObjectButton{
             id:checksetbutton
             anchors.left: serverlabel.left
@@ -87,7 +86,7 @@ Pane {
             anchors.topMargin: 9
             serverTitle: qsTr("檢視連線資訊")
             serverSubtitle: qsTr("使用系統工具確認網路資訊")
-            serverImageSource:"icon/ic_signal_cellular_connected_no_internet_4_bar_2x.png"
+            serverImageSource:"icon/ic_menu_black_24dp_2x.png"
             onClicked:{
                 tmpCmd.triggerNetworkInfo()
             }
@@ -100,7 +99,7 @@ Pane {
             anchors.leftMargin: 36
             serverTitle: qsTr("測試伺服器")
             serverSubtitle: qsTr("開啟 WebSite Pulse 網站")
-            serverImageSource:"icon/ic_schedule_2x.png"
+            serverImageSource:"icon/ic_location_searching_2x.png"
             onClicked:{
                 tmpCmd.triggerWebsitePulse()
             }

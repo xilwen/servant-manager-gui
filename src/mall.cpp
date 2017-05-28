@@ -117,11 +117,11 @@ void Mall::updateMallDetailView()
     serverProductInfoPane->setProperty("itemFileSize", QString::fromUtf8(items->at(itemIndex).getFileSize().c_str()));
     serverProductInfoPane->setProperty("introductionURL", QString::fromUtf8(items->at(itemIndex).getIntroductionURL().c_str()));
     serverProductInfoPane->setProperty("itemProfile0CPU", items->at(itemIndex).getProfile0CPU());
-    serverProductInfoPane->setProperty("itemProfile0CPU", items->at(itemIndex).getProfile0RAM());
+    serverProductInfoPane->setProperty("itemProfile0RAM", items->at(itemIndex).getProfile0RAM());
     serverProductInfoPane->setProperty("itemProfile1CPU", items->at(itemIndex).getProfile1CPU());
-    serverProductInfoPane->setProperty("itemProfile1RAM", items->at(itemIndex).getProfile1CPU());
+    serverProductInfoPane->setProperty("itemProfile1RAM", items->at(itemIndex).getProfile1RAM());
     serverProductInfoPane->setProperty("itemProfile2CPU", items->at(itemIndex).getProfile2CPU());
-    serverProductInfoPane->setProperty("itemProfile2RAM", items->at(itemIndex).getProfile2CPU());
+    serverProductInfoPane->setProperty("itemProfile2RAM", items->at(itemIndex).getProfile2RAM());
     serverProductInfoPane->setProperty("itemMainPort", items->at(itemIndex).getPort());
 }
 
