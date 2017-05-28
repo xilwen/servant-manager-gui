@@ -56,8 +56,6 @@ Pane {
         anchors.leftMargin: 0
         anchors.topMargin: 160
         anchors.fill: parent
-        maximumFlickVelocity: 1500
-        flickDeceleration: 2500
         contentHeight: machinesPane.height
         ScrollBar.vertical: ScrollBar { id: vbar; active: vbar.active }
         Pane{

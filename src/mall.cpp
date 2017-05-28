@@ -18,6 +18,7 @@ Mall::Mall(QObject *parent) : QObject(parent)
     connect(this, &Mall::updateMallRepoUrlTriggered, this, &Mall::updateMallRepoUrl);
     connect(this, &Mall::getIpifyTriggered, this, &Mall::getIpify);
     connect(this, &Mall::websitePulseTriggered, this, &Mall::triggerWebsitePulse);
+    connect(this, &Mall::startURITriggered, this, &Mall::startURI);
     serverProductInfoPane = MainWindow::getUi()->findChild<QObject*>("serverProductInfoPane");
     for(auto i = 0; i < serverObjectButtonsAmount; ++i)
     {
@@ -114,6 +115,14 @@ void Mall::updateMallDetailView()
     serverProductInfoPane->setProperty("itemManagementUI", QString::fromUtf8(items->at(itemIndex).getManagementUI().c_str()));
     serverProductInfoPane->setProperty("itemIntroduction", QString::fromUtf8(items->at(itemIndex).getIntroduction().c_str()));
     serverProductInfoPane->setProperty("itemFileSize", QString::fromUtf8(items->at(itemIndex).getFileSize().c_str()));
+    serverProductInfoPane->setProperty("introductionURL", QString::fromUtf8(items->at(itemIndex).getIntroductionURL().c_str()));
+    serverProductInfoPane->setProperty("itemProfile0CPU", items->at(itemIndex).getProfile0CPU());
+    serverProductInfoPane->setProperty("itemProfile0CPU", items->at(itemIndex).getProfile0RAM());
+    serverProductInfoPane->setProperty("itemProfile1CPU", items->at(itemIndex).getProfile1CPU());
+    serverProductInfoPane->setProperty("itemProfile1RAM", items->at(itemIndex).getProfile1CPU());
+    serverProductInfoPane->setProperty("itemProfile2CPU", items->at(itemIndex).getProfile2CPU());
+    serverProductInfoPane->setProperty("itemProfile2RAM", items->at(itemIndex).getProfile2CPU());
+    serverProductInfoPane->setProperty("itemMainPort", items->at(itemIndex).getPort());
 }
 
 void Mall::cancelDownload()
@@ -137,3 +146,9 @@ void Mall::triggerWebsitePulse()
 {
     WindowsUtilities::startURI("https://www.websitepulse.com/tools/server-test");
 }
+
+void Mall::startURI(QString uri)
+{
+    WindowsUtilities::startURI(uri.toStdString());
+}
+

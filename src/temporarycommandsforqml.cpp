@@ -99,3 +99,10 @@ void TemporaryCommandsForQml::triggerWebsitePulse()
 {
     emit Mall::getInstance()->websitePulseTriggered();
 }
+
+void TemporaryCommandsForQml::triggerStartURI(QString uri)
+{
+    emit Mall::getInstance()->startURITriggered(uri);
+}
+
+

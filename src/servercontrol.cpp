@@ -54,6 +54,7 @@ void ServerControl::updateServerControlUI(int itemIndex)
     serverInfoPane->setProperty("serverManagementURL", QString::fromUtf8(machine->getManagementURL().c_str()));
     serverInfoPane->setProperty("serverShareURL", QString::fromUtf8(machine->getShareURL().c_str()));
     serverInfoPane->setProperty("serverIcon", QString::fromUtf8(machine->getIconPath().c_str()));
+    serverInfoPane->setProperty("serverPortNumber", machine->getManagementPort());
 }
 
 void ServerControl::deleteServer(int itemIndex)

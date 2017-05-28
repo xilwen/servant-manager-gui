@@ -13,6 +13,13 @@ Pane {
     Material.background: "White"
     Material.elevation:3
     Material.accent:"#FFFFFF"
+
+    onVisibleChanged: {
+        if(visible){
+            tmpCmd.triggerServerQuickInfoUpdate(serverInfoPane.itemIndex)
+        }
+    }
+
     Label {
         id: label9
         width: 144

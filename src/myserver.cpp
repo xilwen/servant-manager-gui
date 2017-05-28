@@ -69,9 +69,12 @@ void MyServer::updateInstallUI(int progress)
 
 void MyServer::updateAfterInstall()
 {
+    updateServerQuickAction();
+    auto items(ServantBase::getInstance()->getPackageManager()->getMachines());
+    serverInfoPane->setProperty("itemIndex", items->size() - 1);
     addingServerPane->setProperty("visible", false);
     serverInfoPane->setProperty("visible", true);
-    updateServerQuickAction();
+
 }
 
 void MyServer::updateServerQuickAction()
@@ -155,3 +158,4 @@ void MyServer::openNetworkInfo()
     WindowsUtilities::ipconfigAndSave();
     WindowsUtilities::startURI("C:\\SERVANT\\ipconfig.txt");
 }
+

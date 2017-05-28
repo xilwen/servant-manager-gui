@@ -26,7 +26,7 @@ public:
     Q_INVOKABLE void triggerIpify();
     Q_INVOKABLE void triggerNetworkInfo();
     Q_INVOKABLE void triggerWebsitePulse();
-
+    Q_INVOKABLE void triggerStartURI(QString uri);
 };
 
 #endif // TEMPORARYCOMMANDSFORQML_H

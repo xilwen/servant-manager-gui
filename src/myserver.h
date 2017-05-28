@@ -21,6 +21,7 @@ signals:
     void modifyFinished();
     void updateServerQuickActionTriggered();
     void networkInfoTriggered();
+    void serverQuickInfoUpdateTriggered(int itemIndex);
 public slots:
     void installPackage(int itemIndex);
     void updateInstallUI(int progress);

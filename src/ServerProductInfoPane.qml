@@ -12,7 +12,7 @@ Pane {
     property alias progressBarValue : progressBar.value
     property alias progressText : label7.text
     property alias succeedPaneVisible : downloadSucceedPane.visible
-    //    Information should be set/read from Model(Data)
+    //Informations should be set/read from Model(Data)
     property int itemIndex: 0 //index in model array
     property string itemName : "伺服器名稱"
     property string itemDescription : "伺服器簡述"
@@ -23,7 +23,22 @@ Pane {
     property string itemManagementUI : "伺服器管理介面"
     property string itemIntroduction : "伺服器詳細說明"
     property string itemFileSize : "伺服器包裝檔案大小"
-    //    TODO Hardware Checks Strings
+    property string introductionURL : "http://www.google.com"
+    property int itemProfile0CPU : 0
+    property int itemProfile0RAM : 0
+    property int itemProfile1CPU : 0
+    property int itemProfile1RAM : 0
+    property int itemProfile2CPU : 0
+    property int itemProfile2RAM : 0
+    property int itemMainPort : 0
+    //Informations for new server, will be reset every time before adding new server
+    property string newServerName : ""
+    property int newServerCPU : 0
+    property int newServerRAM : 0
+    property int newServerPort : 0
+    property bool onlyLANAccess : false
+    //TODO Hardware Checks Strings
+
 
     anchors.rightMargin: 0
     anchors.bottomMargin: 0
@@ -31,11 +46,18 @@ Pane {
     anchors.topMargin: 0
     anchors.fill: parent
     objectName:"serverProductInfoPane"
+
     onVisibleChanged: {
         progressbarpane.visible = false
         downloadSucceedPane.visible = false
         bottomPane.visible = true
         tmpCmd.triggerMallDetailViewUpdate()
+    }
+
+    function cleanNewServerData(){
+        newServerName = ""
+        newServerCPU = newServerRAM = newServerPort = 0
+        onlyLANAccess = false
     }
 
     Image {
@@ -268,6 +290,7 @@ Pane {
             anchors.rightMargin: 10
             visible:true
             onClicked: {
+                cleanNewServerData()
                 addServerPane.visible = true
             }
         }
@@ -275,7 +298,7 @@ Pane {
 
     ServerProductInfoModule_DetailCard {
         id: button4
-        subtitle: "N/A"
+        subtitle: introductionURL
         anchors.right: button2.right
         anchors.rightMargin: 0
         anchors.left: button2.left
@@ -285,6 +308,7 @@ Pane {
         introduction: qsTr("")
         detail: qsTr("")
         title: qsTr("造訪網頁")
+        uriInside: true
         Material.elevation : 3
     }
     AddServerPane{

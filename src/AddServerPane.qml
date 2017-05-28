@@ -15,6 +15,8 @@ Pane {
     anchors.fill: parent
     z:3
 
+
+
     BackButton{
         pageName: qsTr("安裝新伺服器")
         button.onClicked:{
@@ -74,8 +76,6 @@ Pane {
         anchors.topMargin: 10
         font.pointSize: 15
         horizontalAlignment: Text.AlignLeft
-
-
     }
 
     BottomPane {
