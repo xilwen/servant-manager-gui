@@ -115,5 +115,9 @@
         <file>icon/ic_directions_car_black_48dp_2x.png</file>
         <file>icon/ic_flight_black_48dp_2x.png</file>
         <file>icon/app.ico</file>
+        <file>AddServerPane_PortSetting.qml</file>
+        <file>AddServerPane_PlaceSetting.qml</file>
+        <file>icon/ic_domain_black_48dp_2x.png</file>
+        <file>icon/ic_public_black_48dp_2x.png</file>
     </qresource>
 </RCC>

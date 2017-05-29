@@ -46,8 +46,6 @@ Pane {
             anchors.rightMargin: 30
             anchors.left: parent.left
             anchors.leftMargin: 30
-            anchors.top: opBannerPane.bottom
-            anchors.topMargin: 25
             Material.background: "#ffffff"
             Material.elevation: 5
 

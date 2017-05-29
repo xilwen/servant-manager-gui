@@ -17,7 +17,7 @@ Pane {
     padding: 0
     Material.elevation: 8
     onVisibleChanged: {
-        if(visible == true){
+        if(visible){
             mask.visible = true
             tmpCmd.updateAboutPane()
         } else{

@@ -21,7 +21,7 @@ Button {
         height: 64
         anchors.left: parent.left
         anchors.leftMargin: 8
-        source: "icon/ic_folder_black_48dp_2x.png"
+        source: ""
     }
 
     Label {

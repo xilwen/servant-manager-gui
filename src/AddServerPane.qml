@@ -14,6 +14,7 @@ Pane {
     anchors.topMargin: 0
     anchors.fill: parent
     z:3
+    Material.accent: Material.Indigo
 
     onVisibleChanged: {
         if(!visible){
@@ -33,8 +34,8 @@ Pane {
         width: 100
         height: 35
         text: "正要安裝："
-        anchors.left: parent.left
-        anchors.leftMargin: 50
+        anchors.horizontalCenterOffset: -315
+        anchors.horizontalCenter: parent.horizontalCenter
         anchors.top: parent.top
         anchors.topMargin: 75
         font.family: "Microsoft JhengHei UI"
@@ -47,11 +48,27 @@ Pane {
         id: newServerTypeImage
         width: 48
         height: 48
+        anchors.horizontalCenterOffset: -340
+        anchors.horizontalCenter: parent.horizontalCenter
         anchors.top: serverTypeLabel.bottom
         anchors.topMargin: 15
-        anchors.left: parent.left
-        anchors.leftMargin: 50
         source: serverProductInfoPane.itemIcon
+
+        Label {
+            id: serverTypeLabel1
+            x: 63
+            y: 7
+            width: 121
+            height: 35
+            text: serverProductInfoPane.itemName
+            anchors.verticalCenter: parent.verticalCenter
+            verticalAlignment: Text.AlignVCenter
+            anchors.leftMargin: 15
+            horizontalAlignment: Text.AlignLeft
+            anchors.left: newServerTypeImage.right
+            font.pointSize: 15
+            font.family: "Microsoft JhengHei UI"
+        }
     }
 
     Label {
@@ -87,43 +104,28 @@ Pane {
         y: 235
         width: 36
         height: 36
+        anchors.horizontalCenterOffset: -340
+        anchors.horizontalCenter: parent.horizontalCenter
+        fillMode: Image.PreserveAspectFit
         anchors.bottom: parent.bottom
         anchors.bottomMargin: 75
-        anchors.left: parent.left
-        anchors.leftMargin: 50
         source: "icon/ic_info_black_24dp.png"
-    }
 
-    Label {
-        id: serverTypeLabel1
-        x: 1
-        y: 2
-        width: 121
-        height: 35
-        text: serverProductInfoPane.itemName
-        verticalAlignment: Text.AlignVCenter
-        anchors.leftMargin: 15
-        horizontalAlignment: Text.AlignLeft
-        anchors.top: serverTypeLabel.bottom
-        anchors.left: newServerTypeImage.right
-        anchors.topMargin: 22
-        font.pointSize: 15
-        font.family: "Microsoft JhengHei UI"
-    }
-
-    Label {
-        id: addServerHintLabel
-        y: 5
-        width: 629
-        height: 35
-        text: "在安裝完成後，可以使用 VirtualBox 針對虛擬機器進行進階設定。"
-        anchors.left: addServerHintImage.right
-        anchors.leftMargin: 10
-        anchors.verticalCenter: addServerHintImage.verticalCenter
-        verticalAlignment: Text.AlignVCenter
-        horizontalAlignment: Text.AlignLeft
-        font.pointSize: 15
-        font.family: "Microsoft JhengHei UI"
+        Label {
+            id: addServerHintLabel
+            x: 46
+            y: 0
+            width: 629
+            height: 35
+            text: "在安裝完成後，可以使用 VirtualBox 針對虛擬機器進行進階設定。"
+            anchors.left: addServerHintImage.right
+            anchors.leftMargin: 10
+            anchors.verticalCenter: addServerHintImage.verticalCenter
+            verticalAlignment: Text.AlignVCenter
+            horizontalAlignment: Text.AlignLeft
+            font.pointSize: 15
+            font.family: "Microsoft JhengHei UI"
+        }
     }
 
     Label {
@@ -166,8 +168,8 @@ Pane {
         previousButtonVisible: false
         progressValue: 0.25
         nextButton.onClicked: {
-            addServerPane.visible = false
             addServerPane_PerformanceSetting.visible = true
+            addServerPane.visible = false
         }
     }
 }

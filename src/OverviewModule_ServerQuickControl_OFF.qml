@@ -70,5 +70,8 @@ Pane {
         anchors.rightMargin: 0
         info: qsTr("")
         imageSource: "icon/ic_exit_to_app_black_48dp_2x.png"
+        onClicked: {
+            errorHappenedPane.open("請注意", "Virtualbox 需要以系統服務權限啟動才能使用，在 Virtualbox 關閉前請勿使用 SERVANT 進行任何動作。\n此功能由外部程式 PAExec 提供。")
+        }
     }
 }

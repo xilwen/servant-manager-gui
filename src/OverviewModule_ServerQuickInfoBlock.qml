@@ -37,7 +37,7 @@ Button {
         anchors.verticalCenter: parent.verticalCenter
         horizontalAlignment: Text.AlignRight
         font.family: "Microsoft JhengHei UI"
-        font.pointSize: 16
+        font.pointSize: 12
         verticalAlignment: Text.AlignVCenter
     }
 }

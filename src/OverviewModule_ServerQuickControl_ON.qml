@@ -37,7 +37,7 @@ Pane {
         anchors.top: titleLabel.bottom
         anchors.topMargin: 10
         info: qsTr("Z:/")
-        imageSource: "icon/ic_folder_black_48dp_2x.png"
+        imageSource: ""
     }
 
     OverviewModule_ServerQuickControlBlock{

@@ -57,7 +57,7 @@ Pane {
         font.pointSize: 14
         horizontalAlignment: Text.AlignLeft
         verticalAlignment: Text.AlignTop
-        objectName: errorHappenedLabel
+        objectName: "errorHappenedLabel"
         font.family: qsTr("Microsoft JhengHei UI")
     }
 

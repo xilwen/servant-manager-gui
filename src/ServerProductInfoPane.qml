@@ -48,10 +48,12 @@ Pane {
     objectName:"serverProductInfoPane"
 
     onVisibleChanged: {
-        progressbarpane.visible = false
-        downloadSucceedPane.visible = false
-        bottomPane.visible = true
-        tmpCmd.triggerMallDetailViewUpdate()
+        if(visible){
+            progressbarpane.visible = false
+            downloadSucceedPane.visible = false
+            bottomPane.visible = true
+            tmpCmd.triggerMallDetailViewUpdate()
+        }
     }
 
     function cleanNewServerData(){
@@ -312,13 +314,27 @@ Pane {
         uriInside: true
         Material.elevation : 3
     }
+
     AddServerPane{
         id: addServerPane
         anchors.fill: parent
         visible: false
     }
+
     AddServerPane_PerformanceSetting{
         id: addServerPane_PerformanceSetting
+        anchors.fill: parent
+        visible: false
+    }
+
+    AddServerPane_PortSetting{
+        id: addServerPane_PortSetting
+        anchors.fill: parent
+        visible: false
+    }
+
+    AddServerPane_PlaceSetting{
+        id: addServerPane_PlaceSetting
         anchors.fill: parent
         visible: false
     }

@@ -51,6 +51,6 @@ Button {
         anchors.left: parent.left
         anchors.leftMargin: 8
         anchors.verticalCenter: parent.verticalCenter
-        source: "icon/ic_folder_black_48dp_2x.png"
+        source: ""
     }
 }

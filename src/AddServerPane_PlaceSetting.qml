@@ -4,7 +4,7 @@ import QtQuick.Layouts 1.0
 import QtQuick.Controls.Material 2.1
 
 Pane {
-    id: addServerPane_PerformanceSetting
+    id: addServerPane_PlaceSetting
     width: 823
     height: 579
     padding: 0
@@ -13,30 +13,13 @@ Pane {
     anchors.leftMargin: 0
     anchors.topMargin: 0
     anchors.fill: parent
+    property int performanceProfile: 0
     z: 3
     Material.accent: Material.Indigo
 
-    onVisibleChanged: {
-        if(!visible){
-            if(radioButton.checked){
-                serverProductInfoPane.newServerCPU = serverProductInfoPane.itemProfile0CPU
-                serverProductInfoPane.newServerRAM = serverProductInfoPane.itemProfile0RAM
-            } else if(radioButton1.checked){
-                serverProductInfoPane.newServerCPU = serverProductInfoPane.itemProfile1CPU
-                serverProductInfoPane.newServerRAM = serverProductInfoPane.itemProfile1RAM
-            } else if(radioButton2.checked){
-                serverProductInfoPane.newServerCPU = serverProductInfoPane.itemProfile2CPU
-                serverProductInfoPane.newServerRAM = serverProductInfoPane.itemProfile2RAM
-            }
-        }
-    }
-
     BackButton{
         showBackButton: false
-        pageName: qsTr("安裝新伺服器 - 選擇效能需求")
-        button.onClicked:{
-            addDownloadServerPane.visible = false
-        }
+        pageName: qsTr("安裝新伺服器 - 伺服器位置")
     }
 
     Image {
@@ -84,7 +67,7 @@ Pane {
             y: 0
             width: 629
             height: 35
-            text: "在安裝完成後，可以使用 VirtualBox 針對虛擬機器進行進階設定。"
+            text: "這個設定會影響 SERVANT 提供伺服器連線網址的設定。"
             anchors.left: addServerHintImage.right
             anchors.leftMargin: 10
             anchors.verticalCenter: addServerHintImage.verticalCenter
@@ -99,8 +82,8 @@ Pane {
         id: radioButton
         x: 50
         y: 162
-        text: qsTr("輕量級")
-        anchors.horizontalCenterOffset: -250
+        text: qsTr("住家、公司內部")
+        anchors.horizontalCenterOffset: -175
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.verticalCenterOffset: -100
         anchors.verticalCenter: parent.verticalCenter
@@ -108,12 +91,19 @@ Pane {
         font.pointSize: 15
         font.family: "Microsoft JhengHei UI"
         visible: (serverProductInfoPane.itemProfile0CPU == 0)? false : true
+        onCheckedChanged:
+        {
+            if(checked == true)
+            {
+                serverProductInfoPane.onlyLANAccess = true
+            }
+        }
 
         Label {
             id: profileHintLabel1
             width: 121
             height: 35
-            text: "2~3 人使用\n" + serverProductInfoPane.itemProfile0CPU.toString() +" CPU\n" + serverProductInfoPane.itemProfile0RAM.toString() + "MB RAM\n"
+            text: "在同一個區域網路內使用，\n例如在辦公室或宿舍內分享。\n通常不需要額外設定路由器，\nIP將以第一次啟動時的設定為準，\n"
             wrapMode: Text.NoWrap
             anchors.horizontalCenter: parent.horizontalCenter
             anchors.top: parent.bottom
@@ -131,7 +121,7 @@ Pane {
             anchors.top: parent.bottom
             anchors.topMargin: 10
             anchors.horizontalCenter: parent.horizontalCenter
-            source: "icon/ic_directions_bike_black_48dp_2x.png"
+            source: "icon/ic_domain_black_48dp_2x.png"
         }
     }
 
@@ -139,19 +129,27 @@ Pane {
         id: radioButton1
         x: 50
         y: 253
-        text: qsTr("中量級")
+        text: qsTr("網際網路")
+        anchors.horizontalCenterOffset: 175
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.verticalCenterOffset: -100
         anchors.verticalCenter: parent.verticalCenter
         font.pointSize: 15
         font.family: "Microsoft JhengHei UI"
         visible: (serverProductInfoPane.itemProfile1CPU == 0)? false : true
+        onCheckedChanged:
+        {
+            if(checked == true)
+            {
+                serverProductInfoPane.onlyLANAccess = false
+            }
+        }
 
         Label {
             id: profileHintLabel2
             width: 121
             height: 35
-            text: "7~8 人使用\n" + serverProductInfoPane.itemProfile1CPU.toString() +" CPU\n" + serverProductInfoPane.itemProfile1RAM.toString() + "MB RAM\n"
+            text: "公開給全網路的人存取，\n需要設定路由器。\n若伺服器的使用者不在同一建築\n或區域內，請選擇此項。"
             anchors.horizontalCenter: parent.horizontalCenter
             anchors.top: parent.bottom
             anchors.topMargin: 125
@@ -167,66 +165,26 @@ Pane {
             y: -8
             width: 100
             height: 100
-            source: "icon/ic_directions_car_black_48dp_2x.png"
+            source: "icon/ic_public_black_48dp_2x.png"
             anchors.horizontalCenter: parent.horizontalCenter
             anchors.top: parent.bottom
             anchors.topMargin: 10
         }
     }
-
-    RadioButton {
-        id: radioButton2
-        x: 50
-        y: 344
-        text: qsTr("重量級")
-        anchors.horizontalCenterOffset: 250
-        anchors.horizontalCenter: parent.horizontalCenter
-        anchors.verticalCenterOffset: -100
-        anchors.verticalCenter: parent.verticalCenter
-        font.pointSize: 15
-        font.family: "Microsoft JhengHei UI"
-        visible: (serverProductInfoPane.itemProfile2CPU == 0)? false : true
-
-        Label {
-            id: profileHintLabel3
-            width: 121
-            height: 35
-            text: "15 人使用\n" + serverProductInfoPane.itemProfile2CPU.toString() +" CPU\n" + serverProductInfoPane.itemProfile2RAM.toString() + "MB RAM\n"
-            anchors.horizontalCenter: parent.horizontalCenter
-            anchors.top: parent.bottom
-            anchors.topMargin: 125
-            horizontalAlignment: Text.AlignHCenter
-            verticalAlignment: Text.AlignTop
-            font.pointSize: 15
-            font.family: "Microsoft JhengHei UI"
-        }
-
-        Image {
-            id: image2
-            x: 6
-            y: -2
-            width: 100
-            height: 100
-            source: "icon/ic_flight_black_48dp_2x.png"
-            anchors.horizontalCenter: parent.horizontalCenter
-            anchors.top: parent.bottom
-            anchors.topMargin: 10
-        }
-    }
-
 
     AddServerModule_BottomPane{
-        nextButtonText: "選擇連結埠"
-        previousButtonText: "上一步"
+        nextButtonText: "開始安裝"
+        previousButtonText: "選擇連結埠"
         previousButtonVisible: true
-        progressValue: 0.5
+        progressValue: 1.0
         previousButton.onClicked: {
-            addServerPane.visible = true
-            addServerPane_PerformanceSetting.visible = false
+            addServerPane_PortSetting.visible = true
+            addServerPane_PlaceSetting.visible = false
         }
         nextButton.onClicked: {
-            addServerPane_PortSetting.visible = true
-            addServerPane_PerformanceSetting.visible = false
+            addServerPane_PlaceSetting.visible = false
+            serverProductInfoPane.visible = false
+            tmpCmd.runInstaller(serverProductInfoPane.itemIndex)
         }
     }
 
@@ -236,7 +194,7 @@ Pane {
         y: 121
         width: 121
         height: 35
-        text: "請選擇適合使用情境的效能設定檔"
+        text: "別人將會從哪裡連線到這台伺服器？"
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.top: newServerTypeImage.bottom
         anchors.topMargin: 10

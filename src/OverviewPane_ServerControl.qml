@@ -16,6 +16,7 @@ Pane {
     property string serverPortNumber: ""
     property string serverManagementURL: ""
     property string serverShareURL: ""
+    property string serverTipURL: ""
     anchors.rightMargin: 0
     anchors.bottomMargin: 0
     anchors.leftMargin: 0
@@ -63,7 +64,6 @@ Pane {
         OverviewModule_ServerQuickInfo{
             id: serverQuickInfo
             width: 765
-            height: 235
             anchors.horizontalCenterOffset: -5
             anchors.horizontalCenter: parent.horizontalCenter
             anchors.top: mainInfoPane.bottom
@@ -204,8 +204,6 @@ Pane {
                     tmpCmd.shutdownServer(itemIndex)
                 }
             }
-
         }
     }
-
 }

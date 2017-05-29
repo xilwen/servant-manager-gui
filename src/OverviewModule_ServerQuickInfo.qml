@@ -7,18 +7,12 @@ import QtQuick.Dialogs 1.2
 Pane {
     id: overviewModule_ServerQuickInfo
     width: 700
-    height: 200
+    height: (label9.height * 2) + block0.height + block1.height + block2.height + block3.height + 10
     anchors.top: parent.top
     anchors.topMargin: 54
     Material.background: "White"
     Material.elevation:3
-    Material.accent:"#FFFFFF"
-
-    onVisibleChanged: {
-        if(visible){
-            tmpCmd.triggerServerQuickInfoUpdate(serverInfoPane.itemIndex)
-        }
-    }
+    Material.accent: "#FFFFFF"
 
     Label {
         id: label9
@@ -54,6 +48,7 @@ Pane {
         anchors.leftMargin: 0
         title: qsTr("管理介面網址")
         info: serverInfoPane.serverManagementURL
+        onClicked: tmpCmd.triggerStartURI(info)
     }
 
     OverviewModule_ServerQuickInfoBlock{
@@ -66,6 +61,18 @@ Pane {
         info: serverInfoPane.serverShareURL
         onClicked: {
             errorHappenedPane.open("關於此伺服器IP", "這個IP位置是由ipify.org以及電腦的作業系統回報，以及設定時的位置選項產生的。\n因此SERVANT不保證其完全正確。")
+            tmpCmd.triggerStartURI(info)
         }
+
+    }
+    OverviewModule_ServerQuickInfoBlock{
+        id: block3
+        anchors.left: block0.left
+        anchors.leftMargin: 0
+        anchors.top: block2.bottom
+        anchors.topMargin: 0
+        title: "檢視 " + serverInfoPane.serverType + "設定的相關資料和秘訣"
+        info: ""
+        onClicked: tmpCmd.triggerStartURI(serverInfoPane.serverTipURL)
     }
 }

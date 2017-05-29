@@ -84,7 +84,7 @@ Pane {
                 y:40
                 serverTitle: qsTr("標題")
                 serverSubtitle: qsTr("副標題")
-                serverImageSource: "icon/Joomla-flat-logo-en.png"
+                serverImageSource: ""
                 visible: true
                 onClicked:{
                     serverProductInfoPane.itemIndex = 0
@@ -106,7 +106,7 @@ Pane {
                 anchors.leftMargin: 36
                 serverTitle: qsTr("標題")
                 serverSubtitle: qsTr("副標題")
-                serverImageSource: "icon/Joomla-flat-logo-en.png"
+                serverImageSource: ""
                 onClicked:{
                     serverProductInfoPane.itemIndex = 1
                     serverMallPane.visible=false
@@ -127,7 +127,7 @@ Pane {
                 anchors.topMargin: 25
                 serverTitle: qsTr("標題")
                 serverSubtitle: qsTr("副標題")
-                serverImageSource: "icon/Joomla-flat-logo-en.png"
+                serverImageSource: ""
                 onClicked:{
                     serverProductInfoPane.itemIndex = 2
                     serverMallPane.visible=false
@@ -148,7 +148,7 @@ Pane {
                 anchors.leftMargin: 36
                 serverTitle: qsTr("標題")
                 serverSubtitle: qsTr("副標題")
-                serverImageSource: "icon/Joomla-flat-logo-en.png"
+                serverImageSource: ""
                 onClicked:{
                     serverProductInfoPane.itemIndex = 3
                     serverMallPane.visible=false
@@ -169,7 +169,7 @@ Pane {
                 anchors.topMargin: 25
                 serverTitle: qsTr("標題")
                 serverSubtitle: qsTr("副標題")
-                serverImageSource: "icon/Joomla-flat-logo-en.png"
+                serverImageSource: ""
                 onClicked:{
                     serverProductInfoPane.itemIndex = 4
                     serverMallPane.visible=false
@@ -192,7 +192,7 @@ Pane {
                 anchors.leftMargin: 36
                 objectName: "serverObjectButton5"
                 serverTitle: qsTr("標題")
-                serverImageSource: "icon/Joomla-flat-logo-en.png"
+                serverImageSource: ""
                 serverSubtitle: qsTr("副標題")
                 onClicked:{
                     serverProductInfoPane.itemIndex = 2
@@ -214,7 +214,7 @@ Pane {
                 anchors.topMargin: 25
                 objectName: "serverObjectButton6"
                 serverTitle: qsTr("標題")
-                serverImageSource: "icon/Joomla-flat-logo-en.png"
+                serverImageSource: ""
                 serverSubtitle: qsTr("副標題")
             }
 
@@ -228,7 +228,7 @@ Pane {
                 anchors.topMargin: 25
                 serverTitle: qsTr("標題")
                 objectName: "serverObjectButton7"
-                serverImageSource: "icon/Joomla-flat-logo-en.png"
+                serverImageSource: ""
                 serverSubtitle: qsTr("副標題")
             }
 
@@ -241,7 +241,7 @@ Pane {
                 anchors.topMargin: 25
                 serverTitle: qsTr("標題")
                 objectName: "serverObjectButton8"
-                serverImageSource: "icon/Joomla-flat-logo-en.png"
+                serverImageSource: ""
                 serverSubtitle: qsTr("副標題")
             }
 
@@ -253,7 +253,7 @@ Pane {
                 serverTitle: qsTr("標題")
                 anchors.topMargin: 25
                 objectName: "serverObjectButton9"
-                serverImageSource: "icon/Joomla-flat-logo-en.png"
+                serverImageSource: ""
                 anchors.top: mallItemButton7.bottom
                 serverSubtitle: qsTr("副標題")
             }

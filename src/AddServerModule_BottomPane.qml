@@ -8,14 +8,20 @@ BottomPane {
     property alias nextButtonText: defaultButton.title
     property alias previousButton: defaultButton1
     property alias nextButton: defaultButton
+    property alias nextButtonVisible: defaultButton.visible
     property alias previousButtonVisible: defaultButton1.visible
     property alias progressValue: bottomPaneProgressBar.value
+    property alias progressIndeterminate: bottomPaneProgressBar.indeterminate
     anchors.bottom: parent.bottom
     anchors.bottomMargin: 0
     anchors.right: parent.right
     anchors.rightMargin: 0
     anchors.left: parent.left
     anchors.leftMargin: 0
+
+    onProgressValueChanged: {
+        progressIndeterminate = false
+    }
 
     AddServerModule_Button {
         id: defaultButton
@@ -52,6 +58,7 @@ BottomPane {
         anchors.bottom: parent.top
         anchors.bottomMargin: 10
         value: 0.25
+        indeterminate: false
         Material.accent: Material.Indigo
     }
 }

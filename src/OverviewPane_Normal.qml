@@ -73,7 +73,7 @@ Pane {
                 height: 84
                 anchors.top: parent.top
                 anchors.topMargin: 25
-                imageSource: "icon/ic_folder_black_48dp_2x.png"
+                imageSource: ""
                 type: qsTr("FTP伺服器")
                 quickActionName: qsTr("管理伺服器")
                 quickActionButton.onClicked: {
@@ -92,7 +92,7 @@ Pane {
                 height: 84
                 anchors.left: overviewModuleServerQuickAction0.right
                 anchors.leftMargin: 36
-                imageSource: "icon/ic_folder_black_48dp_2x.png"
+                imageSource: ""
                 type: qsTr("FTP伺服器")
                 quickActionName: qsTr("管理伺服器")
                 quickActionButton.onClicked: {
@@ -111,7 +111,7 @@ Pane {
                 height: 84
                 anchors.top: overviewModuleServerQuickAction0.bottom
                 anchors.topMargin: 54
-                imageSource: "icon/ic_folder_black_48dp_2x.png"
+                imageSource: ""
                 type: qsTr("FTP伺服器")
                 quickActionName: qsTr("管理伺服器")
                 quickActionButton.onClicked: {
@@ -132,7 +132,7 @@ Pane {
                 anchors.top: overviewModuleServerQuickAction1.bottom
                 anchors.topMargin: 54
                 quickActionName: qsTr("管理伺服器")
-                imageSource: "icon/ic_folder_black_48dp_2x.png"
+                imageSource: ""
                 type: qsTr("FTP伺服器")
                 quickActionButton.onClicked: {
                     showServerInfoPane(3)
@@ -151,7 +151,7 @@ Pane {
                 anchors.top: overviewModuleServerQuickAction2.bottom
                 anchors.topMargin: 54
                 quickActionName: qsTr("管理伺服器")
-                imageSource: "icon/ic_folder_black_48dp_2x.png"
+                imageSource: ""
                 type: qsTr("FTP伺服器")
                 quickActionButton.onClicked: {
                     showServerInfoPane(4)
@@ -170,7 +170,7 @@ Pane {
                 anchors.left: overviewModuleServerQuickAction4.right
                 anchors.leftMargin: 36
                 quickActionName: qsTr("管理伺服器")
-                imageSource: "icon/ic_folder_black_48dp_2x.png"
+                imageSource: ""
                 type: qsTr("FTP伺服器")
                 quickActionButton.onClicked: {
                     showServerInfoPane(5)
@@ -189,7 +189,7 @@ Pane {
                 anchors.top: overviewModuleServerQuickAction4.bottom
                 anchors.topMargin: 54
                 quickActionName: qsTr("管理伺服器")
-                imageSource: "icon/ic_folder_black_48dp_2x.png"
+                imageSource: ""
                 type: qsTr("FTP伺服器")
                 quickActionButton.onClicked: {
                     showServerInfoPane(6)
@@ -208,7 +208,7 @@ Pane {
                 anchors.left: overviewModuleServerQuickAction6.right
                 anchors.leftMargin: 36
                 quickActionName: qsTr("管理伺服器")
-                imageSource: "icon/ic_folder_black_48dp_2x.png"
+                imageSource: ""
                 type: qsTr("FTP伺服器")
                 quickActionButton.onClicked: {
                     showServerInfoPane(7)
@@ -227,7 +227,7 @@ Pane {
                 anchors.top: overviewModuleServerQuickAction6.bottom
                 anchors.topMargin: 54
                 quickActionName: qsTr("管理伺服器")
-                imageSource: "icon/ic_folder_black_48dp_2x.png"
+                imageSource: ""
                 type: qsTr("FTP伺服器")
                 quickActionButton.onClicked: {
                     showServerInfoPane(8)
@@ -246,7 +246,7 @@ Pane {
                 anchors.left: overviewModuleServerQuickAction8.right
                 anchors.leftMargin: 36
                 quickActionName: qsTr("管理伺服器")
-                imageSource: "icon/ic_folder_black_48dp_2x.png"
+                imageSource: ""
                 type: qsTr("FTP伺服器")
                 quickActionButton.onClicked: {
                     showServerInfoPane(9)
