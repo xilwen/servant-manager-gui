@@ -119,5 +119,8 @@
         <file>AddServerPane_PlaceSetting.qml</file>
         <file>icon/ic_domain_black_48dp_2x.png</file>
         <file>icon/ic_public_black_48dp_2x.png</file>
+        <file>icon/ic_search_black_48dp_2x.png</file>
+        <file>ServerSelectionPane.qml</file>
+        <file>WelcomePane_IPSetup.qml</file>
     </qresource>
 </RCC>

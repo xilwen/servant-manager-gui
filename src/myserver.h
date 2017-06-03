@@ -22,6 +22,7 @@ signals:
     void updateServerQuickActionTriggered();
     void networkInfoTriggered();
     void serverQuickInfoUpdateTriggered(int itemIndex);
+    void setupLocalIPTriggered(QString ipAddress);
 public slots:
     void installPackage(int itemIndex);
     void updateInstallUI(int progress);
@@ -31,6 +32,7 @@ public slots:
     void closeModifyUI();
     void updateServerQuickActionSlot();
     void openNetworkInfo();
+    void setupLocalIP(QString ipAddress);
 private:
     QObject *addingServerPane;
     QObject *serverInfoPane;

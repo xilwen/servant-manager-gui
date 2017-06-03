@@ -105,4 +105,19 @@ void TemporaryCommandsForQml::triggerStartURI(QString uri)
     emit Mall::getInstance()->startURITriggered(uri);
 }
 
+void TemporaryCommandsForQml::triggerFirstTimeIP()
+{
+    emit FirstTimeSetup::getInstance()->triggerFirstTimeIPUpdate();
+}
+
+void TemporaryCommandsForQml::triggerSetupLocalIP(QString ipAddress)
+{
+    emit MyServer::getInstance()->setupLocalIPTriggered(ipAddress);
+}
+
+void TemporaryCommandsForQml::triggerSettingPaneUpdate()
+{
+    emit Perference::getInstance()->settingPaneUpdateTriggered();
+}
+
 

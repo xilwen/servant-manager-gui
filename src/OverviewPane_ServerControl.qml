@@ -17,6 +17,8 @@ Pane {
     property string serverManagementURL: ""
     property string serverShareURL: ""
     property string serverTipURL: ""
+    //webmin status. 0 = disabled, 1 = force disabled, 2 = enabled
+    property int webminStatus: 0
     anchors.rightMargin: 0
     anchors.bottomMargin: 0
     anchors.leftMargin: 0
@@ -58,7 +60,8 @@ Pane {
         anchors.topMargin: 0
         maximumFlickVelocity: 1500
         flickDeceleration: 2500
-        contentHeight: serverQuickInfo.height + serverQuickControlPane_OFF.height + mainInfoPane.height + 50
+        contentHeight: serverQuickInfo.height + secondPanelHeight + mainInfoPane.height + 50
+        property int secondPanelHeight: 0
         ScrollBar.vertical: ScrollBar { id: vbar; active: vbar.active }
 
         OverviewModule_ServerQuickInfo{
@@ -73,12 +76,18 @@ Pane {
         OverviewModule_ServerQuickControl_ON {
             id: serverQuickControlPane_ON
             width: 765
-            height: 210
+            height: 125
             anchors.horizontalCenterOffset: -5
             anchors.horizontalCenter: parent.horizontalCenter
             objectName: "serverQuickControlPane_ON"
             anchors.top: serverQuickInfo.bottom
             anchors.topMargin: 15
+            visible: false
+            onVisibleChanged: {
+                if(visible){
+                    flickable.secondPanelHeight = serverQuickControlPane_ON.height
+                }
+            }
         }
 
         OverviewModule_ServerQuickControl_OFF {
@@ -90,6 +99,12 @@ Pane {
             objectName: "serverQuickControlPane_OFF"
             anchors.top: serverQuickInfo.bottom
             anchors.topMargin: 15
+            visible: false
+            onVisibleChanged: {
+                if(visible){
+                    flickable.secondPanelHeight = serverQuickControlPane_OFF.height
+                }
+            }
         }
 
         Pane {

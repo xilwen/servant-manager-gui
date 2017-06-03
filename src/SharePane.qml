@@ -16,75 +16,16 @@ Pane {
     anchors.leftMargin: 0
     anchors.topMargin: 0
     anchors.fill: parent
-    Label {
-        id: sharelabel
-        x: 23
-        width: 133
-        height: 36
-        text: qsTr("分享與匯入")
-        anchors.left: parent.left
-        anchors.leftMargin: 20
-        anchors.top: opBannerPane.bottom
-        anchors.topMargin: 15
-        horizontalAlignment: Text.AlignHCenter
-        verticalAlignment: Text.AlignVCenter
-        font.pointSize: 22
-        font.family: "Microsoft JhengHei UI";
-    }
-    ServerObjectButton{
-        id: pushServerbutton
-        anchors.top: sharelabel.bottom
-        anchors.topMargin: 9
-        anchors.left: parent.left
-        anchors.leftMargin: 20
-        serverTitle: qsTr("匯出伺服器")
-        serverSubtitle:qsTr("以 VirtualBox 格式(*.ova)匯出伺服器")
-        serverImageSource: "icon/ic_call_made_black_24dp_2x.png"
-    }
-    ServerObjectButton{
-        id: pushvirtualboxbutton
-        anchors.top: pushServerbutton.top
-        anchors.topMargin: 0
-        anchors.left: pushServerbutton.right
-        anchors.leftMargin: 36
-        serverTitle: qsTr("從 VirtualBox 匯入")
-        serverSubtitle: qsTr("從已建立的虛擬機器建立伺服器")
-        serverImageSource: "icon/ic_call_received_black_24dp_2x.png"
-    }
 
-    Label {
-        id: backuplabel
-        width: 133
-        height: 36
-        text: qsTr("備份")
-        anchors.left: parent.left
-        anchors.leftMargin: 20
-        anchors.top: pushServerbutton.bottom
-        anchors.topMargin: 10
-        font.family: "Microsoft JhengHei UI"
-        font.pointSize: 22
-        verticalAlignment: Text.AlignVCenter
-        horizontalAlignment: Text.AlignLeft
-    }
-    ServerObjectButton{
-        id: camerabutton
-        anchors.left: parent.left
-        anchors.leftMargin: 20
-        anchors.top: backuplabel.bottom
-        anchors.topMargin: 9
-        serverTitle: qsTr("為所有機器建立快照")
-        serverSubtitle: qsTr("為所有伺服器建立當下狀態的快照")
-        serverImageSource: "icon/ic_camera_enhance_2x.png"
-    }
-    ServerObjectButton{
-        id: backupMachinebutton
-        anchors.top: camerabutton.top
+    OpBannerPane {
+        id: opBannerPane
+        x: 244
+        anchors.top: parent.top
         anchors.topMargin: 0
-        anchors.left: camerabutton.right
-        anchors.leftMargin: 36
-        serverTitle: qsTr("備份所有機器")
-        serverSubtitle: qsTr("將所有伺服器備份並匯出")
-        serverImageSource: "icon/ic_file_upload_2x.png"
+        pageIcon: "icon/ic_share_white_48dp_2x.png"
+        pageName: "匯出與備份"
+        backgroundColor: "#2f3e9e"
+        haveDesciprtion: false
     }
 
     Pane {
@@ -141,16 +82,155 @@ Pane {
         }
     }
 
-    OpBannerPane {
-        id: opBannerPane
-        x: 244
-        anchors.top: parent.top
-        anchors.topMargin: 0
-        pageIcon: "icon/ic_share_white_48dp_2x.png"
-        pageName: "分享及備份"
-        backgroundColor: "#2f3e9e"
-        haveDesciprtion: false
+    Pane {
+        id: pane1
+        x: -1
+        width: 700
+        height: 175
+        anchors.horizontalCenter: parent.horizontalCenter
+        anchors.topMargin: 40
+        anchors.top: opBannerPane.bottom
+        Material.background: "white"
+        Label {
+            id: perpareForNewServerLabel1
+            height: 45
+            text: "匯出伺服器"
+            font.pointSize: 18
+            horizontalAlignment: Text.AlignLeft
+            anchors.topMargin: 5
+            font.bold: false
+            font.family: "Microsoft JhengHei UI"
+            anchors.top: parent.top
+            verticalAlignment: Text.AlignVCenter
+            anchors.left: parent.left
+            anchors.leftMargin: 80
+        }
+
+        Label {
+            id: perpareForNewServerLabel2
+            x: 3
+            height: 45
+            text: "將伺服器以 Open Virtual Appliance (*.ova) 格式匯出。\n其他電腦上若有支援的軟體(如 Virtualbox )即可直接匯入伺服器，Amazon Web Service 等服務提供商亦支援直接匯入 OVA 檔案。"
+            font.pointSize: 14
+            horizontalAlignment: Text.AlignLeft
+            anchors.topMargin: 0
+            font.family: "Microsoft JhengHei UI"
+            anchors.rightMargin: 10
+            anchors.top: perpareForNewServerLabel1.bottom
+            verticalAlignment: Text.AlignTop
+            wrapMode: Text.WordWrap
+            anchors.left: perpareForNewServerLabel1.left
+            anchors.leftMargin: 0
+            anchors.right: parent.right
+        }
+
+        Image {
+            id: image
+            y: 0
+            width: 45
+            height: 45
+            anchors.verticalCenter: parent.verticalCenter
+            anchors.left: parent.left
+            anchors.leftMargin: 18
+            source: "icon/ic_call_made_black_24dp_2x.png"
+        }
+
+        Button {
+            id: button
+            x: 558
+            y: 127
+            width: 132
+            height: 48
+            text: qsTr("開始匯出")
+            anchors.bottom: parent.bottom
+            anchors.bottomMargin: 5
+            anchors.right: parent.right
+            anchors.rightMargin: 10
+            font.family: "Microsoft JhengHei UI"
+            Material.elevation: 0
+            font.pointSize: 14
+            Material.background: "#2f3e9e"
+            Material.foreground: "white"
+        }
+        Material.elevation: 3
+        padding: 0
     }
+
+    Pane {
+        id: pane2
+        x: 0
+        width: 700
+        height: 175
+        anchors.topMargin: 40
+        anchors.horizontalCenter: parent.horizontalCenter
+        anchors.top: pane1.bottom
+        Material.background: "white"
+        Label {
+            id: perpareForNewServerLabel3
+            height: 45
+            text: "開啟虛擬機器存放資料夾"
+            font.pointSize: 18
+            horizontalAlignment: Text.AlignLeft
+            anchors.topMargin: 5
+            font.bold: false
+            font.family: "Microsoft JhengHei UI"
+            anchors.top: parent.top
+            verticalAlignment: Text.AlignVCenter
+            anchors.left: parent.left
+            anchors.leftMargin: 80
+        }
+
+        Label {
+            id: perpareForNewServerLabel4
+            x: 3
+            height: 45
+            text: "SERVANT 所建立的所有伺服器虛擬機器都位於此資料夾。\n由於 SERVANT 以系統服務執行，虛擬機器的儲存資料夾與一般執行時不同，直接備份這個資料夾就可以完整備份伺服器。"
+            font.pointSize: 14
+            horizontalAlignment: Text.AlignLeft
+            anchors.topMargin: 0
+            anchors.rightMargin: 10
+            font.family: "Microsoft JhengHei UI"
+            anchors.top: perpareForNewServerLabel3.bottom
+            verticalAlignment: Text.AlignTop
+            wrapMode: Text.WordWrap
+            anchors.left: perpareForNewServerLabel3.left
+            anchors.leftMargin: 0
+            anchors.right: parent.right
+        }
+
+        Image {
+            id: image1
+            y: 0
+            width: 45
+            height: 45
+            source: "icon/ic_search_black_48dp_2x.png"
+            anchors.left: parent.left
+            anchors.verticalCenter: parent.verticalCenter
+            anchors.leftMargin: 18
+        }
+
+        Button {
+            id: button1
+            x: 558
+            y: 127
+            width: 132
+            height: 48
+            text: qsTr(" 檢視資料夾")
+            font.pointSize: 14
+            Material.background: "#2f3e9e"
+            Material.foreground: "white"
+            anchors.rightMargin: 10
+            font.family: "Microsoft JhengHei UI"
+            Material.elevation: 0
+            anchors.bottom: parent.bottom
+            anchors.right: parent.right
+            anchors.bottomMargin: 5
+        }
+        Material.elevation: 3
+        padding: 0
+    }
+
+
 }
 
 

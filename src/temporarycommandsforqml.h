@@ -27,6 +27,9 @@ public:
     Q_INVOKABLE void triggerNetworkInfo();
     Q_INVOKABLE void triggerWebsitePulse();
     Q_INVOKABLE void triggerStartURI(QString uri);
+    Q_INVOKABLE void triggerFirstTimeIP();
+    Q_INVOKABLE void triggerSetupLocalIP(QString ipAddress);
+    Q_INVOKABLE void triggerSettingPaneUpdate();
 };
 
 #endif // TEMPORARYCOMMANDSFORQML_H

@@ -14,13 +14,16 @@ public:
 signals:
     void readyToAssessHardware();
     void hardwareAssessmentFinished();
+    void triggerFirstTimeIPUpdate();
 public slots:
     void runHardwareAssessment();
     void showFinishedScreen();
+    void firstTimeIPUpdate();
 private:
     QObject *welcomePane;
     QObject *perfMeterPane;
     QObject *firstTimeFinishedPane;
+    QObject *welcomeIPPane;
     static FirstTimeSetup *instance;
     void hardwareAssessmentRunner();
 };

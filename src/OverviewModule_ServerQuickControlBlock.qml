@@ -5,11 +5,14 @@ import QtQuick.Controls.Material 2.1
 
 Button {
     id: button
-    width: 300
-    height: 50
+    width: 600
+    height: 45
     property alias name: nameLabel.text
     property alias info: infoLabel.text
     property alias imageSource: actionImage.source
+    property alias additionalButton: button1
+    property bool showAdditionalButton: false
+    property bool additionalButtonIsInfo: false
     Material.background:"White"
     Material.elevation:0
 
@@ -52,5 +55,24 @@ Button {
         anchors.leftMargin: 8
         anchors.verticalCenter: parent.verticalCenter
         source: ""
+    }
+
+    Button {
+        id: button1
+        x: 501
+        width: 150
+        Material.foreground: "white"
+        Material.background: (additionalButtonIsInfo) ? Material.Indigo : Material.Green
+        Material.elevation: 0
+        font.family: "Microsoft JhengHei UI"
+        font.pointSize: 14
+        text: qsTr("Button")
+        anchors.bottom: parent.bottom
+        anchors.bottomMargin: 0
+        anchors.top: parent.top
+        anchors.topMargin: 0
+        anchors.right: parent.right
+        anchors.rightMargin: 0
+        visible: (showAdditionalButton)? true : false
     }
 }

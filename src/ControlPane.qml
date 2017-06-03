@@ -101,7 +101,7 @@ Pane {
         id: buttonshare
         x: 57
         y: 171
-        title: qsTr("分享及備份       ")
+        title: qsTr("匯出與備份       ")
         image: "icon/ic_share_white_48dp_2x.png"
         bgColor: "#3F51B5"
         mouseArea.onClicked: {

@@ -5,6 +5,7 @@ import QtQuick.Controls.Material 2.1
 
 Pane {
     id: settingPane
+    objectName: "settingPane"
     width: 823
     height: 579
     leftPadding: 0
@@ -16,8 +17,22 @@ Pane {
     anchors.leftMargin: 0
     anchors.topMargin: 0
     anchors.fill: parent
+    property string localIPAddress: "127.0.0.1"
     property bool changed: false;
     property alias repoUrl: textField.text
+
+    onVisibleChanged: {
+        if(visible){
+            tmpCmd.triggerSettingPaneUpdate()
+            if(repoUrl !== "http://134.208.2.142:8090/SERVANT/repo/"){
+                checkBox2.checked = true
+            } else {
+                checkBox2.checked = false
+            }
+
+            changed = false
+        }
+    }
 
     OpBannerPane {
         id: opBannerPane
@@ -66,9 +81,28 @@ Pane {
             }
         }
 
+        TextField {
+            id: textField1
+            y: 56
+            text: localIPAddress
+            bottomPadding: 8
+            font.pointSize: 14
+            anchors.verticalCenter: generallabel1.verticalCenter
+            verticalAlignment: Text.AlignTop
+            anchors.right: parent.right
+            anchors.leftMargin: 10
+            selectByMouse: true
+            font.family: "Microsoft JhengHei UI"
+            anchors.left: generallabel1.right
+            horizontalAlignment: Text.AlignLeft
+            anchors.rightMargin: 10
+            onTextChanged: {
+                changed = true
+            }
+        }
+
         CheckBox {
             id: checkBox
-            text: qsTr("開機後執行 SERVANT 服務")
             anchors.left: generallabel.left
             anchors.leftMargin: 0
             anchors.top: generallabel.bottom
@@ -77,7 +111,7 @@ Pane {
             checked: false
             font.family: "Microsoft JhengHei UI"
             font.pointSize: 14
-
+            text: "開機時啟動 SERVANT 服務，以啟用自動啟動伺服器功能"
             onVisibleChanged:
             {
                 changeCheckBox1()
@@ -86,33 +120,24 @@ Pane {
             onCheckedChanged:
             {
                 changed = true
-                changeCheckBox1()
-            }
-
-            function changeCheckBox1(){
-                if(checked)
-                {
-                    checkBox1.checkable = true
-                    checkBox1.Material.foreground = "#000000"
-                }else{
-                    checkBox1.checkable = false
-                    checkBox1.checked = false
-                    checkBox1.Material.foreground = Material.Grey
-                }
             }
         }
 
-        CheckBox {
-            id: checkBox1
-            text: qsTr("當電腦不正常關機後，嘗試在下一次開機重新啟動已啟動的伺服器")
-            anchors.left: generallabel.left
-            anchors.leftMargin: 0
+        Label {
+            id: generallabel1
+            x: 5
+            width: 158
+            height: 36
+            text: qsTr("設定本機 IP 位址：")
             anchors.top: checkBox.bottom
-            anchors.topMargin: 0
-            checked: false
-            checkable: false
-            font.pointSize: 14
+            anchors.topMargin: 10
+            font.bold: false
+            verticalAlignment: Text.AlignVCenter
+            anchors.leftMargin: 10
             font.family: "Microsoft JhengHei UI"
+            anchors.left: parent.left
+            horizontalAlignment: Text.AlignLeft
+            font.pointSize: 14
         }
     }
 

@@ -76,8 +76,8 @@ Pane {
         width: 400
         height: 35
         text: "設定新伺服器的名稱(或留白以自動產生)："
-        anchors.left: parent.left
-        anchors.leftMargin: 50
+        anchors.horizontalCenterOffset: -160
+        anchors.horizontalCenter: parent.horizontalCenter
         anchors.top: serverTypeLabel.bottom
         anchors.topMargin: 80
         verticalAlignment: Text.AlignVCenter
@@ -89,14 +89,14 @@ Pane {
 
     TextField {
         id: serverNameTextField
-        anchors.right: parent.right
-        anchors.rightMargin: 50
-        anchors.left: parent.left
-        anchors.leftMargin: 50
+        width: 725
+        anchors.left: serverNameLabel.left
+        anchors.leftMargin: 0
         anchors.top: serverNameLabel.bottom
         anchors.topMargin: 10
         font.pointSize: 15
         horizontalAlignment: Text.AlignLeft
+        font.family: "Microsoft JhengHei UI"
     }
 
     Image {

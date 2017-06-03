@@ -61,9 +61,8 @@ Pane {
             }
 
             onClicked: {
-				perfMeterPane.visible = true
+                welcomePane_IPSetup.visible = true
                 welcomePane.visible = false				
-				tmpCmd.runHardwareAssessment()
             }
         }
     }

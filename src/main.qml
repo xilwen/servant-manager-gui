@@ -158,6 +158,13 @@ ApplicationWindow {
         visible:false
     }
 
+    WelcomePane_IPSetup {
+        id: welcomePane_IPSetup
+        anchors.fill: parent
+        z: 3
+        visible:false
+    }
+
     PerfMeterPane{
         id: perfMeterPane
         anchors.fill: parent

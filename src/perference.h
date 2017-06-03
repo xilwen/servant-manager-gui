@@ -13,10 +13,13 @@ public:
     static Perference *getInstance();
 signals:
     void readyToUpdateAboutData();
+    void settingPaneUpdateTriggered();
 public slots:
     void updateAboutData();
+    void updateSettingPane();
 private:
     QObject *aboutPane;
+    QObject *settingPane;
     PerformanceManager *performanceManager;
     static Perference *instance;
 };

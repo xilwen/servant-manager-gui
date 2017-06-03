@@ -13,6 +13,7 @@ MyServer::MyServer(QObject *parent) : QObject(parent)
     connect(this, &MyServer::modifyFinished, this, &MyServer::closeModifyUI);
     connect(this, &MyServer::updateServerQuickActionTriggered, this, &MyServer::updateServerQuickActionSlot);
     connect(this, &MyServer::networkInfoTriggered, this, &MyServer::openNetworkInfo);
+    connect(this, &MyServer::setupLocalIPTriggered, this, &MyServer::setupLocalIP);
     packageManager = ServantBase::getInstance()->getPackageManager();
     addingServerPane = MainWindow::getUi()->findChild<QObject*>("addingServerPane");
     serverInfoPane = MainWindow::getUi()->findChild<QObject*>("serverInfoPane");
@@ -157,5 +158,10 @@ void MyServer::openNetworkInfo()
 {
     WindowsUtilities::ipconfigAndSave();
     WindowsUtilities::startURI("C:\\SERVANT\\ipconfig.txt");
+}
+
+void MyServer::setupLocalIP(QString ipAddress)
+{
+    ConfigManager::getInstance()->setLocalIPAddress(ipAddress.toStdString());
 }
 
