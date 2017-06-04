@@ -5,6 +5,7 @@ import QtQuick.Controls.Material 2.1
 
 Pane {
     id: addServerPane
+    property alias serverNameText: serverNameTextField.text
     width: 823
     height: 579
     padding: 0
@@ -97,6 +98,7 @@ Pane {
         font.pointSize: 15
         horizontalAlignment: Text.AlignLeft
         font.family: "Microsoft JhengHei UI"
+        selectByMouse: true
     }
 
     Image {

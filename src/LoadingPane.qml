@@ -13,6 +13,13 @@ Pane {
     anchors.fill: parent
     objectName: "loadingScreen"
     Material.theme: Material.Dark
+    property bool failed: false
+
+    onFailedChanged: {
+        if(failed){
+            errorHappenedPane.open("初始化錯誤", "請檢查　VirtualBox　是否已安裝，連接埠 9870 是否被其他程式占用中？\n若電腦上安裝有主動入侵偵測功能的防毒軟體或防火牆，請允許本機的網路通訊，SERVANT　才能正常運作。")
+        }
+    }
 
     Label {
         id: logoTitle

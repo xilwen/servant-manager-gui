@@ -19,6 +19,7 @@ Pane {
     property string serverTipURL: ""
     //webmin status. 0 = disabled, 1 = force disabled, 2 = enabled
     property int webminStatus: 0
+    property bool poweredON: button_OFF.visible
     anchors.rightMargin: 0
     anchors.bottomMargin: 0
     anchors.leftMargin: 0

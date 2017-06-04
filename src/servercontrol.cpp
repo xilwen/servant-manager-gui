@@ -55,6 +55,11 @@ void ServerControl::updateServerControlUI(int itemIndex)
     serverInfoPane->setProperty("serverShareURL", QString::fromUtf8(machine->getShareURL().c_str()));
     serverInfoPane->setProperty("serverIcon", QString::fromUtf8(machine->getIconPath().c_str()));
     serverInfoPane->setProperty("serverPortNumber", machine->getManagementPort());
+    if(DiagnosisUtilities::getInstance()->portIsUsing(10000)){
+        serverInfoPane->setProperty("webminStatus", 1);
+    } else {
+        serverInfoPane->setProperty("webminStatus", 0);
+    }
 }
 
 void ServerControl::deleteServer(int itemIndex)

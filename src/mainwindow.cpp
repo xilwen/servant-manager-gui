@@ -63,9 +63,13 @@ void MainWindow::initialServantManager()
         {
             controlPane->setProperty("noMachineCreated", false);
             myServer->updateServerQuickAction();
-        }        
+        }
     }
-    loadingScreen->setVisible(false);
+    if(ServantBase::getInstance()->getSuccessFlag()){
+        loadingScreen->setVisible(false);
+    } else {
+        loadingScreen->setProperty("failed", true);
+    }
 }
 
 

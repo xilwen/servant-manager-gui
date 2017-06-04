@@ -48,7 +48,11 @@ Pane {
         anchors.leftMargin: 0
         title: qsTr("管理介面網址")
         info: serverInfoPane.serverManagementURL
-        onClicked: tmpCmd.triggerStartURI(info)
+        onClicked: {
+            if(poweredON){
+                tmpCmd.triggerStartURI(info)
+            }
+        }
     }
 
     OverviewModule_ServerQuickInfoBlock{
@@ -60,8 +64,10 @@ Pane {
         title: qsTr("如何連線到伺服器？")
         info: serverInfoPane.serverShareURL
         onClicked: {
-            errorHappenedPane.open("關於此伺服器IP", "這個IP位置是由ipify.org以及電腦的作業系統回報，以及設定時的位置選項產生的。\n因此SERVANT不保證其完全正確。")
-            tmpCmd.triggerStartURI(info)
+            if(poweredON){
+                errorHappenedPane.open("關於此伺服器IP", "這個IP位置是由ipify.org以及電腦的作業系統回報，以及設定時的位置選項產生的。\n因此SERVANT不保證其完全正確。")
+                tmpCmd.triggerStartURI(info)
+            }
         }
 
     }
@@ -73,6 +79,10 @@ Pane {
         anchors.topMargin: 0
         title: "檢視 " + serverInfoPane.serverType + "設定的相關資料和秘訣"
         info: ""
-        onClicked: tmpCmd.triggerStartURI(serverInfoPane.serverTipURL)
+        onClicked: {
+            if(poweredON){
+                tmpCmd.triggerStartURI(serverInfoPane.serverTipURL)
+            }
+        }
     }
 }

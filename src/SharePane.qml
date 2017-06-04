@@ -184,7 +184,7 @@ Pane {
             id: perpareForNewServerLabel4
             x: 3
             height: 45
-            text: "SERVANT 所建立的所有伺服器虛擬機器都位於此資料夾。\n由於 SERVANT 以系統服務執行，虛擬機器的儲存資料夾與一般執行時不同，直接備份這個資料夾就可以完整備份伺服器。"
+            text: "SERVANT 所建立的所有伺服器虛擬機器都位於此資料夾。\n由於 SERVANT 以系統服務執行，虛擬機器的儲存資料夾可能與一般執行時不同，直接備份這個資料夾就可以完整備份伺服器。"
             font.pointSize: 14
             horizontalAlignment: Text.AlignLeft
             anchors.topMargin: 0
@@ -225,6 +225,9 @@ Pane {
             anchors.bottom: parent.bottom
             anchors.right: parent.right
             anchors.bottomMargin: 5
+            onClicked: {
+                tmpCmd.triggerStartURI("%windir%\\System32\\config\\systemprofile")
+            }
         }
         Material.elevation: 3
         padding: 0

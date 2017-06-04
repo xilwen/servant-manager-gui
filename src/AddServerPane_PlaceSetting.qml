@@ -13,7 +13,6 @@ Pane {
     anchors.leftMargin: 0
     anchors.topMargin: 0
     anchors.fill: parent
-    property int performanceProfile: 0
     z: 3
     Material.accent: Material.Indigo
 
@@ -182,6 +181,7 @@ Pane {
             addServerPane_PlaceSetting.visible = false
         }
         nextButton.onClicked: {
+            serverProductInfoPane.onlyLANAccess = radioButton.checked
             addServerPane_PlaceSetting.visible = false
             serverProductInfoPane.visible = false
             tmpCmd.runInstaller(serverProductInfoPane.itemIndex)

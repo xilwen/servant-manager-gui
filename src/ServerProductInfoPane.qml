@@ -5,6 +5,7 @@ import QtQuick.Controls.Material 2.1
 
 Pane {
     id:serverProductInfoPane
+    objectName:"serverProductInfoPane"
     width: 823
     height: 579
     padding: 0
@@ -39,13 +40,11 @@ Pane {
     property bool onlyLANAccess : false
     //TODO Hardware Checks Strings
 
-
     anchors.rightMargin: 0
     anchors.bottomMargin: 0
     anchors.leftMargin: 0
     anchors.topMargin: 0
     anchors.fill: parent
-    objectName:"serverProductInfoPane"
 
     onVisibleChanged: {
         if(visible){
@@ -60,6 +59,7 @@ Pane {
         newServerName = ""
         newServerCPU = newServerRAM = newServerPort = 0
         onlyLANAccess = false
+        addServerPane.serverNameText = ""
     }
 
     Image {

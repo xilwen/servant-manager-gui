@@ -54,13 +54,26 @@ void MyServer::packageInstallRunner()
         installProgressChanged(packageManager->OVAImportProgress());
         std::this_thread::sleep_for(std::chrono::milliseconds(250));
     }
-    if(packageManager->OVAImportSucceeded())
+    if(!packageManager->OVAImportSucceeded())
     {
-        auto items(ServantBase::getInstance()->getMallManager()->getItemList());
-        items->at(itemIndex).installAdditionalInfoToLastInstalledMachine();
-        installProgressChanged(100);
-        emit installFinished();
+        return;
     }
+    auto items(ServantBase::getInstance()->getMallManager()->getItemList());
+    items->at(itemIndex).installAdditionalInfoToLastInstalledMachine();
+    QObject *serverProductInfoPane = MainWindow::getUi()->findChild<QObject*>("serverProductInfoPane");
+    packageManager->getMachines()->back().rename(
+                serverProductInfoPane->property("newServerName").toString().toStdWString());
+    packageManager->getMachines()->back().setCPUAmount(
+                serverProductInfoPane->property("newServerCPU").toInt());
+    packageManager->getMachines()->back().setRAMAmount(
+                serverProductInfoPane->property("newServerRAM").toInt());
+    packageManager->getMachines()->back().addPortForwardingRule(
+                serverProductInfoPane->property("itemMainPort").toInt(),
+                serverProductInfoPane->property("newServerPort").toInt());
+    packageManager->getMachines()->back().saveUseLocalIP(
+                serverProductInfoPane->property("onlyLANAccess").toBool());
+    installProgressChanged(100);
+    emit installFinished();
 }
 
 void MyServer::updateInstallUI(int progress)
@@ -134,12 +147,20 @@ void MyServer::shutdownServerRunner()
 {
     packageManager->getMachines()->at(itemIndex).sendPowerOffSignal();
     std::wstring msg;
+    unsigned int waitMillisecond = 0;
     do
     {
         msg = ServantBase::getInstance()->getVBoxWrapperClient()->message()->message(L"get machineState");
         std::this_thread::sleep_for(std::chrono::milliseconds(200));
+        waitMillisecond += 200;
+        if(waitMillisecond > 5000)
+        {
+            packageManager->getMachines()->at(itemIndex).sendPowerOffSignal();
+            waitMillisecond = 0;
+        }
     }
     while(msg != L"PoweredOff");
+
     emit ServerControl::getInstance()->readyToUpdateServerControlUI(itemIndex);
     emit modifyFinished();
 }
