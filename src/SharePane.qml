@@ -141,7 +141,7 @@ Pane {
             y: 127
             width: 132
             height: 48
-            text: qsTr("開始匯出")
+            text: qsTr("我的伺服器")
             anchors.bottom: parent.bottom
             anchors.bottomMargin: 5
             anchors.right: parent.right
@@ -151,6 +151,26 @@ Pane {
             font.pointSize: 14
             Material.background: "#2f3e9e"
             Material.foreground: "white"
+            onClicked: {
+                overviewPane_Normal.visible = true
+                sharePane.visible = false
+            }
+        }
+
+        Label {
+            id: perpareForNewServerLabel5
+            x: 8
+            y: 1
+            height: 25
+            text: "在管理伺服器介面中，當伺服器已關機時即可匯出。"
+            anchors.right: button.left
+            anchors.rightMargin: 10
+            anchors.verticalCenter: button.verticalCenter
+            font.pointSize: 14
+            wrapMode: Text.WordWrap
+            horizontalAlignment: Text.AlignLeft
+            verticalAlignment: Text.AlignTop
+            font.family: "Microsoft JhengHei UI"
         }
         Material.elevation: 3
         padding: 0
