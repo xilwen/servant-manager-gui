@@ -28,6 +28,13 @@ ApplicationWindow {
         visible:false
     }
 
+    ExportOVAStatusPane{
+        id: exportOVAStatusPane
+        anchors.horizontalCenter: parent.horizontalCenter
+        anchors.verticalCenter: parent.verticalCenter
+        visible: false
+    }
+
     Mask{
         id: mask
         anchors.fill: parent

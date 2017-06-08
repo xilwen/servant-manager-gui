@@ -6,7 +6,7 @@ import QtQuick.Controls.Material 2.1
 Pane {
     id: errorHappenedPane
     width: 500
-    height: 200
+    height: 120 + errorHappenedLabel.contentHeight
     bottomPadding: 0
     Material.background: "white"
     Material.elevation: 8

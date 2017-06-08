@@ -19,6 +19,14 @@ Pane {
     Layout.fillWidth: true
     Material.background: "#ffffff"
     Material.elevation: 5
+
+    function lock(){
+        controlpane.locked = true
+    }
+    function unlock(){
+        controlpane.locked = false
+    }
+
     ControlModule_Button {
         id: buttonserver
         x: 57
@@ -27,13 +35,17 @@ Pane {
         image: "icon/ic_storage_white_24dp_1x.png"
         bgColor: "#00aa00"
         mouseArea.onClicked: {
-            noMachineCreated ? overviewPane_Empty.visible = true: overviewPane_Normal.visible = true
-            serverMallPane.visible=false
-            serverProductInfoPane.visible=false
-            diagnosisPane.visible=false
-            sharePane.visible=false
-            settingPane.visible=false
-            indicatorPointer = 0
+            if(controlpane.locked){
+                errorHappenedPane.open("請稍候", "請稍等目前的動作完成再切換畫面")
+            }else{
+                noMachineCreated ? overviewPane_Empty.visible = true: overviewPane_Normal.visible = true
+                serverMallPane.visible=false
+                serverProductInfoPane.visible=false
+                diagnosisPane.visible=false
+                sharePane.visible=false
+                settingPane.visible=false
+                indicatorPointer = 0
+            }
         }
         ControlModule_Indicator {
             id: myServerIndicator
@@ -52,14 +64,18 @@ Pane {
         image: "icon/ic_store_white_24dp_1x.png"
         bgColor: "#E91E63"
         mouseArea.onClicked: {
-            overviewPane_Empty.visible=false
-            overviewPane_Normal.visible=false
-            serverMallPane.visible=true
-            serverProductInfoPane.visible=false
-            diagnosisPane.visible=false
-            sharePane.visible=false
-            settingPane.visible=false
-            indicatorPointer = 1
+            if(controlpane.locked){
+                errorHappenedPane.open("請稍候", "請稍等目前的動作完成再切換畫面")
+            }else{
+                overviewPane_Empty.visible=false
+                overviewPane_Normal.visible=false
+                serverMallPane.visible=true
+                serverProductInfoPane.visible=false
+                diagnosisPane.visible=false
+                sharePane.visible=false
+                settingPane.visible=false
+                indicatorPointer = 1
+            }
         }
         ControlModule_Indicator {
             id: mallIndicator
@@ -78,15 +94,19 @@ Pane {
         image: "icon/ic_build_white_48dp_2x.png"
         bgColor: "#2196F3"
         mouseArea.onClicked: {
-            overviewPane_Empty.visible=false
-            overviewPane_Normal.visible=false
-            serverMallPane.visible=false
-            serverProductInfoPane.visible=false
-            diagnosisPane.visible=true
-            sharePane.visible=false
-            settingPane.visible=false
-            sharePane.visible=false
-            indicatorPointer = 2
+            if(controlpane.locked){
+                errorHappenedPane.open("請稍候", "請稍等目前的動作完成再切換畫面")
+            }else{
+                overviewPane_Empty.visible=false
+                overviewPane_Normal.visible=false
+                serverMallPane.visible=false
+                serverProductInfoPane.visible=false
+                diagnosisPane.visible=true
+                sharePane.visible=false
+                settingPane.visible=false
+                sharePane.visible=false
+                indicatorPointer = 2
+            }
         }
         ControlModule_Indicator {
             id: diagnosisIndicator
@@ -105,15 +125,19 @@ Pane {
         image: "icon/ic_share_white_48dp_2x.png"
         bgColor: "#3F51B5"
         mouseArea.onClicked: {
-            overviewPane_Empty.visible=false
-            overviewPane_Normal.visible=false
-            serverMallPane.visible=false
-            serverProductInfoPane.visible=false
-            diagnosisPane.visible=false
-            sharePane.visible=true
-            settingPane.visible=false
-            sharePane.visible=true
-            indicatorPointer = 3
+            if(controlpane.locked){
+                errorHappenedPane.open("請稍候", "請稍等目前的動作完成再切換畫面")
+            }else{
+                overviewPane_Empty.visible=false
+                overviewPane_Normal.visible=false
+                serverMallPane.visible=false
+                serverProductInfoPane.visible=false
+                diagnosisPane.visible=false
+                sharePane.visible=true
+                settingPane.visible=false
+                sharePane.visible=true
+                indicatorPointer = 3
+            }
         }
         ControlModule_Indicator {
             id: sharepane
@@ -132,15 +156,19 @@ Pane {
         image: "icon/ic_settings_white_24dp_1x.png"
         bgColor: "#9E9E9E"
         mouseArea.onClicked: {
-            overviewPane_Empty.visible=false
-            overviewPane_Normal.visible=false
-            serverMallPane.visible=false
-            serverProductInfoPane.visible=false
-            diagnosisPane.visible=false
-            sharePane.visible=false
-            settingPane.visible=true
-            sharePane.visible=false
-            indicatorPointer = 4
+            if(controlpane.locked){
+                errorHappenedPane.open("請稍候", "請稍等目前的動作完成再切換畫面")
+            }else{
+                overviewPane_Empty.visible=false
+                overviewPane_Normal.visible=false
+                serverMallPane.visible=false
+                serverProductInfoPane.visible=false
+                diagnosisPane.visible=false
+                sharePane.visible=false
+                settingPane.visible=true
+                sharePane.visible=false
+                indicatorPointer = 4
+            }
         }
         ControlModule_Indicator {
             id: settingpane

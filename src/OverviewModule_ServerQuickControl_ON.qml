@@ -42,15 +42,16 @@ Pane {
         onClicked: {
             switch(serverInfoPane.webminStatus){
             case 0:
-
+                tmpCmd.triggerStartWebmin(serverInfoPane.itemIndex)
                 break
             case 1:
                 errorHappenedPane.open("無法使用Webmin","其他伺服器或程式佔用了 10000 連接埠。請先關閉其他伺服器的 Webmin。")
                 break
             case 2:
-
+                tmpCmd.triggerStopWebmin(serverInfoPane.itemIndex)
                 break
             }
+            tmpCmd.updateServerControlUI(serverInfoPane.itemIndex)
         }
         additionalButton.onClicked: {
             if(serverInfoPane.webminStatus == 2){

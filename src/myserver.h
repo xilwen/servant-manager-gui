@@ -23,6 +23,9 @@ signals:
     void networkInfoTriggered();
     void serverQuickInfoUpdateTriggered(int itemIndex);
     void setupLocalIPTriggered(QString ipAddress);
+    void readyToExportPackage(int itemIndex, QString filePath);
+    void exportProgressChanged(int progress);
+    void exportFinished();
 public slots:
     void installPackage(int itemIndex);
     void updateInstallUI(int progress);
@@ -33,6 +36,10 @@ public slots:
     void updateServerQuickActionSlot();
     void openNetworkInfo();
     void setupLocalIP(QString ipAddress);
+    void exportPackage(int itemIndex, QString filePath);
+    void updateExportProgress(int progress);
+    void closeExportUI();
+
 private:
     QObject *addingServerPane;
     QObject *serverInfoPane;
@@ -46,6 +53,7 @@ private:
     void packageInstallRunner();
     void bootServerRunner();
     void shutdownServerRunner();
+    void exportServerRunner();
 };
 
 #endif // MYSERVER_H

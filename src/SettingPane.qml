@@ -29,7 +29,6 @@ Pane {
             } else {
                 checkBox2.checked = false
             }
-
             changed = false
         }
     }
@@ -44,7 +43,7 @@ Pane {
 
     Pane{
         id: generalCategoryPane
-        height: 180
+        height: 120
         anchors.right: parent.right
         anchors.rightMargin: 30
         anchors.left: parent.left
@@ -101,35 +100,13 @@ Pane {
             }
         }
 
-        CheckBox {
-            id: checkBox
-            anchors.left: generallabel.left
-            anchors.leftMargin: 0
-            anchors.top: generallabel.bottom
-            anchors.topMargin: 10
-            checkable: true
-            checked: false
-            font.family: "Microsoft JhengHei UI"
-            font.pointSize: 14
-            text: "開機時啟動 SERVANT 服務，以啟用自動啟動伺服器功能"
-            onVisibleChanged:
-            {
-                changeCheckBox1()
-            }
-
-            onCheckedChanged:
-            {
-                changed = true
-            }
-        }
-
         Label {
             id: generallabel1
             x: 5
             width: 158
             height: 36
             text: qsTr("設定本機 IP 位址：")
-            anchors.top: checkBox.bottom
+            anchors.top: generallabel.bottom
             anchors.topMargin: 10
             font.bold: false
             verticalAlignment: Text.AlignVCenter
@@ -260,7 +237,7 @@ Pane {
             Material.elevation: 0
             Material.background: "white"
             onClicked: {
-                //vboxWrapper commands
+                tmpCmd.triggerSetupLocalIP(textField1.text);
                 if(checkBox2.checked){
                     tmpCmd.triggerMallRepoUrlUpdate(repoUrl)
                 }else{

@@ -47,9 +47,9 @@ Pane {
         anchors.left: block0.left
         anchors.leftMargin: 0
         title: qsTr("管理介面網址")
-        info: serverInfoPane.serverManagementURL
+        info: (serverInfoPane.noManagementWebUI)? "無" : serverInfoPane.serverManagementURL
         onClicked: {
-            if(poweredON){
+            if(poweredON && !serverInfoPane.noManagementWebUI){
                 tmpCmd.triggerStartURI(info)
             }
         }
@@ -80,9 +80,7 @@ Pane {
         title: "檢視 " + serverInfoPane.serverType + "設定的相關資料和秘訣"
         info: ""
         onClicked: {
-            if(poweredON){
                 tmpCmd.triggerStartURI(serverInfoPane.serverTipURL)
-            }
         }
     }
 }

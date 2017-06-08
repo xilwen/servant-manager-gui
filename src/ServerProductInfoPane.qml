@@ -111,6 +111,7 @@ Pane {
         anchors.leftMargin: 0
         anchors.rightMargin: 0
         pageName: itemName
+        showBackButton: !(progressbarpane.visible)
         button.onClicked:{
             serverProductInfoPane.visible = false
             serverMallPane.visible = true
@@ -228,6 +229,14 @@ Pane {
         Material.background: "white"
         visible:false
 
+        onVisibleChanged: {
+            if(visible){
+                controlPane.lock()
+            } else {
+                controlPane.unlock()
+            }
+        }
+
         ProgressBar {
             id: progressBar
             y: 3
@@ -283,6 +292,12 @@ Pane {
         anchors.left: parent.left
         anchors.leftMargin: 0
         visible: false
+
+        onVisibleChanged: {
+            if(visible){
+                progressbarpane.visible = false
+            }
+        }
 
         ServerProductInfoModule_Button {
             id: installButton

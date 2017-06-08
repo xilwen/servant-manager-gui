@@ -22,6 +22,10 @@ Pane {
         }
     }
 
+    function isNumeric(n) {
+        return !isNaN(parseFloat(n)) && isFinite(n);
+    }
+
     BackButton{
         showBackButton: false
         pageName: qsTr("安裝新伺服器 - 自訂連接埠")
@@ -63,7 +67,7 @@ Pane {
         anchors.verticalCenter: parent.verticalCenter
         anchors.horizontalCenterOffset: -150
         anchors.horizontalCenter: parent.horizontalCenter
-        anchors.top: serverTypeLabel.bottom
+        anchors.top: newServerTypeImage.bottom
         anchors.topMargin: 80
         verticalAlignment: Text.AlignVCenter
         horizontalAlignment: Text.AlignLeft
@@ -138,6 +142,25 @@ Pane {
             horizontalAlignment: Text.AlignHCenter
             visible: (portSettingcheckBox.checked)? true : false
             text: serverProductInfoPane.itemMainPort
+            property bool formatOK: true
+            property int ii: 0
+            onTextChanged: {
+                formatOK = true
+                if(parseInt(text) > 65535 || parseInt(text) < 1){
+                    errorHappenedPane.open("連接埠格式錯誤", "可輸入的範圍是0~65535，必須為數字。")
+                    text = serverProductInfoPane.itemMainPort
+                    return
+                }
+                for(ii = 0; ii < text.length; ++ii){
+                    if(!isNumeric(text[ii])){
+                        formatOK = false
+                    }
+                }
+                if(!formatOK){
+                    errorHappenedPane.open("連接埠格式錯誤", "可輸入的範圍是0~65535，必須為數字。")
+                    text = serverProductInfoPane.itemMainPort
+                }
+            }
         }
     }
 }

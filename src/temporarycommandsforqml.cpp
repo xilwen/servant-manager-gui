@@ -120,4 +120,19 @@ void TemporaryCommandsForQml::triggerSettingPaneUpdate()
     emit Perference::getInstance()->settingPaneUpdateTriggered();
 }
 
+void TemporaryCommandsForQml::triggerStartWebmin(int itemIndex)
+{
+    emit ServerControl::getInstance()->startWebminTriggered(itemIndex);
+}
+
+void TemporaryCommandsForQml::triggerStopWebmin(int itemIndex)
+{
+    emit ServerControl::getInstance()->stopWebminTriggered(itemIndex);
+}
+
+void TemporaryCommandsForQml::triggerExportOVA(int itemIndex, QString filePath)
+{
+    emit MyServer::getInstance()->readyToExportPackage(itemIndex, filePath);
+}
+
 

@@ -14,6 +14,9 @@ MyServer::MyServer(QObject *parent) : QObject(parent)
     connect(this, &MyServer::updateServerQuickActionTriggered, this, &MyServer::updateServerQuickActionSlot);
     connect(this, &MyServer::networkInfoTriggered, this, &MyServer::openNetworkInfo);
     connect(this, &MyServer::setupLocalIPTriggered, this, &MyServer::setupLocalIP);
+    connect(this, &MyServer::readyToExportPackage, this, &MyServer::exportPackage);
+    connect(this, &MyServer::exportProgressChanged, this, &MyServer::updateExportProgress);
+    connect(this, &MyServer::exportFinished, this, &MyServer::closeExportUI);
     packageManager = ServantBase::getInstance()->getPackageManager();
     addingServerPane = MainWindow::getUi()->findChild<QObject*>("addingServerPane");
     serverInfoPane = MainWindow::getUi()->findChild<QObject*>("serverInfoPane");
@@ -61,12 +64,16 @@ void MyServer::packageInstallRunner()
     auto items(ServantBase::getInstance()->getMallManager()->getItemList());
     items->at(itemIndex).installAdditionalInfoToLastInstalledMachine();
     QObject *serverProductInfoPane = MainWindow::getUi()->findChild<QObject*>("serverProductInfoPane");
-    packageManager->getMachines()->back().rename(
-                serverProductInfoPane->property("newServerName").toString().toStdWString());
+    if(!serverProductInfoPane->property("newServerName").toString().isEmpty())
+    {
+        packageManager->getMachines()->back().rename(
+                    serverProductInfoPane->property("newServerName").toString().toStdWString());
+    }
     packageManager->getMachines()->back().setCPUAmount(
                 serverProductInfoPane->property("newServerCPU").toInt());
     packageManager->getMachines()->back().setRAMAmount(
                 serverProductInfoPane->property("newServerRAM").toInt());
+    packageManager->getMachines()->back().saveCustomPort(serverProductInfoPane->property("newServerPort").toInt());
     packageManager->getMachines()->back().addPortForwardingRule(
                 serverProductInfoPane->property("itemMainPort").toInt(),
                 serverProductInfoPane->property("newServerPort").toInt());
@@ -124,7 +131,17 @@ void MyServer::updateServerQuickAction()
 void MyServer::bootServer(int itemIndex)
 {
     this->itemIndex = itemIndex;
-    std::thread(&MyServer::bootServerRunner, this).detach();
+    if(DiagnosisUtilities::getInstance()->portIsUsing(PackageManager::getInstance()->getMachines()->at(itemIndex).getCustomPortNumber()) ||
+            DiagnosisUtilities::getInstance()->portIsUsing(PackageManager::getInstance()->getMachines()->at(itemIndex).getManagementPort()) ||
+            DiagnosisUtilities::getInstance()->portIsUsing(PackageManager::getInstance()->getMachines()->at(itemIndex).getSingletonPort())                                               )
+    {
+        serverInfoPane->setProperty("portIsUsed", true);
+        return;
+    }
+    else
+    {
+        std::thread(&MyServer::bootServerRunner, this).detach();
+    }
 }
 
 void MyServer::shutdownServer(int itemIndex)
@@ -165,6 +182,16 @@ void MyServer::shutdownServerRunner()
     emit modifyFinished();
 }
 
+void MyServer::exportServerRunner()
+{
+    while(!packageManager->OVAImportCompleted())
+    {
+        exportProgressChanged(packageManager->OVAImportProgress());
+        std::this_thread::sleep_for(std::chrono::milliseconds(250));
+    }
+    emit exportFinished();
+}
+
 void MyServer::closeModifyUI()
 {
     serverStateChangingPane->setProperty("visible", false);
@@ -184,5 +211,25 @@ void MyServer::openNetworkInfo()
 void MyServer::setupLocalIP(QString ipAddress)
 {
     ConfigManager::getInstance()->setLocalIPAddress(ipAddress.toStdString());
+}
+
+void MyServer::exportPackage(int itemIndex, QString filePath)
+{
+    auto filePathWString(filePath.toStdWString());
+    //substf file:///
+    PackageManager::getInstance()->getMachines()->at(itemIndex).exportMachine(filePathWString.substr(8));
+    std::thread(&MyServer::exportServerRunner, this).detach();
+}
+
+void MyServer::updateExportProgress(int progress)
+{
+    QObject *exportOVAStatusPane = MainWindow::getUi()->findChild<QObject*>("exportOVAStatusPane");
+    exportOVAStatusPane->setProperty("precentage", progress);
+}
+
+void MyServer::closeExportUI()
+{
+    QObject *exportOVAStatusPane = MainWindow::getUi()->findChild<QObject*>("exportOVAStatusPane");
+    exportOVAStatusPane->setProperty("visible", false);
 }
 

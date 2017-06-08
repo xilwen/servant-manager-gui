@@ -99,6 +99,20 @@ Pane {
         horizontalAlignment: Text.AlignLeft
         font.family: "Microsoft JhengHei UI"
         selectByMouse: true
+        property int ii: 0
+        property bool formatOK: true
+        onTextChanged: {
+            formatOK = true
+            for(ii = 0; ii < text.length; ++ii){
+                if(text[ii] === " " || text[ii] === "\\" || text[ii] === "\t"){
+                    formatOK = false
+                }
+            }
+            if(!formatOK){
+                errorHappenedPane.open("輸入字元無效", "請不要使用空格或者特殊符號。");
+                text = ""
+            }
+        }
     }
 
     Image {
@@ -128,41 +142,6 @@ Pane {
             font.pointSize: 15
             font.family: "Microsoft JhengHei UI"
         }
-    }
-
-    Label {
-        id: passwordLabel
-        x: -6
-        y: 4
-        width: 400
-        height: 35
-        text: "設定用於新伺服器中的密碼(預設使用者名稱為SERVANT)："
-        visible: false
-        verticalAlignment: Text.AlignVCenter
-        anchors.leftMargin: 50
-        horizontalAlignment: Text.AlignLeft
-        anchors.top: serverNameTextField.bottom
-        anchors.left: parent.left
-        anchors.topMargin: 25
-        font.pointSize: 15
-        font.family: "Microsoft JhengHei UI"
-    }
-
-    TextField {
-        id: passwordTextField
-        x: 3
-        y: -3
-        text: ""
-        visible: false
-        echoMode: TextInput.Password
-        anchors.rightMargin: 50
-        anchors.right: parent.right
-        anchors.top: passwordLabel.bottom
-        horizontalAlignment: Text.AlignLeft
-        anchors.left: parent.left
-        font.pointSize: 15
-        anchors.leftMargin: 50
-        anchors.topMargin: 6
     }
 
     AddServerModule_BottomPane{

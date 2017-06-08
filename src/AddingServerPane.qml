@@ -18,6 +18,14 @@ Pane {
     z:3
     Material.accent: Material.Indigo
     
+    onVisibleChanged: {
+        if(visible){
+            controlPane.locked = true
+        } else {
+            controlPane.locked = false
+        }
+    }
+
     BackButton{
         showBackButton: false
         pageName: "正在安裝新伺服器"
@@ -102,7 +110,7 @@ Pane {
             x: 3
             y: -9
             height: 45
-            text: "安裝完成後，「管理伺服器」介面會提供這項資訊，在應用程式中輸入（例如：在瀏覽器的網址列輸入）即可。\n由於網路環境可能較複雜，仍無法連線請嘗試其他已知的IP（可由診斷頁面獲得），或請教管理網路的人員。"
+            text: "安裝完成後，「管理伺服器」介面會提供這項資訊，在應用程式中輸入（例如：在瀏覽器的網址列輸入）即可。由於網路環境可能較複雜，仍無法連線請嘗試其他已知的IP（可由診斷頁面獲得），或請教管理網路的人員。\n如果伺服器需要對外連線，可能需要參照路由器的手冊設定連接埠轉發或虛擬伺服器。"
             anchors.right: parent.right
             anchors.rightMargin: 10
             wrapMode: Text.WordWrap

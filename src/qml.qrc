@@ -122,5 +122,6 @@
         <file>icon/ic_search_black_48dp_2x.png</file>
         <file>ServerSelectionPane.qml</file>
         <file>WelcomePane_IPSetup.qml</file>
+        <file>ExportOVAStatusPane.qml</file>
     </qresource>
 </RCC>

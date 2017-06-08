@@ -2,6 +2,7 @@ import QtQuick 2.7
 import QtQuick.Controls 2.0
 import QtQuick.Layouts 1.0
 import QtQuick.Controls.Material 2.1
+import QtQuick.Dialogs 1.2
 
 Pane {
     id: pane
@@ -45,33 +46,52 @@ Pane {
     }
 
     OverviewModule_ServerQuickControlBlock{
-        id: block1
-        name: qsTr("快照管理")
-        height: 45
-        anchors.right: parent.right
-        anchors.rightMargin: 0
-        info: qsTr("")
-        anchors.left: block0.left
-        anchors.leftMargin: 0
-        anchors.top: block0.bottom
-        anchors.topMargin: 0
-        imageSource: "icon/ic_camera_alt_black_48dp_2x.png"
-    }
-
-    OverviewModule_ServerQuickControlBlock{
         id: block2
-        anchors.left: block1.left
+        anchors.left: titleLabel.left
         anchors.leftMargin: 0
         anchors.top: block1.bottom
         anchors.topMargin: 0
-        name: qsTr("開啟 VirtualBox")
+        name: qsTr("如何在 VirtualBox 中檢視 SERVANT 建立的伺服器？")
         height: 45
         anchors.right: parent.right
         anchors.rightMargin: 0
         info: qsTr("")
         imageSource: "icon/ic_exit_to_app_black_48dp_2x.png"
         onClicked: {
-            errorHappenedPane.open("請注意", "Virtualbox 需要以系統服務權限啟動才能使用，在 Virtualbox 關閉前請勿使用 SERVANT 進行任何動作。\n此功能由外部程式 PAExec 提供。")
+            errorHappenedPane.open("如何在 VirtualBox 中修改伺服器(進階)", "因為 SERVANT 以系統服務執行，需要用系統服務權限執行 VirtualBox 才能看到您建立的伺服器。\n首先，請先確定伺服器已關機，並關閉 SERVANT，以避免讀寫衝突。\n您需要使用 PAExec 或類似功能的軟體，PAExec 的官方網站為 https://www.poweradmin.com/paexec/ 。\n用 paexec -s -i \"電腦上安裝的VirtualBox.exe絕對路徑\" 即可啟動 Virtualbox。")
+        }
+    }
+
+    OverviewModule_ServerQuickControlBlock {
+        id: block1
+        name: qsTr("匯出伺服器")
+        height: 45
+        info: qsTr("")
+        anchors.leftMargin: 0
+        anchors.right: parent.right
+        anchors.top: block0.bottom
+        imageSource: "icon/ic_call_made_black_24dp_2x.png"
+        anchors.rightMargin: 0
+        anchors.topMargin: 0
+        anchors.left: titleLabel.left
+        onClicked:{
+            exportFileDialog.open()
+        }
+    }
+
+    FileDialog{
+        id: exportFileDialog
+        selectExisting: false
+        title: "匯出虛擬機器"
+        nameFilters: [ "OVA (*.ova)" ]
+        visible: false
+        onAccepted: {
+            if(exportFileDialog.fileUrls[0].length > 0){
+                exportOVAStatusPane.visible = true
+                tmpCmd.triggerExportOVA(serverInfoPane.itemIndex, exportFileDialog.fileUrls[0].toString())
+            } else {
+                errorHappenedPane.open("檔名無效","請使用有效的檔案名稱。")
+            }
         }
     }
 }

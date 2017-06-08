@@ -20,6 +20,8 @@ Pane {
     //webmin status. 0 = disabled, 1 = force disabled, 2 = enabled
     property int webminStatus: 0
     property bool poweredON: button_OFF.visible
+    property bool portIsUsed: false
+    property bool noManagementWebUI: false
     anchors.rightMargin: 0
     anchors.bottomMargin: 0
     anchors.leftMargin: 0
@@ -35,7 +37,18 @@ Pane {
     onVisibleChanged: {
         if(visible){
             tmpCmd.updateServerControlUI(itemIndex)
+            flickable.contentX = 0
+            flickable.contentY = 0
             controlPane.indicatorPointer = 0
+        }
+    }
+
+    onPortIsUsedChanged: {
+        if(portIsUsed === true){
+            errorHappenedPane.open("連接埠已被使用","這個連接埠已被其他伺服器/程式使用，無法啟動伺服器。\n請先停止使用相同連接埠的伺服器或程式後再試一次。")
+            serverStateChangingPane.visible = false
+            button_OFF.visible = false
+            button_ON.visible = true
         }
     }
 
@@ -94,7 +107,7 @@ Pane {
         OverviewModule_ServerQuickControl_OFF {
             id: serverQuickControlPane_OFF
             width: 765
-            height: 210
+            height: 220
             anchors.horizontalCenterOffset: -5
             anchors.horizontalCenter: parent.horizontalCenter
             objectName: "serverQuickControlPane_OFF"
@@ -186,6 +199,7 @@ Pane {
                 Material.background: "#4caf50"
                 Material.foreground: "white"
                 onClicked: {
+                    portIsUsed = false
                     serverQuickControlPane_OFF.visible = false
                     serverQuickControlPane_ON.visible = true
                     serverStateChangingPane.visible = true

@@ -24,6 +24,9 @@ Pane {
         if(visible)
         {
             tmpCmd.triggerMallItemViewUpdate()
+            if(!mallItemButton.visible){
+                errorHappenedPane.open("線上服務無法使用", "若您修改過服務連線設定，請確定輸入的網址有效，然後點選「更新伺服器清單」按鈕。")
+            }
         }
     }
 
@@ -53,6 +56,9 @@ Pane {
             anchors.rightMargin: 0
             onClicked:{
                 tmpCmd.triggerRepositoryUpdate()
+                if(!mallItemButton.visible){
+                    errorHappenedPane.open("線上服務無法使用", "若您修改過服務連線設定，請確定輸入的網址有效，然後點選「更新伺服器清單」按鈕。")
+                }
             }
         }
     }

@@ -30,6 +30,9 @@ public:
     Q_INVOKABLE void triggerFirstTimeIP();
     Q_INVOKABLE void triggerSetupLocalIP(QString ipAddress);
     Q_INVOKABLE void triggerSettingPaneUpdate();
+    Q_INVOKABLE void triggerStartWebmin(int itemIndex);
+    Q_INVOKABLE void triggerStopWebmin(int itemIndex);
+    Q_INVOKABLE void triggerExportOVA(int itemIndex, QString filePath);
 };
 
 #endif // TEMPORARYCOMMANDSFORQML_H

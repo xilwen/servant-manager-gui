@@ -121,7 +121,7 @@ Pane {
             y: 360
             anchors.left: parent.left
             anchors.leftMargin: 10
-            onClicked: tmpCmd.triggerStartURI("LICENSE")
+            onClicked: tmpCmd.triggerStartURI("https://github.com/xilwen/servant-manager-gui/blob/master/LICENSE")
         }
 
         AboutModule_Button {

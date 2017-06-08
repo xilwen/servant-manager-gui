@@ -13,10 +13,13 @@ public:
 signals:
     void readyToUpdateServerControlUI(int itemIndex);
     void readyToDeleteServer(int itemIndex);
-
+    void startWebminTriggered(int itemIndex);
+    void stopWebminTriggered(int itemIndex);
 public slots:
     void updateServerControlUI(int itemIndex);
     void deleteServer(int itemIndex);
+    void startWebmin(int itemIndex);
+    void stopWebmin(int itemIndex);
 private:
     static ServerControl *instance;
     QObject *serverInfoPane = nullptr;
