@@ -79,7 +79,8 @@ void ServerControl::updateServerControlUI(int itemIndex)
                                                         QString::fromStdString(DiagnosisUtilities::getInstance()->getIpFromIpify())));
     if(!machine->getProtocol().empty())
     {
-        serverShareURLString += ("/" + QString::fromUtf8(machine->getShareURL().c_str()));
+        serverShareURLString += (":" + QString::fromStdString(std::to_string(machine->getPortNumber())) + "/" +
+                                 QString::fromUtf8(machine->getShareURL().c_str()));
     }
     serverInfoPane->setProperty("serverShareURL", serverShareURLString);
     serverInfoPane->setProperty("serverIcon", QString::fromUtf8(machine->getIconPath().c_str()));
