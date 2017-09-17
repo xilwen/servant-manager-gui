@@ -52,3 +52,17 @@ HEADERS += mainwindow.h \
     servercontrol.h
 
 DISTFILES +=
+
+#make release build automatically deploy needed dlls
+isEmpty(TARGET_EXT){
+    win32{
+        TARGET_CUSTOM_EXT = .exe
+    }
+}
+win32{
+    DEPLOY_COMMAND = $$shell_path($$[QT_INSTALL_BINS]\windeployqt.exe)
+}
+CONFIG(release){
+    DEPLOY_TARGET = $$shell_quote($$shell_path($${OUT_PWD}/release/$${TARGET}$${TARGET_CUSTOM_EXT}))
+}
+QMAKE_POST_LINK = $${DEPLOY_COMMAND} --qmldir $$[QT_INSTALL_QML] $${DEPLOY_TARGET}
